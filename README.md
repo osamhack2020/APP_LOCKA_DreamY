@@ -60,9 +60,8 @@ Due date : 11/12(Thursday)
 7. apk 빌드 및 생성
 - mkdir android/app/src/main/assets
 - package.json 수정 ( “scripts” 부분에 추가)
-- "scripts": { "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res" }
-- npm run bundle (bundle file 생성)
-
+"scripts": { "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res" }
+- npm run bundle
 - 빌드(cd workspace/android로 와서 실행)
 ./gradlew assembleDebug
 - 생성 위치 : workspace/android/app/build/outputs/apk/debug/
