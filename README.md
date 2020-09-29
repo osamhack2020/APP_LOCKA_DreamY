@@ -61,6 +61,8 @@ Due date : 11/12(Thursday)
 - mkdir android/app/src/main/assets
 - package.json 수정 ( “scripts” 부분에 추가)
 "scripts": { "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res" }
+![image](https://user-images.githubusercontent.com/18081105/94502797-e9954080-023f-11eb-9ff6-1f58473dee0c.png)
+
 - npm run bundle
 - 빌드(cd workspace/android로 와서 실행)
 ./gradlew assembleDebug
