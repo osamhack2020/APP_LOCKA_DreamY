@@ -5,6 +5,29 @@
  * @format
  * @flow strict-local
  */
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default class App extends React.Component {
+
+  render() {
+    return (
+      <View>
+        <View>
+
+        </View>
+        <Text>
+          Now Loading...
+        </Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+});
+
+/*
 
 import React from 'react';
 import {
@@ -110,5 +133,5 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
+*/
 export default App;
