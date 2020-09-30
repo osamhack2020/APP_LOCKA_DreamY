@@ -10,9 +10,14 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button} from 'react-native';
 
 export default class App extends React.Component {
-  onPressButton() {  
-    Alert.alert('You clicked the button!')  
-  }  
+
+  constructor(props){
+    super(props);
+    this.state = { clicked : true };
+  }
+
+  _checkedAnswer = () => this.setState({clicked: false});
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,10 +35,11 @@ export default class App extends React.Component {
           </Text>
         </View>
         <View style={styles.buttonArea}>
-          <Button 
-            onPress={this.onPressButton} 
-            title="LOCK"  
-          />
+          {
+            this.state.clicked
+              ? <Button title="LOCK" onPress={this.onPressButton}/>
+              : <Text style={styles.appNameText}>LOCKED</Text>
+          }
         </View>
       </View>
     );
@@ -53,7 +59,6 @@ markArea: {
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: 'navy',
-  marginTop: '15%',
 },
 appNameText: {
   fontSize: 45,
@@ -62,7 +67,7 @@ appNameText: {
 },
 appNameArea: {
   flex: 2,
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   alignItems: 'center',
   backgroundColor: 'navy',
 },
@@ -70,15 +75,12 @@ buttonArea: {
   flex: 7,
   backgroundColor: 'navy',
   justifyContent: 'center',
-  marginRight: '15%',
-  marginLeft: '15%',
+  marginTop: '15%',
 },
 });
 
+
 /*
-
-
-
 import React from 'react';
 import {
   SafeAreaView,
