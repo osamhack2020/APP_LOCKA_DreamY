@@ -1,6 +1,8 @@
 package com.workspace;
 
 import com.facebook.react.ReactActivity;
+import android.accessibilityservice.AccessibilityServiceInfo;
+import android.view.accessibility.AccessibilityEvent;
 
 public class MainActivity extends ReactActivity {
 

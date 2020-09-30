@@ -6,10 +6,13 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button} from 'react-native';
 
 export default class App extends React.Component {
+  onPressButton() {  
+    Alert.alert('You clicked the button!')  
+  }  
   render() {
     return (
       <View style={styles.container}>
@@ -27,6 +30,10 @@ export default class App extends React.Component {
           </Text>
         </View>
         <View style={styles.buttonArea}>
+          <Button 
+            onPress={this.onPressButton} 
+            title="LOCK"  
+          />
         </View>
       </View>
     );
@@ -39,7 +46,7 @@ const styles = StyleSheet.create({
 },
 settingView: {
   flex: 0.5,
-  backgroundColor: 'white',
+  backgroundColor: 'black',
 },
 appNameText: {
   fontSize: 45,
@@ -60,7 +67,7 @@ appNameArea: {
 },
 buttonArea: {
   flex: 7,
-  backgroundColor: 'black',
+  backgroundColor: 'navy',
 },
 });
 
