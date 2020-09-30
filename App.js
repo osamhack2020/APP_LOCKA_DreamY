@@ -12,22 +12,19 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class App extends React.Component {
   render() {
     return (
-
-
       <View style={styles.container}>
         <View style={styles.settingView}>
           <TouchableOpacity>
             <Image source={require('./images/setting.png')}/>
           </TouchableOpacity>
         </View>
-        <view style={styles.appNameText}>
+        <View style={styles.appNameText}>
           <Text>
             LOCKA
           </Text>
-        </view>
-        <view style={styles.buttonArea}>
-
-        </view>
+        </View>
+        <View style={styles.buttonArea}>
+        </View>
       </View>
     );
   }
@@ -35,7 +32,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'navy',
+    flex:1,
 },
 settingView: {
   flex: 1,
@@ -52,7 +49,7 @@ appNameText: {
 },
 buttonArea: {
   flex: 6,
-  backgroundColor: 'white',
+  backgroundColor: 'red',
 },
 });
 
