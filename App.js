@@ -12,10 +12,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class App extends React.Component {
   render() {
     return (
-      <View>
-        <View>
-
-        </View>
+      <View style={styles.container}>
         <Text>
           Now Loading...
         </Text>
@@ -25,6 +22,9 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'navy',
+},
 });
 
 /*
