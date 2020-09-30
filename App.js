@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flex:1,
 },
 settingView: {
-  flex: 1,
+  flex: 0.8,
   backgroundColor: 'white',
 },
 appNameText: {
@@ -51,7 +51,7 @@ appNameArea: {
   backgroundColor: 'navy',
 },
 buttonArea: {
-  flex: 9,
+  flex: 7,
   backgroundColor: 'black',
 },
 });
