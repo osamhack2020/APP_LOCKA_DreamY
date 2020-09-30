@@ -14,12 +14,9 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.settingView}>
-          <TouchableOpacity>
-            <Image source={require('./images/setting.png')}/>
-          </TouchableOpacity>
         </View>
-        <View style={styles.appNameText}>
-          <Text>
+        <View style={styles.appNameArea}>
+          <Text style={styles.appNameText}>
             LOCKA
           </Text>
         </View>
@@ -39,13 +36,15 @@ settingView: {
   backgroundColor: 'gray',
 },
 appNameText: {
-  flex: 3,
   fontSize: 45,
-  justifyContent: 'center',
-  backgroundColor: 'navy',
-  alignItems: 'center',
   fontWeight: 'bold',
   color: 'white'
+},
+appNameArea: {
+  flex: 3,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'navy',
 },
 buttonArea: {
   flex: 6,
@@ -54,6 +53,10 @@ buttonArea: {
 });
 
 /*
+
+          <TouchableOpacity>
+            <Image source={require('./images/setting.png')}/>
+          </TouchableOpacity>
 
 import React from 'react';
 import {
