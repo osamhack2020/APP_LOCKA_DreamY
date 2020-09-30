@@ -19,6 +19,7 @@ export default class App extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.appNameArea}>
+          <Image source={require('./images/ROKAmark.png')}/>
           <Text style={styles.appNameText}>
             LOCKA
           </Text>
