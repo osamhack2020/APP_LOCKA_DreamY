@@ -18,8 +18,10 @@ export default class App extends React.Component {
             <Image source={require('./images/setting.png')}/>
           </TouchableOpacity>
         </View>
-        <View style={styles.appNameArea}>
+        <View style={styles.markArea}>
           <Image source={require('./images/ROKAmark.png')}/>
+        </View>
+        <View style={styles.appNameArea}>
           <Text style={styles.appNameText}>
             LOCKA
           </Text>
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     flex:1,
 },
 settingView: {
-  flex: 0.8,
+  flex: 0.5,
   backgroundColor: 'white',
 },
 appNameText: {
@@ -44,8 +46,14 @@ appNameText: {
   fontWeight: 'bold',
   color: 'white'
 },
+markArea: {
+  flex: 3,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'navy',
+},
 appNameArea: {
-  flex: 6,
+  flex: 2,
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: 'navy',
