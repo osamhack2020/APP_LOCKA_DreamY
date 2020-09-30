@@ -12,10 +12,22 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class App extends React.Component {
   render() {
     return (
+
+
       <View style={styles.container}>
-        <Text>
-          Now Loading...
-        </Text>
+        <View style={styles.settingView}>
+          <TouchableOpacity>
+            <Image source={require('./images/setting.png')}/>
+          </TouchableOpacity>
+        </View>
+        <view style={styles.appNameText}>
+          <Text>
+            LOCKA
+          </Text>
+        </view>
+        <view style={styles.buttonArea}>
+
+        </view>
       </View>
     );
   }
@@ -24,6 +36,23 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'navy',
+},
+settingView: {
+  flex: 1,
+  backgroundColor: 'gray',
+},
+appNameText: {
+  flex: 3,
+  fontSize: 45,
+  justifyContent: 'center',
+  backgroundColor: 'navy',
+  alignItems: 'center',
+  fontWeight: 'bold',
+  color: 'white'
+},
+buttonArea: {
+  flex: 6,
+  backgroundColor: 'white',
 },
 });
 
