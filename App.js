@@ -48,16 +48,17 @@ settingView: {
   flex: 0.5,
   backgroundColor: 'black',
 },
-appNameText: {
-  fontSize: 45,
-  fontWeight: 'bold',
-  color: 'white'
-},
 markArea: {
   flex: 3,
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: 'navy',
+  marginTop: '15%',
+},
+appNameText: {
+  fontSize: 45,
+  fontWeight: 'bold',
+  color: 'white'
 },
 appNameArea: {
   flex: 2,
@@ -68,6 +69,9 @@ appNameArea: {
 buttonArea: {
   flex: 7,
   backgroundColor: 'navy',
+  justifyContent: 'center',
+  marginRight: '15%',
+  marginLeft: '15%',
 },
 });
 
