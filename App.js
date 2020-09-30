@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button} from 'react-native';
 
 export default class App extends React.Component {
@@ -37,7 +37,7 @@ export default class App extends React.Component {
         <View style={styles.buttonArea}>
           {
             this.state.clicked
-              ? <Button title="LOCK" onPress={this.onPressButton}/>
+              ? <Button title="LOCK" onPress={this._checkedAnswer}/>
               : <Text style={styles.appNameText}>LOCKED</Text>
           }
         </View>
@@ -75,7 +75,6 @@ buttonArea: {
   flex: 7,
   backgroundColor: 'navy',
   justifyContent: 'center',
-  marginTop: '15%',
 },
 });
 
