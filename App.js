@@ -7,13 +7,16 @@
  */
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.settingView}>
+          <TouchableOpacity>
+            <Image source={require('./images/setting.png')}/>
+          </TouchableOpacity>
         </View>
         <View style={styles.appNameArea}>
           <Text style={styles.appNameText}>
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
 },
 settingView: {
   flex: 1,
-  backgroundColor: 'gray',
+  backgroundColor: 'navy',
 },
 appNameText: {
   fontSize: 45,
@@ -41,22 +44,20 @@ appNameText: {
   color: 'white'
 },
 appNameArea: {
-  flex: 3,
+  flex: 6,
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: 'navy',
 },
 buttonArea: {
-  flex: 6,
-  backgroundColor: 'red',
+  flex: 12,
+  backgroundColor: 'black',
 },
 });
 
 /*
 
-          <TouchableOpacity>
-            <Image source={require('./images/setting.png')}/>
-          </TouchableOpacity>
+
 
 import React from 'react';
 import {
