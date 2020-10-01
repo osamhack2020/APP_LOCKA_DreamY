@@ -2,17 +2,26 @@ package com.workspace;
 
 import android.accessibilityservice.AccessibilityService;
 import android.view.accessibility.AccessibilityEvent;
+import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
+import android.content.DialogInterface;
 
 public class MyAccessibilityService extends AccessibilityService {
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         boolean denyApp = false;
+        String packagename = "SNOW";//차단할 앱
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             if(packagename.equals(event.getPackageName())) {
                 Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                 gotoHome();
             }
         }
+    }
+    @Override
+    public void onInterrupt(){
     }
 
     private void gotoHome(){

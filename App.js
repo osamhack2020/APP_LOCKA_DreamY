@@ -11,40 +11,18 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
 
-//permission 물어보는 부분, 좀이따 수정 필요함.
-
-const proceed = () => {
-  alert('Access Permission Allowed');
-};
-
-const onPress = async () => {
-  // We need to ask permission for Android only
-  if (Platform.OS === 'android') {
-    // Calling the permission function
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.CAMERA,
-      {
-        title: 'Example App Access Permission',
-        message: 'Example App needs access to your permission',
-      },
-    );
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      // Permission Granted
-      proceed();
-    } else {
-      // Permission Denied
-      alert('Access Permission Denied');
-    }
-  } else {
-    proceed();
-  }
-};
-
-
 class HomeScreen extends React.Component {
     render() {
       return (
-        <SafeAreaView style={{flex: 1}}>
+        <View style={styles.container}>
+          <View style={styles.markArea}>
+            <Image source={require('./images/ROKAmark.png')}/>
+          </View>
+          <View style={styles.appNameArea}>
+            <Text style={styles.appNameText}>
+              LOCKA
+            </Text>
+          </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
             <Button
@@ -52,16 +30,9 @@ class HomeScreen extends React.Component {
               onPress = {()=>this.props.navigation.navigate('Locked')}
             />
           </View>
-          <View style={styles.container}>
-            <Button
-              style={styles.buttonStyle}
-              onPress={onPress}>
-              <Text style>
-                Ask Permission for ACCESS
-              </Text>
-            </Button>
-          </View>
-        </SafeAreaView>
+        </View>  
+
+
     );
   }
 }
@@ -70,7 +41,9 @@ class LockedScreen extends React.Component {
   render() {
   return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>LOCKED Screen</Text>
+          <Text style={styles.appNameText}>
+            LOCKA
+          </Text>
         <Button
           title = 'Unlock'
           onPress = {()=>this.props.navigation.navigate('Main')}
@@ -92,8 +65,51 @@ const AppNavigator = createStackNavigator(
   }
 );
   
-
 export default createAppContainer(AppNavigator);
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+},
+settingView: {
+  flex: 0.5,
+  backgroundColor: 'black',
+},
+markArea: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'white',
+},
+appNameText: {
+  fontSize: 45,
+  fontWeight: 'bold',
+  color: 'navy'
+},
+appNameArea: {
+  flex: 2,
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  backgroundColor: 'white',
+},
+buttonArea: {
+  flex: 7,
+  backgroundColor: 'navy',
+  justifyContent: 'center',
+},
+buttonStyle: {
+  alignItems: 'center',
+  backgroundColor: '#f4511e',
+  padding: 10,
+},
+textStyle: {
+  fontSize: 18,
+  color: 'white',
+},
+});
 
 /*
 export default class App extends React.Component {
@@ -134,44 +150,7 @@ export default class App extends React.Component {
   }
 }
 */
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-},
-settingView: {
-  flex: 0.5,
-  backgroundColor: 'black',
-},
-markArea: {
-  flex: 3,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: 'navy',
-},
-appNameText: {
-  fontSize: 45,
-  fontWeight: 'bold',
-  color: 'white'
-},
-appNameArea: {
-  flex: 2,
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  backgroundColor: 'navy',
-},
-buttonArea: {
-  flex: 7,
-  backgroundColor: 'navy',
-  justifyContent: 'center',
-},
-buttonStyle: {
-  alignItems: 'center',
-  backgroundColor: '#f4511e',
-  padding: 10,
-},
-});
+
 
 
 /*
