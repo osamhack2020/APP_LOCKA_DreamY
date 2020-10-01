@@ -9,18 +9,59 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
+
+//permission 물어보는 부분, 좀이따 수정 필요함.
+
+const proceed = () => {
+  alert('Access Permission Allowed');
+};
+
+const onPress = async () => {
+  // We need to ask permission for Android only
+  if (Platform.OS === 'android') {
+    // Calling the permission function
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+      {
+        title: 'Example App Access Permission',
+        message: 'Example App needs access to your permission',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      // Permission Granted
+      proceed();
+    } else {
+      // Permission Denied
+      alert('Access Permission Denied');
+    }
+  } else {
+    proceed();
+  }
+};
+
 
 class HomeScreen extends React.Component {
     render() {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Lock Army</Text>
-          <Button
-            title = 'Lock'
-            onPress = {()=>this.props.navigation.navigate('Locked')}
-          />
-        </View>
+        <SafeAreaView style={{flex: 1}}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Lock Army</Text>
+            <Button
+              title = 'Lock'
+              onPress = {()=>this.props.navigation.navigate('Locked')}
+            />
+          </View>
+          <View style={styles.container}>
+            <Button
+              style={styles.buttonStyle}
+              onPress={onPress}>
+              <Text style>
+                Ask Permission for ACCESS
+              </Text>
+            </Button>
+          </View>
+        </SafeAreaView>
     );
   }
 }
@@ -96,6 +137,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex:1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
 },
 settingView: {
   flex: 0.5,
@@ -122,6 +165,11 @@ buttonArea: {
   flex: 7,
   backgroundColor: 'navy',
   justifyContent: 'center',
+},
+buttonStyle: {
+  alignItems: 'center',
+  backgroundColor: '#f4511e',
+  padding: 10,
 },
 });
 
