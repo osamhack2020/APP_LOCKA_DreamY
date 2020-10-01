@@ -7,19 +7,66 @@
  */
 
 import React from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button} from 'react-native';
 
-export default class App extends React.Component {
+class HomeScreen extends React.Component {
+    render() {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Lock Army</Text>
+          <Button
+            title = 'Lock'
+            onPress = {()=>this.props.navigation.navigate('Locked')}
+          />
+        </View>
+    );
+  }
+}
 
+class LockedScreen extends React.Component {
+  render() {
+  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>LOCKED Screen</Text>
+        <Button
+          title = 'Unlock'
+          onPress = {()=>this.props.navigation.navigate('Main')}
+        />
+      </View>
+    );
+  }
+}
+
+
+
+const AppNavigator = createStackNavigator(
+  {
+    Main: HomeScreen,
+    Locked: LockedScreen
+  },
+  {
+    initialRouteName: 'Main',
+  }
+);
+  
+
+export default createAppContainer(AppNavigator);
+
+/*
+export default class App extends React.Component {
+  
   constructor(props){
     super(props);
     this.state = { clicked : true };
   }
 
   _checkedAnswer = () => this.setState({clicked: false});
-
+ 
   render() {
     return (
+  
       <View style={styles.container}>
         <View style={styles.settingView}>
           <TouchableOpacity>
@@ -45,7 +92,7 @@ export default class App extends React.Component {
     );
   }
 }
-
+*/
 const styles = StyleSheet.create({
   container: {
     flex:1,

@@ -11,11 +11,15 @@
     "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-reanimated": "^1.13.1",
-    "react-navigation": "^4.4.1"
+    "react-native-safe-area-context": "^3.1.8",
+    "react-native-screens": "^2.11.0",
+    "react-navigation": "^4.4.1",
+    "react-navigation-stack": "^2.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
