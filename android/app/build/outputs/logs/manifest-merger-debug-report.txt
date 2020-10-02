@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
-INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
-INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
-INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
-MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
 MERGED from [com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/a65d6076e19ec393c728e4dca49568f4/flipper-network-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4c2d2364c35e2c493fd776ce36e653fa/flipper-fresco-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
@@ -14,6 +14,8 @@ MERGED from [:react-native-reanimated] /home/codespace/workspace/node_modules/re
 MERGED from [:react-native-safe-area-context] /home/codespace/workspace/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /home/codespace/workspace/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/37b6f551bc5ae153b0b627de8f563815/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [org.webkit:android-jsc:r245459] /home/codespace/.gradle/caches/transforms-2/files-2.1/6dd6245206e34676e1ee3aa6ee0f68c9/android-jsc-r245459/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.fresco:flipper:2.2.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/40741ffe3de6a11d99116b4e82d60d46/flipper-2.2.0/AndroidManifest.xml:2:1-9:12
@@ -31,8 +33,6 @@ MERGED from [com.facebook.fresco:nativeimagetranscoder:2.2.0] /home/codespace/.g
 MERGED from [com.facebook.fresco:imagepipeline-base:2.2.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/237bbc58c0787eee6b78f947e2baeeaa/imagepipeline-base-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:soloader:2.2.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/65f592cbf7e10992754db73be6c6ba25/soloader-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:2:1-13:12
-MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/b1b165607eae60d70e4267b97e24514b/appcompat-resources-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/28888a6f6660db47b3788df392c672a7/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/efb592adf2592d134c27edc4a56e19d2/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -71,13 +71,13 @@ INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xm
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-41:12
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -88,15 +88,15 @@ MERGED from [com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches
 	android:name
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:4:22-64
 application
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:5:5-38:19
-MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:5:5-38:19
-MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:5:5-38:19
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
+MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
+MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:11:5-20
 MERGED from [androidx.core:core:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/2786c84c1e653e40bd67508414ca298f/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
@@ -106,73 +106,69 @@ MERGED from [com.facebook.soloader:annotation:0.8.2] /home/codespace/.gradle/cac
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:7:7-39
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:7:7-39
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:8:7-39
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:8:7-39
 	tools:ignore
 		ADDED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml:7:75-114
 	android:roundIcon
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:9:7-52
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:9:7-52
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:10:7-52
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:10:7-52
 	tools:targetApi
 		ADDED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml:7:54-74
 	android:icon
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:8:7-41
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:8:7-41
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:9:7-41
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:9:7-41
 	android:allowBackup
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:10:7-34
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:10:7-34
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:11:7-34
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:11:7-34
 	android:theme
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:11:7-38
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:11:7-38
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:12:7-38
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:12:7-38
 	android:usesCleartextTraffic
 		ADDED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml:7:18-53
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:7-38
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:7-38
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:7:7-38
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:7:7-38
 activity#com.workspace.MainActivity
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:12:7-22:18
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:13:7-23:18
 	android:label
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:14:9-41
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:15:9-41
 	android:launchMode
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:16:9-40
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:17:9-40
 	android:windowSoftInputMode
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:17:9-51
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:18:9-51
 	android:configChanges
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:15:9-86
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:16:9-86
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:13:9-37
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:14:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:18:9-21:25
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:19:9-22:25
 action#android.intent.action.MAIN
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:19:13-65
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:13-65
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:19:21-62
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:13-73
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:21:13-73
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:23-70
-activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:23:7-84
-	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:23:17-81
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:21:23-70
 service#com.workspace.MyAccessibilityService
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:26:7-36:17
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:25:7-35:17
 	android:permission
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:28:11-77
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:27:11-77
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:27:11-49
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:26:11-49
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:29:11-31:27
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:28:11-30:27
 action#android.accessibilityservice.AccessibilityService
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:30:15-90
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:29:15-90
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:30:23-87
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:29:23-87
 meta-data#android.accessibilityservice
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:33:11-35:70
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:32:11-34:70
 	android:resource
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:35:15-67
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-67
 	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-58
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:33:15-58
 uses-sdk
 INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml
@@ -195,6 +191,10 @@ MERGED from [:react-native-screens] /home/codespace/workspace/node_modules/react
 MERGED from [:react-native-screens] /home/codespace/workspace/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/37b6f551bc5ae153b0b627de8f563815/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/37b6f551bc5ae153b0b627de8f563815/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [org.webkit:android-jsc:r245459] /home/codespace/.gradle/caches/transforms-2/files-2.1/6dd6245206e34676e1ee3aa6ee0f68c9/android-jsc-r245459/AndroidManifest.xml:7:5-9:41
@@ -229,10 +229,6 @@ MERGED from [com.facebook.fresco:soloader:2.2.0] /home/codespace/.gradle/caches/
 MERGED from [com.facebook.fresco:soloader:2.2.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/65f592cbf7e10992754db73be6c6ba25/soloader-2.2.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/b1b165607eae60d70e4267b97e24514b/appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/b1b165607eae60d70e4267b97e24514b/appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/28888a6f6660db47b3788df392c672a7/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41

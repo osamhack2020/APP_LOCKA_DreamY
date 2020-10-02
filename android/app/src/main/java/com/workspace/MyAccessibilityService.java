@@ -13,13 +13,16 @@ public class MyAccessibilityService extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent event) {
         boolean denyApp = false;
         String packagename = "SNOW";//차단할 앱
+        //서비스 돌아가는지 확인
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            Toast.makeText(this.getApplicationContext(), "앱이 거부되었습니다", Toast.LENGTH_LONG);
             if(packagename.equals(event.getPackageName())) {
                 Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                 gotoHome();
             }
         }
     }
+    
     @Override
     public void onInterrupt(){
     }

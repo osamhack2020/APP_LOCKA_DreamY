@@ -12,6 +12,10 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import android.content.Intent;
+
+import com.workspace.CustomToastPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new CustomToastPackage()); // <-- Add this line with your package name.
           return packages;
         }
 
@@ -47,6 +52,8 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    //앱이 실행될 때 서비스 시작.
+    startService(new Intent(this, MyAccessibilityService.class));
   }
 
   /**
