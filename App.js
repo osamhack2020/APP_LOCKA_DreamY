@@ -10,14 +10,14 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
-/*
+
 import ToastExample from './ToastExample';
+
+
+class HomeScreen extends React.Component {
   onPressButton() {
     ToastExample.show('Awesome', ToastExample.SHORT);
   } 
-*/
-class HomeScreen extends React.Component {
-
     render() {
       return (
         <View style={styles.container}>
@@ -25,9 +25,7 @@ class HomeScreen extends React.Component {
             <Image source={require('./images/ROKAmark.png')}/>
           </View>
           <View style={styles.appNameArea}>
-            <Text style={styles.appNameText}>
-              LOCKA
-            </Text>
+            <Button title='click me' onPress={()=>this.onPressButton()}/>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
@@ -119,7 +117,6 @@ textStyle: {
 
 /*
 
-<Button title='click me' onPress={()=>this.onPressButton()}/>
 
 export default class App extends React.Component {
   

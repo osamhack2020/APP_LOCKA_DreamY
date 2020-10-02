@@ -32,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+
           packages.add(new CustomToastPackage()); // <-- Add this line with your package name.
           return packages;
         }
@@ -53,7 +54,7 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     //앱이 실행될 때 서비스 시작.
-    startService(new Intent(this, MyAccessibilityService.class));
+    //startService(new Intent(this, MyAccessibilityService.class));
   }
 
   /**

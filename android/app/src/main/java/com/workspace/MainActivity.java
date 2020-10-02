@@ -24,47 +24,46 @@ public class MainActivity extends ReactActivity {
    * rendering of the component.
    */
 
-  @Override
-  protected String getMainComponentName() {
-    return "workspace";
-  }
-
-  @Override
-  public void onCreate(Bundle saveInstanceState) {
-    /*
-    super.onCreate(saveInstanceState);
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        if (!Settings.canDrawOverlays(this)) {
-            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                       Uri.parse("package:" + getPackageName()));
-            startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
-        }
-    }
-    */
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle("기본 다이얼로그");
-    builder.setMessage("다이얼로그의 본문,");
-    builder.setPositiveButton("Pos", null);
-    builder.show();
-    /*
-    checkAccessibilityPermissions();
-    setAccessibilityPermissions();
-    */
-}
-
-/*
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
+    protected String getMainComponentName() {
+        return "workspace";
+    }
+    /*
+    @Override
+    public void onCreate(Bundle saveInstanceState) {
+
+        super.onCreate(saveInstanceState);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(this)) {
-                // SYSTEM_ALERT_WINDOW permission not granted
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                        Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
             }
         }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("기본 다이얼로그");
+        builder.setMessage("다이얼로그의 본문,");
+        builder.setPositiveButton("Pos", null);
+        builder.show();
+        checkAccessibilityPermissions();
+        setAccessibilityPermissions();
+        
     }
-    mReactInstanceManager.onActivityResult( this, requestCode, resultCode, data );
-    }*/
+    */
+    /*
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!Settings.canDrawOverlays(this)) {
+                    // SYSTEM_ALERT_WINDOW permission not granted
+                }
+            }
+        }
+        mReactInstanceManager.onActivityResult( this, requestCode, resultCode, data );
+        }*/
 
   public boolean checkAccessibilityPermissions(){
     AccessibilityManager accessibilityManager = 
@@ -80,20 +79,21 @@ public class MainActivity extends ReactActivity {
             return true;
         }
     }
-    return false;
+        return false;
+    }
+    public void setAccessibilityPermissions(){
+        AlertDialog.Builder permissionDialog = new AlertDialog.Builder(this);
+        permissionDialog.setTitle("접근성 권한 설정");
+        permissionDialog.setMessage("앱을 사용하기 위해 접근성 권한이 필요합니다.");
+        permissionDialog.setPositiveButton("허용", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+                return;
+            }
+        }).create().show();
+    }
 }
 
-public void setAccessibilityPermissions(){
-    AlertDialog.Builder permissionDialog = new AlertDialog.Builder(this);
-    permissionDialog.setTitle("접근성 권한 설정");
-    permissionDialog.setMessage("앱을 사용하기 위해 접근성 권한이 필요합니다.");
-    permissionDialog.setPositiveButton("허용", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            return;
-        }
-    }).create().show();
-}
 
-}
+
