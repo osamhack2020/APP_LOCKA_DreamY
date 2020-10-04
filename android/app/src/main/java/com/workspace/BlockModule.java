@@ -4,13 +4,12 @@ import android.content.Intent;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
+//import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 import javax.annotation.Nonnull;
-import java.util.Map;
-import java.util.HashMap;
+
 
 public class BlockModule extends ReactContextBaseJavaModule {
     public static final String REACT_CLASS = "Block";
@@ -27,6 +26,8 @@ public class BlockModule extends ReactContextBaseJavaModule {
       return REACT_CLASS;
     }
     
+    //이 부분을 그냥 생함수로 짜야할 수도 있음. 근데 사실 큰 구조는 다르지 않음.
+    //근데 만약에 이렇게 짰는데 안돌아가면 그냥 service짠거를 여기에 넣어야 할 수도 있음.
     @ReactMethod
      public void startService() {
      // Starting the heartbeat service
