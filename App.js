@@ -12,7 +12,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
 import Block from './Block';
 import ToastExample from './ToastExample';
-
+/*
 useEffect(() => {
   DeviceEventEmitter.addListener('Block', () => {
     console.log('Receiving block event');
@@ -22,7 +22,7 @@ useEffect(() => {
     }, 1000);
   });
 });
-
+*/
 
 class HomeScreen extends React.Component {
   onPressButton() {
