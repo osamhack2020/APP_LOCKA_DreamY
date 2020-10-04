@@ -10,8 +10,18 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
-
+import Block from './Block';
 import ToastExample from './ToastExample';
+
+useEffect(() => {
+  DeviceEventEmitter.addListener('Block', () => {
+    console.log('Receiving block event');
+    setHeartBeat(true);
+    setTimeout(() => {
+      setHeartBeat(false);
+    }, 1000);
+  });
+});
 
 
 class HomeScreen extends React.Component {
@@ -26,6 +36,14 @@ class HomeScreen extends React.Component {
           </View>
           <View style={styles.appNameArea}>
             <Button title='click me' onPress={()=>this.onPressButton()}/>
+          </View>
+          <View style={styles.view}>
+            <TouchableOpacity style={styles.button} onPress={() => Block.startService()}>
+              <Text style={styles.instructions}>Start</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => Block.stopService()}>
+              <Text style={styles.instructions}>Stop</Text>
+            </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
@@ -112,6 +130,11 @@ buttonStyle: {
 textStyle: {
   fontSize: 18,
   color: 'white',
+},
+view: {
+  flex: 0.3,
+  justifyContent: 'center',
+  alignItems: 'center',
 },
 });
 

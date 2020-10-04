@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
-INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
-INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
-INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
-MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
+INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
+INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
+INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
+MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
 MERGED from [com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/a65d6076e19ec393c728e4dca49568f4/flipper-network-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4c2d2364c35e2c493fd776ce36e653fa/flipper-fresco-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
@@ -71,13 +71,13 @@ INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xm
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-40:12
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:1-46:12
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -88,9 +88,9 @@ MERGED from [com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches
 	android:name
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:4:22-64
 application
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
-MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
-MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-45:19
+MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-45:19
+MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-45:19
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:22:5-20
@@ -169,6 +169,24 @@ ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:32
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-67
 	android:name
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:33:15-58
+receiver#com.workspace.BootUpReceiver
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:36:9-44:20
+	android:enabled
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:38:13-35
+	android:permission
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:39:13-75
+	android:name
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:37:13-43
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+category:name:android.intent.category.DEFAULT
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:40:13-43:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:41:17-79
+	android:name
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:41:25-76
+category#android.intent.category.DEFAULT
+ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:42:17-76
+	android:name
+		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:42:27-73
 uses-sdk
 INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml

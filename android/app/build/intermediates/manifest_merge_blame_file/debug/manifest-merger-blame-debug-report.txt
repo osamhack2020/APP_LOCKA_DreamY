@@ -19,7 +19,7 @@
 13-->[com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:16:22-73
 14
 15    <application
-15-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-37:19
+15-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-45:19
 16        android:name="com.workspace.MainApplication"
 16-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:7:7-38
 17        android:allowBackup="false"
@@ -80,6 +80,26 @@
 46                android:resource="@xml/accessibility_service_config" />
 46-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-67
 47        </service>
-48    </application>
-49
-50</manifest>
+48
+49        <receiver
+49-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:36:9-44:20
+50            android:name="com.workspace.BootUpReceiver"
+50-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:37:13-43
+51            android:enabled="true"
+51-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:38:13-35
+52            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+52-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:39:13-75
+53            <intent-filter>
+53-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:40:13-43:29
+54                <action android:name="android.intent.action.BOOT_COMPLETED" />
+54-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:41:17-79
+54-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:41:25-76
+55
+56                <category android:name="android.intent.category.DEFAULT" />
+56-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:42:17-76
+56-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:42:27-73
+57            </intent-filter>
+58        </receiver>
+59    </application>
+60
+61</manifest>
