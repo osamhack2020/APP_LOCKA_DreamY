@@ -39,10 +39,10 @@ class HomeScreen extends React.Component {
           </View>
           <View style={styles.view}>
             <TouchableOpacity style={styles.button} onPress={() => Block.startService()}>
-              <Text style={styles.instructions}>Start</Text>
+              <Text>Start</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => Block.stopService()}>
-              <Text style={styles.instructions}>Stop</Text>
+              <Text>Stop</Text>
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -135,6 +135,11 @@ view: {
   flex: 0.3,
   justifyContent: 'center',
   alignItems: 'center',
+},
+button: {
+  backgroundColor: 'gray',
+  padding: 10,
+  margin: 10,
 },
 });
 
