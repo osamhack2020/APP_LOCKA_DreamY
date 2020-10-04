@@ -19,7 +19,7 @@ Due date : 11/12(Thursday)
 ![image](https://user-images.githubusercontent.com/18081105/94389136-fe170180-0189-11eb-9df6-d4a3b0b0d65b.png)
 ### 💡 Project design
 
-![image](https://user-images.githubusercontent.com/18081105/94392278-ce202c00-0192-11eb-8363-8abd2aa91dfb.png)
+![image](https://user-images.githubusercontent.com/67851701/95017416-3049c700-0694-11eb-94e5-99476cf4865c.jpg)
 -   **앱 실행차단기능**
 -   **디자인, 프론트엔드 영역**
 -   **QR 코드나 NFC 인식기능**
@@ -86,5 +86,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-# 안녕하세요
