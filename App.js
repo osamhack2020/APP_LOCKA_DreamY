@@ -12,17 +12,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
 import Block from './Block';
 import ToastExample from './ToastExample';
-/*
-useEffect(() => {
-  DeviceEventEmitter.addListener('Block', () => {
-    console.log('Receiving block event');
-    setHeartBeat(true);
-    setTimeout(() => {
-      setHeartBeat(false);
-    }, 1000);
-  });
-});
-*/
 
 class HomeScreen extends React.Component {
   onPressButton() {
@@ -40,9 +29,6 @@ class HomeScreen extends React.Component {
           <View style={styles.view}>
             <TouchableOpacity style={styles.button} onPress={() => Block.startService()}>
               <Text>Start</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => Block.stopService()}>
-              <Text>Stop</Text>
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -70,6 +56,9 @@ class LockedScreen extends React.Component {
           title = 'Unlock'
           onPress = {()=>this.props.navigation.navigate('Main')}
         />
+        <TouchableOpacity style={styles.button} onPress={() => Block.stopService()}>
+          <Text>Stop</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -88,7 +77,6 @@ const AppNavigator = createStackNavigator(
 );
   
 export default createAppContainer(AppNavigator);
-
 
 const styles = StyleSheet.create({
   container: {
