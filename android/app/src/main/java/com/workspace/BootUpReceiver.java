@@ -1,3 +1,4 @@
+/*
 package com.workspace;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,3 +10,4 @@ public class BootUpReceiver extends BroadcastReceiver {
       context.startService(new Intent(context, MyAccessibilityService.class));
      }
 }
+*/

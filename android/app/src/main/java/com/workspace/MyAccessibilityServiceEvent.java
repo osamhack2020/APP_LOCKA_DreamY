@@ -1,3 +1,4 @@
+/*
 package com.workspace;
 
 import android.content.Intent;
@@ -19,3 +20,4 @@ public class MyAccessibilityServiceEvent extends HeadlessJsTaskService {
                 true);
     }
 }
+*/

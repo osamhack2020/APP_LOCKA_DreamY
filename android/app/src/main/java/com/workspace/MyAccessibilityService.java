@@ -20,7 +20,7 @@ import com.facebook.react.HeadlessJsTaskService;
 public class MyAccessibilityService extends AccessibilityService {
     private static final int SERVICE_NOTIFICATION_ID = 12345;
     private static final String CHANNEL_ID = "Block";
-
+    private static final String TAG = "AccessibilityService";
     private Handler handler = new Handler();
 
     //이게 꼭 필요한지는 잘 모르겠음.
@@ -41,13 +41,13 @@ public class MyAccessibilityService extends AccessibilityService {
         String packagename = "SNOW";//차단할 앱
 
         //서비스 돌아가는지 확인
-        /*
+        
         Log.e(TAG, "Catch Event Package Name : " + event.getPackageName());
         Log.e(TAG, "Catch Event TEXT : " + event.getText());
         Log.e(TAG, "Catch Event ContentDescription : " + event.getContentDescription());
         Log.e(TAG, "Catch Event getSource : " + event.getSource());
         Log.e(TAG, "=========================================================================");
-        */
+        
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             Toast.makeText(this.getApplicationContext(), "앱이 거부되었습니다", Toast.LENGTH_LONG);
             if(packagename.equals(event.getPackageName())) {
@@ -84,7 +84,7 @@ public class MyAccessibilityService extends AccessibilityService {
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         startActivity(intent);
     }
-
+    /*
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -96,7 +96,9 @@ public class MyAccessibilityService extends AccessibilityService {
             notificationManager.createNotificationChannel(channel);
         }
     }
+    */
 
+    /*
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //Notification띄워주는 함수, 그래야 서비스가 foreground로 인식됨.
@@ -116,6 +118,6 @@ public class MyAccessibilityService extends AccessibilityService {
         //START_STICKY : 백그라운드서비스가 종료되도 다시 재실행되는 기능이다.
         return START_STICKY;
     }
-
+    */
 }
 
