@@ -169,24 +169,6 @@ ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:32
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-67
 	android:name
 		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:33:15-58
-receiver#com.workspace.BootUpReceiver
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:36:9-44:20
-	android:enabled
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:38:13-35
-	android:permission
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:39:13-75
-	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:37:13-43
-intent-filter#action:name:android.intent.action.BOOT_COMPLETED+category:name:android.intent.category.DEFAULT
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:40:13-43:29
-action#android.intent.action.BOOT_COMPLETED
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:41:17-79
-	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:41:25-76
-category#android.intent.category.DEFAULT
-ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:42:17-76
-	android:name
-		ADDED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:42:27-73
 uses-sdk
 INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml

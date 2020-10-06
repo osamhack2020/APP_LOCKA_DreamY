@@ -12,18 +12,20 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import android.app.Notification;
 import android.util.Log;
-
 import android.content.Context;
 import com.facebook.react.HeadlessJsTaskService;
+
+import javax.annotation.Nullable;
 
 
 public class MyAccessibilityService extends AccessibilityService {
     private static final int SERVICE_NOTIFICATION_ID = 12345;
     private static final String CHANNEL_ID = "Block";
     private static final String TAG = "AccessibilityService";
-    private Handler handler = new Handler();
+    //private Handler handler = new Handler();
 
     //이게 꼭 필요한지는 잘 모르겠음.
+    /*
     private Runnable runnableCode = new Runnable() {
         @Override
         public void run() {
@@ -34,14 +36,15 @@ public class MyAccessibilityService extends AccessibilityService {
             handler.postDelayed(this, 2000);
         }
     };    
-
+    */
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         boolean denyApp = false;
         String packagename = "SNOW";//차단할 앱
 
         //서비스 돌아가는지 확인
-        
+        Log.d(TAG, "onAccessibilityEvent");
+/*
         Log.e(TAG, "Catch Event Package Name : " + event.getPackageName());
         Log.e(TAG, "Catch Event TEXT : " + event.getText());
         Log.e(TAG, "Catch Event ContentDescription : " + event.getContentDescription());
@@ -55,6 +58,7 @@ public class MyAccessibilityService extends AccessibilityService {
                 gotoHome();
             }
         }
+        */
     }
     
     @Override
@@ -65,15 +69,15 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Log.d(TAG, "onAccessibilityEvent");
     }
-
+    /*
     @Override
     public void onDestroy() {
         super.onDestroy();
         this.handler.removeCallbacks(this.runnableCode);
     }
-
+    */
     private void gotoHome(){
         Intent intent = new Intent();
         intent.setAction("android.intent.action.MAIN");
