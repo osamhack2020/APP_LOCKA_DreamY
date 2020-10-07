@@ -36,7 +36,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
 
     public class MainActivity extends ReactActivity {
       private static final String TAG = "MainActivity";
-  
+      /*
       @Override
       protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
               setAccessibilityPermissions();
           }
       }
-  
+      */
       // 접근성 권한이 있는지 없는지 확인하는 부분
       // 있으면 true, 없으면 false
       public boolean checkAccessibilityPermissions() {
