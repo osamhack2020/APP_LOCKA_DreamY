@@ -7,11 +7,16 @@ import com.facebook.react.bridge.ReactApplicationContext;
 //import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import android.widget.Toast;
+
 
 import android.app.AlertDialog;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
+import android.content.DialogInterface;
+import android.os.PersistableBundle;
+import android.util.Log;
 
 import javax.annotation.Nonnull;
 
@@ -34,8 +39,9 @@ public class BlockModule extends ReactContextBaseJavaModule {
     //이 부분을 그냥 생함수로 짜야할 수도 있음. 근데 사실 큰 구조는 다르지 않음.
     //근데 만약에 이렇게 짰는데 안돌아가면 그냥 service짠거를 여기에 넣어야 할 수도 있음.
     @ReactMethod
-     public void startService() {
+     public void startService(String message, int duration) {
      // Starting the heartbeat service
+      Toast.makeText(getReactApplicationContext(), message, duration).show();
       this.reactContext.startService(new Intent(this.reactContext, MyAccessibilityService.class));
      }
 
@@ -44,7 +50,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
          this.reactContext.stopService(new Intent(this.reactContext, MyAccessibilityService.class));
      }
 
-
+/*
      @ReactMethod
      public boolean checkAccessibilityPermissions(){
       AccessibilityManager accessibilityManager = 
@@ -75,6 +81,6 @@ public class BlockModule extends ReactContextBaseJavaModule {
                 return;
             }
         }).create().show();
-    }
+    }*/
 
   }

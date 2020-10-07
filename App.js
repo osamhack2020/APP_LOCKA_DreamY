@@ -15,7 +15,7 @@ import ToastExample from './ToastExample';
 
 class HomeScreen extends React.Component {
   onPressButton() {
-    ToastExample.show('Awesome', ToastExample.SHORT);
+    ToastExample.show("LOOKED", ToastExample.SHORT)
   }
 
     render() {
@@ -28,7 +28,7 @@ class HomeScreen extends React.Component {
             <Button title='click me' onPress={()=>this.onPressButton()}/>
           </View>
           <View style={styles.view}>
-            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.checkAccessibilityPermissions()}>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService("START", ToastExample.SHORT)}>
               <Text>Start</Text>
             </TouchableOpacity>
           </View>
