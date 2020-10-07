@@ -8,6 +8,11 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
+import android.app.AlertDialog;
+import android.accessibilityservice.AccessibilityServiceInfo;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityManager;
+
 import javax.annotation.Nonnull;
 
 
@@ -38,4 +43,38 @@ public class BlockModule extends ReactContextBaseJavaModule {
      public void stopService() {
          this.reactContext.stopService(new Intent(this.reactContext, MyAccessibilityService.class));
      }
+
+
+     @ReactMethod
+     public boolean checkAccessibilityPermissions(){
+      AccessibilityManager accessibilityManager = 
+          (AccessibilityManager)getSystemService(Context.ACCESSIBILITY_SERVICE);
+  
+      List<AccessibilityServiceInfo> list = 
+        accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_GENERIC);
+  
+      Log.d("service_test", "size : " + list.size());
+      for(int i = 0; i < list.size(); i++){
+          AccessibilityServiceInfo info = list.get(i);
+          if(info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())){
+              return true;
+          }
+      }
+          return false;
+      }
+
+      @ReactMethod
+      public void setAccessibilityPermissions(){
+        AlertDialog.Builder permissionDialog = new AlertDialog.Builder(this);
+        permissionDialog.setTitle("접근성 권한 설정");
+        permissionDialog.setMessage("앱을 사용하기 위해 접근성 권한이 필요합니다.");
+        permissionDialog.setPositiveButton("허용", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+                return;
+            }
+        }).create().show();
+    }
+
   }

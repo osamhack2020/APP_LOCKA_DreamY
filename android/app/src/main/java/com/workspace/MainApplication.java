@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-import com.swmansion.reanimated.ReanimatedPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -14,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import android.content.Intent;
 import android.os.Build;
+import com.workspace.BlockPackage;
 
 import com.workspace.CustomToastPackage;
 

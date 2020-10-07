@@ -65,34 +65,8 @@ public class MainActivity extends ReactActivity {
         mReactInstanceManager.onActivityResult( this, requestCode, resultCode, data );
         }*/
 
-  public boolean checkAccessibilityPermissions(){
-    AccessibilityManager accessibilityManager = 
-        (AccessibilityManager)getSystemService(Context.ACCESSIBILITY_SERVICE);
 
-    List<AccessibilityServiceInfo> list = 
-      accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_GENERIC);
 
-    Log.d("service_test", "size : " + list.size());
-    for(int i = 0; i < list.size(); i++){
-        AccessibilityServiceInfo info = list.get(i);
-        if(info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())){
-            return true;
-        }
-    }
-        return false;
-    }
-    public void setAccessibilityPermissions(){
-        AlertDialog.Builder permissionDialog = new AlertDialog.Builder(this);
-        permissionDialog.setTitle("접근성 권한 설정");
-        permissionDialog.setMessage("앱을 사용하기 위해 접근성 권한이 필요합니다.");
-        permissionDialog.setPositiveButton("허용", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-                return;
-            }
-        }).create().show();
-    }
 }
 
 

@@ -10,13 +10,14 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
-import Block from './Block';
+//import Block from './Block';
 import ToastExample from './ToastExample';
 
 class HomeScreen extends React.Component {
   onPressButton() {
     ToastExample.show('Awesome', ToastExample.SHORT);
-  } 
+  }
+
     render() {
       return (
         <View style={styles.container}>
@@ -27,7 +28,7 @@ class HomeScreen extends React.Component {
             <Button title='click me' onPress={()=>this.onPressButton()}/>
           </View>
           <View style={styles.view}>
-            <TouchableOpacity style={styles.button} onPress={() => Block.startService()}>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.checkAccessibilityPermissions()}>
               <Text>Start</Text>
             </TouchableOpacity>
           </View>
