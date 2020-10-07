@@ -31,6 +31,9 @@ class HomeScreen extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
               <Text>Start</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
+              <Text>Stop</Text>
+            </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
@@ -57,9 +60,6 @@ class LockedScreen extends React.Component {
           title = 'Unlock'
           onPress = {()=>this.props.navigation.navigate('Main')}
         />
-        <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
-          <Text>Stop</Text>
-        </TouchableOpacity>
       </View>
     );
   }
