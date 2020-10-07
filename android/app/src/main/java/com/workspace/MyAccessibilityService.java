@@ -40,7 +40,7 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         boolean denyApp = false;
-        String packagename = "SNOW";//차단할 앱
+        String packagename = "com.kakao.talk";//차단할 앱
 
         //서비스 돌아가는지 확인
         Toast.makeText(this.getApplicationContext(), "Catch Event Package Name : " + event.getPackageName(), Toast.LENGTH_LONG);
@@ -68,7 +68,7 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "onAccessibilityEvent");
+        Toast.makeText(this.getApplicationContext(), "Catch Event Package Name : ", Toast.LENGTH_LONG);
     }
     /*
     @Override
