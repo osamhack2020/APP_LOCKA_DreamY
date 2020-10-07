@@ -36,10 +36,11 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
-        PackageManager packageName = getPackageManager();
-        List<PackageInfo> installList = packageName.getInstalledPackages(0);
-        ArrayList packageNameList = new ArrayList();
-        packageNameList.add("com.kakao.talk");
+        /*PackageManager packageName = getPackageManager();
+        List<PackageInfo> installList = packageName.getInstalledPackages(0);*/
+        /*ArrayList packageNameList = new ArrayList();
+        packageNameList.add("com.kakao.talk");*/
+        String packageName = "com.kakao.talk";
     /*
         for (int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
@@ -48,9 +49,10 @@ public class MyAccessibilityService extends AccessibilityService {
 
 
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
-            for (int i=0; i < installList.size() ; i++ )
+            for (int i=0; i < 3 /*installList.size()*/ ; i++ )
             {
-                if(packageNameList.get(i).equals(event.getPackageName())) {
+                //if(packageNameList.get(i).equals(event.getPackageName())) {
+                if(packageName.equals(event.getPackageName())) {
                     Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                     gotoHome();
                 }
