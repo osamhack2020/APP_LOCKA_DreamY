@@ -34,7 +34,7 @@ public class MyAccessibilityService extends AccessibilityService {
         List<PackageInfo> installList = packageName.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
     
-        //installList.remove("com.workspace");
+        packageNameList.remove("com.workspace");
     
         for (int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
