@@ -47,9 +47,9 @@ public class BlockModule extends ReactContextBaseJavaModule {
     //이 부분을 그냥 생함수로 짜야할 수도 있음. 근데 사실 큰 구조는 다르지 않음.
     //근데 만약에 이렇게 짰는데 안돌아가면 그냥 service짠거를 여기에 넣어야 할 수도 있음.
     @ReactMethod
-     public void startService(String message, int duration) {
+     public void startService() {
      // Starting the heartbeat service
-      Toast.makeText(getReactApplicationContext(), message, duration).show();
+      Toast.makeText(getReactApplicationContext(), "START", Toast.LENGTH_SHORT).show();
       this.reactContext.startService(new Intent(this.reactContext, MyAccessibilityService.class));
      }
 
