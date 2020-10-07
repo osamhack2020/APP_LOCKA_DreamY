@@ -13,6 +13,8 @@ import android.util.Log;
 import android.content.DialogInterface;
 import android.os.PersistableBundle;
 import java.util.List;
+import android.widget.Toast;
+import android.os.Build;
 
 
 
@@ -28,30 +30,21 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "workspace";
     }
-    /*
+
     @Override
     public void onCreate(Bundle saveInstanceState) {
 
         super.onCreate(saveInstanceState);
-
+        //Toast.makeText(getReactApplicationContext(), "message", Toast.LENGTH_SHORT).show();
+        /*
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(this)) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                        Uri.parse("package:" + getPackageName()));
+                    Uri.parse("package:" + getPackageName()));
                 startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
             }
-        }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("기본 다이얼로그");
-        builder.setMessage("다이얼로그의 본문,");
-        builder.setPositiveButton("Pos", null);
-        builder.show();
-        checkAccessibilityPermissions();
-        setAccessibilityPermissions();
-        
+        }*/
     }
-    */
     /*
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {

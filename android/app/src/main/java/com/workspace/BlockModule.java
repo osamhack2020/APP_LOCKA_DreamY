@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import android.os.Bundle;
 import android.provider.Settings;
+
 import androidx.appcompat.app.AppCompatActivity;
+import com.facebook.react.ReactActivity;
 
 
 import android.app.AlertDialog;
@@ -32,7 +34,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactContext;//만약 안되면 주석처리.
     
 
-    public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends ReactActivity {
       private static final String TAG = "MainActivity";
   
       @Override
