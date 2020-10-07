@@ -28,7 +28,7 @@ class HomeScreen extends React.Component {
             <Button title='click me' onPress={()=>this.onPressButton()}/>
           </View>
           <View style={styles.view}>
-            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService("START", ToastExample.SHORT)}>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.RNcheckAccessibilityPermissions()}>
               <Text>Start</Text>
             </TouchableOpacity>
           </View>
