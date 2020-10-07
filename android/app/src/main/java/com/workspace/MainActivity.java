@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle saveInstanceState) {
 
         super.onCreate(saveInstanceState);
+        /*
         if(!checkAccessibilityPermissions()) {
             setAccessibilityPermissions();
-        }
+        }*/
     }
 
     public boolean checkAccessibilityPermissions() {
