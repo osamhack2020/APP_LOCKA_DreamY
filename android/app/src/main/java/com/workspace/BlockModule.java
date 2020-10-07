@@ -27,7 +27,7 @@ import android.util.Log;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
+import com.workspace.MyAccessibilityService;
 
 public class BlockModule extends ReactContextBaseJavaModule {
     public static final String REACT_CLASS = "Block";
@@ -50,13 +50,13 @@ public class BlockModule extends ReactContextBaseJavaModule {
      public void startService() {
      // Starting the heartbeat service
       Toast.makeText(getReactApplicationContext(), "START", Toast.LENGTH_SHORT).show();
-      this.reactContext.startService(new Intent(this.reactContext, MyAccessibilityService.class));
+      MyAccessibilityService.turnOn();
      }
 
      @ReactMethod
      public void stopService() {
       Toast.makeText(getReactApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
-         this.reactContext.stopService(new Intent(this.reactContext, MyAccessibilityService.class));
+      MyAccessibilityService.turnOff();
      }
 
   }

@@ -23,21 +23,29 @@ public class MyAccessibilityService extends AccessibilityService {
     private static final int SERVICE_NOTIFICATION_ID = 12345;
     private static final String CHANNEL_ID = "Block";
     private static final String TAG = "AccessibilityService";
+    private static boolean denyApp = true;
 
+    public static void turnOn(){
+        denyApp = true;
+    }
 
-
+    public static void turnOff(){
+        denyApp = false;
+    }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        boolean denyApp = true;
+
         PackageManager packageName = getPackageManager();
         List<PackageInfo> installList = packageName.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
-    
+        packageNameList.add("com.kakao.talk");
+    /*
         for (int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
         }
-        packageNameList.remove("com.workspace");
+        packageNameList.remove("com.workspace");*/
+
 
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
             for (int i=0; i < installList.size() ; i++ )
