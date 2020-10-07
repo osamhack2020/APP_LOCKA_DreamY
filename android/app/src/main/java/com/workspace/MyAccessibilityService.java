@@ -34,13 +34,10 @@ public class MyAccessibilityService extends AccessibilityService {
         List<PackageInfo> installList = packageName.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
     
-        packageNameList.remove("com.workspace");
-    
         for (int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
         }
-
-        //String packagename = "com.kakao.talk";//차단할 앱
+        packageNameList.remove("com.workspace");
 
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
             for (int i=0; i < installList.size() ; i++ )
