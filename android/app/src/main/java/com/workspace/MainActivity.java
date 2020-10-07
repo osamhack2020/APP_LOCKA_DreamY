@@ -1,7 +1,7 @@
 package com.workspace;
 
 import com.facebook.react.ReactActivity;
-import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.app.AppCompatActivity;
 
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.view.accessibility.AccessibilityEvent;
@@ -20,7 +20,7 @@ import android.os.Build;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ReactActivity {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
 
   /**
@@ -34,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle saveInstanceState) {
-
         super.onCreate(saveInstanceState);
-        /*
+        
         if(!checkAccessibilityPermissions()) {
             setAccessibilityPermissions();
-        }*/
+        }
     }
-
+    
     public boolean checkAccessibilityPermissions() {
         AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
 
