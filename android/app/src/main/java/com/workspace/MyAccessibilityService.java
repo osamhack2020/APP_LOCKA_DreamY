@@ -50,7 +50,7 @@ public class MyAccessibilityService extends AccessibilityService {
         Log.e(TAG, "Catch Event ContentDescription : " + event.getContentDescription());
         Log.e(TAG, "Catch Event getSource : " + event.getSource());
         Log.e(TAG, "=========================================================================");
-        
+        */
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             Toast.makeText(this.getApplicationContext(), "앱이 거부되었습니다", Toast.LENGTH_LONG);
             if(packagename.equals(event.getPackageName())) {
@@ -58,7 +58,6 @@ public class MyAccessibilityService extends AccessibilityService {
                 gotoHome();
             }
         }
-        */
     }
     
     @Override
