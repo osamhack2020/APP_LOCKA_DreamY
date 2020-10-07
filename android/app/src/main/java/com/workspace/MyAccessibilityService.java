@@ -20,9 +20,7 @@ import android.content.pm.PackageInfo;
 import java.util.ArrayList;
 
 public class MyAccessibilityService extends AccessibilityService {
-    private static final int SERVICE_NOTIFICATION_ID = 12345;
     private static final String CHANNEL_ID = "Block";
-    private static final String TAG = "AccessibilityService";
     private static boolean denyApp = true;
 
     public static void turnOn(){
@@ -36,7 +34,9 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
-        /*PackageManager packageName = getPackageManager();
+        /*
+        일단 테스트용으로 막아둠. 모든 앱 차단에는 성공한 코드.
+        PackageManager packageName = getPackageManager();
         List<PackageInfo> installList = packageName.getInstalledPackages(0);*/
         /*ArrayList packageNameList = new ArrayList();
         packageNameList.add("com.kakao.talk");*/
@@ -71,13 +71,6 @@ public class MyAccessibilityService extends AccessibilityService {
         super.onCreate();
     }
 
-    /*
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.handler.removeCallbacks(this.runnableCode);
-    }
-    */
     private void gotoHome(){
         Intent intent = new Intent();
         intent.setAction("android.intent.action.MAIN");
@@ -88,7 +81,5 @@ public class MyAccessibilityService extends AccessibilityService {
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         startActivity(intent);
     }
-
-
 }
 
