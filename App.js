@@ -57,7 +57,7 @@ class LockedScreen extends React.Component {
           title = 'Unlock'
           onPress = {()=>this.props.navigation.navigate('Main')}
         />
-        <TouchableOpacity style={styles.button} onPress={() => Block.stopService()}>
+        <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
           <Text>Stop</Text>
         </TouchableOpacity>
       </View>
