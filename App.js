@@ -11,13 +11,8 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
 //import Block from './Block';
-import ToastExample from './ToastExample';
 
 class HomeScreen extends React.Component {
-  onPressButton() {
-    ToastExample.show("LOOKED", ToastExample.SHORT)
-  }
-
     render() {
       return (
         <View style={styles.container}>
@@ -27,7 +22,7 @@ class HomeScreen extends React.Component {
           <View style={styles.appNameArea}>
             <Text style={styles.appNameText}>
               LOCKA
-            </Text>          
+            </Text>
           </View>
           <View style={styles.view}>
             <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
