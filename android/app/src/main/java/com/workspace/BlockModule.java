@@ -55,6 +55,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
 
      @ReactMethod
      public void stopService() {
+      Toast.makeText(getReactApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
          this.reactContext.stopService(new Intent(this.reactContext, MyAccessibilityService.class));
      }
 

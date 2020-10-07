@@ -25,7 +25,9 @@ class HomeScreen extends React.Component {
             <Image source={require('./images/ROKAmark.png')}/>
           </View>
           <View style={styles.appNameArea}>
-            <Button title='click me' onPress={()=>this.onPressButton()}/>
+            <Text style={styles.appNameText}>
+              LOCKA
+            </Text>          
           </View>
           <View style={styles.view}>
             <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
