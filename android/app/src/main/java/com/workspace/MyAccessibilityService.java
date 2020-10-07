@@ -43,8 +43,8 @@ public class MyAccessibilityService extends AccessibilityService {
         String packagename = "SNOW";//차단할 앱
 
         //서비스 돌아가는지 확인
-        Log.d(TAG, "onAccessibilityEvent");
-/*
+        Toast.makeText(this.getApplicationContext(), "Catch Event Package Name : " + event.getPackageName(), Toast.LENGTH_LONG);
+/*      
         Log.e(TAG, "Catch Event Package Name : " + event.getPackageName());
         Log.e(TAG, "Catch Event TEXT : " + event.getText());
         Log.e(TAG, "Catch Event ContentDescription : " + event.getContentDescription());
