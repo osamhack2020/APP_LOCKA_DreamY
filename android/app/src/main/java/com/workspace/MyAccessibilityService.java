@@ -3,17 +3,10 @@ package com.workspace;
 import android.accessibilityservice.AccessibilityService;
 import android.view.accessibility.AccessibilityEvent;
 import android.content.Intent;
-import android.app.PendingIntent;
 import android.widget.Toast;
-import android.os.Handler;
-import android.app.NotificationManager;
-import android.app.NotificationChannel;
-import android.os.Build;
-import androidx.core.app.NotificationCompat;
+//import android.os.Build;
 import android.app.Notification;
-import android.util.Log;
 import android.content.Context;
-import com.facebook.react.HeadlessJsTaskService;
 import android.content.pm.PackageManager;
 import java.util.List;
 import android.content.pm.PackageInfo;
@@ -42,7 +35,6 @@ public class MyAccessibilityService extends AccessibilityService {
             packageNameList.add((String)installList.get(i).packageName);
         }
         packageNameList.remove("com.workspace");
-        packageNameList.add("com.kakao.talk");
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
             for (int i=0; i < packageNameList.size() ; i++ )
             {	            
@@ -62,11 +54,6 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onCreate() {
         super.onCreate();
-        /*
-        packageNameList.remove("com.workspace");
-        packageNameList.remove("com.android.phone");
-        packageNameList.remove("com.android.settings");
-        packageNameList.remove("com.kakao.talk");*/
     }
 
     private void gotoHome(){

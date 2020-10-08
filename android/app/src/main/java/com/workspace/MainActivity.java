@@ -1,8 +1,6 @@
 package com.workspace;
 
 import com.facebook.react.ReactActivity;
-//import androidx.appcompat.app.AppCompatActivity;
-
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
@@ -22,7 +20,7 @@ import android.os.Build;
 
 public class MainActivity extends ReactActivity {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
-
+    private boolean AccessPermission=false;
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
@@ -35,8 +33,8 @@ public class MainActivity extends ReactActivity {
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        
-        if(!checkAccessibilityPermissions()) {
+        this.AccessPermission = checkAccessibilityPermissions();
+        if(!AccessPermission) {
             setAccessibilityPermissions();
         }
     }

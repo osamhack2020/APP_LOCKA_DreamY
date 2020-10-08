@@ -13,6 +13,9 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOp
 //import Block from './Block';
 
 class HomeScreen extends React.Component {
+  /*
+  여기에 함수를 추가해서 버튼을 누르면 권한 허용에 대해서 permission을 받아와 다음 화면으로 넘어가도록 설정해야 함.
+  */
     render() {
       return (
         <View style={styles.container}>
@@ -36,6 +39,7 @@ class HomeScreen extends React.Component {
             <Text>Lock Army</Text>
             <Button
               title = 'Lock'
+              onPress = {()=>this.props.navigation.navigate('Locked')}
               onPress = {()=>this.props.navigation.navigate('Locked')}
             />
           </View>
