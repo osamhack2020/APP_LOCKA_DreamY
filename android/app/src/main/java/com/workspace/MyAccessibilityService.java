@@ -22,8 +22,6 @@ import java.util.ArrayList;
 public class MyAccessibilityService extends AccessibilityService {
     private static final String CHANNEL_ID = "Block";
     private static boolean denyApp = true;
-    protected PackageManager packageNames = getPackageManager();
-    protected List<PackageInfo> installList = packageNames.getInstalledPackages(0);
     //private static 
 
     public static void turnOn() {
@@ -36,18 +34,20 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        ArrayList<String> packageNameList = new ArrayList<String>();
-        /*
+        PackageManager packageNames = getPackageManager();
+        List<PackageInfo> installList = packageNames.getInstalledPackages(0);
+        ArrayList packageNameList = new ArrayList();
+        
         for(int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
         }
-        */ 
-        packageNameList.add("com.kakao.talk");
+        
+        //packageNameList.add("com.kakao.talk");
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
-            for (int i=0; i < installList.size() ; i++ )
+            for (int i=0; i < packageNameList.size() ; i++ )
             {	            
                 if(packageNameList.get(i).equals(event.getPackageName())) {
-                    Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
+                    //Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                     gotoHome();
                 }
             }
