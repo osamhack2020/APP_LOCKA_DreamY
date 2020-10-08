@@ -24,7 +24,7 @@ public class MyAccessibilityService extends AccessibilityService {
     private static boolean denyApp = true;
     private PackageManager packageNames = getPackageManager();
     private List<PackageInfo> installList = packageNames.getInstalledPackages(0);
-    private static ArrayList<String> packageNameList = new ArrayList<String>();
+    //private static 
 
     public static void turnOn() {
         denyApp = true;
@@ -36,6 +36,12 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+        ArrayList<String> packageNameList = new ArrayList<String>();
+
+        for(int i=0; i < installList.size(); i++){
+            packageNameList.add((String)installList.get(i).packageName);
+        }
+
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
             if(packageNameList.contains(event.getPackageName())) {
                 Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
@@ -52,9 +58,6 @@ public class MyAccessibilityService extends AccessibilityService {
     @Override
     public void onCreate() {
         super.onCreate();
-        for(int i=0; i < installList.size(); i++){
-            packageNameList.add((String)installList.get(i).packageName);
-        }
         /*
         packageNameList.remove("com.workspace");
         packageNameList.remove("com.android.phone");
