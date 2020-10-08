@@ -55,10 +55,11 @@ public class MyAccessibilityService extends AccessibilityService {
         for(int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
         }
-        //packageNameList.remove("com.workspace");
+        /*
+        packageNameList.remove("com.workspace");
         packageNameList.remove("com.android.phone");
         packageNameList.remove("com.android.settings");
-        packageNameList.remove("com.kakao.talk");
+        packageNameList.remove("com.kakao.talk");*/
     }
 
     private void gotoHome(){
