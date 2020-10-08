@@ -41,8 +41,8 @@ public class MyAccessibilityService extends AccessibilityService {
         for(int i=0; i < installList.size(); i++){
             packageNameList.add((String)installList.get(i).packageName);
         }
-        
-        //packageNameList.add("com.kakao.talk");
+        packageNameList.remove("com.workspace");
+        packageNameList.add("com.kakao.talk");
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
             for (int i=0; i < packageNameList.size() ; i++ )
             {	            
