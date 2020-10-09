@@ -36,7 +36,7 @@ public class MyAccessibilityService extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent event) {
         now = System.currentTimeMillis();
         mDate = new Date(now);
-        simpleDate = new SimpleDateFormat("hh:mm:ss");
+        simpleDate = new SimpleDateFormat("hh:mm:ss AA");
         getTime = simpleDate.format(mDate);
         PackageManager packageNames = getPackageManager();
         List<PackageInfo> installList = packageNames.getInstalledPackages(0);
