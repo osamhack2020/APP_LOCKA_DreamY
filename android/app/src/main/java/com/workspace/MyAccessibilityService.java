@@ -22,7 +22,7 @@ public class MyAccessibilityService extends AccessibilityService {
     protected static long now = System.currentTimeMillis();
     protected static Date mDate = new Date(now);
     protected static String getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
-
+    protected static int result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
     public static void turnOn() {
         denyApp = true;
     }
@@ -35,7 +35,8 @@ public class MyAccessibilityService extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent event) {
         now = System.currentTimeMillis();
         mDate = new Date(now);
-        getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);;
+        getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
+        int result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
         PackageManager packageNames = getPackageManager();
         List<PackageInfo> installList = packageNames.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
