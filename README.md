@@ -2,15 +2,21 @@
 
 ### 🚀 What is LOCKA Project?
 스마트폰 비대면 반납 + 국방부 어플리케이션 통합 프로젝트
+(프로젝트 설명단계 필요함.)
 
-### 👨🏽‍🤝‍👨🏼TeamMate
+### TeaM DreamY
+
 > * [정강희](https://github.com/vesselofgod)
 > * [유영서](https://github.com/7dudtj)
+
+(팀 아이콘)
 
 ### ⚡️ How to install and test
 1. download LOCKA/android/app/build/outputs/apk/debug/app-debug.apk in your phone
 2. install app using apk file
 3. run downloaded app
+
+### 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 
 ### 기술 스택 (Technique Used) (예시)
 ### Server(back-end)
