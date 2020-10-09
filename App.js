@@ -42,6 +42,11 @@ class HomeScreen extends React.Component {
               onPress = {()=>this.props.navigation.navigate('Locked')}
               onPress = {()=>this.props.navigation.navigate('Locked')}
             />
+            <Button
+              title = 'Login'
+              onPress = {()=>this.props.navigation.navigate('Login')}
+              onPress = {()=>this.props.navigation.navigate('Login')}  
+            />
           </View>
         </View>  
 
@@ -66,12 +71,34 @@ class LockedScreen extends React.Component {
   }
 }
 
+class LoginScreen extends React.Component{
+  render(){
+    return(
+      <View style={{flex: 1, alignItems: 'center'}}>
+        <Text style={styles.appNameText}>
+          LOCKA
+        </Text>
+        <Text>
+          국방모바일보안
+        </Text>
+        <Text>
+          Login Screen
+        </Text>
+        <Button
+        title = 'Home으로'
+        onPress = {()=>this.props.navigation.navigate('Main')}/>
+      </View>
+    );
+  }
+}
+
 
 
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
-    Locked: LockedScreen
+    Locked: LockedScreen,
+    Login: LoginScreen
   },
   {
     initialRouteName: 'Main',
