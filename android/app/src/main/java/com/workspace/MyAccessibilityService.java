@@ -11,11 +11,18 @@ import android.content.pm.PackageManager;
 import java.util.List;
 import android.content.pm.PackageInfo;
 import java.util.ArrayList;
+import com.facebook.react.bridge.ReactApplicationContext;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class MyAccessibilityService extends AccessibilityService {
-    private static final String CHANNEL_ID = "Block";
-    private static boolean denyApp = true;
-    //private static 
+    protected static final String CHANNEL_ID = "Block";
+    protected static boolean denyApp = true;
+    protected static long now = System.currentTimeMillis();
+    protected static Date mDate = new Date(now);
+    protected static SimpleDateFormat simpleDate = new SimpleDateFormat("hh:mm:ss");
+    protected static String getTime = simpleDate.format(mDate);
 
     public static void turnOn() {
         denyApp = true;
@@ -39,7 +46,7 @@ public class MyAccessibilityService extends AccessibilityService {
             for (int i=0; i < packageNameList.size() ; i++ )
             {	            
                 if(packageNameList.get(i).equals(event.getPackageName())) {
-                    //Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
+                    //Toast.makeText(this.getReactApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                     gotoHome();
                 }
             }
