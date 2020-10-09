@@ -20,16 +20,19 @@ import java.text.SimpleDateFormat;
 public class MyAccessibilityService extends AccessibilityService {
     protected static final String CHANNEL_ID = "Block";
     protected static boolean denyApp = true;
+    protected static Calendar currentDate = Calendar.getInstance();
     protected static long now = System.currentTimeMillis();
     protected static Date mDate = new Date(now);
     protected static String getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
-    protected static int result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+    protected static int currentTime = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+    protected static int dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
 
     //폰 내는 시간
-    protected static int lockedtime = 1500;
-    //폰 받는 시간
-    protected static int unlockedtime = 830;
-
+    protected static int lockedtime = 2100;
+    //폰 받는 시간emf
+    protected static int weekendunlockedtime = 830;
+    protected static int unlockedtime = 1800;
+    
 
     public static void turnOn() {
         denyApp = true;
@@ -39,18 +42,28 @@ public class MyAccessibilityService extends AccessibilityService {
         denyApp = false;
     }
 
-    public static void currentTime() {
+    public static void getCurrentTime() {
+        //현재 시간을 가져와서 잠금상태를 결정함.
+        currentDate = Calendar.getInstance();
+        dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
         now = System.currentTimeMillis();
         mDate = new Date(now);
         getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
-        result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+        currentTime = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+
+        if (dayOfWeek==1 || dayOfWeek==7){
+            if (currentTime>lockedtime || currentTime<weekendunlockedtime) {denyApp = true;}
+            else{denyApp = false;}
+        }
+        else{
+            if (currentTime>lockedtime || currentTime<unlockedtime) {denyApp = true;}
+            else{denyApp = false;}
+        }
     }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        currentTime();
-        //자동으로 잠금.
-        if (result>lockedtime || result<830) {denyApp = true;}
+        getCurrentTime();
         PackageManager packageNames = getPackageManager();
         List<PackageInfo> installList = packageNames.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
