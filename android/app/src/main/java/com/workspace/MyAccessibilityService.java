@@ -34,6 +34,7 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+        now = System.currentTimeMillis();
         mDate = new Date(now);
         simpleDate = new SimpleDateFormat("hh:mm:ss");
         getTime = simpleDate.format(mDate);
