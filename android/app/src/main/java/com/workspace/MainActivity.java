@@ -1,8 +1,6 @@
 package com.workspace;
 
 import com.facebook.react.ReactActivity;
-//import androidx.appcompat.app.AppCompatActivity;
-
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
@@ -22,7 +20,7 @@ import android.os.Build;
 
 public class MainActivity extends ReactActivity {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
-
+    private boolean AccessPermission=false;
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
@@ -35,21 +33,18 @@ public class MainActivity extends ReactActivity {
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        
-        if(!checkAccessibilityPermissions()) {
+        this.AccessPermission = checkAccessibilityPermissions();
+        if(!AccessPermission) {
             setAccessibilityPermissions();
         }
     }
     
     public boolean checkAccessibilityPermissions() {
         AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
-
         // getEnabledAccessibilityServiceList는 현재 접근성 권한을 가진 리스트를 가져오게 된다
         List<AccessibilityServiceInfo> list = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.DEFAULT);
-
         for (int i = 0; i < list.size(); i++) {
             AccessibilityServiceInfo info = list.get(i);
-
             // 접근성 권한을 가진 앱의 패키지 네임과 패키지 네임이 같으면 현재앱이 접근성 권한을 가지고 있다고 판단함
             if (info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())) {
                 return true;

@@ -11,13 +11,11 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button} from 'react-native';
 //import Block from './Block';
-import ToastExample from './ToastExample';
 
 class HomeScreen extends React.Component {
-  onPressButton() {
-    ToastExample.show("LOOKED", ToastExample.SHORT)
-  }
-
+  /*
+  여기에 함수를 추가해서 버튼을 누르면 권한 허용에 대해서 permission을 받아와 다음 화면으로 넘어가도록 설정해야 함.
+  */
     render() {
       return (
         <View style={styles.container}>
@@ -25,17 +23,23 @@ class HomeScreen extends React.Component {
             <Image source={require('./images/ROKAmark.png')}/>
           </View>
           <View style={styles.appNameArea}>
-            <Button title='click me' onPress={()=>this.onPressButton()}/>
+            <Text style={styles.appNameText}>
+              LOCKA
+            </Text>
           </View>
           <View style={styles.view}>
             <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
               <Text>Start</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
+              <Text>Stop</Text>
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
             <Button
               title = 'Lock'
+              onPress = {()=>this.props.navigation.navigate('Locked')}
               onPress = {()=>this.props.navigation.navigate('Locked')}
             />
           </View>
@@ -57,9 +61,6 @@ class LockedScreen extends React.Component {
           title = 'Unlock'
           onPress = {()=>this.props.navigation.navigate('Main')}
         />
-        <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
-          <Text>Stop</Text>
-        </TouchableOpacity>
       </View>
     );
   }

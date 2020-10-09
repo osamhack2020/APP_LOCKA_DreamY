@@ -3,34 +3,45 @@ package com.workspace;
 import android.accessibilityservice.AccessibilityService;
 import android.view.accessibility.AccessibilityEvent;
 import android.content.Intent;
-import android.app.PendingIntent;
 import android.widget.Toast;
-import android.os.Handler;
-import android.app.NotificationManager;
-import android.app.NotificationChannel;
-import android.os.Build;
-import androidx.core.app.NotificationCompat;
+//import android.os.Build;
 import android.app.Notification;
-import android.util.Log;
 import android.content.Context;
-import com.facebook.react.HeadlessJsTaskService;
-
-import javax.annotation.Nullable;
+import android.content.pm.PackageManager;
+import java.util.List;
+import android.content.pm.PackageInfo;
+import java.util.ArrayList;
 
 public class MyAccessibilityService extends AccessibilityService {
-    private static final int SERVICE_NOTIFICATION_ID = 12345;
     private static final String CHANNEL_ID = "Block";
-    private static final String TAG = "AccessibilityService";
+    private static boolean denyApp = true;
+    //private static 
+
+    public static void turnOn() {
+        denyApp = true;
+    }
+
+    public static void turnOff() {
+        denyApp = false;
+    }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        boolean denyApp = false;
-        String packagename = "com.kakao.talk";//차단할 앱
-
-        if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
-            if(packagename.equals(event.getPackageName())) {
-                Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
-                gotoHome();
+        PackageManager packageNames = getPackageManager();
+        List<PackageInfo> installList = packageNames.getInstalledPackages(0);
+        ArrayList packageNameList = new ArrayList();
+        
+        for(int i=0; i < installList.size(); i++){
+            packageNameList.add((String)installList.get(i).packageName);
+        }
+        packageNameList.remove("com.workspace");
+        if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
+            for (int i=0; i < packageNameList.size() ; i++ )
+            {	            
+                if(packageNameList.get(i).equals(event.getPackageName())) {
+                    //Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
+                    gotoHome();
+                }
             }
         }
     }
@@ -44,13 +55,7 @@ public class MyAccessibilityService extends AccessibilityService {
     public void onCreate() {
         super.onCreate();
     }
-    /*
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.handler.removeCallbacks(this.runnableCode);
-    }
-    */
+
     private void gotoHome(){
         Intent intent = new Intent();
         intent.setAction("android.intent.action.MAIN");
@@ -61,7 +66,5 @@ public class MyAccessibilityService extends AccessibilityService {
                 | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         startActivity(intent);
     }
-
-
 }
 

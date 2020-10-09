@@ -27,11 +27,11 @@ import android.util.Log;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
+import com.workspace.MyAccessibilityService;
 
 public class BlockModule extends ReactContextBaseJavaModule {
     public static final String REACT_CLASS = "Block";
-    private static ReactApplicationContext reactContext;//만약 안되면 주석처리.
+    private static ReactApplicationContext reactContext;
 
     public BlockModule(@Nonnull ReactApplicationContext reactContext) {
       super(reactContext);
@@ -43,19 +43,19 @@ public class BlockModule extends ReactContextBaseJavaModule {
     public String getName() {
       return REACT_CLASS;
     }
-    
-    //이 부분을 그냥 생함수로 짜야할 수도 있음. 근데 사실 큰 구조는 다르지 않음.
-    //근데 만약에 이렇게 짰는데 안돌아가면 그냥 service짠거를 여기에 넣어야 할 수도 있음.
+
     @ReactMethod
      public void startService() {
-     // Starting the heartbeat service
+     // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
       Toast.makeText(getReactApplicationContext(), "START", Toast.LENGTH_SHORT).show();
-      this.reactContext.startService(new Intent(this.reactContext, MyAccessibilityService.class));
+      MyAccessibilityService.turnOn();
      }
 
      @ReactMethod
      public void stopService() {
-         this.reactContext.stopService(new Intent(this.reactContext, MyAccessibilityService.class));
+       // Service를 끄는 것이 아닌 앱 잠금해제가 되게끔 하는 메소드
+      Toast.makeText(getReactApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
+      MyAccessibilityService.turnOff();
      }
 
   }

@@ -12,6 +12,16 @@
 2. install app using apk file
 3. run downloaded app
 
+### 기술 스택 (Technique Used) (예시)
+### Server(back-end)
+ - java 등 서버 언어
+ - XML
+ 
+### front-end
+ -  react.js 등 사용한 front-end 프레임워크 
+ -  UI framework
+ -  기타 사용한 라이브러리, components
+
 ### 🗓Develop Schedule
 Due date : 11/12(Thursday)
 
