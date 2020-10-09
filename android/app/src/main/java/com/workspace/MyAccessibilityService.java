@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import com.facebook.react.bridge.ReactApplicationContext;
 
 import java.util.Date;
+import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 public class MyAccessibilityService extends AccessibilityService {
@@ -23,6 +24,13 @@ public class MyAccessibilityService extends AccessibilityService {
     protected static Date mDate = new Date(now);
     protected static String getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
     protected static int result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+
+    //폰 내는 시간
+    protected static int lockedtime = 1500;
+    //폰 받는 시간
+    protected static int unlockedtime = 830;
+
+
     public static void turnOn() {
         denyApp = true;
     }
@@ -31,12 +39,18 @@ public class MyAccessibilityService extends AccessibilityService {
         denyApp = false;
     }
 
-    @Override
-    public void onAccessibilityEvent(AccessibilityEvent event) {
+    public static void currentTime() {
         now = System.currentTimeMillis();
         mDate = new Date(now);
         getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
-        int result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+        result = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+    }
+
+    @Override
+    public void onAccessibilityEvent(AccessibilityEvent event) {
+        currentTime();
+        //자동으로 잠금.
+        if (result>lockedtime || result<830) {denyApp = true;}
         PackageManager packageNames = getPackageManager();
         List<PackageInfo> installList = packageNames.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
