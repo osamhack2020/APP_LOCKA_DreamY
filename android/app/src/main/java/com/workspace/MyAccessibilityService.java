@@ -34,6 +34,9 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+        mDate = new Date(now);
+        simpleDate = new SimpleDateFormat("hh:mm:ss");
+        simpleDate.format(mDate);
         PackageManager packageNames = getPackageManager();
         List<PackageInfo> installList = packageNames.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
