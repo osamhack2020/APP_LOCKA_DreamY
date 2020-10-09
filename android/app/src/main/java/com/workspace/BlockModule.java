@@ -47,14 +47,22 @@ public class BlockModule extends ReactContextBaseJavaModule {
     @ReactMethod
      public void startService() {
      // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
-      Toast.makeText(getReactApplicationContext(), "START", Toast.LENGTH_SHORT).show();
+      Toast.makeText(getReactApplicationContext(), Integer.toString(MyAccessibilityService.currentTime) + " LOCKED", Toast.LENGTH_SHORT).show();
       MyAccessibilityService.turnOn();
      }
 
      @ReactMethod
      public void stopService() {
        // Service를 끄는 것이 아닌 앱 잠금해제가 되게끔 하는 메소드
-      Toast.makeText(getReactApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
+       MyAccessibilityService.getCurrentTime();
+      if(!MyAccessibilityService.denyApp)
+      {
+        Toast.makeText(getReactApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
+      }
+      else
+      {
+        Toast.makeText(getReactApplicationContext(), "지금은 잠금해제가 불가능합니다.", Toast.LENGTH_SHORT).show();
+      }
       MyAccessibilityService.turnOff();
      }
 

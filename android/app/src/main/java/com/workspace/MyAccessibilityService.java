@@ -11,11 +11,28 @@ import android.content.pm.PackageManager;
 import java.util.List;
 import android.content.pm.PackageInfo;
 import java.util.ArrayList;
+import com.facebook.react.bridge.ReactApplicationContext;
+
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 public class MyAccessibilityService extends AccessibilityService {
-    private static final String CHANNEL_ID = "Block";
-    private static boolean denyApp = true;
-    //private static 
+    protected static final String CHANNEL_ID = "Block";
+    protected static boolean denyApp = true;
+    protected static Calendar currentDate = Calendar.getInstance();
+    protected static long now = System.currentTimeMillis();
+    protected static Date mDate = new Date(now);
+    protected static String getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
+    protected static int currentTime = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+    protected static int dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
+
+    //폰 내는 시간
+    protected static int lockedtime = 2100;
+    //폰 받는 시간emf
+    protected static int weekendunlockedtime = 830;
+    protected static int unlockedtime = 1800;
+    
 
     public static void turnOn() {
         denyApp = true;
@@ -25,8 +42,28 @@ public class MyAccessibilityService extends AccessibilityService {
         denyApp = false;
     }
 
+    public static void getCurrentTime() {
+        //현재 시간을 가져와서 잠금상태를 결정함.
+        currentDate = Calendar.getInstance();
+        dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
+        now = System.currentTimeMillis();
+        mDate = new Date(now);
+        getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
+        currentTime = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
+
+        if (dayOfWeek==1 || dayOfWeek==7){
+            if (currentTime>lockedtime || currentTime<weekendunlockedtime) {denyApp = true;}
+            else{denyApp = false;}
+        }
+        else{
+            if (currentTime>lockedtime || currentTime<unlockedtime) {denyApp = true;}
+            else{denyApp = false;}
+        }
+    }
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+        getCurrentTime();
         PackageManager packageNames = getPackageManager();
         List<PackageInfo> installList = packageNames.getInstalledPackages(0);
         ArrayList packageNameList = new ArrayList();
@@ -39,7 +76,7 @@ public class MyAccessibilityService extends AccessibilityService {
             for (int i=0; i < packageNameList.size() ; i++ )
             {	            
                 if(packageNameList.get(i).equals(event.getPackageName())) {
-                    //Toast.makeText(this.getApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
+                    //Toast.makeText(this.getReactApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                     gotoHome();
                 }
             }
