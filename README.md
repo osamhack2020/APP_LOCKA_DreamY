@@ -34,7 +34,7 @@ Due date : 11/12(Thursday)
 -   **QR 코드나 NFC 인식기능**
 -   **개인정비시간 설정**
 -   **App 삭제방지기능**
-
+-   **전역일, 잔여휴가, 월급 계산기능**
 
 ### ⚙ react-native environment setting using linux teminal
 
