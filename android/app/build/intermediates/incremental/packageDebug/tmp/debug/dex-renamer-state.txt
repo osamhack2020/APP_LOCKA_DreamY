@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Sat Oct 10 01:18:48 UTC 2020
+=======
+#Fri Oct 09 06:37:35 UTC 2020
+>>>>>>> c3654d1... test
 base.0=/home/codespace/workspace/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
