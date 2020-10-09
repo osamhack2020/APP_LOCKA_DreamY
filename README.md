@@ -29,7 +29,6 @@ Due date : 11/12(Thursday)
 ![image](https://user-images.githubusercontent.com/18081105/94389136-fe170180-0189-11eb-9df6-d4a3b0b0d65b.png)
 ### 💡 Project design
 
-![image](https://user-images.githubusercontent.com/67851701/95017416-3049c700-0694-11eb-94e5-99476cf4865c.jpg)
 -   **앱 실행차단기능**
 -   **디자인, 프론트엔드 영역**
 -   **QR 코드나 NFC 인식기능**
