@@ -9,7 +9,9 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput} from 'react-native';
+import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
+  TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
+  ImageBackground} from 'react-native';
 //import Block from './Block';
 
 class HomeScreen extends React.Component {
@@ -74,35 +76,36 @@ class LockedScreen extends React.Component {
 class LoginScreen extends React.Component{
   render(){
     return(
-      <View style={{flex:1, alignItems: 'center'}}>
-        <View style={styles.delLoc}>
-          <Button
-            title = '삭제'
-            // 추후 삭제 기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}  
-          />
-        </View>
-        <View style={styles.markArea}>
-          <Image source={require('./images/ROKAmark.png')}/>
-        </View>
-        <View style={styles.appNameArea}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        </View>
-        <View style={styles.chatControl}>
-          <TextInput style={styles.chatInput}/>
-          <Button
-            title = '인증하기'
-            // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}  
-          />
-        </View>
+      <View>
+        <ImageBackground
+          style={{width: '100%', height: '100%'}}
+          source={require('./images/LoginB.png')}>
+          <View style={styles.delLoc}>
+            <Button
+              title = '삭제'
+              // 추후 삭제 기능으로 연결해야함
+              onPress = {()=>this.props.navigation.navigate('Main')}  
+            />
+          </View>  
+          <View style={{flex: 2}}/>
+          <View>
+            <TextInput style={styles.chatInput} 
+            defaultValue='인증번호를 입력해주세요'/>
+          </View>
+          <View style={{flex: 0.4}}/>
+          <View>
+            <Button
+              title = '인증하기'
+              // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
+              onPress = {()=>this.props.navigation.navigate('Main')}  
+            />
+          </View> 
+          <View style={{flex: 1}}/>
+        </ImageBackground>
       </View>  
     );
   }
 }
-
 
 
 const AppNavigator = createStackNavigator(
@@ -154,6 +157,9 @@ buttonStyle: {
   alignItems: 'center',
   backgroundColor: '#f4511e',
   padding: 10,
+  height: 40,
+  width: 50,
+  borderRadius: 10,
 },
 textStyle: {
   fontSize: 18,
@@ -171,18 +177,27 @@ button: {
 },
 delLoc: {
   flex: 0.2,
-  backgroundColor: 'red',
   justifyContent: 'center',
   alignItems: 'flex-end',
-},
-chatControl: {
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'black'
+  margin: 10,
 },
 chatInput: {
-  backgroundColor: 'white',
+  backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderWidth: 3,
+  borderColor: 'white',
+  borderRadius: 5,
+},
+sendButton:{
+    backgroundColor: 'white',
+    height: 40,
+    width: '60%',
+    borderRadius: 20,
+    padding: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
 },
 });
 
