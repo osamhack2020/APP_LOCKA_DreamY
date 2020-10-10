@@ -185,8 +185,10 @@ chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
   alignItems: 'center',
+  justifyContent: 'center',
   borderWidth: 3,
   borderColor: 'white',
+  borderRadius: 5,
 },
 sendButton:{
     backgroundColor: 'white',
