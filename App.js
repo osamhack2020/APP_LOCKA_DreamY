@@ -88,7 +88,7 @@ class LoginScreen extends React.Component{
             />
           </View>  
           <View style={{flex: 2}}/>
-          <View style={{flexDirection: row}}>
+          <View>
             <TextInput style={styles.chatInput} 
             defaultValue='인증번호를 입력해주세요'/>
           </View>
