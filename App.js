@@ -146,7 +146,7 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
         </ImageBackground>
       </View>
-    )
+    );
   }
 }
 
