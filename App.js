@@ -123,13 +123,13 @@ class PermissionScreen extends React.Component{
           </View>    
           <View style={{flex: 1.5}}/>
           <View style={styles.textArea}>
-            <Text styles={{alignSelf: 'center'}}>
+            <Text>
               LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
             </Text>
           </View>
           <View style={{flex: 0.3}}/>
           <View style={styles.textArea}>
-            <Text styles={{alignSelf: 'center'}}>
+            <Text>
               * 내 동작 확인
                 앱을 제어하는 중에 알림을 받습니다.
               * 컨텐츠 가져오기
@@ -228,7 +228,8 @@ delLoc: {
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
-  alignSelf: 'center',
+  flexDirection: 'row',
+  justifyContent: 'center',
   borderWidth: 3,
   borderColor: 'white',
   borderRadius: 5,
@@ -244,10 +245,12 @@ sendButton:{
 },
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
-  height: '15%',
+  height: 80,
+  height: 100,
   width: '60%',
   padding: 10,
   flexDirection: 'row',
+  justifyContent: 'center',
   borderWidth: 1,
   borderColor: 'white',
   borderRadius: 10,
