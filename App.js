@@ -79,27 +79,28 @@ class LoginScreen extends React.Component{
       <View>
         <ImageBackground
           style={{width: '100%', height: '100%'}}
-          source={require('./images/LoginB.png')}></ImageBackground>
-        <View style={styles.delLoc}>
-          <Button
-            title = '삭제'
-            // 추후 삭제 기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}  
-          />
-        </View>  
-        <View style={{flex: 2}}></View>  
-        <View>
-          <TextInput style={styles.chatInput}/>
-        </View>
-        <View style={{flex: 0.4}}></View>
-        <View>
-          <Button
-            title = '인증하기'
-            // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}  
-          />
-        </View> 
-        <View style={{flex: 1}}></View>
+          source={require('./images/LoginB.png')}>
+          <View style={styles.delLoc}>
+            <Button
+              title = '삭제'
+              // 추후 삭제 기능으로 연결해야함
+              onPress = {()=>this.props.navigation.navigate('Main')}  
+            />
+          </View>  
+          <View style={{flex: 2}}/>
+          <View>
+            <TextInput style={styles.chatInput}/>
+          </View>
+          <View style={{flex: 0.4}}/>
+          <View>
+            <Button
+              title = '인증하기'
+              // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
+              onPress = {()=>this.props.navigation.navigate('Main')}  
+            />
+          </View> 
+          <View style={{flex: 1}}/>
+        </ImageBackground>
       </View>  
     );
   }
