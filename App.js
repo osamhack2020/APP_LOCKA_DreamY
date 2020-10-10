@@ -129,17 +129,11 @@ class PermissionScreen extends React.Component{
           </View>
           <View style={{flex: 0.3}}/>
           <View style={styles.textArea}>
-            <Text>
+            <Text styles={{alignSelf: 'center'}}>
               * 내 동작 확인
-            </Text>
-            <Text>
-              앱을 제어하는 중에 알림을 받습니다.
-            </Text>
-            <Text>
+                앱을 제어하는 중에 알림을 받습니다.
               * 컨텐츠 가져오기
-            </Text>  
-            <Text>
-              사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+                사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
             </Text>
           </View>
           <View>
@@ -254,7 +248,6 @@ textArea:{
   width: '60%',
   padding: 10,
   flexDirection: 'row',
-  alignSelf: 'center',
   borderWidth: 1,
   borderColor: 'white',
   borderRadius: 10,
