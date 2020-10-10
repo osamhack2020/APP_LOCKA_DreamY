@@ -9,7 +9,9 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput} from 'react-native';
+import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
+  TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
+  ImageBackground} from 'react-native';
 //import Block from './Block';
 
 class HomeScreen extends React.Component {
