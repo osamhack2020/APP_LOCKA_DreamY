@@ -89,7 +89,8 @@ class LoginScreen extends React.Component{
           </View>  
           <View style={{flex: 2}}/>
           <View>
-            <TextInput style={styles.chatInput}/>
+            <TextInput style={styles.chatInput} 
+            defaultValue='인증번호를 입력해주세요'/>
           </View>
           <View style={{flex: 0.4}}/>
           <View>
@@ -105,7 +106,6 @@ class LoginScreen extends React.Component{
     );
   }
 }
-
 
 
 const AppNavigator = createStackNavigator(
@@ -179,16 +179,19 @@ delLoc: {
   flex: 0.2,
   justifyContent: 'center',
   alignItems: 'flex-end',
-  //margin: 10,
+  margin: 10,
 },
 chatInput: {
-  backgroundColor: 'white',
+  backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
+  alignItems: 'center',
+  borderWidth: 3,
+  borderColor: 'white',
 },
 sendButton:{
     backgroundColor: 'white',
     height: 40,
-    width: 300,
+    width: '60%',
     borderRadius: 20,
     padding: 5,
     justifyContent: 'center',
