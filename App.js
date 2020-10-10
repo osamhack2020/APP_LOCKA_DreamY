@@ -98,7 +98,7 @@ class LoginScreen extends React.Component{
             onPress = {()=>this.props.navigation.navigate('Main')}  
           />
         </View>
-      </View>
+      </View>  
     );
   }
 }
