@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Fri Oct 09 07:25:11 UTC 2020
-=======
-#Fri Oct 09 06:03:47 UTC 2020
->>>>>>> 11e8473... codespace 환경설정
+#Sat Oct 10 01:18:48 UTC 2020
 base.0=/home/codespace/workspace/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
