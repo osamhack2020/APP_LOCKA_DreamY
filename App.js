@@ -96,8 +96,8 @@ class LoginScreen extends React.Component{
           <View>
             <Button
               title = '인증하기'
-              // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
-              onPress = {()=>this.props.navigation.navigate('Main')}  
+              // 추후 비밀번호 인증 후에 권한설명 페이지로 넘어가게 해야함
+              onPress = {()=>this.props.navigation.navigate('Permission')}  
             />
           </View> 
           <View style={{flex: 1}}/>
@@ -107,12 +107,56 @@ class LoginScreen extends React.Component{
   }
 }
 
+class PermissionScreen extends React.Component{
+  render(){
+    return(
+      <View>
+        <ImageBackground
+          style={{width: '100%', height: '100%'}}
+          source={require('./images/PermissionB.png')}>
+          <View style={styles.delLoc}>
+            <Button
+              title = '삭제'
+              // 추후 삭제 기능으로 연결해야함
+              onPress = {()=>this.props.navigation.navigate('Main')}  
+            />
+          </View>    
+          <View style={{flex: 1.5}}/>
+          <View style={styles.textArea}>
+            <Text>
+              LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
+            </Text>
+          </View>
+          <View style={{flex: 0.3}}/>
+          <View style={styles.textArea}>
+            <Text>
+              * 내 동작 확인
+                앱을 제어하는 중에 알림을 받습니다.
+              * 컨텐츠 가져오기
+                사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+            </Text>
+          </View>
+          <View>
+            <Button
+              title = '권한 부여하기'
+              // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
+              onPress = {()=>this.props.navigation.navigate('Main')}  
+            />
+          </View> 
+          <View style={{flex: 0.5}}/>
+        </ImageBackground>
+      </View>
+    )
+  }
+}
+
 
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
     Locked: LockedScreen,
-    Login: LoginScreen
+    Login: LoginScreen,
+    Permission: PermissionScreen,
   },
   {
     initialRouteName: 'Main',
@@ -198,6 +242,17 @@ sendButton:{
     padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
+},
+textArea:{
+  backgroundColor: 'rgba(255,255,255,0.5)',
+  height: 80,
+  width: '60%',
+  padding: 10,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderWidth: 1,
+  borderColor: 'white',
+  borderRadius: 10,
 },
 });
 
