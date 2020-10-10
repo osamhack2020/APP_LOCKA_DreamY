@@ -88,7 +88,7 @@ class LoginScreen extends React.Component{
             />
           </View>  
           <View style={{flex: 2}}/>
-          <View>
+          <View style={{flexDirection: row}}>
             <TextInput style={styles.chatInput} 
             defaultValue='인증번호를 입력해주세요'/>
           </View>
@@ -123,17 +123,23 @@ class PermissionScreen extends React.Component{
           </View>    
           <View style={{flex: 1.5}}/>
           <View style={styles.textArea}>
-            <Text>
+            <Text styles={{alignSelf: 'center'}}>
               LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
             </Text>
           </View>
           <View style={{flex: 0.3}}/>
           <View style={styles.textArea}>
             <Text>
-              * 내 동작 확인\n
-                앱을 제어하는 중에 알림을 받습니다.\n
-              * 컨텐츠 가져오기\n
-                사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+              * 내 동작 확인
+            </Text>
+            <Text>
+              앱을 제어하는 중에 알림을 받습니다.
+            </Text>
+            <Text>
+              * 컨텐츠 가져오기
+            </Text>  
+            <Text>
+              사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
             </Text>
           </View>
           <View>
@@ -228,8 +234,7 @@ delLoc: {
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
-  flexDirection: 'row',
-  justifyContent: 'center',
+  alignSelf: 'center',
   borderWidth: 3,
   borderColor: 'white',
   borderRadius: 5,
@@ -245,11 +250,11 @@ sendButton:{
 },
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
-  height: 100,
+  height: '15%',
   width: '60%',
   padding: 10,
   flexDirection: 'row',
-  justifyContent: 'center',
+  alignSelf: 'center',
   borderWidth: 1,
   borderColor: 'white',
   borderRadius: 10,
