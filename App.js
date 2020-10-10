@@ -246,11 +246,10 @@ sendButton:{
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
   height: 80,
-  height: 100,
   width: '60%',
   padding: 10,
-  flexDirection: 'row',
   justifyContent: 'center',
+  alignItems: 'center',
   borderWidth: 1,
   borderColor: 'white',
   borderRadius: 10,
