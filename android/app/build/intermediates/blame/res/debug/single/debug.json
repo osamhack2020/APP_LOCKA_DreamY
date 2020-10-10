@@ -152,6 +152,13 @@
         "source": "/home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
+<<<<<<< HEAD
+=======
+        "merged": "/home/codespace/workspace/android/app/build/intermediates/res/merged/debug/drawable-mdpi_images_permissionb.png.flat",
+        "source": "/home/codespace/workspace/android/app/src/main/res/drawable-mdpi/images_permissionb.png"
+    },
+    {
+>>>>>>> 7b408f81b95859a959a541e19470453324858c09
         "merged": "/home/codespace/workspace/android/app/build/intermediates/res/merged/debug/drawable-watch-v20_abc_dialog_material_background.xml.flat",
         "source": "/home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/res/drawable-watch-v20/abc_dialog_material_background.xml"
     },
