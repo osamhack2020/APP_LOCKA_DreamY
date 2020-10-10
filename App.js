@@ -74,30 +74,30 @@ class LockedScreen extends React.Component {
 class LoginScreen extends React.Component{
   render(){
     return(
-      <View style={{flex:1, alignItems: 'center'}}>
+      <View>
+        <ImageBackground
+          style={{width: '100%', height: '100%'}}
+          source={require('./images/LoginB.png')}></ImageBackground>
         <View style={styles.delLoc}>
           <Button
             title = '삭제'
             // 추후 삭제 기능으로 연결해야함
             onPress = {()=>this.props.navigation.navigate('Main')}  
           />
-        </View>
-        <View style={styles.markArea}>
-          <Image source={require('./images/ROKAmark.png')}/>
-        </View>
-        <View style={styles.appNameArea}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        </View>
-        <View style={styles.chatControl}>
+        </View>  
+        <View style={{flex: 2}}></View>  
+        <View>
           <TextInput style={styles.chatInput}/>
+        </View>
+        <View style={{flex: 0.4}}></View>
+        <View>
           <Button
             title = '인증하기'
             // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
             onPress = {()=>this.props.navigation.navigate('Main')}  
           />
-        </View>
+        </View> 
+        <View style={{flex: 1}}></View>
       </View>  
     );
   }
@@ -154,6 +154,9 @@ buttonStyle: {
   alignItems: 'center',
   backgroundColor: '#f4511e',
   padding: 10,
+  height: 40,
+  width: 50,
+  borderRadius: 10,
 },
 textStyle: {
   fontSize: 18,
@@ -171,18 +174,22 @@ button: {
 },
 delLoc: {
   flex: 0.2,
-  backgroundColor: 'red',
   justifyContent: 'center',
   alignItems: 'flex-end',
-},
-chatControl: {
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'black'
+  //margin: 10,
 },
 chatInput: {
   backgroundColor: 'white',
   width: '70%',
+},
+sendButton:{
+    backgroundColor: 'white',
+    height: 40,
+    width: 300,
+    borderRadius: 20,
+    padding: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
 },
 });
 
