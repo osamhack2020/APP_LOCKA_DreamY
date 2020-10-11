@@ -36,12 +36,12 @@ calcSalary = (selectMilitary, Savings) => {
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
     savingMoney = (Savings*20) * ((0.05*21)/24);
     sumOfMoney+=savingMoney;
-}
-else{
+  }
+  else{
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
-}
+  }
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
 
@@ -87,8 +87,6 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>  
-
-
     );
   }
 }
