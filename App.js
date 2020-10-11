@@ -98,7 +98,7 @@ class PermissionScreen extends React.Component{
   render(){
     return(
       <View style={styles.newContainer}>
-        <StatusBar hidden="true" />
+        <StatusBar hidden={true} />
         <ImageBackground
           style={{width: '100%', height: '100%'}}
           source={require('./images/CommonB.png')}>
