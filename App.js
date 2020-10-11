@@ -323,20 +323,20 @@ textArea2:{
 h1Text:{
   color: 'white',
   fontWeight: 'bold',
-  fontSize: 25,
+  fontSize: 20,
   margin: 10,
   alignSelf: 'flex-start',
 },
 h2Text:{
   color: 'white',
   fontWeight: 'bold',
-  fontSize: 20,
-  margin: 5,
+  fontSize: 15,
+  marginBottom: 5,
   alignSelf: 'flex-start',
 },
 h3Text:{
   color: 'white',
-  fontSize: 15,
+  fontSize: 12,
   alignSelf: 'flex-start',
 },
 });
