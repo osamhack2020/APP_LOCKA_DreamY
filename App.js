@@ -428,7 +428,7 @@ curstatus:{
   backgroundColor: 'white',
   borderColor: 'red',
   borderWidth: 1,
-  alignItems: 'center',
+  alignSelf: 'center',
 },
 });
 
