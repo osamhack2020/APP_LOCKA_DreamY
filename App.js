@@ -67,7 +67,9 @@ class LoginScreen extends React.Component{
           style={{width: '100%', height: '100%'}}
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
-            <TouchableOpacity style={styles.delBtn} onPress={() => NativeModules.Block.startService()}>
+            <TouchableOpacity style={styles.delBtn} 
+            // 추후 삭제기능으로 연결해야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
               <Text>삭제</Text>
             </TouchableOpacity>
           </View>  
@@ -78,15 +80,9 @@ class LoginScreen extends React.Component{
           </View>
           <View style={{flex: 0.6}}/>
           <View style={styles.codeSec}>
-            <TouchableOpacity style={styles.accessBtn} onPress={() => NativeModules.Block.startService()}>
-              <Text>인증하기</Text>
+            <TouchableOpacity style={styles.accessBtn} onPress = {()=>this.props.navigation.navigate('Main')}>
+              <Text style={{alignItems: 'center'}}>인증하기</Text>
             </TouchableOpacity>
-
-            <Button
-              title = '인증하기'
-              // 추후 비밀번호 인증 후에 권한설명 페이지로 넘어가게 해야함
-              onPress = {()=>this.props.navigation.navigate('Permission')}  
-            />
           </View> 
           <View style={{flex: 0.4}}/>
         </ImageBackground>
@@ -235,8 +231,9 @@ button: {
   margin: 10,
 },
 delBtn: {
+  color: 'white',
   backgroundColor: 'black',
-  padding: 10,
+  padding: 5,
   margin: 10,
   borderWidth: 1,
   borderColor: 'white',
@@ -245,12 +242,12 @@ delBtn: {
 accessBtn: {
   backgroundColor: 'white',
   width: '50%',
-  height: 20,
+  height: 40,
   padding: 10,
   margin: 10,
-  borderWidth: 1,
+  borderWidth: 3,
   borderColor: 'black',
-  borderRadius: 10,
+  borderRadius: 20,
 },
 delLoc: {
   flex: 0.2,
@@ -269,11 +266,10 @@ access: {
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
-  //flexDirection: 'row',
-  //justifyContent: 'center',
-  borderWidth: 3,
+  borderWidth: 2,
   borderColor: 'white',
   borderRadius: 5,
+  alignItems: 'center',
 },
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
