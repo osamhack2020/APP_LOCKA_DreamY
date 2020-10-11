@@ -61,7 +61,7 @@ public class calcModule extends ReactContextBaseJavaModule {
             savingMoney = (((((savingMoney*0.055)/12)*18)*19)/2);
             salarySum+=savingMoney;
         }
-         return salarySum
+         return salarySum;
      }
 
      @ReactMethod
