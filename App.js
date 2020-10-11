@@ -70,7 +70,7 @@ class LoginScreen extends React.Component{
             <TouchableOpacity style={styles.delBtn} 
             // 추후 삭제기능으로 연결해야함
             onPress = {()=>this.props.navigation.navigate('Main')}>
-              <Text style={{color: 'white'}}>삭제</Text>
+              <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>  
           <View style={{flex: 2.4}}/>
@@ -83,7 +83,7 @@ class LoginScreen extends React.Component{
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
             onPress = {()=>this.props.navigation.navigate('Permission')}>
-              <Text>인증하기</Text>
+              <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
           <View style={{flex: 0.6}}/>
@@ -244,7 +244,6 @@ delBtn: {
 accessBtn: {
   backgroundColor: 'white',
   width: '50%',
-  height: '10%',
   //padding: 10,
   margin: 10,
   //borderWidth: 3,
@@ -253,11 +252,19 @@ accessBtn: {
   alignItems: 'center', 
   justifyContent: 'center',
 },
+accessWord:{
+  fontWeight: 'bold',
+  fontsize: 20,
+},
 delLoc: {
   flex: 0.2,
   justifyContent: 'center',
   alignItems: 'flex-end',
   margin: 10,
+},
+delWord:{
+  color: 'white',
+  fontWeight: 'bold',
 },
 access: {
   flex: 0.4,
@@ -274,6 +281,8 @@ chatInput: {
   borderColor: 'white',
   borderRadius: 5,
   alignItems: 'center',
+  fontWeight: 'bold',
+  fontSize: 30,
 },
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
