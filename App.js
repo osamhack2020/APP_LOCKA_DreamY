@@ -122,29 +122,43 @@ class PermissionScreen extends React.Component{
           </View>     
           <View style={{flex: 1.7}}/>
           <View style={styles.textArea}>
-            <Text style={styles.h1Text}>
+            <View style={styles.h1Text}>
+              <Text>
               어플기능
-            </Text>
-            <Text style={styles.h3Text}>
+              </Text>
+            </View>
+            <View style={styles.h3Text}>
+              <Text>
               LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
-            </Text>
+              </Text>
+            </View>
           </View>
           <View style={styles.textArea}>
-            <Text style={styles.h1Text}>
+            <View style={styles.h1Text}>
+              <Text>
               요구권한
-            </Text>
-            <Text style={styles.h2Text}>
-            * 내 동작 확인
-            </Text>
-            <Text style={styles.h3Text}>
-            앱을 제어하는 중에 알림을 받습니다.
-            </Text>
-            <Text style={styles.h2Text}>
-            * 컨텐츠 가져오기
-            </Text>
-            <Text style={styles.h3Text}>
-            사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
-            </Text>
+              </Text>
+            </View>
+            <View style={styles.h2Text}>
+              <Text>
+              * 내 동작 확인
+              </Text>
+            </View>
+            <View style={styles.h3Text}>
+              <Text>
+              앱을 제어하는 중에 알림을 받습니다.
+              </Text>
+            </View>
+            <View style={styles.h2Text}>
+              <Text>
+              * 컨텐츠 가져오기
+              </Text>
+            </View>
+            <View style={styles.h3Text}>
+              <Text>
+              사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+              </Text>
+            </View>
           </View>
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
