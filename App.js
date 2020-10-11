@@ -11,7 +11,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground} from 'react-native';
+  ImageBackground, StatusBar} from 'react-native';
 //import Block from './Block';
 
 // 개발용 화면
@@ -98,6 +98,7 @@ class PermissionScreen extends React.Component{
   render(){
     return(
       <View style={styles.newContainer}>
+        <StatusBar hidden="true" />
         <ImageBackground
           style={{width: '100%', height: '100%'}}
           source={require('./images/CommonB.png')}>
