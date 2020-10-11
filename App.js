@@ -323,21 +323,21 @@ textArea2:{
 h1Text:{
   color: 'white',
   fontWeight: 'bold',
-  fontSize: 15,
+  fontSize: 25,
   margin: 10,
-  alignItems: 'flex-start',
+  alignSelf: 'flex-start',
 },
 h2Text:{
   color: 'white',
   fontWeight: 'bold',
-  fontSize: 10,
+  fontSize: 20,
   margin: 5,
-  alignItems: 'flex-start',
+  alignSelf: 'flex-start',
 },
 h3Text:{
   color: 'white',
-  fontSize: 10,
-  alignItems: 'flex-start',
+  fontSize: 15,
+  alignSelf: 'flex-start',
 },
 });
 
