@@ -137,9 +137,9 @@ class PermissionScreen extends React.Component{
           </View>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            // 추후 인증번호 확인하고 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Permission')}>
-              <Text style={styles.accessWord}>권한 부여하기</Text>
+            // 추후 권한 요청 후 화면 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>}>
+              <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.6}}/>
@@ -257,13 +257,13 @@ accessBtn: {
   backgroundColor: 'white',
   width: '50%',
   height: 60,
-  borderRadius: 20,
+  borderRadius: 30,
   alignItems: 'center', 
   justifyContent: 'center',
 },
 accessWord:{
   fontWeight: 'bold',
-  fontsize: 15,
+  fontsize: 20,
 },
 delLoc: {
   flex: 0.2,
@@ -297,7 +297,7 @@ textArea:{
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  flexDirection: 'row',
+  flexDirection: 'column',
   //backgroundColor: 'rgba(255,255,255,0.5)',
   height: 80,
   width: '80%',
@@ -308,16 +308,19 @@ textArea:{
   //borderRadius: 10,
 },
 h1Text:{
+  color: 'white',
   fontWeight: 'bold',
   fontsize: 15,
   margin: 10,
 },
 h2Text:{
+  color: 'white',
   fontWeight: 'bold',
   fontsize: 10,
   margin: 5,
 },
 h3Text:{
+  color: 'white',
   fontsize: 10,
 },
 });
