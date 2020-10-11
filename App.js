@@ -186,12 +186,42 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            // 추후 권한 요청 후 화면 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            // 추후 권한 요청 후 LobbyScreen으로 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Lobby')}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.5}}/>
+        </ImageBackground>
+      </View>
+    );
+  }
+}
+
+// 권한 받은 후, 어플의 메인 화면
+class LobbyScreen extends React.Component {
+
+  // 상단의 toolbar 가리기
+  static navigationOptions = {
+    header: null ,
+  };
+
+  render(){
+    return(
+      <View style={styles.newContainer}>
+        <ImageBackground
+          style={{width: '100%', height: '100%'}}
+          source={require('./images/MainB.png')}>
+          <View style={styles.delLoc}>
+            <TouchableOpacity style={styles.delBtn} 
+            // 추후 삭제기능으로 연결해야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
+              <Text style={styles.delWord}>삭제</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 14, backgroundColor: 'white'}}/>
+          <View style={{flex: 1, backgroundColor: 'blue'}}/>
+          <View style={{flex: 10, backgroundColor: 'green'}}/>
         </ImageBackground>
       </View>
     );
@@ -221,22 +251,7 @@ class CalcScreen extends React.Component {
   }
 }
 
-// TBD
-class LockedScreen extends React.Component {
-  render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        <Button
-          title = 'Unlock'
-          onPress = {()=>this.props.navigation.navigate('Main')}
-        />
-      </View>
-    );
-  }
-}
+
 
 
 const AppNavigator = createStackNavigator(
@@ -246,6 +261,7 @@ const AppNavigator = createStackNavigator(
     Login: LoginScreen,
     Permission: PermissionScreen,
     Calc: CalcScreen,
+    Lobby: LobbyScreen,
   },
   {
     initialRouteName: 'Main',
