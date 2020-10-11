@@ -70,7 +70,7 @@ class LoginScreen extends React.Component{
             <TouchableOpacity style={styles.delBtn} 
             // 추후 삭제기능으로 연결해야함
             onPress = {()=>this.props.navigation.navigate('Main')}>
-              <Text>삭제</Text>
+              <Text style={{color: 'white'}}>삭제</Text>
             </TouchableOpacity>
           </View>  
           <View style={{flex: 2.4}}/>
@@ -83,7 +83,7 @@ class LoginScreen extends React.Component{
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
             onPress = {()=>this.props.navigation.navigate('Permission')}>
-              <Text style={{alignItems: 'center'}}>인증하기</Text>
+              <Text style={{alignItems: 'center', justifyContent: 'center',}}>인증하기</Text>
             </TouchableOpacity>
           </View> 
           <View style={{flex: 0.4}}/>
@@ -233,7 +233,6 @@ button: {
   margin: 10,
 },
 delBtn: {
-  color: 'white',
   backgroundColor: 'black',
   padding: 5,
   margin: 10,
