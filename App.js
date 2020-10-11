@@ -171,14 +171,14 @@ class CalcScreen extends React.Component {
   render() {
   return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.appNameText}>
+        <Text style={styles.contentsText}>
           LOCKA
         </Text>
-        <Text style={styles.appNameText}>군대에서 모을 수 있는 돈?</Text>
+        <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
         {
           this.state.clicked
-          ? <Button title = "확인" onPress = {this.salarySum = NativeModules.calcModule.calcSalary(0,400000)} />
-          :<Text style={styles.appNameText}>this.salarySum</Text>
+          ? <Button title = "확인" onPress = {() => NativeModules.calcModule.calcSalary(0,400000)}/>
+          :<Text style={styles.contentsText}>800만</Text>
         }
       </View>
     );
@@ -226,6 +226,11 @@ appNameText: {
   fontWeight: 'bold',
   color: 'navy'
 },
+contentsText: {
+  fontSize: 20,
+  color: 'navy'
+},
+
 appNameArea: {
   flex: 2,
   justifyContent: 'flex-start',
