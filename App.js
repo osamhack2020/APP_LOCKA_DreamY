@@ -78,15 +78,15 @@ class LoginScreen extends React.Component{
             <TextInput style={styles.chatInput} 
             defaultValue='인증번호를 입력해주세요'/>
           </View>
-          <View style={{flex: 0.6}}/>
+          <View style={{flex: 0.4}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
             onPress = {()=>this.props.navigation.navigate('Permission')}>
-              <Text style={{alignItems: 'center', justifyContent: 'center',}}>인증하기</Text>
+              <Text>인증하기</Text>
             </TouchableOpacity>
           </View> 
-          <View style={{flex: 0.4}}/>
+          <View style={{flex: 0.6}}/>
         </ImageBackground>
       </View>  
     );
@@ -226,6 +226,7 @@ codeSec: {
   flex: 0.5,
   justifyContent: 'center',
   alignItems: 'center',
+  flexDirection: 'row',
 },
 button: {
   backgroundColor: 'gray',
@@ -243,12 +244,14 @@ delBtn: {
 accessBtn: {
   backgroundColor: 'white',
   width: '50%',
-  height: 40,
-  padding: 10,
+  height: '10%',
+  //padding: 10,
   margin: 10,
-  borderWidth: 3,
-  borderColor: 'black',
+  //borderWidth: 3,
+  //borderColor: 'black',
   borderRadius: 20,
+  alignItems: 'center', 
+  justifyContent: 'center',
 },
 delLoc: {
   flex: 0.2,
