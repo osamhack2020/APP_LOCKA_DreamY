@@ -157,7 +157,7 @@ class LockedScreen extends React.Component {
     );
   }
 }
-
+/*
 NativeModules.calcModule.calcSalary(
   0,
   400000,
@@ -173,30 +173,27 @@ NativeModules.calcModule.calcSalary(
     output,
   })
 });
-
+*/
 class CalcScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {clicked: ture};
+    this.state = { clicked: true };
   }
 
   _checkedAnswer = () => this.setState({clicked:false});
 
   render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.contentsText}>
-          LOCKA
-        </Text>
-        <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
-        {
-          this.state.clicked
-          ? <Button title = "확인" onPress = {this._checkedAnswer}/>
-          :<Text style={styles.contentsText}>sumSalary</Text>
-        }
-      </View>
-    );
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
+          {
+            this.state.clicked
+            ? <Button title = "확인" onPress = {this._checkedAnswer} />
+            : <Text style={styles.contentsText}>sumSalary</Text>
+          }
+        </View>
+      );
   }
 }
 
