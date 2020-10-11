@@ -14,6 +14,41 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   ImageBackground} from 'react-native';
 //import Block from './Block';
 
+
+calcSalary = (selectMilitary, Savings) => {
+  //월급계산하는 함수
+  //selectMilitary: 0:육군 1:해군 2:공군 3:해병대
+  //Savings: 한달에 넣는 적금
+
+  let sumOfMoney = 0;
+  let savingMoney = 0;
+  let privateSalary = 408100;
+  let firstprivateSalary = 441700;
+  let corporalSalary = 488200;
+  let sergeantSalary = 540900;
+  let text1 = '총';
+  if (selectMilitary==0 || selectMilitary==3){
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
+    savingMoney = (Savings*18) * ((0.05*19)/24);
+    sumOfMoney+=savingMoney;
+  }
+  else if(selectMilitary == 1){
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
+    savingMoney = (Savings*20) * ((0.05*21)/24);
+    sumOfMoney+=savingMoney;
+}
+else{
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
+    savingMoney = (Savings*21) * ((0.05*22)/24);
+    sumOfMoney+=savingMoney;
+}
+  sumOfMoney=String(sumOfMoney);
+  var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
+
+
+  return result
+}
+
 // 개발용 화면
 class HomeScreen extends React.Component {
   /*
@@ -41,9 +76,9 @@ class HomeScreen extends React.Component {
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
             <Button
-              title = 'Lock'
-              onPress = {()=>this.props.navigation.navigate('Locked')}
-              onPress = {()=>this.props.navigation.navigate('Locked')}
+              title = '전역/월급계산'
+              onPress = {()=>this.props.navigation.navigate('Calc')}
+              onPress = {()=>this.props.navigation.navigate('Calc')}
             />
             <Button
               title = 'Login'
@@ -165,6 +200,29 @@ class PermissionScreen extends React.Component{
   }
 }
 
+
+class CalcScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { clicked: true };
+  }
+
+  _checkedAnswer = () => this.setState({clicked:false});
+
+  render() {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
+          {
+            this.state.clicked
+            ? <Button title = "확인" onPress = {this._checkedAnswer} />
+            : <Text style={styles.contentsText}>{calcSalary(0,400000)}</Text>
+          }
+        </View>
+      );
+  }
+}
+
 // TBD
 class LockedScreen extends React.Component {
   render() {
@@ -189,6 +247,7 @@ const AppNavigator = createStackNavigator(
     Locked: LockedScreen,
     Login: LoginScreen,
     Permission: PermissionScreen,
+    Calc: CalcScreen,
   },
   {
     initialRouteName: 'Main',
@@ -216,6 +275,10 @@ markArea: {
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: 'white',
+},
+contentsText: {
+  fontSize: 20,
+  color: 'navy'
 },
 appNameText: {
   fontSize: 45,
@@ -342,156 +405,3 @@ h3Text:{
 },
 });
 
-/*
-
-
-export default class App extends React.Component {
-  
-  constructor(props){
-    super(props);
-    this.state = { clicked : true };
-  }
-
-  _checkedAnswer = () => this.setState({clicked: false});
- 
-  render() {
-    return (
-  
-      <View style={styles.container}>
-        <View style={styles.settingView}>
-          <TouchableOpacity>
-            <Image source={require('./images/setting.png')}/>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.markArea}>
-          <Image source={require('./images/ROKAmark.png')}/>
-        </View>
-        <View style={styles.appNameArea}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        </View>
-        <View style={styles.buttonArea}>
-          {
-            this.state.clicked
-              ? <Button title="LOCK" onPress={this._checkedAnswer}/>
-              : <Text style={styles.appNameText}>LOCKED</Text>
-          }
-        </View>
-      </View>
-    );
-  }
-}
-*/
-
-
-
-/*
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default App;
-
-*/
