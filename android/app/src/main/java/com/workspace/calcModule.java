@@ -3,6 +3,13 @@ package com.workspace;
 import android.content.Intent;
 import android.content.Context;
 
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Promise;
+import com.facebook.react.uimanager.PixelUtil;
+import com.facebook.react.uimanager.IllegalViewOperationException;
+import com.facebook.react.bridge.Callback;
+
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 //import com.facebook.react.bridge.ReactContext;
@@ -29,6 +36,8 @@ public class calcModule extends ReactContextBaseJavaModule {
     public int corporalSalary = 488200;
     public int sergeantSalary = 540900;
 
+    private final int[] mMeasureBuffer = new int[1];
+
     public calcModule(@Nonnull ReactApplicationContext reactContext) {
       super(reactContext);
       this.reactContext = reactContext;
@@ -41,29 +50,37 @@ public class calcModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-     public int calcSalary(int selectMilitary, int Savings) {
+     public void calcSalary(int selectMilitary, int Savings, Callback errorCallback, Callback successCallback) {
         /*
         육해공군별로 다르게 짜야 함. 
         0:육군 1:해군 2:공군 3:해병대
         */
-        int savingMoney = 0;
-        int salarySum = 0;
-        if(selectMilitary == 0 || selectMilitary == 3){
-            salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
-            savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
-            salarySum+=savingMoney;
+        try{
+          //calcSalary(selectMilitary, Savings);
+          //WritableMap map = Arguments.createMap();
+          int savingMoney = 0;
+          int salarySum = 0;
+          if(selectMilitary == 0 || selectMilitary == 3){
+              salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
+              savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
+              salarySum+=savingMoney;
+          }
+          else if(selectMilitary == 1){
+              salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
+              savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
+              salarySum+=savingMoney;
+          }
+          else{
+              salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*8);
+              savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
+              salarySum+=savingMoney;
+          }
+          successCallback.invoke(Integer.toString(salarySum));
         }
-        else if(selectMilitary == 1){
-            salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
-            savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
-            salarySum+=savingMoney;
+        catch (IllegalViewOperationException e) {
+          errorCallback.invoke(e.getMessage());
         }
-        else{
-            salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*8);
-            savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
-            salarySum+=savingMoney;
-        }
-         return salarySum;
+
      }
 
      @ReactMethod

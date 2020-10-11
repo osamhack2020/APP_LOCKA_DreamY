@@ -158,13 +158,29 @@ class LockedScreen extends React.Component {
   }
 }
 
+NativeModules.calcModule.calcSalary(
+  0,
+  400000,
+  (msg) => {
+    //errorCallback
+  this.setState({
+    output: msg,
+  })
+},
+(output) => {
+  //successCallback
+  this.setState({
+    output,
+  })
+});
+
 class CalcScreen extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {clicked: ture};
-    var salarySum = NativeModules.calcModule.calcSalary(0,400000)
   }
+
   _checkedAnswer = () => this.setState({clicked:false});
 
   render() {
@@ -177,7 +193,7 @@ class CalcScreen extends React.Component {
         {
           this.state.clicked
           ? <Button title = "확인" onPress = {this._checkedAnswer}/>
-          :<Text style={styles.contentsText}>salarySum</Text>
+          :<Text style={styles.contentsText}>sumSalary</Text>
         }
       </View>
     );
