@@ -4,7 +4,6 @@
  *
  * @format
  * @flow strict-local
- * 
  */
 
 import React from 'react';
@@ -12,10 +11,15 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground, Alert} from 'react-native';
+  ImageBackground} from 'react-native';
+//import Block from './Block';
 
 
 calcSalary = (selectMilitary, Savings) => {
+  //월급계산하는 함수
+  //selectMilitary: 0:육군 1:해군 2:공군 3:해병대
+  //Savings: 한달에 넣는 적금
+
   let sumOfMoney = 0;
   let savingMoney = 0;
   let privateSalary = 408100;
@@ -25,16 +29,17 @@ calcSalary = (selectMilitary, Savings) => {
   if (selectMilitary==0 || selectMilitary==3){
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
     savingMoney = (Savings*18) * ((0.05*19)/24);
+    sumOfMoney+=savingMoney;
   }
   else if(selectMilitary == 1){
-    salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
     savingMoney = (Savings*20) * ((0.05*21)/24);
-    salarySum+=savingMoney;
+    sumOfMoney+=savingMoney;
 }
 else{
-    salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
     savingMoney = (Savings*21) * ((0.05*22)/24);
-    salarySum+=savingMoney;
+    sumOfMoney+=savingMoney;
 }
   return sumOfMoney
 }
@@ -66,7 +71,7 @@ class HomeScreen extends React.Component {
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Lock Army</Text>
             <Button
-              title = '계산기'
+              title = '전역/월급계산'
               onPress = {()=>this.props.navigation.navigate('Calc')}
               onPress = {()=>this.props.navigation.navigate('Calc')}
             />
@@ -190,58 +195,8 @@ class PermissionScreen extends React.Component{
   }
 }
 
-// TBD
-class LockedScreen extends React.Component {
-  render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.appNameText}>
-          LOCKA
-        </Text>
-        <Button
-          title = 'Unlock'
-          onPress = {()=>this.props.navigation.navigate('Main')}
-        />
-        <Text style={styles.appNameText}>
-          LOCKA
-        </Text>
-
-      </View>
-    );
-  }
-}
-/*
-NativeModules.calcModule.calcSalary(
-  0,
-  400000,
-  (msg) => {
-    //errorCallback
-  this.setState({
-    output: msg,
-  })
-},
-(output) => {
-  //successCallback
-  this.setState({
-    output,
-  })
-});*/
-
-class sumSalaryComponent extends React.Component {
-  sumSalary = NativeModules.calcModule.calcSalary().output;
-  state = { isShowingText: true };
-  
-  render() {
-    return (
-      <View style={{alignItems: 'center'}}>
-        <Text>Hello {this.props.name}!</Text>
-      </View>
-    );
-  }
-}
 
 class CalcScreen extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { clicked: true };
@@ -260,6 +215,23 @@ class CalcScreen extends React.Component {
           }
         </View>
       );
+  }
+}
+
+// TBD
+class LockedScreen extends React.Component {
+  render() {
+  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.appNameText}>
+            LOCKA
+          </Text>
+        <Button
+          title = 'Unlock'
+          onPress = {()=>this.props.navigation.navigate('Main')}
+        />
+      </View>
+    );
   }
 }
 
@@ -299,16 +271,15 @@ markArea: {
   alignItems: 'center',
   backgroundColor: 'white',
 },
+contentsText: {
+  fontSize: 20,
+  color: 'navy'
+},
 appNameText: {
   fontSize: 45,
   fontWeight: 'bold',
   color: 'navy'
 },
-contentsText: {
-  fontSize: 20,
-  color: 'navy'
-},
-
 appNameArea: {
   flex: 2,
   justifyContent: 'flex-start',
@@ -428,3 +399,4 @@ h3Text:{
   alignSelf: 'flex-start',
 },
 });
+
