@@ -11,7 +11,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground, StatusBar} from 'react-native';
+  ImageBackground} from 'react-native';
 //import Block from './Block';
 
 // 개발용 화면
@@ -95,10 +95,14 @@ class LoginScreen extends React.Component{
 
 // 인증번호 입력시 등장. 권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
+
+  static navigationOptions = {
+    header: null ,
+  };
+  
   render(){
     return(
       <View style={styles.newContainer}>
-        <StatusBar hidden={true} />
         <ImageBackground
           style={{width: '100%', height: '100%'}}
           source={require('./images/CommonB.png')}>
