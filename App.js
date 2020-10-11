@@ -279,7 +279,7 @@ accessBtn: {
 },
 accessWord:{
   fontWeight: 'bold',
-  fontsize: 20,
+  fontSize: 20,
 },
 delLoc: {
   flex: 0.2,
@@ -316,7 +316,6 @@ textArea:{
   flexDirection: 'row',
 },
 textArea2:{
-  flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
@@ -324,20 +323,20 @@ textArea2:{
 h1Text:{
   color: 'white',
   fontWeight: 'bold',
-  fontsize: 15,
+  fontSize: 15,
   margin: 10,
   alignItems: 'flex-start',
 },
 h2Text:{
   color: 'white',
   fontWeight: 'bold',
-  fontsize: 10,
+  fontSize: 10,
   margin: 5,
   alignItems: 'flex-start',
 },
 h3Text:{
   color: 'white',
-  fontsize: 10,
+  fontSize: 10,
   alignItems: 'flex-start',
 },
 });
