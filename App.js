@@ -80,7 +80,9 @@ class LoginScreen extends React.Component{
           </View>
           <View style={{flex: 0.6}}/>
           <View style={styles.codeSec}>
-            <TouchableOpacity style={styles.accessBtn} onPress = {()=>this.props.navigation.navigate('Main')}>
+            <TouchableOpacity style={styles.accessBtn} 
+            // 추후 인증번호 확인하고 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Permission')}>
               <Text style={{alignItems: 'center'}}>인증하기</Text>
             </TouchableOpacity>
           </View> 
