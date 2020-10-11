@@ -1340,6 +1340,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable images_commonb
 drawable images_loginb
+drawable images_mainb
 drawable images_permissionb
 drawable images_rokamark
 drawable images_setting
