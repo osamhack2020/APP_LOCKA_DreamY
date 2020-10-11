@@ -60,6 +60,12 @@ class HomeScreen extends React.Component {
 
 // 어플 처음 실행시 등장. 인증번호 입력 화면
 class LoginScreen extends React.Component{
+
+  // 상단의 toolbar 가리기
+  static navigationOptions = {
+    header: null ,
+  };
+
   render(){
     return(
       <View style={styles.newContainer}>
@@ -96,10 +102,11 @@ class LoginScreen extends React.Component{
 // 인증번호 입력시 등장. 권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
 
+  // 상단의 toolbar 가리기
   static navigationOptions = {
     header: null ,
   };
-  
+
   render(){
     return(
       <View style={styles.newContainer}>
