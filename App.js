@@ -109,12 +109,11 @@ class PermissionScreen extends React.Component{
             </TouchableOpacity>
           </View>     
           <View style={{flex: 1.5}}/>
-
           <View style={styles.textArea}>
             <Text style={styles.h1Text}>
               어플기능
             </Text>
-            <Text sytle={styles.h3Text}>
+            <Text style={styles.h3Text}>
               LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
             </Text>
           </View>
@@ -122,16 +121,16 @@ class PermissionScreen extends React.Component{
             <Text style={styles.h1Text}>
               요구권한
             </Text>
-            <Text sytle={styles.h2Text}>
+            <Text style={styles.h2Text}>
             * 내 동작 확인
             </Text>
-            <Text sytle={styles.h3Text}>
+            <Text style={styles.h3Text}>
             앱을 제어하는 중에 알림을 받습니다.
             </Text>
-            <Text sytle={styles.h2Text}>
+            <Text style={styles.h2Text}>
             * 컨텐츠 가져오기
             </Text>
-            <Text sytle={styles.h3Text}>
+            <Text style={styles.h3Text}>
             사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
             </Text>
           </View>
@@ -298,14 +297,10 @@ textArea:{
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  //backgroundColor: 'rgba(255,255,255,0.5)',
   height: 80,
   width: '80%',
   padding: 10,
   margin: 10,
-  //borderWidth: 1,
-  //borderColor: 'white',
-  //borderRadius: 10,
 },
 h1Text:{
   color: 'white',
