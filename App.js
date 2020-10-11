@@ -219,9 +219,9 @@ class LobbyScreen extends React.Component {
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flex: 14, backgroundColor: 'white'}}/>
-          <View style={{flex: 1, backgroundColor: 'blue'}}/>
-          <View style={{flex: 10, backgroundColor: 'green'}}/>
+          <View style={{flex: 14, backgroundColor: 'rgba(255,0,0,0.3)'}}/>
+          <View style={{flex: 1, backgroundColor: 'rgba(0,255,0,0.3)'}}/>
+          <View style={{flex: 10, backgroundColor: 'rgba(0,0,255,0.3)'}}/>
         </ImageBackground>
       </View>
     );
