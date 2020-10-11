@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.app.AlertDialog;
 import android.os.PersistableBundle;
 import java.util.List;
+import java.lang.Math;
 
 import javax.annotation.Nonnull;
 
@@ -48,17 +49,17 @@ public class calcModule extends ReactContextBaseJavaModule {
         int salarySum = 0;
         if(selectMilitary == 0 || selectMilitary == 3){
             salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
-            savingMoney = (((((savingMoney*0.055)/12)*18)*19)/2);
+            savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
             salarySum+=savingMoney;
         }
-        else if(selectMilitary = 1){
+        else if(selectMilitary == 1){
             salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
-            savingMoney = (((((savingMoney*0.055)/12)*18)*19)/2);
+            savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
             salarySum+=savingMoney;
         }
         else{
             salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*8);
-            savingMoney = (((((savingMoney*0.055)/12)*18)*19)/2);
+            savingMoney = (int) Math.round(((((savingMoney*0.055)/12)*18)*19)/2);
             salarySum+=savingMoney;
         }
          return salarySum;
