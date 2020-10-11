@@ -427,6 +427,7 @@ curstatus:{
   height: 20,
   backgroundColor: 'white',
   borderColor: 'red',
+  borderWidth: 1,
   alignItems: 'center',
 },
 });
