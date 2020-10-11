@@ -32,7 +32,7 @@
 Due date : 11/12(Thursday)
 
 ![image](https://user-images.githubusercontent.com/18081105/94388617-8eecdd80-0188-11eb-9f93-b1c2469cd182.png)
-![image](https://user-images.githubusercontent.com/18081105/94389136-fe170180-0189-11eb-9df6-d4a3b0b0d65b.png)
+![image](https://user-images.githubusercontent.com/67851701/95667770-7d063400-0ba5-11eb-876a-0695c9a91e2d.png)
 ### 💡 Project design
 
 -   **앱 실행차단기능**
