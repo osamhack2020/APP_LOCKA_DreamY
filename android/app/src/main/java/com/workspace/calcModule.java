@@ -20,6 +20,7 @@ import java.lang.Math;
 import javax.annotation.Nonnull;
 
 public class calcModule extends ReactContextBaseJavaModule {
+    //계산기능 추가. 전역일계산, 
     public static final String REACT_CLASS = "calcModule";
     private static ReactApplicationContext reactContext;
 
@@ -66,7 +67,7 @@ public class calcModule extends ReactContextBaseJavaModule {
      }
 
      @ReactMethod
-     public void stopService() {
+     public void calcVacation() {
 
      }
 
