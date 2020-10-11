@@ -163,9 +163,8 @@ class CalcScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {clicked: ture};
-    this.salarySum = 0;
+    var salarySum = NativeModules.calcModule.calcSalary(0,400000)
   }
-
   _checkedAnswer = () => this.setState({clicked:false});
 
   render() {
@@ -177,8 +176,8 @@ class CalcScreen extends React.Component {
         <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
         {
           this.state.clicked
-          ? <Button title = "확인" onPress = {() => NativeModules.calcModule.calcSalary(0,400000)}/>
-          :<Text style={styles.contentsText}>800만</Text>
+          ? <Button title = "확인" onPress = {this._checkedAnswer}/>
+          :<Text style={styles.contentsText}>salarySum</Text>
         }
       </View>
     );
