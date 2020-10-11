@@ -244,6 +244,7 @@ delBtn: {
 accessBtn: {
   backgroundColor: 'white',
   width: '50%',
+  height: 30,
   //padding: 10,
   margin: 10,
   //borderWidth: 3,
@@ -282,7 +283,7 @@ chatInput: {
   borderRadius: 5,
   alignItems: 'center',
   fontWeight: 'bold',
-  fontSize: 30,
+  fontSize: 20,
 },
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
