@@ -138,7 +138,7 @@ class PermissionScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 권한 요청 후 화면 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>}>
+            onPress = {()=>this.props.navigation.navigate('Main')}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
