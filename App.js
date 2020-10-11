@@ -219,9 +219,15 @@ class LobbyScreen extends React.Component {
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flex: 3, backgroundColor: 'rgba(255,0,0,0.3)'}}/>
-          <View style={{flex: 0.2, backgroundColor: 'rgba(0,255,0,0.3)'}}/>
-          <View style={{flex: 2, backgroundColor: 'rgba(0,0,255,0.3)'}}/>
+          <View 
+          // 추후 기능 추가 시, flex의 값의 합이 3이 되도록 유지 바람
+          style={{flex: 3}}/>
+          <View style={styles.curstatus}>
+            <Text>
+              현재 상태가 게시됩니다.
+            </Text>
+          </View>
+          <View style={{flex: 2, backgroundColor: 'rgba(0,0,255,0.1)'}}/>
         </ImageBackground>
       </View>
     );
@@ -415,6 +421,12 @@ h3Text:{
   fontSize: 12,
   marginBottom: 5,
   alignSelf: 'flex-start',
+},
+curstatus:{
+  width: '70%',
+  height: 20,
+  backgroundColor: 'white',
+  borderColor: 'red'
 },
 });
 
