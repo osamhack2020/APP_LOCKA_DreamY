@@ -331,7 +331,7 @@ h2Text:{
   color: 'white',
   fontWeight: 'bold',
   fontSize: 14,
-  marginBottom: 5,
+  marginBottom: 2,
   alignSelf: 'flex-start',
 },
 h3Text:{
