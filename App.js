@@ -120,7 +120,7 @@ class PermissionScreen extends React.Component{
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>     
-          <View style={{flex: 1.5}}/>
+          <View style={{flex: 1.7}}/>
           <View style={styles.textArea}>
             <Text style={styles.h1Text}>
               어플기능
@@ -146,6 +146,7 @@ class PermissionScreen extends React.Component{
             사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
             </Text>
           </View>
+          <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 권한 요청 후 화면 넘어가야함
@@ -153,7 +154,7 @@ class PermissionScreen extends React.Component{
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flex: 0.6}}/>
+          <View style={{flex: 0.5}}/>
         </ImageBackground>
       </View>
     );
@@ -310,8 +311,7 @@ textArea:{
   alignItems: 'center',
   flexDirection: 'column',
   height: 80,
-  width: '80%',
-  padding: 10,
+  width: '70%',
   margin: 10,
 },
 h1Text:{
@@ -319,16 +319,19 @@ h1Text:{
   fontWeight: 'bold',
   fontsize: 15,
   margin: 10,
+  alignItems: 'flex-start',
 },
 h2Text:{
   color: 'white',
   fontWeight: 'bold',
   fontsize: 10,
   margin: 5,
+  alignItems: 'flex-start',
 },
 h3Text:{
   color: 'white',
   fontsize: 10,
+  alignItems: 'flex-start',
 },
 });
 
