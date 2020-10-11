@@ -29,10 +29,10 @@
  -  기타 사용한 라이브러리, components
 
 ### 🗓Develop Schedule
-Due date : 11/12(Thursday)
+Due date : 10/31(Saturday)
 
 ![image](https://user-images.githubusercontent.com/18081105/94388617-8eecdd80-0188-11eb-9f93-b1c2469cd182.png)
-![image](https://user-images.githubusercontent.com/18081105/94389136-fe170180-0189-11eb-9df6-d4a3b0b0d65b.png)
+![day](https://user-images.githubusercontent.com/67851701/95667787-b50d7700-0ba5-11eb-93ea-83a19fa00a8e.PNG)
 ### 💡 Project design
 
 -   **앱 실행차단기능**
