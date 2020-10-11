@@ -26,6 +26,7 @@ calcSalary = (selectMilitary, Savings) => {
   let firstprivateSalary = 441700;
   let corporalSalary = 488200;
   let sergeantSalary = 540900;
+  let text1 = '총';
   if (selectMilitary==0 || selectMilitary==3){
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
     savingMoney = (Savings*18) * ((0.05*19)/24);
@@ -41,7 +42,11 @@ else{
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
 }
-  return sumOfMoney
+  sumOfMoney=String(sumOfMoney);
+  var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
+
+
+  return result
 }
 
 // 개발용 화면
