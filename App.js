@@ -136,22 +136,18 @@ class PermissionScreen extends React.Component{
               <Text style={styles.h1Text}>
                 요구권한
               </Text>
-              <View style={styles.textArea3}>
-                <Text style={styles.h2Text}>
-                * 내 동작 확인
-                </Text>
-                <Text style={styles.h3Text}>
-                앱을 제어하는 중에 알림을 받습니다.
-                </Text>
-              </View>  
-              <View style={styles.textArea3}>
-                <Text style={styles.h2Text}>
-                * 컨텐츠 가져오기
-                </Text>
-                <Text style={styles.h3Text}>
-                사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
-                </Text>
-              </View>  
+              <Text style={styles.h2Text}>
+              * 내 동작 확인
+              </Text>
+              <Text style={styles.h3Text}>
+              앱을 제어하는 중에 알림을 받습니다.
+              </Text>
+              <Text style={styles.h2Text}>
+              * 컨텐츠 가져오기
+              </Text>
+              <Text style={styles.h3Text}>
+              사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+              </Text>
             </View>
           </View>
           <View style={{flex: 0.5}}/>
@@ -324,11 +320,6 @@ textArea2:{
   alignItems: 'center',
   flexDirection: 'column',
 },
-textArea3:{
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexDirection: 'column',
-},
 h1Text:{
   color: 'white',
   fontWeight: 'bold',
@@ -347,6 +338,7 @@ h3Text:{
   color: 'white',
   fontSize: 12,
   alignSelf: 'flex-start',
+  marginBottom: 5,
 },
 });
 
