@@ -102,35 +102,47 @@ class PermissionScreen extends React.Component{
           style={{width: '100%', height: '100%'}}
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
-            <Button
-              title = '삭제'
-              // 추후 삭제 기능으로 연결해야함
-              onPress = {()=>this.props.navigation.navigate('Main')}  
-            />
-          </View>    
+            <TouchableOpacity style={styles.delBtn} 
+            // 추후 삭제기능으로 연결해야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
+              <Text style={styles.delWord}>삭제</Text>
+            </TouchableOpacity>
+          </View>     
           <View style={{flex: 1.5}}/>
+
           <View style={styles.textArea}>
-            <Text>
+            <Text style={styles.h1Text}>
+              어플기능
+            </Text>
+            <Text sytle={styles.h3Text}>
               LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
             </Text>
           </View>
-          <View style={{flex: 0.3}}/>
           <View style={styles.textArea}>
-            <Text>
-              * 내 동작 확인
-                앱을 제어하는 중에 알림을 받습니다.
-              * 컨텐츠 가져오기
-                사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+            <Text style={styles.h1Text}>
+              요구권한
+            </Text>
+            <Text sytle={styles.h2Text}>
+            * 내 동작 확인
+            </Text>
+            <Text sytle={styles.h3Text}>
+            앱을 제어하는 중에 알림을 받습니다.
+            </Text>
+            <Text sytle={styles.h2Text}>
+            * 컨텐츠 가져오기
+            </Text>
+            <Text sytle={styles.h3Text}>
+            사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
             </Text>
           </View>
-          <View>
-            <Button
-              title = '권한 부여하기'
-              // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
-              onPress = {()=>this.props.navigation.navigate('Main')}  
-            />
-          </View> 
-          <View style={{flex: 0.5}}/>
+          <View style={styles.codeSec}>
+            <TouchableOpacity style={styles.accessBtn} 
+            // 추후 인증번호 확인하고 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Permission')}>
+              <Text style={styles.accessWord}>권한 부여하기</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 0.6}}/>
         </ImageBackground>
       </View>
     );
@@ -245,10 +257,6 @@ accessBtn: {
   backgroundColor: 'white',
   width: '50%',
   height: 60,
-  //padding: 10,
-  //margin: 10,
-  //borderWidth: 3,
-  //borderColor: 'black',
   borderRadius: 20,
   alignItems: 'center', 
   justifyContent: 'center',
@@ -286,15 +294,31 @@ chatInput: {
   fontSize: 15,
 },
 textArea:{
-  backgroundColor: 'rgba(255,255,255,0.5)',
-  height: 80,
-  width: '60%',
-  padding: 10,
+  flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  borderWidth: 1,
-  borderColor: 'white',
-  borderRadius: 10,
+  flexDirection: 'row',
+  //backgroundColor: 'rgba(255,255,255,0.5)',
+  height: 80,
+  width: '80%',
+  padding: 10,
+  margin: 10,
+  //borderWidth: 1,
+  //borderColor: 'white',
+  //borderRadius: 10,
+},
+h1Text:{
+  fontWeight: 'bold',
+  fontsize: 15,
+  margin: 10,
+},
+h2Text:{
+  fontWeight: 'bold',
+  fontsize: 10,
+  margin: 5,
+},
+h3Text:{
+  fontsize: 10,
 },
 });
 
