@@ -85,6 +85,12 @@ class HomeScreen extends React.Component {
 
 // 어플 처음 실행시 등장. 인증번호 입력 화면
 class LoginScreen extends React.Component{
+
+  // 상단의 toolbar 가리기
+  static navigationOptions = {
+    header: null ,
+  };
+
   render(){
     return(
       <View style={styles.newContainer}>
@@ -95,7 +101,7 @@ class LoginScreen extends React.Component{
             <TouchableOpacity style={styles.delBtn} 
             // 추후 삭제기능으로 연결해야함
             onPress = {()=>this.props.navigation.navigate('Main')}>
-              <Text style={{color: 'white'}}>삭제</Text>
+              <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>  
           <View style={{flex: 2.4}}/>
@@ -103,15 +109,15 @@ class LoginScreen extends React.Component{
             <TextInput style={styles.chatInput} 
             defaultValue='인증번호를 입력해주세요'/>
           </View>
-          <View style={{flex: 0.6}}/>
+          <View style={{flex: 0.4}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
             onPress = {()=>this.props.navigation.navigate('Permission')}>
-              <Text style={{alignItems: 'center', justifyContent: 'center',}}>인증하기</Text>
+              <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
-          <View style={{flex: 0.4}}/>
+          <View style={{flex: 0.6}}/>
         </ImageBackground>
       </View>  
     );
@@ -120,6 +126,12 @@ class LoginScreen extends React.Component{
 
 // 인증번호 입력시 등장. 권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
+
+  // 상단의 toolbar 가리기
+  static navigationOptions = {
+    header: null ,
+  };
+
   render(){
     return(
       <View style={styles.newContainer}>
@@ -127,34 +139,50 @@ class PermissionScreen extends React.Component{
           style={{width: '100%', height: '100%'}}
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
-            <Button
-              title = '삭제'
-              // 추후 삭제 기능으로 연결해야함
-              onPress = {()=>this.props.navigation.navigate('Main')}  
-            />
-          </View>    
-          <View style={{flex: 1.5}}/>
+            <TouchableOpacity style={styles.delBtn} 
+            // 추후 삭제기능으로 연결해야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
+              <Text style={styles.delWord}>삭제</Text>
+            </TouchableOpacity>
+          </View>     
+          <View style={{flex: 1.7}}/>
           <View style={styles.textArea}>
-            <Text>
-              LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
-            </Text>
+            <View style={styles.textArea2}>
+              <Text style={styles.h1Text}>
+                어플기능
+              </Text>
+              <Text style={styles.h3Text}>
+                LOCKA 어플리케이션은 핸드폰 비대면 반납을 지원합니다.
+              </Text>
+            </View>
           </View>
-          <View style={{flex: 0.3}}/>
           <View style={styles.textArea}>
-            <Text>
+            <View style={styles.textArea2}>
+              <Text style={styles.h1Text}>
+                요구권한
+              </Text>
+              <Text style={styles.h2Text}>
               * 내 동작 확인
-                앱을 제어하는 중에 알림을 받습니다.
+              </Text>
+              <Text style={styles.h3Text}>
+              앱을 제어하는 중에 알림을 받습니다.
+              </Text>
+              <Text style={styles.h2Text}>
               * 컨텐츠 가져오기
-                사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
-            </Text>
+              </Text>
+              <Text style={styles.h3Text}>
+              사용 중인 화면에서 원하는 컨텐츠를 가져올 수 있습니다.
+              </Text>
+            </View>
           </View>
-          <View>
-            <Button
-              title = '권한 부여하기'
-              // 추후 비밀번호 인증 후 권한설명 페이지로 넘어가게 해야함
-              onPress = {()=>this.props.navigation.navigate('Main')}  
-            />
-          </View> 
+          <View style={{flex: 0.5}}/>
+          <View style={styles.codeSec}>
+            <TouchableOpacity style={styles.accessBtn} 
+            // 추후 권한 요청 후 화면 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
+              <Text style={styles.accessWord}>권한 요청하기</Text>
+            </TouchableOpacity>
+          </View>
           <View style={{flex: 0.5}}/>
         </ImageBackground>
       </View>
@@ -313,6 +341,7 @@ codeSec: {
   flex: 0.5,
   justifyContent: 'center',
   alignItems: 'center',
+  flexDirection: 'row',
 },
 button: {
   backgroundColor: 'gray',
@@ -330,18 +359,24 @@ delBtn: {
 accessBtn: {
   backgroundColor: 'white',
   width: '50%',
-  height: 40,
-  padding: 10,
-  margin: 10,
-  borderWidth: 3,
-  borderColor: 'black',
-  borderRadius: 20,
+  height: 60,
+  borderRadius: 30,
+  alignItems: 'center', 
+  justifyContent: 'center',
+},
+accessWord:{
+  fontWeight: 'bold',
+  fontSize: 20,
 },
 delLoc: {
   flex: 0.2,
   justifyContent: 'center',
   alignItems: 'flex-end',
   margin: 10,
+},
+delWord:{
+  color: 'white',
+  fontWeight: 'bold',
 },
 access: {
   flex: 0.4,
@@ -358,16 +393,38 @@ chatInput: {
   borderColor: 'white',
   borderRadius: 5,
   alignItems: 'center',
+  fontWeight: 'bold',
+  fontSize: 15,
 },
 textArea:{
-  backgroundColor: 'rgba(255,255,255,0.5)',
-  height: 80,
-  width: '60%',
-  padding: 10,
+  flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  borderWidth: 1,
-  borderColor: 'white',
-  borderRadius: 10,
+  flexDirection: 'row',
+},
+textArea2:{
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+},
+h1Text:{
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 20,
+  marginBottom: 10,
+  alignSelf: 'flex-start',
+},
+h2Text:{
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 14,
+  marginBottom: 2,
+  alignSelf: 'flex-start',
+},
+h3Text:{
+  color: 'white',
+  fontSize: 12,
+  marginBottom: 5,
+  alignSelf: 'flex-start',
 },
 });
