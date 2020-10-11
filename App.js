@@ -14,6 +14,7 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   ImageBackground} from 'react-native';
 //import Block from './Block';
 
+// 개발용 화면
 class HomeScreen extends React.Component {
   /*
   여기에 함수를 추가해서 버튼을 누르면 권한 허용에 대해서 permission을 받아와 다음 화면으로 넘어가도록 설정해야 함.
@@ -57,63 +58,51 @@ class HomeScreen extends React.Component {
   }
 }
 
-class LockedScreen extends React.Component {
-  render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        <Button
-          title = 'Unlock'
-          onPress = {()=>this.props.navigation.navigate('Main')}
-        />
-      </View>
-    );
-  }
-}
-
+// 어플 처음 실행시 등장. 인증번호 입력 화면
 class LoginScreen extends React.Component{
   render(){
     return(
-      <View>
+      <View style={styles.newContainer}>
         <ImageBackground
           style={{width: '100%', height: '100%'}}
-          source={require('./images/LoginB.png')}>
+          source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
-            <Button
-              title = '삭제'
-              // 추후 삭제 기능으로 연결해야함
-              onPress = {()=>this.props.navigation.navigate('Main')}  
-            />
+            <TouchableOpacity style={styles.delBtn} onPress={() => NativeModules.Block.startService()}>
+              <Text>삭제</Text>
+            </TouchableOpacity>
           </View>  
-          <View style={{flex: 2}}/>
-          <View>
+          <View style={{flex: 2.4}}/>
+          <View style={styles.codeSec}>
             <TextInput style={styles.chatInput} 
             defaultValue='인증번호를 입력해주세요'/>
           </View>
-          <View style={{flex: 0.4}}/>
-          <View>
+          <View style={{flex: 0.6}}/>
+          <View style={styles.codeSec}>
+            <TouchableOpacity style={styles.accessBtn} onPress={() => NativeModules.Block.startService()}>
+              <Text>인증하기</Text>
+            </TouchableOpacity>
+
             <Button
               title = '인증하기'
               // 추후 비밀번호 인증 후에 권한설명 페이지로 넘어가게 해야함
               onPress = {()=>this.props.navigation.navigate('Permission')}  
             />
           </View> 
-          <View style={{flex: 1}}/>
+          <View style={{flex: 0.4}}/>
         </ImageBackground>
       </View>  
     );
   }
 }
 
+// 인증번호 입력시 등장. 권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
   render(){
     return(
-      <View>
+      <View style={styles.newContainer}>
         <ImageBackground
           style={{width: '100%', height: '100%'}}
-          source={require('./images/PermissionB.png')}>
+          source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
             <Button
               title = '삭제'
@@ -150,6 +139,23 @@ class PermissionScreen extends React.Component{
   }
 }
 
+// TBD
+class LockedScreen extends React.Component {
+  render() {
+  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.appNameText}>
+            LOCKA
+          </Text>
+        <Button
+          title = 'Unlock'
+          onPress = {()=>this.props.navigation.navigate('Main')}
+        />
+      </View>
+    );
+  }
+}
+
 
 const AppNavigator = createStackNavigator(
   {
@@ -166,10 +172,14 @@ const AppNavigator = createStackNavigator(
 export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
+container: {
+  flex:1,
+  backgroundColor: 'white',
+  justifyContent: 'center',
+},
+newContainer: {
+  flex:1,
+  justifyContent: 'center',
 },
 settingView: {
   flex: 0.5,
@@ -214,10 +224,33 @@ view: {
   justifyContent: 'center',
   alignItems: 'center',
 },
+codeSec: {
+  flex: 0.5,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
 button: {
   backgroundColor: 'gray',
   padding: 10,
   margin: 10,
+},
+delBtn: {
+  backgroundColor: 'black',
+  padding: 10,
+  margin: 10,
+  borderWidth: 1,
+  borderColor: 'white',
+  borderRadius: 5,
+},
+accessBtn: {
+  backgroundColor: 'white',
+  width: '50%',
+  height: 20,
+  padding: 10,
+  margin: 10,
+  borderWidth: 1,
+  borderColor: 'black',
+  borderRadius: 10,
 },
 delLoc: {
   flex: 0.2,
@@ -225,23 +258,22 @@ delLoc: {
   alignItems: 'flex-end',
   margin: 10,
 },
+access: {
+  flex: 0.4,
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: 10,
+  width: '50%',
+  height: 30,
+},
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
-  flexDirection: 'row',
-  justifyContent: 'center',
+  //flexDirection: 'row',
+  //justifyContent: 'center',
   borderWidth: 3,
   borderColor: 'white',
   borderRadius: 5,
-},
-sendButton:{
-    backgroundColor: 'white',
-    height: 40,
-    width: '60%',
-    borderRadius: 20,
-    padding: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
 },
 textArea:{
   backgroundColor: 'rgba(255,255,255,0.5)',
