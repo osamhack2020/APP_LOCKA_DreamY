@@ -14,6 +14,31 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
   ImageBackground, Alert} from 'react-native';
 
+
+calcSalary = (selectMilitary, Savings) => {
+  let sumOfMoney = 0;
+  let savingMoney = 0;
+  let privateSalary = 408100;
+  let firstprivateSalary = 441700;
+  let corporalSalary = 488200;
+  let sergeantSalary = 540900;
+  if (selectMilitary==0 || selectMilitary==3){
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
+    savingMoney = (Savings*18) * ((0.05*19)/24);
+  }
+  else if(selectMilitary == 1){
+    salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
+    savingMoney = (Savings*20) * ((0.05*21)/24);
+    salarySum+=savingMoney;
+}
+else{
+    salarySum=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
+    savingMoney = (Savings*21) * ((0.05*22)/24);
+    salarySum+=savingMoney;
+}
+  return sumOfMoney
+}
+
 // 개발용 화면
 class HomeScreen extends React.Component {
   /*
@@ -172,8 +197,21 @@ NativeModules.calcModule.calcSalary(
   this.setState({
     output,
   })
-});
-*/
+});*/
+
+class sumSalaryComponent extends React.Component {
+  sumSalary = NativeModules.calcModule.calcSalary().output;
+  state = { isShowingText: true };
+  
+  render() {
+    return (
+      <View style={{alignItems: 'center'}}>
+        <Text>Hello {this.props.name}!</Text>
+      </View>
+    );
+  }
+}
+
 class CalcScreen extends React.Component {
 
   constructor(props) {
@@ -190,7 +228,7 @@ class CalcScreen extends React.Component {
           {
             this.state.clicked
             ? <Button title = "확인" onPress = {this._checkedAnswer} />
-            : <Text style={styles.contentsText}>sumSalary</Text>
+            : <Text style={styles.contentsText}>{calcSalary(0,400000)}</Text>
           }
         </View>
       );
