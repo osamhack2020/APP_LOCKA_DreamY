@@ -12,7 +12,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
   ImageBackground} from 'react-native';
-//import Block from './Block';
+  import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+  //import Block from './Block';
 
 
 calcSalary = (selectMilitary, Savings) => {
@@ -129,7 +130,7 @@ class LoginScreen extends React.Component{
           </View> 
           <View style={{flex: 0.6}}/>
         </ImageBackground>
-      </View>  
+      </View>
     );
   }
 }
@@ -201,23 +202,81 @@ class PermissionScreen extends React.Component{
 }
 
 
+//계산용 화면
+var radio_props = [
+  {label: '육군', value: 0 },
+  {label: '해군', value: 1 },
+  {label: '공군', value: 2 },
+  {label: '해병대', value: 3 }
+];
+
 class CalcScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { clicked: true };
+    //특별한 맴버 변수(화면 자동갱신)
+    this.state = { 
+      clicked: true,
+      saving: 0,
+      selectArmy: 0,
+    };
+    //일반 맴버변수(사용자 입력값을 저장하는 변수.)
+    this.inputText=0;
   }
 
+  /*
+  setSelectedOption= (value)=>{
+    this.setState({
+      saving
+    });
+  }*/
+
+  submitEdit= function(){
+    this.setState({saving: this.inputText});
+  }
+
+  clickBtn=()=>{
+    this.setState({saving: this.inputText, clicked:false})
+  }
+/*
+  changeSaving= (value) =>{
+    this.inputText=value;
+  }
+  */
   _checkedAnswer = () => this.setState({clicked:false});
 
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
-          {
-            this.state.clicked
-            ? <Button title = "확인" onPress = {this._checkedAnswer} />
-            : <Text style={styles.contentsText}>{calcSalary(0,400000)}</Text>
-          }
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={styles.accessWord}>월급 시뮬레이션</Text>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <RadioForm
+              //checked된 radio의 값을 뽑아내야 함.
+              radio_props={radio_props}
+              initial={0}
+              onPress={()=>this.value}
+              selectedButtonColor={'navy'}
+              selectedLabelColor={'navy'}
+              labelStyle={{fontSize:15}}
+              formHorizontal={true}
+              //이거 setState 잘 봐야 할 거 같음.
+            />
+            <View style={styles.codeSec}>
+              <TextInput style={styles.chatInput} 
+              /*onChangeText={this.changeSaving}*/
+              onSubmitEditing={this.submitEdit.bind(this)}
+              />
+            </View>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
+            {
+              this.state.clicked
+              ? <Button title = "확인" onPress = {this.clickBtn} />
+              : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+            }
+          </View>
         </View>
       );
   }
