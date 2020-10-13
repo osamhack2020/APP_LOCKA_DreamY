@@ -221,19 +221,19 @@ class LobbyScreen extends React.Component {
           </View>
           <View 
           // 추후 기능 추가 시, flex의 값의 합이 3이 되도록 유지 바람
-          style={{flex: 3}}/>
+          style={{flex: 2.5}}/>
           <View style={styles.curstatus}>
             <Text>
               현재 상태가 게시됩니다.
             </Text>
           </View>
-          <View style={{flex: 0.4}}/>
-          <View style={{flex: 1.2}}>
+          <View style={{flex: 0.3}}/>
+          <View style={{flex: 1.4}}>
             <View style={styles.buttonGroup}>
             
             </View>
           </View>
-          <View style={{fliex: 0.4}}/>
+          <View style={{fliex: 0.3}}/>
         </ImageBackground>
       </View>
     );
@@ -444,7 +444,7 @@ buttonGroup:{
   borderColor: 'white',
   borderWidth: 1,
   borderRadius: 10,
-  width: '60%',
+  width: '50%',
   height: '60%',
 },
 });
