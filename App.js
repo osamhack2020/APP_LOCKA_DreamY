@@ -232,16 +232,22 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 1.4}}>
             <View style={styles.buttonGroup}>
               <View style={styles.buttonBlock8}>
-                <Image source = {require('./images/TempImage.png')} />
-                <Image source = {require('./images/TempImage.png')} />
+                <Image style={{width: '17%', height: '30%',}}
+                source = {require('./images/TempImage.png')} />
+                <Image style={{width: '17%', height: '30%',}}
+                source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
-                <Image source = {require('./images/TempImage.png')} />
-                <Image source = {require('./images/TempImage.png')} />
+                <Image style={{width: '17%', height: '30%',}}
+                source = {require('./images/TempImage.png')} />
+                <Image style={{width: '17%', height: '30%',}}
+                source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
-                <Image source = {require('./images/TempImage.png')} />
-                <Image source = {require('./images/TempImage.png')} />
+                <Image style={{width: '17%', height: '30%',}}
+                source = {require('./images/TempImage.png')} />
+                <Image style={{width: '17%', height: '30%',}}
+                source = {require('./images/TempImage.png')} />
               </View>
             </View>
           </View>
@@ -453,10 +459,9 @@ buttonGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
   backgroundColor: 'black', // temp
-  borderColor: 'white',
+  borderColor: 'white', // temp
   borderWidth: 1,
-  borderRadius: 10,
-  width: '50%',
+  width: '51%',
   height: '60%',
 },
 buttonBlock8:{
