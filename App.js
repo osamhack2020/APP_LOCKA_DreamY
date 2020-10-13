@@ -434,8 +434,9 @@ curstatus:{
   alignSelf: 'center',
 },
 buttonGroup:{
+  flex: 2,
   flexDirection: 'row',
-  alignItems: 'center',
+  alignSelf: 'center',
   backgroundColor: 'black', // temp
   borderColor: 'white',
   borderWidth: 1,
