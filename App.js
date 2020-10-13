@@ -130,7 +130,7 @@ class LoginScreen extends React.Component{
           </View> 
           <View style={{flex: 0.6}}/>
         </ImageBackground>
-      </View>  
+      </View>
     );
   }
 }
@@ -210,27 +210,6 @@ var radio_props = [
   {label: '해병대', value: 3 }
 ];
 
-/*
-var RadioButtonProject = React.createClass({
-  getInitialState: function() {
-    return {
-      value: 0,
-    }
-  },
-  render: function() {
-    return (
-      <View>
-        <RadioForm
-          radio_props={radio_props}
-          initial={0}
-          onPress={(value) => {this.setState({value:value})}}
-        />
-      </View>
-    );
-  }
-});
-*/
-
 class CalcScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -258,10 +237,11 @@ class CalcScreen extends React.Component {
   clickBtn=()=>{
     this.setState({saving: this.inputText, clicked:false})
   }
-
+/*
   changeSaving= (value) =>{
     this.inputText=value;
   }
+  */
   _checkedAnswer = () => this.setState({clicked:false});
 
   render() {
@@ -284,7 +264,7 @@ class CalcScreen extends React.Component {
             />
             <View style={styles.codeSec}>
               <TextInput style={styles.chatInput} 
-              onChangeText={this.changeSaving} 
+              /*onChangeText={this.changeSaving}*/
               onSubmitEditing={this.submitEdit.bind(this)}
               />
             </View>
