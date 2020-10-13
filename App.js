@@ -227,11 +227,13 @@ class LobbyScreen extends React.Component {
               현재 상태가 게시됩니다.
             </Text>
           </View>
-          <View style={{flex: 2}}>
+          <View style={{fliex: 0.4}}/>
+          <View style={{flex: 1.2}}>
             <View style={styles.buttonGroup}>
             
             </View>
           </View>
+          <View style={{fliex: 0.4}}/>
         </ImageBackground>
       </View>
     );
@@ -437,9 +439,7 @@ curstatus:{
 },
 buttonGroup:{
   flexDirection: 'row',
-  //alignSelf: 'center',
-  justifyContent: 'center',
-  alignItems: 'center',
+  alignSelf: 'center',
   backgroundColor: 'black', // temp
   borderColor: 'white',
   borderWidth: 1,
