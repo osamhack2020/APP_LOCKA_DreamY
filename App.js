@@ -232,22 +232,14 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 1.4}}>
             <View style={styles.buttonGroup}>
               <View style={styles.buttonBlock8}>
-                <Image style={{width: '17%', height: '30%',}}
-                source = {require('./images/TempImage.png')} />
-                <Image style={{width: '17%', height: '30%',}}
+                <Image style={{width: '17%', height: '30%'}}
                 source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
-                <Image style={{width: '17%', height: '30%',}}
-                source = {require('./images/TempImage.png')} />
-                <Image style={{width: '17%', height: '30%',}}
-                source = {require('./images/TempImage.png')} />
+
               </View>
               <View style={styles.buttonBlock8}>
-                <Image style={{width: '17%', height: '30%',}}
-                source = {require('./images/TempImage.png')} />
-                <Image style={{width: '17%', height: '30%',}}
-                source = {require('./images/TempImage.png')} />
+
               </View>
             </View>
           </View>
