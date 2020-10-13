@@ -221,6 +221,7 @@ class LobbyScreen extends React.Component {
           </View>
           <View 
           // 추후 기능 추가 시, flex의 값의 합이 3이 되도록 유지 바람
+          // 여기에 시계 넣어야하는데 지금은 너무 귀찮아아아아앙아
           style={{flex: 2.5}}/>
           <View style={styles.curstatus}>
             <Text>
