@@ -444,8 +444,8 @@ buttonGroup:{
   borderColor: 'white',
   borderWidth: 1,
   borderRadius: 10,
-  width: 300,
-  height: 200,
+  width: '60%',
+  height: '60%',
 },
 });
 
