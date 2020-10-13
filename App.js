@@ -227,7 +227,7 @@ class LobbyScreen extends React.Component {
               현재 상태가 게시됩니다.
             </Text>
           </View>
-          <View style={{fliex: 0.4}}/>
+          <View style={{flex: 0.4}}/>
           <View style={{flex: 1.2}}>
             <View style={styles.buttonGroup}>
             
@@ -444,8 +444,8 @@ buttonGroup:{
   borderColor: 'white',
   borderWidth: 1,
   borderRadius: 10,
-  width: '60%',
-  height: '60%',
+  width: 75,
+  height: 50,
 },
 });
 
