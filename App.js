@@ -230,7 +230,18 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 0.3}}/>
           <View style={{flex: 1.4}}>
             <View style={styles.buttonGroup}>
-            
+              <View style={styles.buttonBlock8}>
+                <Image source = {require('./images/TempImage.png')} />
+                <Image source = {require('./images/TempImage.png')} />
+              </View>
+              <View style={styles.buttonBlock8}>
+                <Image source = {require('./images/TempImage.png')} />
+                <Image source = {require('./images/TempImage.png')} />
+              </View>
+              <View style={styles.buttonBlock8}>
+                <Image source = {require('./images/TempImage.png')} />
+                <Image source = {require('./images/TempImage.png')} />
+              </View>
             </View>
           </View>
           <View style={{fliex: 0.3}}/>
@@ -446,6 +457,9 @@ buttonGroup:{
   borderRadius: 10,
   width: '50%',
   height: '60%',
+},
+buttonBlock8:{
+  flexDirection: 'column',
 },
 });
 
