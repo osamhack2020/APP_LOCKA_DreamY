@@ -227,7 +227,7 @@ class LobbyScreen extends React.Component {
               현재 상태가 게시됩니다.
             </Text>
           </View>
-          <View style={{flex: 2, backgroundColor: 'rgba(0,0,255,0.1)'}}/>
+          <View style={{flex: 2, backgroundColor: 'rgba(255,0,255,0.1)'}}/>
         </ImageBackground>
       </View>
     );
@@ -423,6 +423,7 @@ h3Text:{
   alignSelf: 'flex-start',
 },
 curstatus:{
+  flexDirection: 'row',
   width: '70%',
   height: 20,
   backgroundColor: 'white',
