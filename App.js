@@ -220,11 +220,11 @@ class LobbyScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View 
-          // 추후 기능 추가 시, flex의 값의 합이 3이 되도록 유지 바람
+          // 추후 기능 추가 시, flex의 값의 합이 2.5 가 되도록 유지 바람
           // 여기에 시계 넣어야하는데 지금은 너무 귀찮아아아아앙아
           style={{flex: 2.5}}/>
           <View style={styles.curstatus}>
-            <Text style={{alignSelf: 'center'}}>
+            <Text style={{fontWeight: 'bold', fontSize: 15}}>
               현재 상태가 게시됩니다.
             </Text>
           </View>
@@ -233,19 +233,39 @@ class LobbyScreen extends React.Component {
             <View style={styles.buttonGroup}>
               <View style={styles.buttonBlock8}>
                 <Image 
+                // 상단 좌측 아이콘
                 resizeMode="contain"
-                style={{width: 50, height: 50}}
+                style={{width: 80, height: 80}}
                 source = {require('./images/TempImage.png')} />
                 <Image 
+                // 하단 좌측 아이콘
                 resizeMode="contain"
-                style={{width: '22%', height: '27%'}}
+                style={{width: 80, height: 80}}
                 source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
-
+                <Image 
+                // 상단 중앙 아이콘
+                resizeMode="contain"
+                style={{width: 80, height: 80}}
+                source = {require('./images/TempImage.png')} />
+                <Image 
+                // 하단 중앙 아이콘
+                resizeMode="contain"
+                style={{width: 80, height: 80}}
+                source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
-
+                <Image 
+                // 상단 우측 아이콘
+                resizeMode="contain"
+                style={{width: 80, height: 80}}
+                source = {require('./images/TempImage.png')} />
+                <Image 
+                // 하단 우측 아이콘
+                resizeMode="contain"
+                style={{width: 80, height: 80}}
+                source = {require('./images/TempImage.png')} />
               </View>
             </View>
           </View>
@@ -447,11 +467,12 @@ h3Text:{
 curstatus:{
   flexDirection: 'row',
   width: '70%',
-  height: 20,
+  height: 40,
   backgroundColor: 'white',
   borderColor: 'red',
-  borderWidth: 1,
-  alignSelf: 'center',
+  borderWidth: 2,
+  alignItems: 'center', 
+  justifyContent: 'center',
 },
 buttonGroup:{
   flexDirection: 'row',
