@@ -219,11 +219,11 @@ class LobbyScreen extends React.Component {
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
-          <View style={{flex: 0.8, backgroundColor: 'rgba(255,0,0,0.1)'}}/>
+          <View style={{flex: 0.7, backgroundColor: 'rgba(255,0,0,0.1)'}}/>
           <View 
           // 여기에 시계 넣어주시면 됩니다.
-          style={{flex: 0.9, backgroundColor: 'rgba(0,255,0,0.1)'}}/>
-          <View style={{flex: 0.8, backgroundColor: 'rgba(0,0,255,0.1)'}}/>
+          style={{flex: 1.1, backgroundColor: 'rgba(0,255,0,0.1)'}}/>
+          <View style={{flex: 0.7, backgroundColor: 'rgba(0,0,255,0.1)'}}/>
           <View style={styles.codeSec}>
             <View style={styles.curstatus}>
               <Text style={{fontWeight: 'bold', fontSize: 15}}>
