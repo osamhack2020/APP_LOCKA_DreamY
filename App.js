@@ -251,10 +251,11 @@ class CalcScreen extends React.Component {
 
   ddayCalculator = () => {
     //Dday계산하는 함수
+    //현재 터짐.
     let StartDate=this.startDay;
     let EndDate=this.endDay;
-    if(StartDate != "" && EndDate!= ""){
-      let today = new Date(); 
+    if((StartDate != "") && (EndDate != "")){
+      let today = new Date();
     
       var startdateArray = StartDate.split("-");
       var enddateArray = EndDate.split("-");
@@ -332,15 +333,15 @@ class CalcScreen extends React.Component {
               }}
               onDateChange={(date) => {this.setState({endDay: date})}}
             />
-            <Text style={styles.accessWord}>{this.ddayCalculator()}</Text>
+            <Text style={styles.accessWord}>D-363</Text>
             <ProgressCircle
-              radius={35}
+              radius={50}
               percent={this.calcPercent()}
-              borderWidth={30}
+              borderWidth={5}
               color="navy"
               shadowColor="#CDF2D7"
               bgColor="#fff">
-              <Text style={styles.accessWord}>34.4%</Text>
+              <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -350,7 +351,6 @@ class CalcScreen extends React.Component {
                 //checked된 radio의 값을 뽑아내야 함.
                 radio_props={radio_props}
                 initial={0}
-                /*()=>this.value*/
                 onPress={(value) => {this.setState({selectArmy:value})}}
                 selectedButtonColor={'navy'}
                 selectedLabelColor={'navy'}
@@ -358,6 +358,8 @@ class CalcScreen extends React.Component {
                 formHorizontal={true}
                 //이거 setState 잘 봐야 할 거 같음.
               />
+            </View>
+            <View style={styles.codeSec}>
               <TextInput style={styles.chatInput} 
                 onChangeText={this.changeSaving}
                 onSubmitEditing={this.submitEdit.bind(this)}
