@@ -12,7 +12,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
   ImageBackground} from 'react-native';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 //import Block from './Block';
 
 
@@ -37,12 +36,12 @@ calcSalary = (selectMilitary, Savings) => {
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
     savingMoney = (Savings*20) * ((0.05*21)/24);
     sumOfMoney+=savingMoney;
-}
-else{
+  }
+  else{
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
-}
+  }
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
 
@@ -88,8 +87,6 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>  
-
-
     );
   }
 }
@@ -130,7 +127,7 @@ class LoginScreen extends React.Component{
           </View> 
           <View style={{flex: 0.6}}/>
         </ImageBackground>
-      </View>
+      </View>  
     );
   }
 }
@@ -189,8 +186,8 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            // 추후 권한 요청 후 화면 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            // 추후 권한 요청 후 LobbyScreen으로 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Lobby')}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
@@ -198,87 +195,6 @@ class PermissionScreen extends React.Component{
         </ImageBackground>
       </View>
     );
-  }
-}
-
-
-//계산용 화면
-var radio_props = [
-  {label: '육군', value: 0 },
-  {label: '해군', value: 1 },
-  {label: '공군', value: 2 },
-  {label: '해병대', value: 3 }
-];
-
-class CalcScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    //특별한 맴버 변수(화면 자동갱신)
-    this.state = { 
-      clicked: true,
-      saving: 0,
-      selectArmy: 0,
-    };
-    //일반 맴버변수(사용자 입력값을 저장하는 변수.)
-    this.inputText=0;
-  }
-
-  /*
-  setSelectedOption= (value)=>{
-    this.setState({
-      saving
-    });
-  }*/
-
-  submitEdit= function(){
-    this.setState({saving: this.inputText});
-  }
-
-  clickBtn=()=>{
-    this.setState({saving: this.inputText, clicked:false})
-  }
-  /*
-  changeSaving= (value) =>{
-    this.inputText=value;
-  }
-  */
-  _checkedAnswer = () => this.setState({clicked:false});
-
-  render() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.accessWord}>월급 시뮬레이션</Text>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <RadioForm
-              //checked된 radio의 값을 뽑아내야 함.
-              radio_props={radio_props}
-              initial={0}
-              onPress={()=>this.value}
-              selectedButtonColor={'navy'}
-              selectedLabelColor={'navy'}
-              labelStyle={{fontSize:15}}
-              formHorizontal={true}
-              //이거 setState 잘 봐야 할 거 같음.
-            />
-            <View style={styles.codeSec}>
-              <TextInput style={styles.chatInput} 
-              /*onChangeText={this.changeSaving}*/
-              onSubmitEditing={this.submitEdit.bind(this)}
-              />
-            </View>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
-            {
-              this.state.clicked
-              ? <Button title = "확인" onPress = {this.clickBtn} />
-              : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
-            }
-          </View>
-        </View>
-      );
   }
 }
 
@@ -390,6 +306,32 @@ class LobbyScreen extends React.Component {
     );
   }
 }
+
+
+class CalcScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { clicked: true };
+  }
+
+  _checkedAnswer = () => this.setState({clicked:false});
+
+  render() {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
+          {
+            this.state.clicked
+            ? <Button title = "확인" onPress = {this._checkedAnswer} />
+            : <Text style={styles.contentsText}>{calcSalary(0,400000)}</Text>
+          }
+        </View>
+      );
+  }
+}
+
+
+
 
 const AppNavigator = createStackNavigator(
   {
@@ -554,6 +496,7 @@ h3Text:{
   alignSelf: 'flex-start',
 },
 curstatus:{
+  //flexDirection: 'row',
   width: '70%',
   height: 40,
   backgroundColor: 'white',
@@ -565,6 +508,8 @@ curstatus:{
 buttonGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
+  //borderColor: 'white',
+  //borderWidth: 1,
   width: '66%',
   height: '81%',
 },
@@ -579,3 +524,4 @@ iconStyle:{
   margin: 5,
 },
 });
+
