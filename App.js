@@ -224,7 +224,7 @@ class LobbyScreen extends React.Component {
           // 여기에 시계 넣어야하는데 지금은 너무 귀찮아아아아앙아
           style={{flex: 2.5}}/>
           <View style={styles.curstatus}>
-            <Text>
+            <Text style={{alignSelf: 'center'}}>
               현재 상태가 게시됩니다.
             </Text>
           </View>
