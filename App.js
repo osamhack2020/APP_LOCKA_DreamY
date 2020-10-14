@@ -223,10 +223,12 @@ class LobbyScreen extends React.Component {
           // 추후 기능 추가 시, flex의 값의 합이 2.5 가 되도록 유지 바람
           // 여기에 시계 넣어야하는데 지금은 너무 귀찮아아아아앙아
           style={{flex: 2.5}}/>
-          <View style={styles.curstatus}>
-            <Text style={{fontWeight: 'bold', fontSize: 15}}>
-              현재 상태가 게시됩니다.
-            </Text>
+          <View style={styles.codeSec}>
+            <View style={styles.curstatus}>
+              <Text style={{fontWeight: 'bold', fontSize: 15}}>
+                현재 상태가 게시됩니다.
+              </Text>
+            </View>
           </View>
           <View style={{flex: 0.3}}/>
           <View style={{flex: 1.4}}>
@@ -235,36 +237,36 @@ class LobbyScreen extends React.Component {
                 <Image 
                 // 상단 좌측 아이콘
                 resizeMode="contain"
-                style={{width: 80, height: 80}}
+                style={styles.iconStyle}
                 source = {require('./images/TempImage.png')} />
                 <Image 
                 // 하단 좌측 아이콘
                 resizeMode="contain"
-                style={{width: 80, height: 80}}
+                style={styles.iconStyle}
                 source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
                 <Image 
                 // 상단 중앙 아이콘
                 resizeMode="contain"
-                style={{width: 80, height: 80}}
+                style={styles.iconStyle}
                 source = {require('./images/TempImage.png')} />
                 <Image 
                 // 하단 중앙 아이콘
                 resizeMode="contain"
-                style={{width: 80, height: 80}}
+                style={styles.iconStyle}
                 source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
                 <Image 
                 // 상단 우측 아이콘
                 resizeMode="contain"
-                style={{width: 80, height: 80}}
+                style={styles.iconStyle}
                 source = {require('./images/TempImage.png')} />
                 <Image 
                 // 하단 우측 아이콘
                 resizeMode="contain"
-                style={{width: 80, height: 80}}
+                style={styles.iconStyle}
                 source = {require('./images/TempImage.png')} />
               </View>
             </View>
@@ -465,7 +467,7 @@ h3Text:{
   alignSelf: 'flex-start',
 },
 curstatus:{
-  flexDirection: 'row',
+  //flexDirection: 'row',
   width: '70%',
   height: 40,
   backgroundColor: 'white',
@@ -477,13 +479,21 @@ curstatus:{
 buttonGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
-  borderColor: 'white', // temp
-  borderWidth: 1,
+  //borderColor: 'white',
+  //borderWidth: 1,
   width: '66%',
   height: '81%',
 },
 buttonBlock8:{
   flexDirection: 'column',
+},
+iconStyle:{
+  width: 80, 
+  height: 80,
+  borderColor: 'white',
+  borderWidth: 1,
+  borderRadius: 10,
+  margin: 5,
 },
 });
 
