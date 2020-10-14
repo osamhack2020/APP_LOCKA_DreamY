@@ -234,7 +234,7 @@ class LobbyScreen extends React.Component {
               <View style={styles.buttonBlock8}>
                 <Image 
                 resizeMode="contain"
-                style={{width: '17%', height: '30%'}} // style을 넣은 이후로 안됨 ㅁㄴㅇㄹ
+                style={{width: 50, height: 50}}
                 source = {require('./images/TempImage.png')} />
               </View>
               <View style={styles.buttonBlock8}>
@@ -454,8 +454,8 @@ buttonGroup:{
   alignSelf: 'center',
   borderColor: 'white', // temp
   borderWidth: 1,
-  width: '51%',
-  height: '60%',
+  width: '66%',
+  height: '80%',
 },
 buttonBlock8:{
   flexDirection: 'column',
