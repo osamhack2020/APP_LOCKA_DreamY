@@ -222,7 +222,7 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 0.7}}/>
           <View 
           // 이 View에 시계 넣어주시면 됩니다.-----------------------------------
-          style={{flex: 1.1, backgroundColor: 'rgba(0,255,0,0.1)'}}
+          style={{flex: 1.1}}
           //-------------------------------------------------------------------
           />
           <View style={{flex: 0.7}}/>
@@ -237,40 +237,64 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 1.4}}>
             <View style={styles.buttonGroup}>
               <View style={styles.buttonBlock8}>
-                <Image 
-                // 상단 좌측 아이콘
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/TempImage.png')} />
-                <Image 
-                // 하단 좌측 아이콘
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/TempImage.png')} />
+                <TouchableOpacity
+                // 추후 버튼 별 기능 실행해야함
+                onPress = {()=>this.props.navigation.navigate('Main')}>
+                  <Image 
+                  // 상단 좌측 아이콘
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/TempImage.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                // 추후 버튼 별 기능 실행해야함
+                onPress = {()=>this.props.navigation.navigate('Main')}>
+                  <Image 
+                  // 상단 좌측 아이콘
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/TempImage.png')} />
+                </TouchableOpacity>
               </View>
               <View style={styles.buttonBlock8}>
-                <Image 
-                // 상단 중앙 아이콘
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/TempImage.png')} />
-                <Image 
-                // 하단 중앙 아이콘
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/TempImage.png')} />
+              <TouchableOpacity
+                // 추후 버튼 별 기능 실행해야함
+                onPress = {()=>this.props.navigation.navigate('Main')}>
+                  <Image 
+                  // 상단 좌측 아이콘
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/TempImage.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                // 추후 버튼 별 기능 실행해야함
+                onPress = {()=>this.props.navigation.navigate('Main')}>
+                  <Image 
+                  // 상단 좌측 아이콘
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/TempImage.png')} />
+                </TouchableOpacity>
               </View>
               <View style={styles.buttonBlock8}>
-                <Image 
-                // 상단 우측 아이콘
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/TempImage.png')} />
-                <Image 
-                // 하단 우측 아이콘
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/TempImage.png')} />
+              <TouchableOpacity
+                // 추후 버튼 별 기능 실행해야함
+                onPress = {()=>this.props.navigation.navigate('Main')}>
+                  <Image 
+                  // 상단 좌측 아이콘
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/TempImage.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                // 추후 버튼 별 기능 실행해야함
+                onPress = {()=>this.props.navigation.navigate('Main')}>
+                  <Image 
+                  // 상단 좌측 아이콘
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/TempImage.png')} />
+                </TouchableOpacity>
               </View>
             </View>
           </View>
