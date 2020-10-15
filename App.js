@@ -221,13 +221,14 @@ class CalcScreen extends React.Component {
       saving: 0,
       selectArmy: 0,
       date: "2020-10-13",
-      startDay: "",
-      endDay: "",
+      startDay: " ",
+      endDay: " ",
     };
     //일반 맴버변수(사용자 입력값을 저장하는 변수.)
     this.inputText=0;
     this.dDays=540; //그냥 30*18
     this.allDays=540;
+    this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
 
   submitEdit= function(){
@@ -251,10 +252,10 @@ class CalcScreen extends React.Component {
 
   ddayCalculator = () => {
     //Dday계산하는 함수
-    //현재 터짐.
+    //현재 터짐. 아마도 date가 입력되면 자동으로 호출되어야 할 듯함.
     let StartDate=this.startDay;
     let EndDate=this.endDay;
-    if((StartDate != "") && (EndDate != "")){
+    if((StartDate != "ㅁ") && (EndDate != " ")){
       let today = new Date();
     
       var startdateArray = StartDate.split("-");
@@ -270,17 +271,24 @@ class CalcScreen extends React.Component {
       
       let text1 = 'D';
       var result = text1.concat("-", betweenDay);
+      this.Ddaymessage=result
+      return result
     }
     else if(StartDate != ""){
       var result = "입대일을 입력하세요"
+      this.Ddaymessage=result
+      return result
     }
     else if(EndDate != ""){
       var result = "전역일을 입력하세요"
+      this.Ddaymessage=result
+      return result
     }
     else{
       var result = "입대일과 전역일을 입력하세요"
+      this.Ddaymessage=result
+      return result
     }
-    return result
   }
 
   render() {
@@ -289,9 +297,9 @@ class CalcScreen extends React.Component {
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <DatePicker
               style={{width: 200}}
-              date={this.state.date}
+              date={this.state.startDay}
               mode="date"
-              placeholder="select date"
+              placeholder="입대일을 선택해주세요"
               format="YYYY-MM-DD"
               minDate="2018-01-01"
               maxDate="2099-12-31"
@@ -312,9 +320,9 @@ class CalcScreen extends React.Component {
             />
             <DatePicker
               style={{width: 200}}
-              date={this.state.date}
+              date={this.state.endDay}
               mode="date"
-              placeholder="select date"
+              placeholder="전역일을 선택해주세요"
               format="YYYY-MM-DD"
               minDate="2018-01-01"
               maxDate="2099-12-31"
@@ -331,15 +339,20 @@ class CalcScreen extends React.Component {
                   marginLeft: 36
                 }
               }}
-              onDateChange={(date) => {this.setState({endDay: date})}}
+              onDateChange={
+                //함수 2개 가져다 쓸 수 있는지...
+                (date) => {this.setState({endDay: date})}
+                /*,  
+                this.Ddaymessage = this.ddayCalculator()*/
+              }
             />
-            <Text style={styles.accessWord}>D-363</Text>
+            <Text style={styles.accessWord}>{this.ddayCalculator()}</Text>
             <ProgressCircle
               radius={50}
               percent={this.calcPercent()}
               borderWidth={5}
               color="navy"
-              shadowColor="#CDF2D7"
+              shadowColor="blue"
               bgColor="#fff">
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
