@@ -267,12 +267,12 @@ class CalcScreen extends React.Component {
       var startDateObj = new Date(Number(startdateArray[0]), Number(startdateArray[1])-1, Number(startdateArray[2]));  
       var endDateObj = new Date(Number(enddateArray[0]), Number(enddateArray[1])-1, Number(enddateArray[2]));
       //현재 시간 가져와서 D-day 계산
-      var betweenDay = Math.ceil((today.getTime() - endDateObj.getTime())/1000/60/60/24)+1;
-      var allDay = (startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24;
+      var betweenDay = Math.ceil(( endDateObj.getTime() - today.getTime() )/1000/60/60/24);
+      var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
       
-      var text1 = 'D';
+      var text1 = 'D-';
       var result = text1.concat(betweenDay);
       this.Ddaymessage=result
       return result
@@ -373,7 +373,7 @@ class CalcScreen extends React.Component {
                 //이거 setState 잘 봐야 할 거 같음.
               />
             </View>
-            <View style={{flex: 0.3,  justifyContent: 'center',  alignItems: 'center',}}>
+            <View style={styles.codeSect}>
               <TextInput style={styles.chatInput} 
                 onChangeText={this.changeSaving}
                 onSubmitEditing={this.submitEdit.bind(this)}
@@ -485,6 +485,12 @@ view: {
 },
 codeSec: {
   flex: 0.5,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'row',
+},
+codeSect: {
+  flex: 0.25,
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
