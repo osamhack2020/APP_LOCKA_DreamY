@@ -9,12 +9,14 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
   ImageBackground} from 'react-native';
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import DatePicker from 'react-native-datepicker';
+  
   //import Block from './Block';
-
 
 calcSalary = (selectMilitary, Savings) => {
   //월급계산하는 함수
@@ -218,54 +220,163 @@ class CalcScreen extends React.Component {
       clicked: true,
       saving: 0,
       selectArmy: 0,
+      date: "2020-10-16",
+      startDay: " ",
+      endDay: " ",
     };
     //일반 맴버변수(사용자 입력값을 저장하는 변수.)
     this.inputText=0;
+    this.dDays=540; //그냥 30*18
+    this.allDays=540;
+    this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
-
-  /*
-  setSelectedOption= (value)=>{
-    this.setState({
-      saving
-    });
-  }*/
 
   submitEdit= function(){
     this.setState({saving: this.inputText});
   }
 
+  calcPercentInt=()=>{
+    var percent = 100 - Math.round((this.dDays/this.allDays)*100);
+    return percent
+  }
+  calcPercent=()=>{
+    var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
+    var result = percent.concat("%");
+    return result
+  }
+
   clickBtn=()=>{
     this.setState({saving: this.inputText, clicked:false})
   }
-/*
+
   changeSaving= (value) =>{
     this.inputText=value;
   }
-  */
+
   _checkedAnswer = () => this.setState({clicked:false});
+
+  ddayCalculator = (StartDate,EndDate) => {
+    //Dday계산하는 함수
+    //현재 터짐. 아마도 date가 입력되면 자동으로 호출되어야 할 듯함.
+    if((StartDate != " ") && (EndDate != " ")){
+      let today = new Date();
+    
+      var startdateArray = StartDate.split("-");
+      var enddateArray = EndDate.split("-");
+      
+      var startDateObj = new Date(Number(startdateArray[0]), Number(startdateArray[1])-1, Number(startdateArray[2]));  
+      var endDateObj = new Date(Number(enddateArray[0]), Number(enddateArray[1])-1, Number(enddateArray[2]));
+      //현재 시간 가져와서 D-day 계산
+      var betweenDay = Math.ceil(( endDateObj.getTime() - today.getTime() )/1000/60/60/24);
+      var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
+      this.dDays= betweenDay;
+      this.allDays=allDay;
+      
+      var text1 = 'D-';
+      var result = text1.concat(betweenDay);
+      this.Ddaymessage=result
+      return result
+    }
+    else if(StartDate == " " && EndDate != " "){
+      var result = "입대일을 입력하세요"
+      this.Ddaymessage=result
+      return result
+    }
+    else if(StartDate != " " && EndDate == " "){
+      var result = "전역일을 입력하세요"
+      this.Ddaymessage=result
+      return result
+    }
+    else{
+      var result = "입대일과 전역일을 입력하세요"
+      this.Ddaymessage=result
+      return result
+    }
+
+  }
 
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.accessWord}>월급 시뮬레이션</Text>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <RadioForm
-              //checked된 radio의 값을 뽑아내야 함.
-              radio_props={radio_props}
-              initial={0}
-              onPress={()=>this.value}
-              selectedButtonColor={'navy'}
-              selectedLabelColor={'navy'}
-              labelStyle={{fontSize:15}}
-              formHorizontal={true}
-              //이거 setState 잘 봐야 할 거 같음.
+            <DatePicker
+              style={{width: 200}}
+              date={this.state.startDay}
+              mode="date"
+              placeholder="pick a day"
+              format="YYYY-MM-DD"
+              minDate="2018-01-01"
+              maxDate="2099-12-31"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+                dateIcon: {
+                  position: 'absolute',
+                  left: 0,
+                  top: 4,
+                  marginLeft: 0
+                },
+                dateInput: {
+                  marginLeft: 36
+                }
+              }}
+              onDateChange={(date) => {this.setState({startDay: date})}}
             />
+            <DatePicker
+              style={{width: 200}}
+              date={this.state.endDay}
+              mode="date"
+              placeholder="pick a day"
+              format="YYYY-MM-DD"
+              minDate="2018-01-01"
+              maxDate="2099-12-31"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+                dateIcon: {
+                  position: 'absolute',
+                  left: 0,
+                  top: 4,
+                  marginLeft: 0
+                },
+                dateInput: {
+                  marginLeft: 36
+                }
+              }}
+              onDateChange={
+                (date) => {this.setState({endDay: date})}
+              }
+            />
+            <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+            <ProgressCircle
+              radius={50}
+              percent={this.calcPercentInt()}
+              borderWidth={5}
+              color="navy"
+              shadowColor="#50bcdf"
+              bgColor="#fff">
+              <Text style={styles.accessWord}>{this.calcPercent()}</Text>
+            </ProgressCircle>
+          </View>
+          <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={styles.accessWord}>월급 시뮬레이션</Text>
             <View style={styles.codeSec}>
+              <RadioForm
+                //checked된 radio의 값을 뽑아내야 함.
+                radio_props={radio_props}
+                initial={0}
+                onPress={(value) => {this.setState({selectArmy:value})}}
+                selectedButtonColor={'navy'}
+                selectedLabelColor={'navy'}
+                labelStyle={{fontSize:15}}
+                formHorizontal={true}
+                //이거 setState 잘 봐야 할 거 같음.
+              />
+            </View>
+            <View style={styles.codeSect}>
               <TextInput style={styles.chatInput} 
-              /*onChangeText={this.changeSaving}*/
-              onSubmitEditing={this.submitEdit.bind(this)}
+                onChangeText={this.changeSaving}
+                onSubmitEditing={this.submitEdit.bind(this)}
               />
             </View>
           </View>
@@ -374,6 +485,12 @@ view: {
 },
 codeSec: {
   flex: 0.5,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'row',
+},
+codeSect: {
+  flex: 0.25,
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
