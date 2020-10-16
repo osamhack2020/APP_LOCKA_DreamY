@@ -1,4 +1,4 @@
-#Wed Oct 14 14:08:01 UTC 2020
+#Fri Oct 16 11:05:33 UTC 2020
 base.0=/home/codespace/workspace/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
