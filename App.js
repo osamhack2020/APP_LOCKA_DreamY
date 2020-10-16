@@ -243,19 +243,19 @@ class LobbyScreen extends React.Component {
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
                   <Image 
-                  // 상단 좌측 아이콘
+                  // 상단 좌측 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
                   resizeMode="contain"
                   style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
+                  source = {require('./images/dday_salary.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
                   <Image 
-                  // 상단 좌측 아이콘
+                  // 하단 좌측 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
                   resizeMode="contain"
                   style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
+                  source = {require('./images/phone_lock.png')} />
                 </TouchableOpacity>
               </View>
               <View style={styles.buttonBlock8}>
@@ -263,19 +263,19 @@ class LobbyScreen extends React.Component {
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
                   <Image 
-                  // 상단 좌측 아이콘
+                  // 상단 중앙 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
                   resizeMode="contain"
                   style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
+                  source = {require('./images/phone_unlock.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
                   <Image 
-                  // 상단 좌측 아이콘
+                  // 하단 중앙 아이콘 >> 잠금 임시해제 아이콘 임시배치중
                   resizeMode="contain"
                   style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
+                  source = {require('./images/temp_unlock.png')} />
                 </TouchableOpacity>
               </View>
               <View style={styles.buttonBlock8}>
@@ -283,7 +283,7 @@ class LobbyScreen extends React.Component {
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
                   <Image 
-                  // 상단 좌측 아이콘
+                  // 상단 우측 아이콘
                   resizeMode="contain"
                   style={styles.iconStyle}
                   source = {require('./images/TempImage.png')} />
@@ -292,7 +292,7 @@ class LobbyScreen extends React.Component {
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
                   <Image 
-                  // 상단 좌측 아이콘
+                  // 하단 우측 아이콘
                   resizeMode="contain"
                   style={styles.iconStyle}
                   source = {require('./images/TempImage.png')} />
