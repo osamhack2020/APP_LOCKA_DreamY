@@ -334,8 +334,6 @@ class LobbyScreen extends React.Component {
   }
 }
 
-<<<<<<< HEAD
-
 //계산용 화면
 var radio_props = [
   {label: '육군', value: 0 },
@@ -343,8 +341,6 @@ var radio_props = [
   {label: '공군', value: 2 },
   {label: '해병대', value: 3 }
 ];
-=======
->>>>>>> bb3e6111aa315229ee237eb0471338b447d74853
 
 class CalcScreen extends React.Component {
 
