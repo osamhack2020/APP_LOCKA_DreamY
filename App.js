@@ -220,9 +220,9 @@ class CalcScreen extends React.Component {
       clicked: true,
       saving: 0,
       selectArmy: 0,
-      date: "2020-10-13",
-      startDay: " ",
-      endDay: " ",
+      date: "2020-10-16",
+      startDay: "2020-04-06",
+      endDay: "2021-10-12",
     };
     //일반 맴버변수(사용자 입력값을 저장하는 변수.)
     this.inputText=0;
@@ -236,7 +236,8 @@ class CalcScreen extends React.Component {
   }
 
   calcPercent=()=>{
-    var result = 100 - Math.round((this.dDays/this.allDays)*100)
+    var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
+    var result = percent.concat("%");
     return result
   }
 
@@ -250,36 +251,35 @@ class CalcScreen extends React.Component {
 
   _checkedAnswer = () => this.setState({clicked:false});
 
-  ddayCalculator = () => {
+  ddayCalculator = (StartDate,EndDate) => {
     //Dday계산하는 함수
     //현재 터짐. 아마도 date가 입력되면 자동으로 호출되어야 할 듯함.
-    let StartDate=this.startDay;
-    let EndDate=this.endDay;
-    if((StartDate != "ㅁ") && (EndDate != " ")){
+    if((StartDate != " ") && (EndDate != " ")){
       let today = new Date();
     
       var startdateArray = StartDate.split("-");
       var enddateArray = EndDate.split("-");
       
-      var startDateObj = new Date(startdateArray[0], Number(startdateArray[1])-1, startdateArray[2]);  
-      var endDateObj = new Date(enddateArray[0], Number(enddateArray[1])-1, enddateArray[2]);
+      var startDateObj = new Date(Number(startdateArray[0]), Number(startdateArray[1])-1, Number(startdateArray[2]));  
+      var endDateObj = new Date(Number(enddateArray[0]), Number(enddateArray[1])-1, Number(enddateArray[2]));
       //현재 시간 가져와서 D-day 계산
-      var betweenDay = (today.getTime() - startDateObj.getTime())/1000/60/60/24;
+      var betweenDay = Math.ceil((today.getTime() - endDateObj.getTime())/1000/60/60/24);
       var allDay = (startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24;
-      this.dDays=betweenDay;
+      this.dDays= betweenDay;
       this.allDays=allDay;
       
-      let text1 = 'D';
+      var text1 = 'D';
       var result = text1.concat("-", betweenDay);
       this.Ddaymessage=result
       return result
     }
-    else if(StartDate != ""){
+    
+    else if(StartDate == " "){
       var result = "입대일을 입력하세요"
       this.Ddaymessage=result
       return result
     }
-    else if(EndDate != ""){
+    else if(EndDate == " "){
       var result = "전역일을 입력하세요"
       this.Ddaymessage=result
       return result
@@ -289,6 +289,7 @@ class CalcScreen extends React.Component {
       this.Ddaymessage=result
       return result
     }
+
   }
 
   render() {
@@ -346,13 +347,13 @@ class CalcScreen extends React.Component {
                 this.Ddaymessage = this.ddayCalculator()*/
               }
             />
-            <Text style={styles.accessWord}>{this.ddayCalculator()}</Text>
+            <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
             <ProgressCircle
               radius={50}
               percent={this.calcPercent()}
               borderWidth={5}
               color="navy"
-              shadowColor="blue"
+              shadowColor="#50bcdf"
               bgColor="#fff">
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
