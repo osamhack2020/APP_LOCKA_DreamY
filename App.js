@@ -221,8 +221,8 @@ class CalcScreen extends React.Component {
       saving: 0,
       selectArmy: 0,
       date: "2020-10-16",
-      startDay: "2020-04-06",
-      endDay: "2021-10-12",
+      startDay: " ",
+      endDay: " ",
     };
     //일반 맴버변수(사용자 입력값을 저장하는 변수.)
     this.inputText=0;
@@ -235,6 +235,10 @@ class CalcScreen extends React.Component {
     this.setState({saving: this.inputText});
   }
 
+  calcPercentInt=()=>{
+    var percent = 100 - Math.round((this.dDays/this.allDays)*100);
+    return percent
+  }
   calcPercent=()=>{
     var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
     var result = percent.concat("%");
@@ -263,23 +267,22 @@ class CalcScreen extends React.Component {
       var startDateObj = new Date(Number(startdateArray[0]), Number(startdateArray[1])-1, Number(startdateArray[2]));  
       var endDateObj = new Date(Number(enddateArray[0]), Number(enddateArray[1])-1, Number(enddateArray[2]));
       //현재 시간 가져와서 D-day 계산
-      var betweenDay = Math.ceil((today.getTime() - endDateObj.getTime())/1000/60/60/24);
+      var betweenDay = Math.ceil((today.getTime() - endDateObj.getTime())/1000/60/60/24)+1;
       var allDay = (startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24;
       this.dDays= betweenDay;
       this.allDays=allDay;
       
       var text1 = 'D';
-      var result = text1.concat("-", betweenDay);
+      var result = text1.concat(betweenDay);
       this.Ddaymessage=result
       return result
     }
-    
-    else if(StartDate == " "){
+    else if(StartDate == " " && EndDate != " "){
       var result = "입대일을 입력하세요"
       this.Ddaymessage=result
       return result
     }
-    else if(EndDate == " "){
+    else if(StartDate != " " && EndDate == " "){
       var result = "전역일을 입력하세요"
       this.Ddaymessage=result
       return result
@@ -300,7 +303,7 @@ class CalcScreen extends React.Component {
               style={{width: 200}}
               date={this.state.startDay}
               mode="date"
-              placeholder="입대일을 선택해주세요"
+              placeholder="pick a day"
               format="YYYY-MM-DD"
               minDate="2018-01-01"
               maxDate="2099-12-31"
@@ -323,7 +326,7 @@ class CalcScreen extends React.Component {
               style={{width: 200}}
               date={this.state.endDay}
               mode="date"
-              placeholder="전역일을 선택해주세요"
+              placeholder="pick a day"
               format="YYYY-MM-DD"
               minDate="2018-01-01"
               maxDate="2099-12-31"
@@ -341,16 +344,13 @@ class CalcScreen extends React.Component {
                 }
               }}
               onDateChange={
-                //함수 2개 가져다 쓸 수 있는지...
                 (date) => {this.setState({endDay: date})}
-                /*,  
-                this.Ddaymessage = this.ddayCalculator()*/
               }
             />
             <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
             <ProgressCircle
               radius={50}
-              percent={this.calcPercent()}
+              percent={this.calcPercentInt()}
               borderWidth={5}
               color="navy"
               shadowColor="#50bcdf"
@@ -358,7 +358,7 @@ class CalcScreen extends React.Component {
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
           </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={styles.accessWord}>월급 시뮬레이션</Text>
             <View style={styles.codeSec}>
               <RadioForm
@@ -373,7 +373,7 @@ class CalcScreen extends React.Component {
                 //이거 setState 잘 봐야 할 거 같음.
               />
             </View>
-            <View style={styles.codeSec}>
+            <View style={{flex: 0.3,  justifyContent: 'center',  alignItems: 'center',}}>
               <TextInput style={styles.chatInput} 
                 onChangeText={this.changeSaving}
                 onSubmitEditing={this.submitEdit.bind(this)}
