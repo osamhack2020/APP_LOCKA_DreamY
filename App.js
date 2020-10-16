@@ -39,12 +39,12 @@ calcSalary = (selectMilitary, Savings) => {
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
     savingMoney = (Savings*20) * ((0.05*21)/24);
     sumOfMoney+=savingMoney;
-}
-else{
+  }
+  else{
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
-}
+  }
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
 
@@ -90,8 +90,6 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>  
-
-
     );
   }
 }
@@ -336,6 +334,7 @@ class LobbyScreen extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 
 //계산용 화면
 var radio_props = [
@@ -344,6 +343,8 @@ var radio_props = [
   {label: '공군', value: 2 },
   {label: '해병대', value: 3 }
 ];
+=======
+>>>>>>> bb3e6111aa315229ee237eb0471338b447d74853
 
 class CalcScreen extends React.Component {
 
@@ -531,28 +532,12 @@ class CalcScreen extends React.Component {
   }
 }
 
-// TBD
-class LockedScreen extends React.Component {
-  render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        <Button
-          title = 'Unlock'
-          onPress = {()=>this.props.navigation.navigate('Main')}
-        />
-      </View>
-    );
-  }
-}
+
 
 
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
-    Locked: LockedScreen,
     Login: LoginScreen,
     Permission: PermissionScreen,
     Calc: CalcScreen,

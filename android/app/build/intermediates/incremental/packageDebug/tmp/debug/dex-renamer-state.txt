@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Fri Oct 16 13:27:21 UTC 2020
+=======
+#Fri Oct 16 11:05:33 UTC 2020
+>>>>>>> bb3e6111aa315229ee237eb0471338b447d74853
 base.0=/home/codespace/workspace/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
