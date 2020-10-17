@@ -125,7 +125,7 @@ class LoginScreen extends React.Component{
       () => this.props.navigation.navigate('Permission');
     }
     else{
-      ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
+      ToastExample.show( this.inputPassword, ToastExample.SHORT);
     }
   }
 /*
@@ -154,7 +154,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TextInput 
               style={styles.chatInput}
-              onChangeText={this.changePassword()}
+              onChangeText={this.changePassword}
               //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
@@ -162,7 +162,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
-              onPress = {this.checkPassword()}>
+              onPress = {() => this.checkPassword()}>
               <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
