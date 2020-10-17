@@ -283,11 +283,11 @@ class LobbyScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.7}}/>
-          <View style={{flex: 1.1}}>
+          <View style={{flex: 1.1, justifyContent: 'center',  alignItems: 'center'}}>
             <Text 
               // 시계넣는공간
-              style={{fontWeight: 'bold', fontSize: 15, color: 'white',}}>
-                {this.state.d.getHours()}:{this.state.d.getMinutes()}: {this.state.d.getSeconds()}
+              style={{fontWeight: 'bold', fontSize: 50, color: 'white',}}>
+                {this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
             </Text>
           </View>
           <View style={{flex: 0.7}}/>
