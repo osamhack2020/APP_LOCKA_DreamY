@@ -156,7 +156,7 @@ class LoginScreen extends React.Component{
             onPress = {()=>this.props.navigation.navigate('Main')}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
-          </View>  
+          </View>
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
               잠금해제 코드를 입력해주세요
