@@ -125,7 +125,7 @@ class LoginScreen extends React.Component{
       this.props.navigation.navigate('Permission');
     }
     else{
-      ToastExample.show( this.inputPassword, ToastExample.SHORT);
+      ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
     }
   }
 /*
@@ -148,7 +148,7 @@ class LoginScreen extends React.Component{
           </View>  
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
-            인증번호를 입력해주세요
+             비밀번호를 입력해주세요
             </Text>
           </View>
           <View style={styles.codeSec}>
@@ -283,10 +283,10 @@ class LobbyScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.7}}/>
-          <View style={{flex: 1.1, justifyContent: 'center',  alignItems: 'center'}}>
+          <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
             <Text 
               // 시계넣는공간
-              style={{fontWeight: 'bold', fontSize: 70, color: 'white'}}>
+              style={styles.clockText}>
                 {this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
             </Text>
           </View>
@@ -753,6 +753,11 @@ h3Text:{
   fontSize: 12,
   marginBottom: 5,
   alignSelf: 'flex-start',
+},
+clockText:{
+  color: 'white',
+  fontSize: 45,
+  fontWeight: 'bold',
 },
 curstatus:{
   //flexDirection: 'row',
