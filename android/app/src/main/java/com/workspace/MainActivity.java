@@ -36,9 +36,9 @@ public class MainActivity extends ReactActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.AccessPermission = checkAccessibilityPermissions();
-        /*if(!AccessPermission) {
+        if(!AccessPermission) {
             setAccessibilityPermissions();
-        }*/
+        }
     }
     
     public boolean checkAccessibilityPermissions() {
