@@ -15,7 +15,8 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   ImageBackground} from 'react-native';
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
-  
+import ToastExample from './ToastExample';
+
   //import Block from './Block';
 
 calcSalary = (selectMilitary, Savings) => {
@@ -117,6 +118,16 @@ class LoginScreen extends React.Component{
   changePassword= (value) =>{
     this.inputPassword=value;
   }
+
+  checkPassword = () =>{
+    if (this.inputPassword==password){
+      ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
+      this.props.navigation.navigate('Permission');
+    }
+    else{
+      ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
+    }
+  }
 /*
   submitEdit= function(){
     this.setState({saving: this.inputText});
@@ -135,8 +146,8 @@ class LoginScreen extends React.Component{
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>  
-          <View style={{flex: 2.4}}></View>
-            <Text style={styles.h1Text}>
+          <View style={{flex: 2.4,justifyContent: 'center', alignItems: 'center',}}></View>
+            <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10, }}>
             인증번호를 입력해주세요
             </Text>
           <View/>
@@ -151,7 +162,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Permission')}>
+              onPress = {this.checkPassword()}>
               <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
