@@ -122,7 +122,7 @@ class LoginScreen extends React.Component{
   checkPassword = () =>{
     if (this.inputPassword==this.state.password){
       ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
-      () => this.props.navigation.navigate('Permission');
+      this.props.navigation.navigate('Permission');
     }
     else{
       ToastExample.show( this.inputPassword, ToastExample.SHORT);
