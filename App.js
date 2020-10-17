@@ -19,6 +19,21 @@ import ToastExample from './ToastExample';
 
   //import Block from './Block';
 
+//initName : 첫 시작화면
+//lockedCondition : 잠금상태 확인변수
+//permissionCheck : 권한 허용여부
+var initName;
+var lockedCondition;
+var permissionCheck = false; // 현재는 테스트용으로 false값 부여
+/*
+permissionCheck은 권한 허용 여부에 따라 true, false 값을 부여해야함
+*/
+if (permissionCheck == true){
+  initName = 'Lobby';
+}else{
+  initName = 'Permission';
+}
+
 calcSalary = (selectMilitary, Savings) => {
   //월급계산하는 함수
   //selectMilitary: 0:육군 1:해군 2:공군 3:해병대
@@ -120,7 +135,9 @@ class LoginScreen extends React.Component{
   checkPassword = () =>{
     if (this.inputPassword==this.state.password){
       ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
-      this.props.navigation.navigate('Permission');
+      NativeModules.Block.stopService();
+      this.props.navigation.navigate('Lobby');
+
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -306,7 +323,7 @@ class LobbyScreen extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
+                onPress={() => NativeModules.Block.startService()}>
                 <Image 
                 // 2번 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
                 resizeMode="contain"
@@ -554,18 +571,6 @@ class LockedScreen extends React.Component {
   }
 }
 
-//스파게티니까 언젠가 엎어야 함.
-var initName;
-var accessBool = false; // 현재는 테스트용으로 false값 부여
-/*
-accessBool은 권한 허용 여부에 따라 true, false 값을 부여해야함
-*/
-if (accessBool == true){
-  initName = 'Lobby';
-}else{
-  initName = 'Permission';
-}
-
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
@@ -738,8 +743,8 @@ h3Text:{
 clockText:{
   //시계 띄우는 텍스트
   color: 'white',
-  fontSize: 75,
-  fontWeight: 'bold',
+  fontSize: 65,
+  //fontWeight: 'bold',
 },
 buttonGroup:{
   flexDirection: 'row',
