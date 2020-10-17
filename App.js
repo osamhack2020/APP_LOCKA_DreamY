@@ -162,7 +162,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
-              onPress = {this.checkPassword()}>
+              onPress = {()=>this.props.navigation.navigate('Permission')}>
               <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
