@@ -134,10 +134,10 @@ class LoginScreen extends React.Component{
 
   checkPassword = () =>{
     if (this.inputPassword==this.state.password){
-      ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
-      NativeModules.Block.stopService();
+      //ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
       this.props.navigation.navigate('Lobby');
-
+      NativeModules.Block.stopService();
+      
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
