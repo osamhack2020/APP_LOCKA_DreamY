@@ -4,6 +4,8 @@ import com.facebook.react.ReactActivity;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
+import com.facebook.react.bridge.ReactApplicationContext;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -34,9 +36,9 @@ public class MainActivity extends ReactActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.AccessPermission = checkAccessibilityPermissions();
-        if(!AccessPermission) {
+        /*if(!AccessPermission) {
             setAccessibilityPermissions();
-        }
+        }*/
     }
     
     public boolean checkAccessibilityPermissions() {

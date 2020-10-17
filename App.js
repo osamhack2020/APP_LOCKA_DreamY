@@ -192,6 +192,11 @@ class PermissionScreen extends React.Component{
     header: null ,
   };
 
+  changePassword= () =>{
+    NativeModules.Block.setAccessibilityPermissions();
+    this.props.navigation.navigate('Lobby');
+  }
+
   render(){
     return(
       <View style={styles.newContainer}>
