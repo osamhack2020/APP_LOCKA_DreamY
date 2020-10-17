@@ -146,7 +146,7 @@ class LoginScreen extends React.Component{
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>  
-          <View style={{flex: 2.4, alignItems: 'center'}}>
+          <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
             인증번호를 입력해주세요
             </Text>
@@ -154,7 +154,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TextInput 
               style={styles.chatInput}
-              onChangeText={this.changePassword}
+              onChangeText={this.changePassword()}
               //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
