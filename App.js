@@ -122,7 +122,7 @@ class LoginScreen extends React.Component{
   checkPassword = () =>{
     if (this.inputPassword==password){
       ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
-      this.props.navigation.navigate('Permission');
+      () => this.props.navigation.navigate('Permission');
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -146,11 +146,11 @@ class LoginScreen extends React.Component{
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>  
-          <View style={{flex: 2.4,justifyContent: 'center', alignItems: 'center',}}></View>
-            <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10, }}>
+          <View style={{flex: 2.4, alignItems: 'center'}}>
+            <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
             인증번호를 입력해주세요
             </Text>
-          <View/>
+          </View>
           <View style={styles.codeSec}>
             <TextInput 
               style={styles.chatInput}
@@ -162,7 +162,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
-              onPress = {()=>this.props.navigation.navigate('Permission')}>
+              onPress = {()=>this.checkPassword()}>
               <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
