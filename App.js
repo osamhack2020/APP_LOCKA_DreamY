@@ -85,9 +85,9 @@ class HomeScreen extends React.Component {
               onPress = {()=>this.props.navigation.navigate('Calc')}
             />
             <Button
-              title = 'Login'
-              onPress = {()=>this.props.navigation.navigate('Login')}
-              onPress = {()=>this.props.navigation.navigate('Login')}  
+              title = 'Permission'
+              onPress = {()=>this.props.navigation.navigate('Permission')}
+              onPress = {()=>this.props.navigation.navigate('Permission')}  
             />
           </View>
         </View>  
@@ -100,7 +100,6 @@ class HomeScreen extends React.Component {
 // 어플 처음 실행시 등장. 인증번호 입력 화면
 class LoginScreen extends React.Component{
 
-  // 상단의 toolbar 가리기
   static navigationOptions = {
     header: null ,
   };
@@ -108,7 +107,6 @@ class LoginScreen extends React.Component{
   
   constructor(props) {
     super(props);
-    //특별한 맴버 변수(화면 자동갱신)
     this.state = { 
       password: "00000000",
     };
@@ -128,11 +126,7 @@ class LoginScreen extends React.Component{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
     }
   }
-/*
-  submitEdit= function(){
-    this.setState({saving: this.inputText});
-  }
-*/
+
   render(){
     return(
       <View style={styles.newContainer}>
@@ -148,7 +142,7 @@ class LoginScreen extends React.Component{
           </View>  
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
-             비밀번호를 입력해주세요
+              잠금해제 코드를 입력해주세요
             </Text>
           </View>
           <View style={styles.codeSec}>
@@ -292,80 +286,56 @@ class LobbyScreen extends React.Component {
           </View>
           <View style={{flex: 0.7}}/>
           <View style={styles.codeSec}>
-            <View style={styles.curstatus}>
-              <Text 
-              // 각 기능 시행여부에 따라 상태 메세지가 달라져야함
-              style={{fontWeight: 'bold', fontSize: 15}}>
-                현재 상태가 게시됩니다.
-              </Text>
-            </View>
+            <Text 
+            // 각 기능 시행여부에 따라 상태 메세지가 달라져야함
+            style={{fontWeight: 'bold', fontSize: 15, color: 'white'}}>
+              현재 상태가 게시됩니다.
+            </Text>
           </View>
-          <View style={{flex: 0.3}}/>
-          <View style={{flex: 1.4}}>
+          <View style={{flex: 1}}/>
+          <View style={{flex: 1}}>
             <View style={styles.buttonGroup}>
-              <View style={styles.buttonBlock8}>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 상단 좌측 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/dday_salary.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 하단 좌측 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/phone_lock.png')} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.buttonBlock8}>
+              <TouchableOpacity
+                onPress = {()=>this.props.navigation.navigate('Calc')}>
+                <Image 
+                // 1번 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
+                resizeMode="contain"
+                style={styles.iconStyle}
+                // 1017 - 임시 아이콘 사용중
+                source = {require('./images/LOCKA ICON.png')} />
+              </TouchableOpacity>
               <TouchableOpacity
                 // 추후 버튼 별 기능 실행해야함
                 onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 상단 중앙 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/phone_unlock.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 하단 중앙 아이콘 >> 잠금 임시해제 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/temp_unlock.png')} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.buttonBlock8}>
+                <Image 
+                // 2번 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
+                resizeMode="contain"
+                style={styles.iconStyle}
+                // 1017 - 임시 아이콘 사용중
+                source = {require('./images/LOCKA ICON.png')} />
+              </TouchableOpacity>
               <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 상단 우측 아이콘
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 하단 우측 아이콘
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
-                </TouchableOpacity>
-              </View>
+                // 1017 - 잠금 해제시 UnlockScreen으로 접속하도록 함
+                onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
+                <Image 
+                // 3번 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
+                resizeMode="contain"
+                style={styles.iconStyle}
+                // 1017 - 임시 아이콘 사용중
+                source = {require('./images/LOCKA ICON.png')} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
+                onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
+                <Image 
+                // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
+                resizeMode="contain"
+                style={styles.iconStyle}
+                // 1017 - 임시 아이콘 사용중
+                source = {require('./images/LOCKA ICON.png')} />
+              </TouchableOpacity>
             </View>
           </View>
-          <View style={{fliex: 0.3}}/>
         </ImageBackground>
       </View>
     );
@@ -584,18 +554,29 @@ class LockedScreen extends React.Component {
   }
 }
 
+//스파게티니까 언젠가 엎어야 함.
+var initName;
+var accessBool = false; // 현재는 테스트용으로 false값 부여
+/*
+accessBool은 권한 허용 여부에 따라 true, false 값을 부여해야함
+*/
+if (accessBool == true){
+  initName = 'Lobby';
+}else{
+  initName = 'Permission';
+}
 
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
     Locked: LockedScreen,
-    Login: LoginScreen,
+    UnlockCheck: LoginScreen,
     Permission: PermissionScreen,
     Calc: CalcScreen,
     Lobby: LobbyScreen,
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: initName,
   }
 );
   
@@ -755,36 +736,26 @@ h3Text:{
   alignSelf: 'flex-start',
 },
 clockText:{
+  //시계 띄우는 텍스트
   color: 'white',
-  fontSize: 45,
+  fontSize: 75,
   fontWeight: 'bold',
-},
-curstatus:{
-  //flexDirection: 'row',
-  width: '70%',
-  height: 40,
-  backgroundColor: 'white',
-  borderColor: 'red',
-  borderWidth: 2,
-  alignItems: 'center', 
-  justifyContent: 'center',
 },
 buttonGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
-  //borderColor: 'white',
-  //borderWidth: 1,
-  width: '66%',
-  height: '81%',
-},
-buttonBlock8:{
-  flexDirection: 'column',
+  // borderColor: 'white', << 1017 -- 삭제하면 됨
+  // borderWidth: 1, << 1017 -- 삭제하면 됨
+  width: '88%',
+  height: '100%',
 },
 iconStyle:{
   width: 80, 
   height: 80,
-  borderColor: 'white',
-  borderWidth: 1,
+  // 1017 - 아이콘 배치 완료시 삭제될 예정 --------------------------------↧↧↧
+  // borderColor: 'white', << 삭제하면 됨
+  // borderWidth: 1, << 삭제하면 됨
+  // 1017 ---------------------------------------------------------------↥↥↥
   margin: 5,
 },
 });
