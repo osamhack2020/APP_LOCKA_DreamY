@@ -137,9 +137,9 @@ class LoginScreen extends React.Component{
           </View>  
           <View style={{flex: 2.4}}/>
           <View style={styles.codeSec}>
-              <Text style={styles.h1Text}>
-                인증번호를 입력해주세요
-              </Text>
+            <Text style={styles.h1Text}>
+              인증번호를 입력해주세요
+            </Text>
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
