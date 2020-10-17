@@ -120,7 +120,7 @@ class LoginScreen extends React.Component{
   }
 
   checkPassword = () =>{
-    if (this.inputPassword==password){
+    if (this.inputPassword==this.state.password){
       ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
       () => this.props.navigation.navigate('Permission');
     }
@@ -162,7 +162,7 @@ class LoginScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 인증번호 확인하고 넘어가야함
-              onPress = {()=>this.checkPassword()}>
+              onPress = {this.checkPassword()}>
               <Text style={styles.accessWord}>인증하기</Text>
             </TouchableOpacity>
           </View> 
