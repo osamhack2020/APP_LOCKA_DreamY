@@ -39,12 +39,12 @@ calcSalary = (selectMilitary, Savings) => {
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
     savingMoney = (Savings*20) * ((0.05*21)/24);
     sumOfMoney+=savingMoney;
-  }
-  else{
+}
+else{
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
-  }
+}
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
 
@@ -90,6 +90,8 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>  
+
+
     );
   }
 }
@@ -102,24 +104,6 @@ class LoginScreen extends React.Component{
     header: null ,
   };
 
-  
-  constructor(props) {
-    super(props);
-    //특별한 맴버 변수(화면 자동갱신)
-    this.state = { 
-      password: "00000000",
-    };
-    this.inputPassword = " ";
-  }
-
-  changePassword= (value) =>{
-    this.inputPassword=value;
-  }
-/*
-  submitEdit= function(){
-    this.setState({saving: this.inputText});
-  }
-*/
   render(){
     return(
       <View style={styles.newContainer}>
@@ -135,14 +119,8 @@ class LoginScreen extends React.Component{
           </View>  
           <View style={{flex: 2.4}}/>
           <View style={styles.codeSec}>
-              <Text style={styles.h1Text}>
-                인증번호를 입력해주세요
-              </Text>
-            <TextInput 
-              style={styles.chatInput}
-              onChangeText={this.changePassword}
-              //onSubmitEditing={this.submitEdit.bind(this)}
-            />
+            <TextInput style={styles.chatInput} 
+            defaultValue='인증번호를 입력해주세요'/>
           </View>
           <View style={{flex: 0.4}}/>
           <View style={styles.codeSec}>
@@ -213,8 +191,8 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            // 추후 권한 요청 후 LobbyScreen으로 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Lobby')}>
+            // 추후 권한 요청 후 화면 넘어가야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
@@ -225,114 +203,6 @@ class PermissionScreen extends React.Component{
   }
 }
 
-// 권한 받은 후, 어플의 메인 화면
-class LobbyScreen extends React.Component {
-
-  // 상단의 toolbar 가리기
-  static navigationOptions = {
-    header: null ,
-  };
-
-  render(){
-    return(
-      <View style={styles.newContainer}>
-        <ImageBackground
-          style={{width: '100%', height: '100%'}}
-          source={require('./images/MainB.png')}>
-          <View style={styles.delLoc}>
-            <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
-              <Text style={styles.delWord}>삭제</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{flex: 0.7}}/>
-          <View 
-          // 이 View에 시계 넣어주시면 됩니다.-----------------------------------
-          style={{flex: 1.1}}
-          //-------------------------------------------------------------------
-          />
-          <View style={{flex: 0.7}}/>
-          <View style={styles.codeSec}>
-            <View style={styles.curstatus}>
-              <Text 
-              // 각 기능 시행여부에 따라 상태 메세지가 달라져야함
-              style={{fontWeight: 'bold', fontSize: 15}}>
-                현재 상태가 게시됩니다.
-              </Text>
-            </View>
-          </View>
-          <View style={{flex: 0.3}}/>
-          <View style={{flex: 1.4}}>
-            <View style={styles.buttonGroup}>
-              <View style={styles.buttonBlock8}>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 상단 좌측 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/dday_salary.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 하단 좌측 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/phone_lock.png')} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.buttonBlock8}>
-              <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 상단 중앙 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/phone_unlock.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 하단 중앙 아이콘 >> 잠금 임시해제 아이콘 임시배치중
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/temp_unlock.png')} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.buttonBlock8}>
-              <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 상단 우측 아이콘
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress = {()=>this.props.navigation.navigate('Main')}>
-                  <Image 
-                  // 하단 우측 아이콘
-                  resizeMode="contain"
-                  style={styles.iconStyle}
-                  source = {require('./images/TempImage.png')} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          <View style={{fliex: 0.3}}/>
-        </ImageBackground>
-      </View>
-    );
-  }
-}
 
 //계산용 화면
 var radio_props = [
@@ -343,11 +213,6 @@ var radio_props = [
 ];
 
 class CalcScreen extends React.Component {
-
-  static navigationOptions = {
-    header: null ,
-  };
-
   constructor(props) {
     super(props);
     //특별한 맴버 변수(화면 자동갱신)
@@ -433,14 +298,14 @@ class CalcScreen extends React.Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <DatePicker
               style={{width: 200}}
               date={this.state.startDay}
               mode="date"
               placeholder="pick a day"
               format="YYYY-MM-DD"
-              minDate="2019-01-01"
+              minDate="2018-01-01"
               maxDate="2099-12-31"
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
@@ -463,7 +328,7 @@ class CalcScreen extends React.Component {
               mode="date"
               placeholder="pick a day"
               format="YYYY-MM-DD"
-              minDate="2019-01-01"
+              minDate="2018-01-01"
               maxDate="2099-12-31"
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
@@ -493,7 +358,7 @@ class CalcScreen extends React.Component {
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
           </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={styles.accessWord}>월급 시뮬레이션</Text>
             <View style={styles.codeSec}>
               <RadioForm
@@ -528,16 +393,31 @@ class CalcScreen extends React.Component {
   }
 }
 
-
+// TBD
+class LockedScreen extends React.Component {
+  render() {
+  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.appNameText}>
+            LOCKA
+          </Text>
+        <Button
+          title = 'Unlock'
+          onPress = {()=>this.props.navigation.navigate('Main')}
+        />
+      </View>
+    );
+  }
+}
 
 
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
+    Locked: LockedScreen,
     Login: LoginScreen,
     Permission: PermissionScreen,
     Calc: CalcScreen,
-    Lobby: LobbyScreen,
   },
   {
     initialRouteName: 'Main',
@@ -698,34 +578,6 @@ h3Text:{
   fontSize: 12,
   marginBottom: 5,
   alignSelf: 'flex-start',
-},
-curstatus:{
-  //flexDirection: 'row',
-  width: '70%',
-  height: 40,
-  backgroundColor: 'white',
-  borderColor: 'red',
-  borderWidth: 2,
-  alignItems: 'center', 
-  justifyContent: 'center',
-},
-buttonGroup:{
-  flexDirection: 'row',
-  alignSelf: 'center',
-  //borderColor: 'white',
-  //borderWidth: 1,
-  width: '66%',
-  height: '81%',
-},
-buttonBlock8:{
-  flexDirection: 'column',
-},
-iconStyle:{
-  width: 80, 
-  height: 80,
-  borderColor: 'white',
-  borderWidth: 1,
-  margin: 5,
 },
 });
 

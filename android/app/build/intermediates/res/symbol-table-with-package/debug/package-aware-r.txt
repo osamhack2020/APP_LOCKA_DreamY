@@ -1339,16 +1339,10 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable images_commonb
-drawable images_dday_salary
 drawable images_loginb
-drawable images_mainb
 drawable images_permissionb
-drawable images_phone_lock
-drawable images_phone_unlock
 drawable images_rokamark
 drawable images_setting
-drawable images_temp_unlock
-drawable images_tempimage
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down

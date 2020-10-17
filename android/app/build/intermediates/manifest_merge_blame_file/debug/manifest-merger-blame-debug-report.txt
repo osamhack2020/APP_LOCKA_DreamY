@@ -19,7 +19,7 @@
 13-->[com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/623174cd4892d9fb924ac44b102b25c0/flipper-0.37.0/AndroidManifest.xml:16:22-73
 14
 15    <application
-15-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-46:19
+15-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:6:5-45:19
 16        android:name="com.workspace.MainApplication"
 16-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:7:7-38
 17        android:allowBackup="false"
@@ -38,50 +38,48 @@
 24        android:usesCleartextTraffic="true" >
 24-->/home/codespace/workspace/android/app/src/debug/AndroidManifest.xml:7:18-53
 25        <activity
-25-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:13:7-24:18
+25-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:13:7-23:18
 26            android:name="com.workspace.MainActivity"
 26-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:14:9-37
 27            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-27-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:17:9-86
+27-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:16:9-86
 28            android:label="@string/app_name"
 28-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:15:9-41
 29            android:launchMode="singleTask"
-29-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:18:9-40
-30            android:screenOrientation="portrait"
-30-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:16:9-45
-31            android:windowSoftInputMode="adjustResize" >
-31-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:19:9-51
-32            <intent-filter>
-32-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:9-23:25
-33                <action android:name="android.intent.action.MAIN" />
-33-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:21:13-65
-33-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:21:21-62
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:22:13-73
-35-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:22:23-70
-36            </intent-filter>
-37        </activity> <!-- accessibility 관련 부분 -->
-38        <service
-38-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:26:7-36:17
-39            android:name="com.workspace.MyAccessibilityService"
-39-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:27:11-49
-40            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
-40-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:28:11-77
-41            <intent-filter>
-41-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:29:11-31:27
-42                <action android:name="android.accessibilityservice.AccessibilityService" />
-42-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:30:15-90
-42-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:30:23-87
-43            </intent-filter>
-44
-45            <meta-data
-45-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:33:11-35:70
-46                android:name="android.accessibilityservice"
-46-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-58
-47                android:resource="@xml/accessibility_service_config" />
-47-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:35:15-67
-48        </service>
-49    </application>
-50
-51</manifest>
+29-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:17:9-40
+30            android:windowSoftInputMode="adjustResize" >
+30-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:18:9-51
+31            <intent-filter>
+31-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:19:9-22:25
+32                <action android:name="android.intent.action.MAIN" />
+32-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:13-65
+32-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:20:21-62
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:21:13-73
+34-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:21:23-70
+35            </intent-filter>
+36        </activity> <!-- accessibility 관련 부분 -->
+37        <service
+37-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:25:7-35:17
+38            android:name="com.workspace.MyAccessibilityService"
+38-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:26:11-49
+39            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+39-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:27:11-77
+40            <intent-filter>
+40-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:28:11-30:27
+41                <action android:name="android.accessibilityservice.AccessibilityService" />
+41-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:29:15-90
+41-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:29:23-87
+42            </intent-filter>
+43
+44            <meta-data
+44-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:32:11-34:70
+45                android:name="android.accessibilityservice"
+45-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:33:15-58
+46                android:resource="@xml/accessibility_service_config" />
+46-->/home/codespace/workspace/android/app/src/main/AndroidManifest.xml:34:15-67
+47        </service>
+48    </application>
+49
+50</manifest>
