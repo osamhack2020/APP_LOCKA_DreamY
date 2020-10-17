@@ -15,7 +15,7 @@ import android.provider.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.facebook.react.ReactActivity;
-
+import android.app.Activity;
 
 import android.app.AlertDialog;
 import android.accessibilityservice.AccessibilityServiceInfo;
@@ -67,18 +67,17 @@ public class BlockModule extends ReactContextBaseJavaModule {
      }
 
      @ReactMethod
-     public void setAccessibilityPermissions() {/*
-      AlertDialog.Builder gsDialog = new AlertDialog.Builder(this);
-      gsDialog.setTitle("접근성 권한 설정");
-      gsDialog.setMessage("접근성 권한을 필요로 합니다");
-      gsDialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int which) {*/
+     public void setAccessibilityPermissions() {
+      Activity activity = getCurrentActivity();
+      //AlertDialog.Builder gsDialog = new AlertDialog.Builder(this);
+      //gsDialog.setTitle("접근성 권한 설정");
+      //gsDialog.setMessage("접근성 권한을 필요로 합니다");
+      //gsDialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+          //public void onClick(DialogInterface dialog, int which) {
               // 설정화면으로 보내는 부분
-      Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-      ReactApplicationContext context = getReactApplicationContext();
-      context.startActivity(intent);
-          /*}
-      }).create().show();*/
+      activity.startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+          //}
+      //}).create().show();
     }
 
   }
