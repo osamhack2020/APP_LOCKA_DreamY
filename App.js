@@ -184,7 +184,7 @@ class LoginScreen extends React.Component{
   }
 }
 
-// 인증번호 입력시 등장. 권한 설명 및 요청 화면
+//권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
 
   // 상단의 toolbar 가리기
@@ -192,9 +192,9 @@ class PermissionScreen extends React.Component{
     header: null ,
   };
 
-  changePassword= () =>{
+  setAccessibility = () =>{
     NativeModules.Block.setAccessibilityPermissions();
-    //this.props.navigation.navigate('Lobby');
+    this.props.navigation.navigate('Lobby');
   }
 
   render(){
@@ -244,7 +244,7 @@ class PermissionScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 권한 요청 후 LobbyScreen으로 넘어가야함
-            onPress = {()=>this.props.navigation.navigate('Lobby')}>
+            onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
