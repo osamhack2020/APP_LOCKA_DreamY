@@ -32,22 +32,17 @@ permissionCheck은 권한 허용 여부에 따라 true, false 값을 부여해�
 */
 
 
-checkAccessPermission = async () => {
-  if(permissionCheck){
-    ToastExample.show('Permission Checked.', ToastExample.SHORT);
+Block.checkPermissionOn(
+  (status) => {
+    if(status){
+      ToastExample.show('Permission Checked.', ToastExample.SHORT);
+      permissionCheck=status;
+    }
+    else{
+      ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
+    }
   }
-  else{
-    ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
-  }
-  permissionCheck = await Block.checkPermissionOn();
-  if(permissionCheck){
-    ToastExample.show('Permission Checked.', ToastExample.SHORT);
-  }
-  else{
-    ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
-  }
-  
-}
+);
 
 if (permissionCheck == true){
   initName = 'Lobby';
@@ -369,7 +364,7 @@ class LobbyScreen extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
-                onPress = {()=>checkAccessPermission()}>
+                onPress = {()=>Block.checkPermissionOn()}>
                 <Image 
                 // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
                 resizeMode="contain"

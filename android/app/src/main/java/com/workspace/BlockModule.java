@@ -10,6 +10,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import android.widget.Toast;
 import com.facebook.react.bridge.Promise;
+import com.facebook.react.bridge.Callback;
 
 import android.os.Bundle;
 import android.provider.Settings;
@@ -47,14 +48,14 @@ public class BlockModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void checkPermissionOn(final Promise promise) {
+    public void checkPermissionOn(Callback booleanCallback) {
       // 현재 LOCKA의 접근성서비스가 켜져있는지 확인할 수 있는 함수
       //if(MainActivity.AccessPermission){Toast.makeText(getReactApplicationContext(), "True: "+MainActivity.AccessApps , Toast.LENGTH_SHORT).show();}
       //else{Toast.makeText(getReactApplicationContext(), "False : "+MainActivity.AccessApps, Toast.LENGTH_SHORT).show();}
       boolean accessibilityPermission = MainActivity.AccessPermission;
-      promise.resolve(accessibilityPermission);
+      booleanCallback.invoke(accessibilityPermission);
     }
-    
+
     @ReactMethod
      public void startService() {
      // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
