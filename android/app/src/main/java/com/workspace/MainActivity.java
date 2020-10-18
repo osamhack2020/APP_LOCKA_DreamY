@@ -49,7 +49,7 @@ public class MainActivity extends ReactActivity {
     public boolean checkAccessibilityService() {
         Context  mContext = getApplicationContext();
         int accessibilityEnabled = 0;
-        final String service = getPackageName()+"/workspace.com/MyAccessibilityService";
+        final String service = getPackageName()+"/workspace.com.MyAccessibilityService";
         try {
             accessibilityEnabled = Settings.Secure.getInt(
                     mContext.getApplicationContext().getContentResolver(),
