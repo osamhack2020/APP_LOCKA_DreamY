@@ -48,8 +48,8 @@ public class BlockModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void checkPermissionOn() {
       // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
-      if(MainActivity.AccessPermission){Toast.makeText(getReactApplicationContext(), "True", Toast.LENGTH_SHORT).show();}
-      else{Toast.makeText(getReactApplicationContext(), "False", Toast.LENGTH_SHORT).show();}
+      if(MainActivity.AccessPermission){Toast.makeText(getReactApplicationContext(), "True: "+MainActivity.AccessApps , Toast.LENGTH_SHORT).show();}
+      else{Toast.makeText(getReactApplicationContext(), "False : "+MainActivity.AccessApps, Toast.LENGTH_SHORT).show();}
     }
 
     @ReactMethod
