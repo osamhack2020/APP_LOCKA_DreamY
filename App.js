@@ -33,6 +33,12 @@ permissionCheck은 권한 허용 여부에 따라 true, false 값을 부여해�
 
 
 checkAccessPermission = async () => {
+  if(permissionCheck){
+    ToastExample.show('Permission Checked.', ToastExample.SHORT);
+  }
+  else{
+    ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
+  }
   permissionCheck = await Block.checkPermissionOn();
   if(permissionCheck){
     ToastExample.show('Permission Checked.', ToastExample.SHORT);
