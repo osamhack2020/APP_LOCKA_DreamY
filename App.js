@@ -26,12 +26,13 @@ import ToastExample from './ToastExample';
 
 var initName;
 var lockedCondition;
-var permissionCheck = false; // 현재는 테스트용으로 false값 부여
+var permissionCheck = NativeModules.Block.returnPermissionvalue(); // 현재는 테스트용으로 false값 부여
+
 /*
 permissionCheck은 권한 허용 여부에 따라 true, false 값을 부여해야함
 */
 
-
+/*
 Block.checkPermissionOn(
   (status) => {
     if(status){
@@ -43,6 +44,7 @@ Block.checkPermissionOn(
     }
   }
 );
+*/
 
 if (permissionCheck == true){
   initName = 'Lobby';
@@ -364,7 +366,7 @@ class LobbyScreen extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
-                onPress = {()=>Block.checkPermissionOn()}>
+                onPress = {()=>checkAccessPermission()}>
                 <Image 
                 // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
                 resizeMode="contain"

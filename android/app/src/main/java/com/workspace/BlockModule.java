@@ -56,6 +56,12 @@ public class BlockModule extends ReactContextBaseJavaModule {
       booleanCallback.invoke(accessibilityPermission);
     }
 
+    @ReactMethod(isBlockingSynchronousMethod = true)
+    public boolean returnPermissionvalue() {
+      boolean accessibilityPermission = MainActivity.AccessPermission;
+      return accessibilityPermission;
+    }
+
     @ReactMethod
      public void startService() {
      // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
