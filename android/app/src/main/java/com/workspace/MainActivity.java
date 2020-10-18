@@ -22,7 +22,7 @@ import android.os.Build;
 
 public class MainActivity extends ReactActivity {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
-    private boolean AccessPermission;
+    public static boolean AccessPermission;
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
@@ -36,9 +36,11 @@ public class MainActivity extends ReactActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.AccessPermission = checkAccessibilityPermissions();
+        
         if(!AccessPermission) {
             setAccessibilityPermissions();
         }
+        
     }
     
     public boolean checkAccessibilityPermissions() {

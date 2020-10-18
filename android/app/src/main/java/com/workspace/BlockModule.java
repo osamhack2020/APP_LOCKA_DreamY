@@ -28,6 +28,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 import com.workspace.MyAccessibilityService;
+import com.workspace.MainActivity;
 
 public class BlockModule extends ReactContextBaseJavaModule {
     public static final String REACT_CLASS = "Block";
@@ -42,6 +43,13 @@ public class BlockModule extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
       return REACT_CLASS;
+    }
+
+    @ReactMethod
+    public void checkPermissionOn() {
+      // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
+      if(MainActivity.AccessPermission){Toast.makeText(getReactApplicationContext(), "True", Toast.LENGTH_SHORT).show();}
+      else{Toast.makeText(getReactApplicationContext(), "False", Toast.LENGTH_SHORT).show();}
     }
 
     @ReactMethod
