@@ -76,6 +76,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
           public void onClick(DialogInterface dialog, int which) {
               // 설정화면으로 보내는 부분
             activity.startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+            return;
           }
       }).create().show();
     }

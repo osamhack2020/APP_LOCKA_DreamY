@@ -30,7 +30,7 @@ public class MyAccessibilityService extends AccessibilityService {
     //폰 내는 시간
     protected static int lockedtime = 2100;
     //폰 받는 시간emf
-    protected static int weekendunlockedtime = 830;
+    protected static int weekendunlockedtime = 1030;
     protected static int unlockedtime = 1800;
     
 
