@@ -72,9 +72,10 @@ public class MyAccessibilityService extends AccessibilityService {
             packageNameList.add((String)installList.get(i).packageName);
         }
         packageNameList.remove("com.workspace");
+        packageNameList.remove("com.samsung.android.honeyboard");
         if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
             for (int i=0; i < packageNameList.size() ; i++ )
-            {	            
+            {
                 if(packageNameList.get(i).equals(event.getPackageName())) {
                     //Toast.makeText(this.getReactApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
                     gotoHome();
