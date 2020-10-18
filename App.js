@@ -22,12 +22,22 @@ import ToastExample from './ToastExample';
 //initName : 첫 시작화면
 //lockedCondition : 잠금상태 확인변수
 //permissionCheck : 권한 허용여부
+
+
 var initName;
 var lockedCondition;
 var permissionCheck = false; // 현재는 테스트용으로 false값 부여
 /*
 permissionCheck은 권한 허용 여부에 따라 true, false 값을 부여해야함
 */
+
+
+checkAccessPermission = async () => { 
+  permissionCheck = await Block.checkPermissionOn();
+}
+
+checkAccessPermission();
+
 if (permissionCheck == true){
   initName = 'Lobby';
 }else{
@@ -244,7 +254,7 @@ class PermissionScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             // 추후 권한 요청 후 LobbyScreen으로 넘어가야함
-            onPress = {()=>NativeModules.Block.checkPermissionOn()}>
+            onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
