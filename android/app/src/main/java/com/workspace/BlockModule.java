@@ -11,6 +11,7 @@ import com.facebook.react.bridge.ReactMethod;
 import android.widget.Toast;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.Callback;
+import android.text.TextUtils;
 
 import android.os.Bundle;
 import android.provider.Settings;
@@ -91,6 +92,41 @@ public class BlockModule extends ReactContextBaseJavaModule {
       }
       MyAccessibilityService.turnOff();
      }
+/*
+     @ReactMethod(isBlockingSynchronousMethod = true)
+     public boolean checkAccessibilityService() {
+      Context mContext  = getApplicationContext();
+      int accessibilityEnabled = 0;
+      final String service = "com.workspace/com.workspace.MyAccessibilityService";
+      try {
+          accessibilityEnabled = Settings.Secure.getInt(
+                  mContext.getApplicationContext().getContentResolver(),
+                  android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+      } catch (Settings.SettingNotFoundException e) {
+          e.printStackTrace();
+      }
+      TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
+
+      if (accessibilityEnabled == 1) {
+          String settingValue = Settings.Secure.getString(
+                  mContext.getApplicationContext().getContentResolver(),
+                  Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+          
+          if (settingValue != null) {
+              mStringColonSplitter.setString(settingValue);
+
+              while (mStringColonSplitter.hasNext()) {
+                  String accessibilityService = mStringColonSplitter.next();
+                  if (accessibilityService.equalsIgnoreCase(service)) {
+                      return true;
+                  }
+              }
+          }
+      }
+
+      return false;
+  }
+  */
 
      @ReactMethod
      public void setAccessibilityPermissions() {

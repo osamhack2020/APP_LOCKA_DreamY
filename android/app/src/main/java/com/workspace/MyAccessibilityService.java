@@ -35,7 +35,7 @@ public class MyAccessibilityService extends AccessibilityService {
     protected static int dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
 
     //폰 내는 시간
-    protected static int lockedtime = 2100;
+    protected static int lockedtime = 2050;
     //폰 받는 시간emf
     protected static int weekendunlockedtime = 1030;
     protected static int unlockedtime = 1800;
