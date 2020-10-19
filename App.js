@@ -27,12 +27,6 @@ var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
 var permissionCheck = NativeModules.Block.checkPermissionState();
 
-//첫 시작화면 설정
-if (permissionCheck == true){
-  initName = 'Lobby';
-}else{
-  initName = 'Permission';
-}
 
 /*
 Block.checkPermissionOn(
@@ -49,12 +43,14 @@ Block.checkPermissionOn(
 */
 
 renderBlockState = () => {
-  var renderingText;
+  var renderingText =" ";
   if (lockedCondition == true){
     renderingText="LOCKED";
-  }else{
-
+  }else if (lockedCondition == false){
     renderingText="UNLOCKED";
+  }
+  else{
+    renderingText="상태를 받아오지 못했습니다.";
   }
   return renderingText;
 }
@@ -314,11 +310,14 @@ class LobbyScreen extends React.Component {
 
   checkAccessPermission() {
     //접근성권한이 허용되어있는지 체크한다.
-    if(permissionCheck){
+    if(permissionCheck==true){
       ToastExample.show('Permission Checked.', ToastExample.SHORT);
     }
-    else{
+    else if(permissionCheck==false){
       ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
+    }
+    else{
+      ToastExample.show('Permission 정보 X', ToastExample.SHORT);
     }
   }
 
@@ -625,6 +624,13 @@ class LockedScreen extends React.Component {
       </View>
     );
   }
+}
+
+//첫 시작화면 설정
+if (permissionCheck == true){
+  initName = 'Lobby';
+}else{
+  initName = 'Permission';
 }
 
 const AppNavigator = createStackNavigator(
