@@ -24,7 +24,6 @@ import android.os.Build;
 public class MainActivity extends ReactActivity {
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
     public static boolean AccessPermission;
-    public static String AccessApps=" ";
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
@@ -44,10 +43,16 @@ public class MainActivity extends ReactActivity {
         }
         
     }    
+/*
+    // 접근성 권한여부를 리턴하는 함수.
+    public static boolean returnAccessibilityValue() {
+        //this.AccessPermission = checkAccessibilityService();
+        return this.AccessPermission;
+    }
+*/
     // 접근성 권한이 있는지 없는지 확인하는 부분
-
     public boolean checkAccessibilityService() {
-        Context  mContext = getApplicationContext();
+        Context mContext = getApplicationContext();
         int accessibilityEnabled = 0;
         final String service = "com.workspace/com.workspace.MyAccessibilityService";
         try {
@@ -69,7 +74,6 @@ public class MainActivity extends ReactActivity {
 
                 while (mStringColonSplitter.hasNext()) {
                     String accessibilityService = mStringColonSplitter.next();
-                    AccessApps += accessibilityService;
                     if (accessibilityService.equalsIgnoreCase(service)) {
                         return true;
                     }
@@ -85,10 +89,8 @@ public class MainActivity extends ReactActivity {
         AccessPermission = accessibilityManager.isEnabled();
         // getEnabledAccessibilityServiceList는 현재 접근성 권한을 가진 리스트를 가져오게 된다
         List<AccessibilityServiceInfo> list = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.DEFAULT);
-        AccessApps += Integer.toString(list.size());
         for (int i = 0; i < list.size(); i++) {
             AccessibilityServiceInfo info = list.get(i);
-            AccessApps += (String)info.getResolveInfo().serviceInfo.packageName+ " ";
             // 접근성 권한을 가진 앱의 패키지 네임과 패키지 네임이 같으면 현재앱이 접근성 권한을 가지고 있다고 판단함
             if (info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())) {
                 return true;

@@ -58,12 +58,13 @@ public class BlockModule extends ReactContextBaseJavaModule {
 */
     @ReactMethod(isBlockingSynchronousMethod = true)
     public boolean checkPermissionState() {
-      boolean accessibilityPermission = MainActivity.AccessPermission;
-      return accessibilityPermission;
+      return MainActivity.AccessPermission;
     }
+
 
     @ReactMethod(isBlockingSynchronousMethod = true)
     public boolean checkBlockState() {
+      MyAccessibilityService.getCurrentTime();
       boolean blockState = MyAccessibilityService.returnPhone;
       return blockState;
     }
