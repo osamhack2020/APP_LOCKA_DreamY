@@ -18,8 +18,15 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 public class MyAccessibilityService extends AccessibilityService {
+
     protected static final String CHANNEL_ID = "Block";
-    protected static boolean denyApp = true;
+    /*
+        pauseLock : 일시해제 상태.
+        returnPhone : 폰 반납여부
+    */
+    protected static boolean pauseLock = false;
+    protected static boolean returnPhone = true;
+
     protected static Calendar currentDate = Calendar.getInstance();
     protected static long now = System.currentTimeMillis();
     protected static Date mDate = new Date(now);
@@ -33,13 +40,19 @@ public class MyAccessibilityService extends AccessibilityService {
     protected static int weekendunlockedtime = 1030;
     protected static int unlockedtime = 1800;
     
+    public static void pauseLockOn() {
+        pauseLock = true;
+    }
+    public static void pauseLockOff() {
+        pauseLock = false;
+    }
 
     public static void turnOn() {
-        denyApp = true;
+        returnPhone = true;
     }
 
     public static void turnOff() {
-        denyApp = false;
+        returnPhone = false;
     }
 
     public static void getCurrentTime() {
@@ -52,12 +65,20 @@ public class MyAccessibilityService extends AccessibilityService {
         currentTime = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
 
         if (dayOfWeek==1 || dayOfWeek==7){
-            if (currentTime>lockedtime || currentTime<weekendunlockedtime) {denyApp = true;}
-            else{denyApp = false;}
+            if (( currentTime>lockedtime || currentTime<weekendunlockedtime) && (pauseLock==false)){
+                returnPhone = true;
+            }
+            else{
+                returnPhone = false;
+            }
         }
         else{
-            if (currentTime>lockedtime || currentTime<unlockedtime) {denyApp = true;}
-            else{denyApp = false;}
+            if ((currentTime>lockedtime || currentTime<unlockedtime) && (pauseLock==false)){
+                returnPhone = true;
+            }
+            else{
+                returnPhone = false;
+            }
         }
     }
 
@@ -73,7 +94,7 @@ public class MyAccessibilityService extends AccessibilityService {
         }
         packageNameList.remove("com.workspace");
         packageNameList.remove("com.samsung.android.honeyboard");
-        if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && denyApp) {
+        if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && returnPhone) {
             for (int i=0; i < packageNameList.size() ; i++ )
             {
                 if(packageNameList.get(i).equals(event.getPackageName())) {

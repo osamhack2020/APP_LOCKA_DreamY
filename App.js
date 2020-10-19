@@ -23,14 +23,16 @@ import ToastExample from './ToastExample';
 //lockedCondition : 잠금상태 확인변수
 //permissionCheck : 권한 허용여부
 
-
 var initName;
-var lockedCondition;
-var permissionCheck = NativeModules.Block.returnPermissionvalue(); // 현재는 테스트용으로 false값 부여
+var lockedCondition = NativeModules.Block.checkBlockState();
+var permissionCheck = NativeModules.Block.checkPermissionState();
 
-/*
-permissionCheck은 권한 허용 여부에 따라 true, false 값을 부여해야함
-*/
+//첫 시작화면 설정
+if (permissionCheck == true){
+  initName = 'Lobby';
+}else{
+  initName = 'Permission';
+}
 
 /*
 Block.checkPermissionOn(
@@ -46,10 +48,15 @@ Block.checkPermissionOn(
 );
 */
 
-if (permissionCheck == true){
-  initName = 'Lobby';
-}else{
-  initName = 'Permission';
+renderBlockState = () => {
+  var renderingText;
+  if (lockedCondition == true){
+    renderingText="LOCKED";
+  }else{
+
+    renderingText="UNLOCKED";
+  }
+  return renderingText;
 }
 
 calcSalary = (selectMilitary, Savings) => {
@@ -137,7 +144,6 @@ class LoginScreen extends React.Component{
     header: null ,
   };
 
-  
   constructor(props) {
     super(props);
     this.state = { 
@@ -147,12 +153,14 @@ class LoginScreen extends React.Component{
   }
 
   changePassword= (value) =>{
+    //Textbox에 입력하는 문자열을 가져와서 inputPassword에 저장한다.
     this.inputPassword=value;
   }
 
   checkPassword = () =>{
+    //비밀번호가 맞는지 확인하는 함수
+    //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
-      //ToastExample.show('인증이 완료되었습니다.', ToastExample.SHORT);
       this.props.navigation.navigate('Lobby');
       NativeModules.Block.stopService();
       
@@ -211,6 +219,7 @@ class PermissionScreen extends React.Component{
   };
 
   setAccessibility = () =>{
+    //권한을 요청하는 화면으로 이동시키는 함수.
     NativeModules.Block.setAccessibilityPermissions();
     this.props.navigation.navigate('Lobby');
   }
@@ -261,7 +270,7 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            // 추후 권한 요청 후 LobbyScreen으로 넘어가야함
+            //권한 요청 후 LobbyScreen으로 넘어감.
             onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
@@ -303,6 +312,16 @@ class LobbyScreen extends React.Component {
     })
   }
 
+  checkAccessPermission() {
+    //접근성권한이 허용되어있는지 체크한다.
+    if(permissionCheck){
+      ToastExample.show('Permission Checked.', ToastExample.SHORT);
+    }
+    else{
+      ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
+    }
+  }
+
   render(){
     return(
       <View style={styles.newContainer}>
@@ -321,7 +340,7 @@ class LobbyScreen extends React.Component {
             <Text 
               // 시계넣는공간
               style={styles.clockText}>
-                {this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
+                {this.state.d.getDay()}:{this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
             </Text>
           </View>
           <View style={{flex: 0.7}}/>
@@ -329,7 +348,7 @@ class LobbyScreen extends React.Component {
             <Text 
             // 각 기능 시행여부에 따라 상태 메세지가 달라져야함
             style={{fontWeight: 'bold', fontSize: 15, color: 'white'}}>
-              현재 상태가 게시됩니다.
+              {renderBlockState()}
             </Text>
           </View>
           <View style={{flex: 1}}/>
@@ -399,7 +418,13 @@ class CalcScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    //특별한 맴버 변수(화면 자동갱신)
+    //특별한 맴버 변수(화면 자동갱신) 설명
+    /*
+      clicked : 월급 확인버튼 눌렀는지 확인함.
+      saving : 1달에 넣는 적금
+      selectArmy : 육해공군 등 군종선택
+      date : 현재 날짜, 초기값은 임의로 넣어둠.
+    */
     this.state = { 
       clicked: true,
       saving: 0,
@@ -408,11 +433,16 @@ class CalcScreen extends React.Component {
       startDay: " ",
       endDay: " ",
     };
-    //일반 맴버변수(사용자 입력값을 저장하는 변수.)
+    //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
+    /*
+      inputText : 월 적금을 받아주는 변수
+      dDays : 남은 군생활 일수, 초기값은 임의로 18달*30일로 설정
+      allDays : 전체 군생활 일수
+    */ 
     this.inputText=0;
     this.dDays=540; //그냥 30*18
     this.allDays=540;
-    this.Ddaymessage="입대일과 전역일을 입력해주세요";
+    //this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
 
   submitEdit= function(){
@@ -420,28 +450,31 @@ class CalcScreen extends React.Component {
   }
 
   calcPercentInt=()=>{
+    //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
     return percent
   }
   calcPercent=()=>{
+    //군생활 퍼센트를 문자열로 리턴
     var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
     var result = percent.concat("%");
     return result
   }
 
   clickBtn=()=>{
+    //월급 계산 버튼 눌렀을 때 실행되는 함수.
     this.setState({saving: this.inputText, clicked:false})
   }
 
   changeSaving= (value) =>{
+    //월급이 얼마인지 바뀔때마다 inputText의 값을 바꿔주는 함수.
     this.inputText=value;
   }
 
-  _checkedAnswer = () => this.setState({clicked:false});
-
   ddayCalculator = (StartDate,EndDate) => {
     //Dday계산하는 함수
-    //현재 터짐. 아마도 date가 입력되면 자동으로 호출되어야 할 듯함.
+    //StartDate : 입대일
+    //EndDate : 전역일
     if((StartDate != " ") && (EndDate != " ")){
       let today = new Date();
     
@@ -450,7 +483,7 @@ class CalcScreen extends React.Component {
       
       var startDateObj = new Date(Number(startdateArray[0]), Number(startdateArray[1])-1, Number(startdateArray[2]));  
       var endDateObj = new Date(Number(enddateArray[0]), Number(enddateArray[1])-1, Number(enddateArray[2]));
-      //현재 시간 가져와서 D-day 계산
+      //현재 시간 가져와서 D-day 계산, 올림을 해줘서 일수로 딱 떨어지게끔 함.
       var betweenDay = Math.ceil(( endDateObj.getTime() - today.getTime() )/1000/60/60/24);
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
@@ -458,22 +491,22 @@ class CalcScreen extends React.Component {
       
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
-      this.Ddaymessage=result
+      //this.Ddaymessage=result
       return result
     }
     else if(StartDate == " " && EndDate != " "){
       var result = "입대일을 입력하세요"
-      this.Ddaymessage=result
+      //this.Ddaymessage=result
       return result
     }
     else if(StartDate != " " && EndDate == " "){
       var result = "전역일을 입력하세요"
-      this.Ddaymessage=result
+      //this.Ddaymessage=result
       return result
     }
     else{
       var result = "입대일과 전역일을 입력하세요"
-      this.Ddaymessage=result
+      //this.Ddaymessage=result
       return result
     }
 
