@@ -387,7 +387,7 @@ class LobbyScreen extends React.Component {
                 resizeMode="contain"
                 style={styles.iconStyle}
                 // 1017 - 임시 아이콘 사용중
-                source = {require('./images/LOCKA ICON.png')} />
+                source = {require('./images/calcbutton.png')} />
               </TouchableOpacity>
               <TouchableOpacity
                 // 추후 버튼 별 기능 실행해야함
@@ -397,7 +397,7 @@ class LobbyScreen extends React.Component {
                 resizeMode="contain"
                 style={styles.iconStyle}
                 // 1017 - 임시 아이콘 사용중
-                source = {require('./images/LOCKA ICON.png')} />
+                source = {require('./images/lockbutton.png')} />
               </TouchableOpacity>
               <TouchableOpacity
                 // 1017 - 잠금 해제시 UnlockScreen으로 접속하도록 함
@@ -407,7 +407,7 @@ class LobbyScreen extends React.Component {
                 resizeMode="contain"
                 style={styles.iconStyle}
                 // 1017 - 임시 아이콘 사용중
-                source = {require('./images/LOCKA ICON.png')} />
+                source = {require('./images/unlockbutton.png')} />
               </TouchableOpacity>
               <TouchableOpacity
                 // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
