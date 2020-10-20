@@ -44,6 +44,11 @@ Block.checkPermissionOn(
 
 loadPermissionState = () => {
   permissionCheck = NativeModules.Block.checkPermissionState();
+  if (permissionCheck == true){
+    initName = 'Lobby';
+  }else{
+    initName = 'Permission';
+  }
 }
 
 renderBlockState = () => {
@@ -536,7 +541,7 @@ class CalcScreen extends React.Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
-          <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' ,color: '#1e3269' }}>
             <DatePicker
               style={{width: 200}}
               date={this.state.startDay}
@@ -590,7 +595,7 @@ class CalcScreen extends React.Component {
               radius={70}
               percent={this.calcPercentInt()}
               borderWidth={5}
-              color="9e939e"
+              color="#9e939e"
               shadowColor="#b19cd9"
               bgColor="#fff">
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
@@ -619,7 +624,7 @@ class CalcScreen extends React.Component {
             </View>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.contentsText}>숨만 쉬고 월급 모으면?</Text>
+            <Text style={styles.contentsText}>숨만 쉬고 월급을 모으면?</Text>
             {
               this.state.clicked
               ? <Button title = "확인" onPress = {this.clickBtn} />
@@ -829,6 +834,7 @@ clockText:{
   color: 'white',
   fontSize: 65,
   //fontWeight: 'bold',
+  textAlign: 'center',
 },
 buttonGroup:{
   flexDirection: 'row',
@@ -851,11 +857,13 @@ unlockStateText:{
   fontWeight: 'bold',
   fontSize: 45,
   color: '#007fff',
+  textAlign: 'center',
 },
 lockStateText:{
   fontWeight: 'bold',
   fontSize: 45,
   color: '9b111e',
+  textAlign: 'center',
 },
 });
 
