@@ -50,13 +50,11 @@ renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
   lockedCondition = NativeModules.Block.checkBlockState();
   var renderingText =" ";
-  if (lockedCondition == true){
-    renderingText="LOCKED";
-  }else if (lockedCondition == false){
-    renderingText="UNLOCKED";
+  if(lockedCondition == true){
+    renderingText = <Text style={styles.lockStateText}>LOCKED</Text>
   }
   else{
-    renderingText="상태를 받아오지 못했습니다.";
+    renderingText = <Text style={styles.unlockStateText}>UNLOCKED</Text>
   }
   return renderingText;
 }
@@ -373,11 +371,7 @@ class LobbyScreen extends React.Component {
           </View>
           <View style={{flex: 0.7}}/>
           <View style={styles.codeSec}>
-            <Text 
-            // 각 기능 시행여부에 따라 상태 메세지가 달라져야함
-            style={{fontWeight: 'bold', fontSize: 15, color: 'white'}}>
-              {renderBlockState()}
-            </Text>
+            {renderBlockState()}
           </View>
           <View style={{flex: 1}}/>
           <View style={{flex: 1}}>
@@ -853,6 +847,16 @@ iconStyle:{
   // borderWidth: 1, << 삭제하면 됨
   // 1017 ---------------------------------------------------------------↥↥↥
   margin: 5,
+},
+unlockStateText:{
+  fontWeight: 'bold',
+  fontSize: 45,
+  color: '#007fff',
+},
+lockStateText:{
+  fontWeight: 'bold',
+  fontSize: 45,
+  color: '9b111e',
 },
 });
 
