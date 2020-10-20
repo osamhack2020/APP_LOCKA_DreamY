@@ -43,13 +43,7 @@ public class MainActivity extends ReactActivity {
         }
         */
     }    
-/*
-    // 접근성 권한여부를 리턴하는 함수.
-    public static boolean returnAccessibilityValue() {
-        //this.AccessPermission = checkAccessibilityService();
-        return this.AccessPermission;
-    }
-*/
+
     // 접근성 권한이 있는지 없는지 확인하는 부분
     public boolean checkAccessibilityService() {
         Context mContext = getApplicationContext();

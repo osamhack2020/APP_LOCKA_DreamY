@@ -81,7 +81,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
      @ReactMethod
      public void stopService() {
        // Service를 끄는 것이 아닌 앱 잠금해제가 되게끔 하는 메소드
-       MyAccessibilityService.getCurrentTime();
+      MyAccessibilityService.getCurrentTime();
       if(!MyAccessibilityService.returnPhone)
       {
         Toast.makeText(getReactApplicationContext(), "잠금이 해제되었습니다.", Toast.LENGTH_SHORT).show();
@@ -90,43 +90,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
       {
         Toast.makeText(getReactApplicationContext(), "지금은 잠금해제가 불가능합니다.", Toast.LENGTH_SHORT).show();
       }
-      MyAccessibilityService.turnOff();
      }
-/*
-     @ReactMethod(isBlockingSynchronousMethod = true)
-     public boolean checkAccessibilityService() {
-      Context mContext  = getApplicationContext();
-      int accessibilityEnabled = 0;
-      final String service = "com.workspace/com.workspace.MyAccessibilityService";
-      try {
-          accessibilityEnabled = Settings.Secure.getInt(
-                  mContext.getApplicationContext().getContentResolver(),
-                  android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
-      } catch (Settings.SettingNotFoundException e) {
-          e.printStackTrace();
-      }
-      TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
-
-      if (accessibilityEnabled == 1) {
-          String settingValue = Settings.Secure.getString(
-                  mContext.getApplicationContext().getContentResolver(),
-                  Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
-          
-          if (settingValue != null) {
-              mStringColonSplitter.setString(settingValue);
-
-              while (mStringColonSplitter.hasNext()) {
-                  String accessibilityService = mStringColonSplitter.next();
-                  if (accessibilityService.equalsIgnoreCase(service)) {
-                      return true;
-                  }
-              }
-          }
-      }
-
-      return false;
-  }
-  */
 
      @ReactMethod
      public void setAccessibilityPermissions() {

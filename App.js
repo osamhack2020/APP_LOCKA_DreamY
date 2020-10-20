@@ -25,7 +25,7 @@ import ToastExample from './ToastExample';
 
 var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
-var permissionCheck = NativeModules.Block.checkPermissionState();
+var permissionCheck = NativeModules.Block.checkAccessibilityService();
 
 
 /*
@@ -42,7 +42,13 @@ Block.checkPermissionOn(
 );
 */
 
+loadPermissionState = () => {
+  permissionCheck = NativeModules.Block.checkAccessibilityService();
+}
+
 renderBlockState = () => {
+  //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
+  lockedCondition = NativeModules.Block.checkBlockState();
   var renderingText =" ";
   if (lockedCondition == true){
     renderingText="LOCKED";
@@ -209,6 +215,11 @@ class LoginScreen extends React.Component{
 //권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
 
+  constructor(props){
+    super(props)
+    loadPermissionState();
+  }
+  
   // 상단의 toolbar 가리기
   static navigationOptions = {
     header: null ,
@@ -288,7 +299,10 @@ class LobbyScreen extends React.Component {
 
   constructor(props){
     super(props)
-    this.state = {d: new Date()}
+    loadPermissionState();
+    this.state = {
+      d: new Date()
+    }
   }
 
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
@@ -310,6 +324,7 @@ class LobbyScreen extends React.Component {
 
   checkAccessPermission() {
     //접근성권한이 허용되어있는지 체크한다.
+    permissionCheck = NativeModules.Block.checkAccessibilityService();
     if(permissionCheck==true){
       ToastExample.show('Permission Checked.', ToastExample.SHORT);
     }
@@ -384,7 +399,7 @@ class LobbyScreen extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
-                onPress = {()=>checkAccessPermission()}>
+                onPress = {()=>this.checkAccessPermission()}>
                 <Image 
                 // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
                 resizeMode="contain"
