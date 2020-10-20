@@ -303,6 +303,7 @@ class LobbyScreen extends React.Component {
     this.state = {
       d: new Date()
     }
+    //요일
   }
 
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
@@ -321,6 +322,19 @@ class LobbyScreen extends React.Component {
         d : new Date(),
     })
   }
+  loadDayoftheweek() {
+    var Dayoftheweek = this.state.d.getDay();
+    var Day=" "
+    if (Dayoftheweek==0){Day = "Sunday";}
+    else if(Dayoftheweek==1){Day = "Monday";}
+    else if(Dayoftheweek==2){Day = "Tuesday";}
+    else if(Dayoftheweek==3){Day = "Wednesday";}
+    else if(Dayoftheweek==4){Day = "Thursday";}
+    else if(Dayoftheweek==5){Day = "Friday";}
+    else if(Dayoftheweek==6){Day = "Saturday";}
+    return Day;
+  }
+  
 
   checkAccessPermission() {
     //접근성권한이 허용되어있는지 체크한다.
@@ -354,7 +368,7 @@ class LobbyScreen extends React.Component {
             <Text 
               // 시계넣는공간
               style={styles.clockText}>
-                {this.state.d.getDay()}:{this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
+                {this.loadDayoftheweek()} {this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
             </Text>
           </View>
           <View style={{flex: 0.7}}/>
