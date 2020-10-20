@@ -44,11 +44,11 @@ Block.checkPermissionOn(
 
 loadPermissionState = () => {
   permissionCheck = NativeModules.Block.checkPermissionState();
-  if (permissionCheck == true){
-    initName = 'Lobby';
-  }else{
-    initName = 'Permission';
+  var initPage = 'Lobby';
+  if (permissionCheck == false){
+    initPage = 'Permission';
   }
+  return initPage;
 }
 
 renderBlockState = () => {
@@ -670,7 +670,7 @@ const AppNavigator = createStackNavigator(
     Lobby: LobbyScreen,
   },
   {
-    initialRouteName: initName,
+    initialRouteName: loadPermissionState(),
   }
 );
   
