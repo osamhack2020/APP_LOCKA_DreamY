@@ -660,6 +660,20 @@ if (permissionCheck == true){
   initName = 'Permission';
 }
 
+const permissionAppNavigator = createStackNavigator(
+  {
+    Main: HomeScreen,
+    Locked: LockedScreen,
+    UnlockCheck: LoginScreen,
+    Permission: PermissionScreen,
+    Calc: CalcScreen,
+    Lobby: LobbyScreen,
+  },
+  {
+    initialRouteName: "Permission"
+  }
+);
+
 const AppNavigator = createStackNavigator(
   {
     Main: HomeScreen,
@@ -670,11 +684,11 @@ const AppNavigator = createStackNavigator(
     Lobby: LobbyScreen,
   },
   {
-    initialRouteName: loadPermissionState(),
+    initialRouteName: "Lobby"
   }
 );
   
-export default createAppContainer(AppNavigator);
+export default createAppContainer(loadPermissionState());
 
 const styles = StyleSheet.create({
 container: {
