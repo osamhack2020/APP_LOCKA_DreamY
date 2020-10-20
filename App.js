@@ -25,7 +25,7 @@ import ToastExample from './ToastExample';
 
 var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
-var permissionCheck = NativeModules.Block.checkAccessibilityService();
+var permissionCheck = NativeModules.Block.checkPermissionState();
 
 
 /*
