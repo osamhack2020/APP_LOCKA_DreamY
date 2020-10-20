@@ -44,9 +44,9 @@ Block.checkPermissionOn(
 
 loadPermissionState = () => {
   permissionCheck = NativeModules.Block.checkPermissionState();
-  var initPage = 'Lobby';
+  var initPage = 'AppNavigator';
   if (permissionCheck == false){
-    initPage = 'Permission';
+    initPage = 'permissionAppNavigator';
   }
   return initPage;
 }
