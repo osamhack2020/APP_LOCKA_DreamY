@@ -37,11 +37,11 @@ public class MainActivity extends ReactActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.AccessPermission = checkAccessibilityService();
-        /*
+
         if(!AccessPermission) {
             setAccessibilityPermissions();
         }
-        */
+    
     }    
 
     // 접근성 권한이 있는지 없는지 확인하는 부분
@@ -69,12 +69,13 @@ public class MainActivity extends ReactActivity {
                 while (mStringColonSplitter.hasNext()) {
                     String accessibilityService = mStringColonSplitter.next();
                     if (accessibilityService.equalsIgnoreCase(service)) {
+                        this.AccessPermission=true;
                         return true;
                     }
                 }
             }
         }
-
+        this.AccessPermission=false;
         return false;
     }
     

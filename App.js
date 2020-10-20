@@ -653,12 +653,15 @@ class LockedScreen extends React.Component {
   }
 }
 
+
+
 //첫 시작화면 설정
 if (permissionCheck == true){
   initName = 'Lobby';
 }else{
   initName = 'Permission';
 }
+
 
 
 const AppNavigator = createStackNavigator(
@@ -865,7 +868,7 @@ unlockStateText:{
 lockStateText:{
   fontWeight: 'bold',
   fontSize: 45,
-  color: '9b111e',
+  color: '#9b111e',
   textAlign: 'center',
 },
 });
