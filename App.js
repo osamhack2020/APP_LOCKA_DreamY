@@ -53,7 +53,7 @@ loadPermissionState = () => {
 
 renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
-  //lockedCondition = NativeModules.Block.checkBlockState();
+  lockedCondition = NativeModules.Block.checkBlockState();
   var renderingText =" ";
   if(lockedCondition == true){
     renderingText = <Text style={styles.lockStateText}>LOCKED</Text>
