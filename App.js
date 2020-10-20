@@ -17,7 +17,7 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
 
-  //import Block from './Block';
+//import Block from './Block';
 
 //initName : 첫 시작화면
 //lockedCondition : 잠금상태 확인변수
@@ -43,12 +43,12 @@ Block.checkPermissionOn(
 */
 
 loadPermissionState = () => {
-  permissionCheck = NativeModules.Block.checkAccessibilityService();
+  permissionCheck = NativeModules.Block.checkPermissionState();
 }
 
 renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
-  lockedCondition = NativeModules.Block.checkBlockState();
+  //lockedCondition = NativeModules.Block.checkBlockState();
   var renderingText =" ";
   if(lockedCondition == true){
     renderingText = <Text style={styles.lockStateText}>LOCKED</Text>
@@ -163,7 +163,6 @@ class LoginScreen extends React.Component{
     if (this.inputPassword==this.state.password){
       this.props.navigation.navigate('Lobby');
       NativeModules.Block.stopService();
-      
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -336,7 +335,7 @@ class LobbyScreen extends React.Component {
 
   checkAccessPermission() {
     //접근성권한이 허용되어있는지 체크한다.
-    permissionCheck = NativeModules.Block.checkAccessibilityService();
+    permissionCheck = NativeModules.Block.checkPermissionState();
     if(permissionCheck==true){
       ToastExample.show('Permission Checked.', ToastExample.SHORT);
     }
