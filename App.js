@@ -528,7 +528,7 @@ class CalcScreen extends React.Component {
 
   render() {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
           <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' }}>
             <DatePicker
               style={{width: 200}}
@@ -580,11 +580,11 @@ class CalcScreen extends React.Component {
             />
             <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
             <ProgressCircle
-              radius={50}
+              radius={70}
               percent={this.calcPercentInt()}
               borderWidth={5}
-              color="navy"
-              shadowColor="#50bcdf"
+              color="9e939e"
+              shadowColor="#b19cd9"
               bgColor="#fff">
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
@@ -599,7 +599,7 @@ class CalcScreen extends React.Component {
                 onPress={(value) => {this.setState({selectArmy:value})}}
                 selectedButtonColor={'navy'}
                 selectedLabelColor={'navy'}
-                labelStyle={{fontSize:15}}
+                labelStyle={{fontSize:12}}
                 formHorizontal={true}
                 //이거 setState 잘 봐야 할 거 같음.
               />
@@ -612,7 +612,7 @@ class CalcScreen extends React.Component {
             </View>
           </View>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.contentsText}>군대에서 모을 수 있는 돈?</Text>
+            <Text style={styles.contentsText}>숨만 쉬고 월급 모으면?</Text>
             {
               this.state.clicked
               ? <Button title = "확인" onPress = {this.clickBtn} />
