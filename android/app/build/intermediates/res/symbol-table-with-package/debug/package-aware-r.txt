@@ -1347,6 +1347,7 @@ drawable images_mainb
 drawable images_permissionb
 drawable images_rokamark
 drawable images_setting
+drawable images_simple_background
 drawable images_unlockbutton
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow

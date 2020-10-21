@@ -453,6 +453,7 @@ class CalcScreen extends React.Component {
       startDay: " ",
       endDay: " ",
     };
+
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
     /*
       inputText : 월 적금을 받아주는 변수
@@ -464,6 +465,10 @@ class CalcScreen extends React.Component {
     this.allDays=540;
     //this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
+
+  static navigationOptions = {
+    header: null ,
+  };
 
   submitEdit= function(){
     this.setState({saving: this.inputText});
@@ -535,96 +540,100 @@ class CalcScreen extends React.Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
-          <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' ,color: '#1e3269' }}>
-            <DatePicker
-              style={{width: 200}}
-              date={this.state.startDay}
-              mode="date"
-              placeholder="pick a day"
-              format="YYYY-MM-DD"
-              minDate="2018-01-01"
-              maxDate="2099-12-31"
-              confirmBtnText="Confirm"
-              cancelBtnText="Cancel"
-              customStyles={{
-                dateIcon: {
-                  position: 'absolute',
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0
-                },
-                dateInput: {
-                  marginLeft: 36
+          <ImageBackground
+            style={{width: '100%', height: '100%'}}
+            source={require('./images/simple_background.jpg')}>
+            <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' ,color: '#1e3269' }}>
+              <DatePicker
+                style={{width: 200}}
+                date={this.state.startDay}
+                mode="date"
+                placeholder="pick a day"
+                format="YYYY-MM-DD"
+                minDate="2018-01-01"
+                maxDate="2099-12-31"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                }}
+                onDateChange={(date) => {this.setState({startDay: date})}}
+              />
+              <DatePicker
+                style={{width: 200}}
+                date={this.state.endDay}
+                mode="date"
+                placeholder="pick a day"
+                format="YYYY-MM-DD"
+                minDate="2018-01-01"
+                maxDate="2099-12-31"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                }}
+                onDateChange={
+                  (date) => {this.setState({endDay: date})}
                 }
-              }}
-              onDateChange={(date) => {this.setState({startDay: date})}}
-            />
-            <DatePicker
-              style={{width: 200}}
-              date={this.state.endDay}
-              mode="date"
-              placeholder="pick a day"
-              format="YYYY-MM-DD"
-              minDate="2018-01-01"
-              maxDate="2099-12-31"
-              confirmBtnText="Confirm"
-              cancelBtnText="Cancel"
-              customStyles={{
-                dateIcon: {
-                  position: 'absolute',
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0
-                },
-                dateInput: {
-                  marginLeft: 36
-                }
-              }}
-              onDateChange={
-                (date) => {this.setState({endDay: date})}
+              />
+              <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+              <ProgressCircle
+                radius={90}
+                percent={this.calcPercentInt()}
+                borderWidth={8}
+                color="#8b00ff"
+                shadowColor="#b19cd9"
+              >
+                <Text style={styles.accessWord}>{this.calcPercent()}</Text>
+              </ProgressCircle>
+            </View>
+            <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={styles.accessWord}>월급 시뮬레이션</Text>
+              <View style={styles.codeSec}>
+                <RadioForm
+                  //checked된 radio의 값을 뽑아내야 함.
+                  radio_props={radio_props}
+                  initial={0}
+                  onPress={(value) => {this.setState({selectArmy:value})}}
+                  selectedButtonColor={'#50bcdf'}
+                  selectedLabelColor={'#50bcdf'}
+                  labelStyle={{fontSize:12}}
+                  formHorizontal={true}
+                  //이거 setState 잘 봐야 할 거 같음.
+                />
+              </View>
+              <View style={styles.codeSect}>
+                <TextInput style={styles.chatInput} 
+                  onChangeText={this.changeSaving}
+                  onSubmitEditing={this.submitEdit.bind(this)}
+                />
+              </View>
+            </View>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={styles.contentsText}>숨만 쉬고 월급을 모으면?</Text>
+              {
+                this.state.clicked
+                ? <Button title = "확인" onPress = {this.clickBtn} />
+                : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
-            />
-            <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-            <ProgressCircle
-              radius={70}
-              percent={this.calcPercentInt()}
-              borderWidth={5}
-              color="#9e939e"
-              shadowColor="#b19cd9"
-              bgColor="#fff">
-              <Text style={styles.accessWord}>{this.calcPercent()}</Text>
-            </ProgressCircle>
-          </View>
-          <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.accessWord}>월급 시뮬레이션</Text>
-            <View style={styles.codeSec}>
-              <RadioForm
-                //checked된 radio의 값을 뽑아내야 함.
-                radio_props={radio_props}
-                initial={0}
-                onPress={(value) => {this.setState({selectArmy:value})}}
-                selectedButtonColor={'navy'}
-                selectedLabelColor={'navy'}
-                labelStyle={{fontSize:12}}
-                formHorizontal={true}
-                //이거 setState 잘 봐야 할 거 같음.
-              />
             </View>
-            <View style={styles.codeSect}>
-              <TextInput style={styles.chatInput} 
-                onChangeText={this.changeSaving}
-                onSubmitEditing={this.submitEdit.bind(this)}
-              />
-            </View>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.contentsText}>숨만 쉬고 월급을 모으면?</Text>
-            {
-              this.state.clicked
-              ? <Button title = "확인" onPress = {this.clickBtn} />
-              : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
-            }
-          </View>
+          </ImageBackground>
         </View>
       );
   }
