@@ -604,7 +604,7 @@ class CalcScreen extends React.Component {
               </ProgressCircle>
             </View>
             <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={styles.accessWord}>월급 시뮬레이션</Text>
+              <Text style={styles.contentsText}>월급 시뮬레이션</Text>
               <View style={styles.codeSec}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
@@ -706,7 +706,7 @@ markArea: {
 },
 contentsText: {
   fontSize: 20,
-  color: 'navy'
+  color: 'white'
 },
 appNameText: {
   fontSize: 45,
@@ -799,7 +799,7 @@ access: {
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
-  borderWidth: 2,
+  borderWidth: 4,
   borderColor: 'white',
   borderRadius: 5,
   alignItems: 'center',
