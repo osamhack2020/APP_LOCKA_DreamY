@@ -427,7 +427,6 @@ class LobbyScreen extends React.Component {
   }
 }
 
-
 //계산용 화면
 var radio_props = [
   {label: '육군', value: 0 },
@@ -437,11 +436,6 @@ var radio_props = [
 ];
 
 class CalcScreen extends React.Component {
-
-  static navigationOptions = {
-    header: null ,
-  };
-
   constructor(props) {
     super(props);
     //특별한 맴버 변수(화면 자동갱신) 설명
@@ -548,7 +542,7 @@ class CalcScreen extends React.Component {
               mode="date"
               placeholder="pick a day"
               format="YYYY-MM-DD"
-              minDate="2019-01-01"
+              minDate="2018-01-01"
               maxDate="2099-12-31"
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
@@ -571,7 +565,7 @@ class CalcScreen extends React.Component {
               mode="date"
               placeholder="pick a day"
               format="YYYY-MM-DD"
-              minDate="2019-01-01"
+              minDate="2018-01-01"
               maxDate="2099-12-31"
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
@@ -601,7 +595,7 @@ class CalcScreen extends React.Component {
               <Text style={styles.accessWord}>{this.calcPercent()}</Text>
             </ProgressCircle>
           </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={styles.accessWord}>월급 시뮬레이션</Text>
             <View style={styles.codeSec}>
               <RadioForm
@@ -677,7 +671,6 @@ const AppNavigator = createStackNavigator(
     initialRouteName: "Lobby"
   }
 );
-
 
 
 export default createAppContainer(AppNavigator);
