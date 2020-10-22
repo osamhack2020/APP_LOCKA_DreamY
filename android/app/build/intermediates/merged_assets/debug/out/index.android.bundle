@@ -569,7 +569,7 @@ __d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0
 __d(function(e,t,s,a,c,h,i){c.exports=t(i[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/images",width:1417,height:1417,scales:[1],hash:"40c3013858d1499bcbe784e176035a10",name:"calcbutton",type:"png"})},563,[184]);
 __d(function(e,t,s,a,c,h,i){c.exports=t(i[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/images",width:1417,height:1417,scales:[1],hash:"7954bb7b8d18a1f738ced6be401d9072",name:"lockbutton",type:"png"})},564,[184]);
 __d(function(e,t,s,a,c,n,h){c.exports=t(h[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/images",width:1417,height:1417,scales:[1],hash:"d09e18052c716cfbe8aa09ccfa33b036",name:"unlockbutton",type:"png"})},565,[184]);
-__d(function(e,s,t,a,c,h,i){c.exports=s(i[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/images",width:924,height:924,scales:[1],hash:"238726b4dd934ad4c1ff2b782745c57a",name:"LOCKA ICON",type:"png"})},566,[184]);
+__d(function(e,t,a,s,d,h,i){d.exports=t(i[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/images",width:1417,height:1417,scales:[1],hash:"00d0c9de5e164ba6adf8f95d603060a8",name:"holidayunlockbutton",type:"png"})},566,[184]);
 __d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/images",width:284,height:600,scales:[1],hash:"ef8fc7dddcfbeabf34d666e1b6585392",name:"simple_background",type:"jpg"})},567,[184]);
 __d(function(a,e,n,o,p,s,c){p.exports={name:"workspace",displayName:"LOCKA"}},568,[]);
 __r(88);

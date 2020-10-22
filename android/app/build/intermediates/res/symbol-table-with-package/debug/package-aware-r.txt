@@ -1340,6 +1340,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable images_calcbutton
 drawable images_commonb
+drawable images_holidayunlockbutton
 drawable images_lockaicon
 drawable images_lockbutton
 drawable images_loginb

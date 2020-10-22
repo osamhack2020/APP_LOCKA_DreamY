@@ -459,7 +459,6 @@ class LobbyScreen extends React.Component {
                 // 1번 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
                 resizeMode="contain"
                 style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
                 source = {require('./images/calcbutton.png')} />
               </TouchableOpacity>
               <TouchableOpacity
@@ -469,28 +468,23 @@ class LobbyScreen extends React.Component {
                 // 2번 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
                 resizeMode="contain"
                 style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
                 source = {require('./images/lockbutton.png')} />
               </TouchableOpacity>
               <TouchableOpacity
-                // 1017 - 잠금 해제시 UnlockScreen으로 접속하도록 함
                 onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
                 <Image 
                 // 3번 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
                 resizeMode="contain"
                 style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
                 source = {require('./images/unlockbutton.png')} />
               </TouchableOpacity>
               <TouchableOpacity
-                // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
                 onPress = {()=>this.props.navigation.navigate('Holiday')}>
                 <Image 
                 // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
                 resizeMode="contain"
                 style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
-                source = {require('./images/LOCKA ICON.png')} />
+                source = {require('./images/holidayunlockbutton.png')} />
               </TouchableOpacity>
             </View>
           </View>
