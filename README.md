@@ -36,11 +36,11 @@ Due date : 10/31(Saturday)
 ### 💡 Project design
 
 -   **앱 실행차단기능**
--   **디자인, 프론트엔드 영역**
--   **QR 코드나 NFC 인식기능**
+-   **앱 디자인**
+-   **잠금해제코드나 NFC 인식기능**
 -   **개인정비시간 설정**
 -   **App 삭제방지기능**
--   **전역일, 잔여휴가, 월급 계산기능**
+-   **전역일, 월급 계산기능**
 
 ### ⚙ react-native environment setting using linux teminal
 
