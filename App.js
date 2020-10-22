@@ -922,12 +922,7 @@ buttonGroup:{
 iconStyle:{
   width: 80, 
   height: 80,
-  // 1017 - 아이콘 배치 완료시 삭제될 예정 --------------------------------↧↧↧
-  // borderColor: 'white', << 삭제하면 됨
-  // borderWidth: 1, << 삭제하면 됨
-  // 1017 ---------------------------------------------------------------↥↥↥
-  margin: 5,
-},
+},  
 unlockStateText:{
   fontWeight: 'bold',
   fontSize: 45,
