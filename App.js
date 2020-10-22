@@ -940,5 +940,9 @@ lockStateText:{
   color: '#9b111e',
   textAlign: 'center',
 },
+buttonSet:{
+  flexDirection: 'column',
+  margin: 5,
+},  
 });
 
