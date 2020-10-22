@@ -5,11 +5,11 @@
 (프로젝트 설명단계 필요함.)
 
 ### TeaM DreamY
+![image](https://user-images.githubusercontent.com/18081105/96816919-29270500-1459-11eb-9566-cd812da34bc8.png)
 
 > * [정강희](https://github.com/vesselofgod)
 > * [유영서](https://github.com/7dudtj)
 
-(팀 아이콘)
 
 ### ⚡️ How to install and test
 1. download LOCKA/android/app/build/outputs/apk/debug/app-debug.apk in your phone
