@@ -678,7 +678,7 @@ class CalcScreen extends React.Component {
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{width: 500}}
+                  style={{width: 250 - 0}}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'#50bcdf'}
                   selectedLabelColor={'white'}
