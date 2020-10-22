@@ -142,7 +142,7 @@ class HomeScreen extends React.Component {
   }
 }
 
-// 어플 처음 실행시 등장. 인증번호 입력 화면
+// 잠금 해제시 인증번호 입력 화면
 class LoginScreen extends React.Component{
 
   static navigationOptions = {
@@ -168,6 +168,79 @@ class LoginScreen extends React.Component{
     if (this.inputPassword==this.state.password){
       this.props.navigation.navigate('Lobby');
       NativeModules.Block.stopService();
+    }
+    else{
+      ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
+    }
+  }
+
+  render(){
+    return(
+      <View style={styles.newContainer}>
+        <ImageBackground
+          style={{width: '100%', height: '100%'}}
+          source={require('./images/CommonB.png')}>
+          <View style={styles.delLoc}>
+            <TouchableOpacity style={styles.delBtn} 
+            // 추후 삭제기능으로 연결해야함
+            onPress = {()=>this.props.navigation.navigate('Main')}>
+              <Text style={styles.delWord}>삭제</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
+            <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
+              잠금해제 코드를 입력해주세요
+            </Text>
+          </View>
+          <View style={styles.codeSec}>
+            <TextInput 
+              style={styles.chatInput}
+              onChangeText={this.changePassword}
+              //onSubmitEditing={this.submitEdit.bind(this)}
+            />
+          </View>
+          <View style={{flex: 0.4}}/>
+          <View style={styles.codeSec}>
+            <TouchableOpacity style={styles.accessBtn} 
+            // 추후 인증번호 확인하고 넘어가야함
+              onPress = {() => this.checkPassword()}>
+              <Text style={styles.accessWord}>인증하기</Text>
+            </TouchableOpacity>
+          </View> 
+          <View style={{flex: 0.6}}/>
+        </ImageBackground>
+      </View>
+    );
+  }
+}
+
+//휴일, 전투휴무와 같이 일시적으로 해제할 때
+class holidayScreen extends React.Component{
+
+  static navigationOptions = {
+    header: null ,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      password: "12345678",
+    };
+    this.inputPassword = " ";
+  }
+
+  changePassword= (value) =>{
+    //Textbox에 입력하는 문자열을 가져와서 inputPassword에 저장한다.
+    this.inputPassword=value;
+  }
+
+  checkPassword = () =>{
+    //비밀번호가 맞는지 확인하는 함수
+    //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
+    if (this.inputPassword==this.state.password){
+      this.props.navigation.navigate('Lobby');
+      NativeModules.Block.onHoliday();
+      ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -337,7 +410,7 @@ class LobbyScreen extends React.Component {
     return Day;
   }
   
-
+/*
   checkAccessPermission() {
     //접근성권한이 허용되어있는지 체크한다.
     permissionCheck = NativeModules.Block.checkPermissionState();
@@ -351,7 +424,7 @@ class LobbyScreen extends React.Component {
       ToastExample.show('Permission 정보 X', ToastExample.SHORT);
     }
   }
-
+*/
   render(){
     return(
       <View style={styles.newContainer}>
@@ -411,7 +484,7 @@ class LobbyScreen extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
-                onPress = {()=>this.checkAccessPermission()}>
+                onPress = {()=>this.props.navigation.navigate('Holiday')}>
                 <Image 
                 // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
                 resizeMode="contain"
@@ -545,10 +618,10 @@ class CalcScreen extends React.Component {
             source={require('./images/simple_background.jpg')}>
             <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' ,color: '#1e3269' }}>
               <DatePicker
-                style={{width: 200}}
+                style={{width: 100}}
                 date={this.state.startDay}
                 mode="date"
-                placeholder="pick a day"
+                //placeholder="pick a day"
                 format="YYYY-MM-DD"
                 minDate="2018-01-01"
                 maxDate="2099-12-31"
@@ -562,16 +635,23 @@ class CalcScreen extends React.Component {
                     marginLeft: 0
                   },
                   dateInput: {
-                    marginLeft: 36
+                    marginLeft: 36,
+                    borderWidth: 0
+                  },
+                  placeholderText: {
+                    color: 'white'
+                  },
+                  dateText: {
+                    color: "white",
                   }
                 }}
                 onDateChange={(date) => {this.setState({startDay: date})}}
               />
               <DatePicker
-                style={{width: 200}}
+                style={{width: 100}}
                 date={this.state.endDay}
                 mode="date"
-                placeholder="pick a day"
+                //placeholder="pick a day"
                 format="YYYY-MM-DD"
                 minDate="2018-01-01"
                 maxDate="2099-12-31"
@@ -585,31 +665,38 @@ class CalcScreen extends React.Component {
                     marginLeft: 0
                   },
                   dateInput: {
-                    marginLeft: 36
+                    marginLeft: 36,
+                    borderWidth: 0
+                  },
+                  placeholderText: {
+                    color: 'white'
                   }
                 }}
                 onDateChange={
                   (date) => {this.setState({endDay: date})}
                 }
               />
-              <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+              <Text style={{ fontSize: 25, color: 'white' }}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
               <ProgressCircle
-                radius={90}
+                radius={100}
                 percent={this.calcPercentInt()}
                 borderWidth={8}
+                bgColor="#000038"
                 color="#8b00ff"
                 shadowColor="#b19cd9"
               >
                 <Text style={styles.accessWord}>{this.calcPercent()}</Text>
               </ProgressCircle>
             </View>
-            <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={styles.contentsText}>월급 시뮬레이션</Text>
+            <View style={{ flex: 0.7, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={styles.contentsText}>월급 계산기</Text>
               <View style={styles.codeSec}>
+                
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
+                  style={{ width: 350 - 30 }}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'#50bcdf'}
                   selectedLabelColor={'#50bcdf'}
@@ -619,6 +706,7 @@ class CalcScreen extends React.Component {
                 />
               </View>
               <View style={styles.codeSect}>
+                <Text style={styles.contentsText}>적금/월</Text>
                 <TextInput style={styles.chatInput} 
                   onChangeText={this.changeSaving}
                   onSubmitEditing={this.submitEdit.bind(this)}
@@ -626,7 +714,6 @@ class CalcScreen extends React.Component {
               </View>
             </View>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={styles.contentsText}>숨만 쉬고 월급을 모으면?</Text>
               {
                 this.state.clicked
                 ? <Button title = "확인" onPress = {this.clickBtn} />
@@ -639,24 +726,6 @@ class CalcScreen extends React.Component {
   }
 }
 
-// TBD
-class LockedScreen extends React.Component {
-  render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        <Button
-          title = 'Unlock'
-          onPress = {()=>this.props.navigation.navigate('Main')}
-        />
-      </View>
-    );
-  }
-}
-
-
 
 //첫 시작화면 설정
 if (permissionCheck == true){
@@ -665,16 +734,14 @@ if (permissionCheck == true){
   initName = 'Permission';
 }
 
-
-
 const AppNavigator = createStackNavigator(
   {
     Main: { screen: HomeScreen },
-    Locked: { screen: LockedScreen },
     UnlockCheck: { screen: LoginScreen },
     Permission: { screen: PermissionScreen },
     Calc: { screen: CalcScreen },
-    Lobby: { screen: LobbyScreen }
+    Lobby: { screen: LobbyScreen },
+    Holiday: {screen: holidayScreen}
   },
   {
     initialRouteName: "Lobby"
@@ -748,7 +815,7 @@ codeSec: {
   flexDirection: 'row',
 },
 codeSect: {
-  flex: 0.25,
+  flex: 0.4,
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
@@ -799,7 +866,7 @@ access: {
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
   width: '70%',
-  borderWidth: 4,
+  borderWidth: 1,
   borderColor: 'white',
   borderRadius: 5,
   alignItems: 'center',

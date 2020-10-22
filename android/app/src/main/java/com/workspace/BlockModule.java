@@ -47,16 +47,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
     public String getName() {
       return REACT_CLASS;
     }
-/*
-    @ReactMethod
-    public void checkPermissionOn(Callback booleanCallback) {
-      // 현재 LOCKA의 접근성서비스가 켜져있는지 확인할 수 있는 함수
-      //if(MainActivity.AccessPermission){Toast.makeText(getReactApplicationContext(), "True: "+MainActivity.AccessApps , Toast.LENGTH_SHORT).show();}
-      //else{Toast.makeText(getReactApplicationContext(), "False : "+MainActivity.AccessApps, Toast.LENGTH_SHORT).show();}
-      boolean accessibilityPermission = MainActivity.AccessPermission;
-      booleanCallback.invoke(accessibilityPermission);
-    }
-*/
+
     @ReactMethod(isBlockingSynchronousMethod = true)
     public boolean checkPermissionState() {
       return MainActivity.AccessPermission;
@@ -68,6 +59,11 @@ public class BlockModule extends ReactContextBaseJavaModule {
       MyAccessibilityService.getCurrentTime();
       boolean blockState = MyAccessibilityService.returnPhone;
       return blockState;
+    }
+
+    @ReactMethod
+    public void Holiday() {
+      MyAccessibilityService.onHoliday();
     }
 
     @ReactMethod

@@ -26,6 +26,7 @@ public class MyAccessibilityService extends AccessibilityService {
     */
     protected static boolean pauseLock = false;
     protected static boolean returnPhone = true;
+    protected static boolean  holiday =  false;
 
     protected static Calendar currentDate = Calendar.getInstance();
     protected static long now = System.currentTimeMillis();
@@ -39,7 +40,11 @@ public class MyAccessibilityService extends AccessibilityService {
     //폰 받는 시간emf
     protected static int weekendunlockedtime = 1030;
     protected static int unlockedtime = 1800;
-    
+
+    public static void onHoliday() {
+        holiday = true;
+    }
+
     public static void pauseLockOn() {
         pauseLock = true;
     }
@@ -64,8 +69,10 @@ public class MyAccessibilityService extends AccessibilityService {
         getTime = new SimpleDateFormat("yyyyMMddHHmm").format(mDate);
         currentTime = Integer.parseInt(getTime.substring(getTime.length()-4, getTime.length()));
 
+        if(currentTime>=lockedtime){holiday = false;}
+
         if (dayOfWeek==1 || dayOfWeek==7){
-            if (( currentTime>lockedtime || currentTime<weekendunlockedtime) && (pauseLock==false)){
+            if (( currentTime>=lockedtime || currentTime<weekendunlockedtime) && (pauseLock==false) && (holiday == false)){
                 returnPhone = true;
             }
             else{
@@ -73,7 +80,7 @@ public class MyAccessibilityService extends AccessibilityService {
             }
         }
         else{
-            if ((currentTime>lockedtime || currentTime<unlockedtime) && (pauseLock==false)){
+            if ((currentTime>=lockedtime || currentTime<unlockedtime) && (pauseLock==false) && (holiday == false)){
                 returnPhone = true;
             }
             else{
@@ -98,7 +105,7 @@ public class MyAccessibilityService extends AccessibilityService {
             for (int i=0; i < packageNameList.size() ; i++ )
             {
                 if(packageNameList.get(i).equals(event.getPackageName())) {
-                    //Toast.makeText(this.getReactApplicationContext(), event.getPackageName() + "앱이 거부되었습니다", Toast.LENGTH_LONG);
+                    //Toast.makeText(getReactApplicationContext(), "반납중에는 사용할 수 없습니다.", Toast.LENGTH_SHORT);
                     gotoHome();
                 }
             }
