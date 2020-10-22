@@ -452,39 +452,59 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 1}}/>
           <View style={{flex: 1}}>
             <View style={styles.buttonGroup}>
-              <TouchableOpacity
-                onPress = {()=>this.props.navigation.navigate('Calc')}>
-                <Image 
-                // 1번 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/calcbutton.png')} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress={() => NativeModules.Block.startService()}>
-                <Image 
-                // 2번 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/lockbutton.png')} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
-                <Image 
-                // 3번 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/unlockbutton.png')} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress = {()=>this.props.navigation.navigate('Holiday')}>
-                <Image 
-                // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                source = {require('./images/holidayunlockbutton.png')} />
-              </TouchableOpacity>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  onPress = {()=>this.props.navigation.navigate('Calc')}>
+                  <Image 
+                  // 1번 아이콘 >> 전역일/월급 계산기
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/calcbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  계산기
+                </Text>
+              </View>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  // 추후 버튼 별 기능 실행해야함
+                  onPress={() => NativeModules.Block.startService()}>
+                  <Image 
+                  // 2번 아이콘 >> 핸드폰 잠금
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/lockbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  잠금
+                </Text>
+              </View>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
+                  <Image 
+                  // 3번 아이콘 >> 핸드폰 잠금 해체
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/unlockbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  해제
+                </Text>
+              </View>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  onPress = {()=>this.props.navigation.navigate('Holiday')}>
+                  <Image 
+                  // 4번 아이콘 >> 잠금 일시해제
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/holidayunlockbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  일시해제
+                </Text>
+              </View>
             </View>
           </View>
         </ImageBackground>
@@ -678,7 +698,7 @@ class CalcScreen extends React.Component {
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{width: 250 - 0}}
+                  style={{width: 500}}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'#50bcdf'}
                   selectedLabelColor={'white'}
