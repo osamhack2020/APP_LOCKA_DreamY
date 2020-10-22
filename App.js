@@ -237,9 +237,9 @@ class holidayScreen extends React.Component{
     //비밀번호가 맞는지 확인하는 함수
     //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
-      this.props.navigation.navigate('Lobby');
-      NativeModules.Block.onHoliday();
       ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
+      NativeModules.Block.onHoliday();
+      this.props.navigation.navigate('Lobby');
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -515,7 +515,7 @@ class CalcScreen extends React.Component {
       clicked: true,
       saving: 0,
       selectArmy: 0,
-      date: "2020-10-16",
+      date: "2020-10-22",
       startDay: " ",
       endDay: " ",
     };
@@ -618,7 +618,7 @@ class CalcScreen extends React.Component {
                 color="#8b00ff"
                 shadowColor="#b19cd9"
               >
-                <Text style={styles.accessWord}>{this.calcPercent()}</Text>
+                <Text style={styles.contentsText}>{this.calcPercent()}</Text>
                 <Text style={{ fontSize: 25, color: 'white' }}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
               </ProgressCircle>
               <DatePicker
@@ -626,7 +626,7 @@ class CalcScreen extends React.Component {
                 date={this.state.startDay}
                 mode="date"
                 placeholder="Select start time"
-                format="YYYY-MM-DD"
+                //format="YYYY-MM-DD"
                 minDate="2019-01-01"
                 maxDate="2099-12-31"
                 confirmBtnText="Confirm"
@@ -639,7 +639,7 @@ class CalcScreen extends React.Component {
                     marginLeft: 0
                   },
                   dateInput: {
-                    marginLeft: 0,
+                    marginLeft: 36,
                     borderWidth: 0
                   },
                   placeholderText: {
@@ -652,7 +652,7 @@ class CalcScreen extends React.Component {
                 onDateChange={(date) => {this.setState({startDay: date})}}
               />
               <DatePicker
-                style={{width: 100}}
+                style={{width: 200}}
                 date={this.state.endDay}
                 mode="date"
                 //placeholder="pick a day"
@@ -689,7 +689,7 @@ class CalcScreen extends React.Component {
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{ width: 700 - 30 }}
+                  style={{ width: 300}}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'#50bcdf'}
                   selectedLabelColor={'#50bcdf'}
