@@ -916,11 +916,9 @@ clockText:{
 buttonGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
-  // borderColor: 'white', << 1017 -- 삭제하면 됨
-  // borderWidth: 1, << 1017 -- 삭제하면 됨
   width: '88%',
   height: '100%',
-},
+},  
 iconStyle:{
   width: 80, 
   height: 80,
