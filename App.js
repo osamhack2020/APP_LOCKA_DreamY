@@ -238,7 +238,7 @@ class holidayScreen extends React.Component{
     //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
       ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
-      NativeModules.Block.onHoliday();
+      NativeModules.Block.Holiday();
       this.props.navigation.navigate('Lobby');
     }
     else{
