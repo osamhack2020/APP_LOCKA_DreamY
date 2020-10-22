@@ -63,7 +63,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void Holiday() {
-      MyAccessibilityService.onHoliday();
+      MyAccessibilityService.holiday=true;
     }
 
     @ReactMethod
