@@ -4,8 +4,7 @@
 스마트폰 비대면 반납 + 국방부 어플리케이션 통합 프로젝트
 (프로젝트 설명단계 필요함.)
 
-### TeaM DreamY
-![image](https://user-images.githubusercontent.com/18081105/96816919-29270500-1459-11eb-9566-cd812da34bc8.png)
+![teamIcon](https://user-images.githubusercontent.com/18081105/96840798-e6c7ed00-1485-11eb-8d42-62cf4a29b24a.jpg)
 
 > * [정강희](https://github.com/vesselofgod)
 > * [유영서](https://github.com/7dudtj)
