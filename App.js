@@ -585,18 +585,8 @@ class CalcScreen extends React.Component {
       //this.Ddaymessage=result
       return result
     }
-    else if(StartDate == " " && EndDate != " "){
-      var result = "입대일을 입력하세요"
-      //this.Ddaymessage=result
-      return result
-    }
-    else if(StartDate != " " && EndDate == " "){
-      var result = "전역일을 입력하세요"
-      //this.Ddaymessage=result
-      return result
-    }
     else{
-      var result = "입대일과 전역일을 입력하세요"
+      var result = " "
       //this.Ddaymessage=result
       return result
     }
@@ -625,8 +615,8 @@ class CalcScreen extends React.Component {
                 style={{width: 200}}
                 date={this.state.startDay}
                 mode="date"
-                placeholder="Select start time"
-                //format="YYYY-MM-DD"
+                placeholder="2020-04-06"
+                format="YYYY-MM-DD"
                 minDate="2019-01-01"
                 maxDate="2099-12-31"
                 confirmBtnText="Confirm"
@@ -639,7 +629,7 @@ class CalcScreen extends React.Component {
                     marginLeft: 0
                   },
                   dateInput: {
-                    marginLeft: 36,
+                    marginLeft: 0,
                     borderWidth: 0
                   },
                   placeholderText: {
@@ -669,7 +659,7 @@ class CalcScreen extends React.Component {
                     marginLeft: 0
                   },
                   dateInput: {
-                    marginLeft: 36,
+                    marginLeft: 0,
                     borderWidth: 0
                   },
                   placeholderText: {
@@ -689,10 +679,10 @@ class CalcScreen extends React.Component {
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{ width: 300}}
+                  style={{width: 500, alignItems: center }}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'#50bcdf'}
-                  selectedLabelColor={'#50bcdf'}
+                  selectedLabelColor={'white'}
                   labelStyle={{fontSize:12}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
