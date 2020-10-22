@@ -645,7 +645,7 @@ class CalcScreen extends React.Component {
                 style={{width: 200}}
                 date={this.state.endDay}
                 mode="date"
-                //placeholder="pick a day"
+                placeholder="pick a day"
                 format="YYYY-MM-DD"
                 minDate="2020-01-01"
                 maxDate="2099-12-31"
@@ -674,12 +674,11 @@ class CalcScreen extends React.Component {
             <View style={{ flex: 0.7, alignItems: 'center', justifyContent: 'center' }}>
               <Text style={styles.contentsText}>월급 계산기</Text>
               <View style={styles.codeSec}>
-                
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{width: 500, alignItems: center }}
+                  style={{width: 500}}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'#50bcdf'}
                   selectedLabelColor={'white'}
