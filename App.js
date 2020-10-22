@@ -939,5 +939,11 @@ buttonSet:{
   flexDirection: 'column',
   margin: 5,
 },  
+iconText:{
+  flexDirection: 'row',
+  alignSelf: 'center',
+  color: 'white',
+  fontWeight: 'bold',
+},  
 });
 
