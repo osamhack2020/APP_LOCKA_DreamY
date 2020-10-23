@@ -749,7 +749,7 @@ if (permissionCheck == true){
   initName = 'Permission';
 }
 
-const AppNavigator = (initialRouteName) => {
+const AppNavigator = (load) => {
   const RootStackNavigator = StackNavigator(
     {
       Main: { screen: HomeScreen },
@@ -760,18 +760,31 @@ const AppNavigator = (initialRouteName) => {
       Holiday: {screen: holidayScreen},
     },
     {
-      ...initialRouteName,
-      navigationOptions: ({ navigation }) => ({
-        header: null
-      }),
+      initialRouteName: load
     }
   );
   return <RootStackNavigator/>;
 };
 
 export class RootNavigator extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      load: "Permission"
+    };
+  }
+
+  componentWillMount(){
+    permissionCheck = NativeModules.Block.checkPermissionState();
+    if (permissionCheck==true){
+      this.setState({load: "Lobby"});
+    }
+  }
+
   render() {
-    return <AppNavigator initialRouteName={this.props.app.initialRouteName}/>;
+    const Layout = AppNavigator(this.state.load);
+    <Layout />
   }
 }
 
