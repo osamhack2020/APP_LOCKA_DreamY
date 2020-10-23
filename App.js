@@ -16,6 +16,7 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
+import { AsyncStorage } from "react-native"
 
 //import Block from './Block';
 
@@ -281,7 +282,7 @@ class PermissionScreen extends React.Component{
 
   componentWillMount() {
     permissionCheck = NativeModules.Block.checkPermissionState();
-    AsyncStorageData.getToken().then((permissionCheck) => {
+    AsyncStorage.getItem().then((permissionCheck) => {
       const mainPage = !!permissionCheck ? 'Lobby' : 'Permission';
       const resetAction = NavigationActions.reset({
         index: 0,
@@ -381,7 +382,7 @@ class LobbyScreen extends React.Component {
 
   componentWillMount() {
     permissionCheck = NativeModules.Block.checkPermissionState();
-    AsyncStorageData.getToken().then((permissionCheck) => {
+    AsyncStorage.getItem().then((permissionCheck) => {
       const mainPage = !!permissionCheck ? 'Lobby' : 'Permission';
       const resetAction = NavigationActions.reset({
         index: 0,
