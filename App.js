@@ -783,9 +783,7 @@ export class RootNavigator extends React.Component {
   }
   */
   render() {
-    return (
-      <LobbyScreen/>
-    );
+    return <Text>Hello, I am your cat!</Text>;
   }
 }
 
