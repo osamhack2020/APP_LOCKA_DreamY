@@ -1,8 +1,7 @@
 # 📋 LOCKA Project
 
 ### 🚀 What is LOCKA Project?
-스마트폰 비대면 반납 + 국방부 어플리케이션 통합 프로젝트
-(프로젝트 설명단계 필요함.)
+[스마트폰 비대면 반납 + 군인 월급계산 프로젝트](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Overview)
 
 ![teamIcon](https://user-images.githubusercontent.com/18081105/96840798-e6c7ed00-1485-11eb-8d42-62cf4a29b24a.jpg)
 
@@ -11,13 +10,14 @@
 
 
 ### ⚡️ How to install and test
-1. download LOCKA/android/app/build/outputs/apk/debug/app-debug.apk in your phone
+1. download [apk file](https://github.com/osamhack2020/APP_LOCKA_DreamY/raw/master/android/app/build/outputs/apk/debug/app-debug.apk) in your phone
 2. install app using apk file
 3. run downloaded app
 
 ### 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+ - Android 9(sdk level 28) 이상
 
-### 기술 스택 (Technique Used) (예시)
+### 기술 스택 (Technique Used)
 ### Server(back-end)
  - java
  - XML
