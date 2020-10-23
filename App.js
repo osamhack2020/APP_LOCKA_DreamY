@@ -750,7 +750,7 @@ if (permissionCheck == true){
 }
 
 const AppNavigator = (load) => {
-  const RootStackNavigator = StackNavigator(
+  return  StackNavigator(
     {
       Main: { screen: HomeScreen },
       UnlockCheck: { screen: LoginScreen },
@@ -763,7 +763,6 @@ const AppNavigator = (load) => {
       initialRouteName: "Lobby"
     }
   );
-  return <RootStackNavigator/>;
 };
 
 export class RootNavigator extends React.Component {
