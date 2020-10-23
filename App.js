@@ -756,10 +756,10 @@ const AppNavigator = createStackNavigator(
     Calc: { screen: CalcScreen },
     Lobby: { screen: LobbyScreen },
     Holiday: {screen: holidayScreen},
-    initScreen: { screen: InitScreen }
+    //initScreen: { screen: InitScreen }
   },
   {
-    initialRouteName: 'initScreen'
+    initialRouteName: "Lobby" //'initScreen'
   }
 );
 
