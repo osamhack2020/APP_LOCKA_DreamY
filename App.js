@@ -783,10 +783,8 @@ export class RootNavigator extends React.Component {
   }
   */
   render() {
-    //const Layout = AppNavigator();
     return (
-      //<Layout />
-      <Text>hi</Text>
+      <LobbyScreen/>
     );
   }
 }
