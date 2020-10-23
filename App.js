@@ -279,7 +279,7 @@ class PermissionScreen extends React.Component{
     super(props)
     loadPermissionState();
   }
-
+  /*
   componentWillMount() {
     permissionCheck = NativeModules.Block.checkPermissionState();
     AsyncStorage.getItem().then((permissionCheck) => {
@@ -293,7 +293,7 @@ class PermissionScreen extends React.Component{
       this.props.navigation.dispatch(resetAction);
     });
   }
-  
+  */
   // 상단의 toolbar 가리기
   static navigationOptions = {
     header: null ,
@@ -379,7 +379,7 @@ class LobbyScreen extends React.Component {
     }
     //요일
   }
-
+  /*
   componentWillMount() {
     permissionCheck = NativeModules.Block.checkPermissionState();
     AsyncStorage.getItem().then((permissionCheck) => {
@@ -393,7 +393,7 @@ class LobbyScreen extends React.Component {
       this.props.navigation.dispatch(resetAction);
     });
   }
-
+  */
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
     this.timeID = setInterval(
         () => this.Change(),
@@ -455,7 +455,7 @@ class LobbyScreen extends React.Component {
             <Text 
               // 시계넣는공간
               style={styles.clockText}>
-              {String(this.state.d.getHours()).padStart(2, "0")} :{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
+              {String(this.state.d.getHours()).padStart(2, "0")}:{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
             </Text>
           </View>
           <View style={{flex: 0.7}}/>
