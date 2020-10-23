@@ -28,6 +28,7 @@ import android.content.DialogInterface;
 import android.os.PersistableBundle;
 import android.util.Log;
 import java.util.List;
+import android.net.Uri;
 
 import javax.annotation.Nonnull;
 import com.workspace.MyAccessibilityService;
@@ -62,7 +63,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void Holiday() {
+    public void applyHoliday() {
       MyAccessibilityService.holiday=true;
     }
 
@@ -72,6 +73,7 @@ public class BlockModule extends ReactContextBaseJavaModule {
       Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
       MyAccessibilityService.turnOn();
       MyAccessibilityService.pauseLockOff();
+      MyAccessibilityService.holiday = false;
      }
 
      @ReactMethod
@@ -97,4 +99,12 @@ public class BlockModule extends ReactContextBaseJavaModule {
       }).create().show();
     }
 
+    @ReactMethod
+    public void deleteLOCKA() {
+      // Service를 끄는 것이 아닌 앱 잠금해제가 되게끔 하는 메소드
+      Activity activity = getCurrentActivity();
+      Uri uri = Uri.fromParts("package", "com.workspace", null);
+      Intent delIntent = new Intent(Intent.ACTION_DELETE, uri);
+      activity.startActivity(delIntent);
+    }
   }

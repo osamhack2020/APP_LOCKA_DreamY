@@ -36,7 +36,7 @@ public class MainActivity extends ReactActivity {
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        this.AccessPermission = checkAccessibilityService();
+        this.AccessPermission = checkPermissionOn();
 
         if(!AccessPermission) {
             setAccessibilityPermissions();
@@ -45,7 +45,7 @@ public class MainActivity extends ReactActivity {
     }    
 
     // 접근성 권한이 있는지 없는지 확인하는 부분
-    public boolean checkAccessibilityService() {
+    public boolean checkPermissionOn() {
         Context mContext = getApplicationContext();
         int accessibilityEnabled = 0;
         final String service = "com.workspace/com.workspace.MyAccessibilityService";

@@ -36,9 +36,9 @@ public class MyAccessibilityService extends AccessibilityService {
     protected static int dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
 
     //폰 내는 시간
-    protected static int lockedtime = 2050;
+    protected static int lockedtime = 2100;
     //폰 받는 시간emf
-    protected static int weekendunlockedtime = 1030;
+    protected static int weekendunlockedtime = 830;
     protected static int unlockedtime = 1800;
 
     public static void onHoliday() {
@@ -72,7 +72,7 @@ public class MyAccessibilityService extends AccessibilityService {
         if(currentTime>=lockedtime){holiday = false;}
 
         if (dayOfWeek==1 || dayOfWeek==7){
-            if (( currentTime>=lockedtime || currentTime<weekendunlockedtime) && (pauseLock==false) && (holiday == false)){
+            if (( currentTime>=lockedtime || currentTime<weekendunlockedtime) && (pauseLock==false) && (holiday != true)){
                 returnPhone = true;
             }
             else{
@@ -80,7 +80,7 @@ public class MyAccessibilityService extends AccessibilityService {
             }
         }
         else{
-            if ((currentTime>=lockedtime || currentTime<unlockedtime) && (pauseLock==false) && (holiday == false)){
+            if ((currentTime>=lockedtime || currentTime<unlockedtime) && (pauseLock==false) && (holiday != true)){
                 returnPhone = true;
             }
             else{

@@ -27,20 +27,6 @@ var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
 var permissionCheck = NativeModules.Block.checkPermissionState();
 
-/*
-Block.checkPermissionOn(
-  (status) => {
-    if(status){
-      ToastExample.show('Permission Checked.', ToastExample.SHORT);
-      permissionCheck=status;
-    }
-    else{
-      ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
-    }
-  }
-);
-*/
-
 loadPermissionState = () => {
   permissionCheck = NativeModules.Block.checkPermissionState();
   var initPage = 'AppNavigator';
@@ -238,7 +224,7 @@ class holidayScreen extends React.Component{
     //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
       ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
-      NativeModules.Block.Holiday();
+      NativeModules.Block.applyHoliday();
       this.props.navigation.navigate('Lobby');
     }
     else{
@@ -433,7 +419,7 @@ class LobbyScreen extends React.Component {
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
             // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>

@@ -2,6 +2,8 @@
   package="com.workspace">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+
 
     <application
       android:name=".MainApplication"
