@@ -7,17 +7,18 @@
  */
 
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+//import { createAppContainer } from 'react-navigation';
+//import { createStackNavigator } from 'react-navigation-stack';
 import {NavigationNativeContainer} from '@react-navigation/native';
 import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground} from 'react-native';
+  ImageBackground, ActivityIndicator, AsyncStorage} from 'react-native';
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
-import { AsyncStorage } from "react-native"
+import { createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
+
 
 //import Block from './Block';
 
@@ -280,21 +281,6 @@ class PermissionScreen extends React.Component{
     super(props)
     loadPermissionState();
   }
-  /*
-  componentWillMount() {
-    permissionCheck = NativeModules.Block.checkPermissionState();
-    AsyncStorage.getItem().then((permissionCheck) => {
-      const mainPage = !!permissionCheck ? 'Lobby' : 'Permission';
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate({ routeName: mainPage })
-        ]
-      });
-      this.props.navigation.dispatch(resetAction);
-    });
-  }
-  */
   // 상단의 toolbar 가리기
   static navigationOptions = {
     header: null ,
@@ -303,7 +289,7 @@ class PermissionScreen extends React.Component{
   setAccessibility = () =>{
     //권한을 요청하는 화면으로 이동시키는 함수.
     NativeModules.Block.setAccessibilityPermissions();
-    this.props.navigation.navigate('Lobby');
+    //this.props.navigation.navigate('Lobby');
   }
 
   render(){
@@ -380,21 +366,7 @@ class LobbyScreen extends React.Component {
     }
     //요일
   }
-  /*
-  componentWillMount() {
-    permissionCheck = NativeModules.Block.checkPermissionState();
-    AsyncStorage.getItem().then((permissionCheck) => {
-      const mainPage = !!permissionCheck ? 'Lobby' : 'Permission';
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate({ routeName: mainPage })
-        ]
-      });
-      this.props.navigation.dispatch(resetAction);
-    });
-  }
-  */
+
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
     this.timeID = setInterval(
         () => this.Change(),
@@ -742,6 +714,39 @@ class CalcScreen extends React.Component {
   }
 }
 
+class AuthLoadingScreen extends React.Component {
+  constructor() {
+    super();
+    this._signInAsync();
+    this._bootstrapAsync();
+  }
+
+  _signInAsync = async () => {
+    permissionCheck = NativeModules.Block.checkPermissionState();
+    if(permissionCheck){
+      await AsyncStorage.setItem('userToken', 'abc');
+    }
+  };
+
+  // Fetch the token from storage then navigate to our appropriate place
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('userToken');
+
+    // This will switch to the App screen or Auth screen and this loading
+    // screen will be unmounted and thrown away.
+    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+  };
+
+  // Render any loading content that you like here
+  render() {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+        <StatusBar barStyle="default" />
+      </View>
+    );
+  }
+}
 
 //첫 시작화면 설정
 if (permissionCheck == true){
@@ -749,40 +754,34 @@ if (permissionCheck == true){
 }else{
   initName = 'Permission';
 }
-/*
+
 const AppNavigator = createStackNavigator(
   {
-    Main: { screen: HomeScreen },
-    UnlockCheck: { screen: LoginScreen },
-    Permission: { screen: PermissionScreen },
-    Calc: { screen: CalcScreen },
-    Lobby: { screen: LobbyScreen },
-    Holiday: {screen: holidayScreen},
+    Lobby: LobbyScreen,
+    Main: HomeScreen ,
+    UnlockCheck: LoginScreen,
+    Permission: PermissionScreen,
+    Calc:CalcScreen,
+    Holiday:holidayScreen,
     //initScreen: { screen: InitScreen }
-  },
-  {
-    initialRouteName: "Lobby" //'initScreen'
   }
 );
-*/
 
+const LoginAppNavigator = createStackNavigator(
+  { Permission: PermissionScreen }
+);
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {permissionCheck ? (
-          <> //로그인을 한 상태
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Settings" component={LobbyScreen} />
-          </>
-        ) : ( // 로그인을 하지 않은 상태
-          <Stack.Screen name="Permission" component={PermissionScreen} />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+export default createAppContainer(createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App: AppNavigator,
+    Auth: LoginAppNavigator,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  }
+));
+
 
 //export default createAppContainer(AppNavigator);
 
