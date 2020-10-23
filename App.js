@@ -760,7 +760,7 @@ const AppNavigator = (load) => {
       Holiday: {screen: holidayScreen},
     },
     {
-      initialRouteName: load
+      initialRouteName: "Lobby"
     }
   );
   return <RootStackNavigator/>;
