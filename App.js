@@ -749,23 +749,33 @@ if (permissionCheck == true){
   initName = 'Permission';
 }
 
-const AppNavigator = createStackNavigator(
-  {
-    Main: { screen: HomeScreen },
-    UnlockCheck: { screen: LoginScreen },
-    Permission: { screen: PermissionScreen },
-    Calc: { screen: CalcScreen },
-    Lobby: { screen: LobbyScreen },
-    Holiday: {screen: holidayScreen},
-    //initScreen: { screen: InitScreen }
-  },
-  {
-    initialRouteName: "Lobby" //'initScreen'
+const AppNavigator = (initialRouteName) => {
+  const RootStackNavigator = StackNavigator(
+    {
+      Main: { screen: HomeScreen },
+      UnlockCheck: { screen: LoginScreen },
+      Permission: { screen: PermissionScreen },
+      Calc: { screen: CalcScreen },
+      Lobby: { screen: LobbyScreen },
+      Holiday: {screen: holidayScreen},
+    },
+    {
+      ...initialRouteName,
+      navigationOptions: ({ navigation }) => ({
+        header: null
+      }),
+    }
+  );
+  return <RootStackNavigator/>;
+};
+
+export class RootNavigator extends React.Component {
+  render() {
+    return <AppNavigator initialRouteName={this.props.app.initialRouteName}/>;
   }
-);
+}
 
-
-export default createAppContainer(AppNavigator);
+//export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
 container: {
