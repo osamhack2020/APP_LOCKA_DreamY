@@ -774,14 +774,14 @@ export class RootNavigator extends React.Component {
       load: "Permission"
     };
   }
-
+  /*
   componentWillMount(){
     permissionCheck = NativeModules.Block.checkPermissionState();
     if (permissionCheck==true){
       this.setState({load: "Lobby"});
     }
   }
-
+  */
   render() {
     const Layout = AppNavigator(this.state.load);
     <Layout />
