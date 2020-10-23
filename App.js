@@ -167,8 +167,7 @@ class LoginScreen extends React.Component{
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
@@ -240,14 +239,13 @@ class holidayScreen extends React.Component{
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
-              잠금해제 코드를 입력해주세요
+              일시해제코드(전투휴무/공휴일 등)를 입력해주세요
             </Text>
           </View>
           <View style={styles.codeSec}>
@@ -299,8 +297,7 @@ class PermissionScreen extends React.Component{
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>     
@@ -418,7 +415,6 @@ class LobbyScreen extends React.Component {
           source={require('./images/MainB.png')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
             onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
@@ -428,7 +424,7 @@ class LobbyScreen extends React.Component {
             <Text 
               // 시계넣는공간
               style={styles.clockText}>
-                {this.loadDayoftheweek()} {this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
+                {this.loadDayoftheweek()} {String(this.state.d.getHours()).padStart(2, "0")} :{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
             </Text>
           </View>
           <View style={{flex: 0.7}}/>
