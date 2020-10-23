@@ -277,18 +277,6 @@ class PermissionScreen extends React.Component{
   constructor(props){
     super(props)
     loadPermissionState();
-    this.componentWillMount();
-  }
-  
-  // 상단의 toolbar 가리기
-  static navigationOptions = {
-    header: null ,
-  };
-
-  setAccessibility = () =>{
-    //권한을 요청하는 화면으로 이동시키는 함수.
-    NativeModules.Block.setAccessibilityPermissions();
-    this.props.navigation.navigate('Lobby');
   }
 
   componentWillMount() {
@@ -303,6 +291,17 @@ class PermissionScreen extends React.Component{
       });
       this.props.navigation.dispatch(resetAction);
     });
+  }
+  
+  // 상단의 toolbar 가리기
+  static navigationOptions = {
+    header: null ,
+  };
+
+  setAccessibility = () =>{
+    //권한을 요청하는 화면으로 이동시키는 함수.
+    NativeModules.Block.setAccessibilityPermissions();
+    this.props.navigation.navigate('Lobby');
   }
 
   render(){
@@ -378,6 +377,20 @@ class LobbyScreen extends React.Component {
       d: new Date()
     }
     //요일
+  }
+
+  componentWillMount() {
+    permissionCheck = NativeModules.Block.checkPermissionState();
+    AsyncStorageData.getToken().then((permissionCheck) => {
+      const mainPage = !!permissionCheck ? 'Lobby' : 'Permission';
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: mainPage })
+        ]
+      });
+      this.props.navigation.dispatch(resetAction);
+    });
   }
 
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
