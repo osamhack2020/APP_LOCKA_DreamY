@@ -766,13 +766,14 @@ const AppNavigator = () => {
 };
 
 export class RootNavigator extends React.Component {
-
+/*
   constructor(props) {
     super(props);
     this.state = { 
       load: "Permission"
     };
   }
+  */
   /*
   componentWillMount(){
     permissionCheck = NativeModules.Block.checkPermissionState();
@@ -782,11 +783,11 @@ export class RootNavigator extends React.Component {
   }
   */
   render() {
-    return (
-      <Text>Header</Text>
-    );
     //const Layout = AppNavigator();
-    //<Layout />
+    return (
+      //<Layout />
+      <Text>hi</Text>
+    );
   }
 }
 
