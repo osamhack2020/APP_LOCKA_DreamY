@@ -19,13 +19,16 @@
 
 ### 기술 스택 (Technique Used) (예시)
 ### Server(back-end)
- - java 등 서버 언어
+ - java
  - XML
  
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/18081105/96946704-14f80c00-151c-11eb-9d30-f5ddf3af9041.png)
+ 
 ### front-end
- -  react.js 등 사용한 front-end 프레임워크 
+ -  react.js
+ -  kavascript
  -  UI framework
- -  기타 사용한 라이브러리, components
+ -  react-native components
 
 ### 🗓Develop Schedule
 Due date : 10/31(Saturday)
