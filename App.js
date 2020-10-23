@@ -9,6 +9,7 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import {NavigationNativeContainer} from '@react-navigation/native';
 import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
@@ -748,43 +749,39 @@ if (permissionCheck == true){
 }else{
   initName = 'Permission';
 }
-
-const AppNavigator = () => {
-  return StackNavigator(
-    {
-      Main: { screen: HomeScreen },
-      UnlockCheck: { screen: LoginScreen },
-      Permission: { screen: PermissionScreen },
-      Calc: { screen: CalcScreen },
-      Lobby: { screen: LobbyScreen },
-      Holiday: {screen: holidayScreen},
-    },
-    {
-      initialRouteName: "Lobby"
-    }
-  );
-};
-
-export class RootNavigator extends React.Component {
 /*
-  constructor(props) {
-    super(props);
-    this.state = { 
-      load: "Permission"
-    };
+const AppNavigator = createStackNavigator(
+  {
+    Main: { screen: HomeScreen },
+    UnlockCheck: { screen: LoginScreen },
+    Permission: { screen: PermissionScreen },
+    Calc: { screen: CalcScreen },
+    Lobby: { screen: LobbyScreen },
+    Holiday: {screen: holidayScreen},
+    //initScreen: { screen: InitScreen }
+  },
+  {
+    initialRouteName: "Lobby" //'initScreen'
   }
-  */
-  /*
-  componentWillMount(){
-    permissionCheck = NativeModules.Block.checkPermissionState();
-    if (permissionCheck==true){
-      this.setState({load: "Lobby"});
-    }
-  }
-  */
-  render() {
-    return <Text>Hello, I am your cat!</Text>;
-  }
+);
+*/
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {permissionCheck ? (
+          <> //로그인을 한 상태
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Settings" component={LobbyScreen} />
+          </>
+        ) : ( // 로그인을 하지 않은 상태
+          <Stack.Screen name="Permission" component={PermissionScreen} />
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 //export default createAppContainer(AppNavigator);
