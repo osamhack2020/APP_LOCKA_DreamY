@@ -749,8 +749,8 @@ if (permissionCheck == true){
   initName = 'Permission';
 }
 
-const AppNavigator = (load) => {
-  return  StackNavigator(
+const AppNavigator = () => {
+  return StackNavigator(
     {
       Main: { screen: HomeScreen },
       UnlockCheck: { screen: LoginScreen },
@@ -782,8 +782,11 @@ export class RootNavigator extends React.Component {
   }
   */
   render() {
-    const Layout = AppNavigator(this.state.load);
-    <Layout />
+    return (
+      <Text>Header</Text>
+    );
+    //const Layout = AppNavigator();
+    //<Layout />
   }
 }
 
