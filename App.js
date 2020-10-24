@@ -424,7 +424,17 @@ class LobbyScreen extends React.Component {
                 {this.loadDayoftheweek()} {String(this.state.d.getHours()).padStart(2, "0")} :{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
             </Text>
           </View>
-          <View style={{flex: 0.7}}/>
+          <View style={{flex: 0.1}}/>
+          <View style={styles.daysGroup}>
+            <Text style={styles.days}>월</Text>
+            <Text style={styles.days}>화</Text>
+            <Text style={styles.days}>수</Text>
+            <Text style={styles.days}>목</Text>
+            <Text style={styles.days}>금</Text>
+            <Text style={styles.satday}>토</Text>
+            <Text style={styles.sunday}>일</Text>
+          </View>
+          <View style={{flex: 0.3}}/>
           <View style={styles.codeSec}>
             {renderBlockState()}
           </View>
