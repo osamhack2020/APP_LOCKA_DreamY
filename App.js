@@ -830,7 +830,7 @@ class CalcScreen extends React.Component {
                     customStyles={{
                       dateIcon: {
                         position: 'absolute',
-                        left: 30,
+                        left: 25,
                         top: 4,
                         marginLeft: 0
                       },
@@ -855,7 +855,7 @@ class CalcScreen extends React.Component {
             </View>
             <View style={styles.salaryCalc}>
               <Text style={styles.contentsText}>월급 계산기</Text>
-              <View style={{flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'}}>
+              <View style={{justifyContent: 'center', alignItems: 'center',  flexDirection: 'row'/*flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'*/}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
