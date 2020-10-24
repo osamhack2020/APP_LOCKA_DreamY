@@ -731,108 +731,139 @@ class CalcScreen extends React.Component {
           <ImageBackground
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
-            <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' ,color: '#1e3269' }}>
-              <ProgressCircle
-                radius={100}
-                percent={this.calcPercentInt()}
-                borderWidth={8}
-                bgColor="#000038"
-                color="#8b00ff"
-                shadowColor="#b19cd9"
-              >
-                <Text style={styles.contentsText}>{this.calcPercent()}</Text>
-                <Text style={{ fontSize: 25, color: 'white' }}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-              </ProgressCircle>
-              <DatePicker
-                style={{width: 200}}
-                date={this.state.startDay}
-                mode="date"
-                placeholder="2020-04-06"
-                format="YYYY-MM-DD"
-                minDate="2019-01-01"
-                maxDate="2099-12-31"
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                customStyles={{
-                  dateIcon: {
-                    position: 'absolute',
-                    left: 0,
-                    top: 4,
-                    marginLeft: 0
-                  },
-                  dateInput: {
-                    marginLeft: 0,
-                    borderWidth: 0
-                  },
-                  placeholderText: {
-                    color: 'white'
-                  },
-                  dateText: {
-                    color: "white",
-                  }
-                }}
-                onDateChange={(date) => {this.setState({startDay: date})}}
-              />
-              <DatePicker
-                style={{width: 200}}
-                date={this.state.endDay}
-                mode="date"
-                placeholder="pick a day"
-                format="YYYY-MM-DD"
-                minDate="2020-01-01"
-                maxDate="2099-12-31"
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                customStyles={{
-                  dateIcon: {
-                    position: 'absolute',
-                    left: 0,
-                    top: 4,
-                    marginLeft: 0
-                  },
-                  dateInput: {
-                    marginLeft: 0,
-                    borderWidth: 0
-                  },
-                  placeholderText: {
-                    color: 'white'
-                  }
-                }}
-                onDateChange={
-                  (date) => {this.setState({endDay: date})}
-                }
-              />
+            <View style={styles.ddayCalc}>
+              <Text style={styles.contentsText}>전역일 계산기</Text>
+              <View 
+              // progressBar가 담기는 뷰
+              style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
+                <ProgressCircle
+                  radius={100}
+                  percent={this.calcPercentInt()}
+                  borderWidth={8}
+                  bgColor="#000038"
+                  color="#8b00ff"
+                  shadowColor="#b19cd9"
+                  style={{flexDirection: 'row', alignSelf: 'center'}}
+                >
+                  <Text style={{fontSize: 20, color: 'white'}}>
+                    {this.calcPercent()}
+                  </Text>
+                  <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                </ProgressCircle>
+              </View>
+              <View style={styles.calenderGroup}>
+                <View style={styles.calenderSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={styles.dayofarmy}>
+                      입대일
+                    </Text>
+                  </View>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                  <DatePicker
+                    style={{width: 200}}
+                    date={this.state.startDay}
+                    mode="date"
+                    placeholder="2020-04-06"
+                    format="YYYY-MM-DD"
+                    minDate="2019-01-01"
+                    maxDate="2099-12-31"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                      dateIcon: {
+                        position: 'absolute',
+                        left: 0,
+                        top: 4,
+                        marginLeft: 0
+                      },
+                      dateInput: {
+                        marginLeft: 0,
+                        borderWidth: 0
+                      },
+                      placeholderText: {
+                        color: 'white'
+                      },
+                      dateText: {
+                        color: "white",
+                      }
+                    }}
+                    onDateChange={(date) => {this.setState({startDay: date})}}
+                  />
+                  </View>
+                </View>
+                <View style={styles.calenderSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={styles.dayofarmy}>
+                      전역일
+                    </Text>
+                  </View>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                  <DatePicker
+                    style={{width: 200}}
+                    date={this.state.endDay}
+                    mode="date"
+                    placeholder="pick a day"
+                    format="YYYY-MM-DD"
+                    minDate="2020-01-01"
+                    maxDate="2099-12-31"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                      dateIcon: {
+                        position: 'absolute',
+                        left: 0,
+                        top: 4,
+                        marginLeft: 0
+                      },
+                      dateInput: {
+                        marginLeft: 0,
+                        borderWidth: 0
+                      },
+                      placeholderText: {
+                        color: 'white'
+                      },
+                      dateText: {
+                        color: "white",
+                      }
+                    }}
+                    onDateChange={
+                      (date) => {this.setState({endDay: date})}
+                    }
+                  />
+                  </View>
+                </View>
+              </View>
             </View>
-            <View style={{ flex: 0.7, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={styles.salaryCalc}>
               <Text style={styles.contentsText}>월급 계산기</Text>
-              <View style={styles.codeSec}>
+              <View style={{flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{width: 500}}
                   onPress={(value) => {this.setState({selectArmy:value})}}
-                  selectedButtonColor={'#50bcdf'}
-                  selectedLabelColor={'white'}
+                  selectedButtonColor={'navy'}
+                  selectedLabelColor={'navy'}
+                  labelStyle={{fontSize:15}}
                   labelStyle={{fontSize:12}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={styles.codeSec}>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                 <Text style={styles.contentsText}>적금/월  </Text>
                 <TextInput style={styles.chatInput} 
                   onChangeText={this.changeSaving}
                   onSubmitEditing={this.submitEdit.bind(this)}
                 />
               </View>
-            </View>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
               {
                 this.state.clicked
                 ? <Button title = "확인" onPress = {this.clickBtn} />
                 : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
+              </View>
             </View>
           </ImageBackground>
         </View>
