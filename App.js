@@ -791,7 +791,7 @@ class CalcScreen extends React.Component {
                     customStyles={{
                       dateIcon: {
                         position: 'absolute',
-                        left: 0,
+                        left: 36,
                         top: 4,
                         marginLeft: 0
                       },
@@ -830,7 +830,7 @@ class CalcScreen extends React.Component {
                     customStyles={{
                       dateIcon: {
                         position: 'absolute',
-                        left: 50,
+                        left: 36,
                         top: 4,
                         marginLeft: 0
                       },
