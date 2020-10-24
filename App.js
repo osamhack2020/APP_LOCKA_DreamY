@@ -29,13 +29,6 @@ var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
 var permissionCheck = NativeModules.Block.checkPermissionState();
 
-loadPermissionState = () => {
-  permissionCheck = NativeModules.Block.checkPermissionState();
-  if (!permissionCheck){
-    this.props.navigation.navigate("Permission");
-  }
-}
-
 
 renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
@@ -357,11 +350,18 @@ class LobbyScreen extends React.Component {
 
   constructor(props){
     super(props)
-    loadPermissionState();
+    //loadPermissionState();
     this.state = {
       d: new Date()
     }
     //요일
+  }
+
+  loadPermissionState = () => {
+    permissionCheck = NativeModules.Block.checkPermissionState();
+    if (!permissionCheck){
+      this.props.navigation.navigate("Permission");
+    }
   }
 
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
