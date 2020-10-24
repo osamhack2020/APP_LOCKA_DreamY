@@ -1124,4 +1124,9 @@ calenderGroup:{
   alignSelf: 'center',
   margin: 5,
 },  
+calenderSet:{
+  flexDirection: 'column',
+  alignSelf: 'center',
+  margin: 3,
+},   
 });
