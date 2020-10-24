@@ -955,4 +955,12 @@ satday:{
   fontSize: 20,
   textDecorationLine: 'underline', // test
 },  
+sunday:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: 'red',
+  fontWeight: 'bold',
+  fontSize: 20,
+  textDecorationLine: 'underline', // test
+},  
 });
