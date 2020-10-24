@@ -1129,4 +1129,9 @@ calenderSet:{
   alignSelf: 'center',
   margin: 3,
 },   
+dayofarmy:{
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 15,
+},  
 });
