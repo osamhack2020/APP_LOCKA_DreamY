@@ -54,12 +54,16 @@ public class BlockModule extends ReactContextBaseJavaModule {
       return MainActivity.AccessPermission;
     }
 
-
     @ReactMethod(isBlockingSynchronousMethod = true)
     public boolean checkBlockState() {
       MyAccessibilityService.getCurrentTime();
       boolean blockState = MyAccessibilityService.returnPhone;
       return blockState;
+    }
+
+    @ReactMethod(isBlockingSynchronousMethod = true)
+    public boolean getpauseLock() {
+      return MyAccessibilityService.pauseLock;
     }
 
     @ReactMethod
@@ -70,7 +74,22 @@ public class BlockModule extends ReactContextBaseJavaModule {
     @ReactMethod
      public void startService() {
      // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
-      Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
+      if(MyAccessibilityService.dayOfWeek==1 || MyAccessibilityService.dayOfWeek==7){
+        if ((MyAccessibilityService.currentTime>=MyAccessibilityService.lockedtime || MyAccessibilityService.currentTime<MyAccessibilityService.weekendunlockedtime)){
+          Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+          Toast.makeText(getReactApplicationContext(), "반납시간이 아닙니다.", Toast.LENGTH_SHORT).show();
+        }
+      }
+      else{
+          if((MyAccessibilityService.currentTime>=MyAccessibilityService.lockedtime || MyAccessibilityService.currentTime<MyAccessibilityService.unlockedtime)){
+            Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
+          }
+          else{
+            Toast.makeText(getReactApplicationContext(), "반납시간이 아닙니다.", Toast.LENGTH_SHORT).show();
+          }
+      }
       MyAccessibilityService.turnOn();
       MyAccessibilityService.pauseLockOff();
       MyAccessibilityService.holiday = false;
