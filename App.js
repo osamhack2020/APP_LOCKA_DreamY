@@ -791,7 +791,7 @@ class CalcScreen extends React.Component {
                     customStyles={{
                       dateIcon: {
                         position: 'absolute',
-                        left: 30,
+                        left: 28,
                         top: 4,
                         marginLeft: 0
                       },
@@ -830,7 +830,7 @@ class CalcScreen extends React.Component {
                     customStyles={{
                       dateIcon: {
                         position: 'absolute',
-                        left: 25,
+                        left: 28,
                         top: 4,
                         marginLeft: 0
                       },
@@ -861,8 +861,8 @@ class CalcScreen extends React.Component {
                   radio_props={radio_props}
                   initial={0}
                   onPress={(value) => {this.setState({selectArmy:value})}}
-                  selectedButtonColor={'navy'}
-                  selectedLabelColor={'navy'}
+                  selectedButtonColor={'white'}
+                  selectedLabelColor={'white'}
                   labelStyle={{fontSize:12}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
