@@ -1119,4 +1119,9 @@ ddayCalc:{
 salaryCalc:{
   flex: 1,
 },  
+calenderGroup:{
+  flexDirection: 'row',
+  alignSelf: 'center',
+  margin: 5,
+},  
 });
