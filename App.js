@@ -69,16 +69,100 @@ else{
 }
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
-
-
   return result
 }
 
-// 개발용 화면
+renderDayofweek = (Dayofweek) => {
+  //Dayofweek : 요일
+  var renderingText;
+  if(Dayofweek == 0){
+    renderingText =           
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={{marginRight: 6, marginLeft: 6, color: '#e15858', fontSize: 20,  textDecorationLine: 'underline'}}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 1){
+    //월요일
+    renderingText =           
+    <View style={styles.daysGroup}>
+      <Text style={styles.todayText}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 2){
+    renderingText =     
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.todayText}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+  </View>
+  }
+  else if(Dayofweek == 3){
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.todayText}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 4){
+    renderingText = 
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.todayText}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 5){
+    renderingText = 
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.todayText}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else{
+    renderingText = 
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={{marginRight: 6, marginLeft: 6, color: '#52a6f2', fontSize: 20, textDecorationLine: 'underline'}}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  return renderingText;
+}
+
 class HomeScreen extends React.Component {
-  /*
-  여기에 함수를 추가해서 버튼을 누르면 권한 허용에 대해서 permission을 받아와 다음 화면으로 넘어가도록 설정해야 함.
-  */
     render() {
       return (
         <View style={styles.container}>
@@ -112,8 +196,6 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>  
-
-
     );
   }
 }
@@ -389,21 +471,6 @@ class LobbyScreen extends React.Component {
     }
   }
 
-/*
-  checkAccessPermission() {
-    //접근성권한이 허용되어있는지 체크한다.
-    permissionCheck = NativeModules.Block.checkPermissionState();
-    if(permissionCheck==true){
-      ToastExample.show('Permission Checked.', ToastExample.SHORT);
-    }
-    else if(permissionCheck==false){
-      ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
-    }
-    else{
-      ToastExample.show('Permission 정보 X', ToastExample.SHORT);
-    }
-  }
-*/
   render(){
     return(
       <View style={styles.newContainer}>
@@ -421,19 +488,11 @@ class LobbyScreen extends React.Component {
             <Text 
               // 시계넣는공간
               style={styles.clockText}>
-                {this.loadDayoftheweek()} {String(this.state.d.getHours()).padStart(2, "0")} :{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
+                {String(this.state.d.getHours()).padStart(2, "0")} :{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
             </Text>
           </View>
           <View style={{flex: 0.1}}/>
-          <View style={styles.daysGroup}>
-            <Text style={styles.days}>월</Text>
-            <Text style={styles.days}>화</Text>
-            <Text style={styles.days}>수</Text>
-            <Text style={styles.days}>목</Text>
-            <Text style={styles.days}>금</Text>
-            <Text style={styles.satday}>토</Text>
-            <Text style={styles.sunday}>일</Text>
-          </View>
+            {renderDayofweek(this.state.d.getDay())}
           <View style={{flex: 0.3}}/>
           <View style={styles.codeSec}>
             {renderBlockState()}
@@ -717,14 +776,6 @@ class CalcScreen extends React.Component {
   }
 }
 
-
-//첫 시작화면 설정
-if (permissionCheck == true){
-  initName = 'Lobby';
-}else{
-  initName = 'Permission';
-}
-
 const AppNavigator = createStackNavigator(
   {
     Main: { screen: HomeScreen },
@@ -939,28 +990,32 @@ daysGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
 },   
-days:{
+weekdays:{
   marginRight: 6,
   marginLeft: 6,
   color: 'white',
-  fontWeight: 'bold',
   fontSize: 20,
-  textDecorationLine: 'underline', // test
-},  
+  //textDecorationLine: 'underline', // test
+},
+todayText:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: 'white',
+  fontSize: 20,
+  textDecorationLine: 'underline',
+},
 satday:{
   marginRight: 6,
   marginLeft: 6,
-  color: 'blue',
-  fontWeight: 'bold',
+  color: '#52a6f2',
   fontSize: 20,
-  textDecorationLine: 'underline', // test
+  //textDecorationLine: 'underline', // test
 },  
 sunday:{
   marginRight: 6,
   marginLeft: 6,
-  color: 'red',
-  fontWeight: 'bold',
+  color: '#e15858',
   fontSize: 20,
-  textDecorationLine: 'underline', // test
+  //textDecorationLine: 'underline', // test
 },  
 });
