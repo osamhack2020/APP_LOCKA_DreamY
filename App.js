@@ -947,4 +947,12 @@ days:{
   fontSize: 20,
   textDecorationLine: 'underline', // test
 },  
+satday:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: 'blue',
+  fontWeight: 'bold',
+  fontSize: 20,
+  textDecorationLine: 'underline', // test
+},  
 });
