@@ -28,6 +28,7 @@ import android.content.DialogInterface;
 import android.os.PersistableBundle;
 import android.util.Log;
 import java.util.List;
+import android.net.Uri;
 
 import javax.annotation.Nonnull;
 import com.workspace.MyAccessibilityService;
@@ -47,21 +48,11 @@ public class BlockModule extends ReactContextBaseJavaModule {
     public String getName() {
       return REACT_CLASS;
     }
-/*
-    @ReactMethod
-    public void checkPermissionOn(Callback booleanCallback) {
-      // 현재 LOCKA의 접근성서비스가 켜져있는지 확인할 수 있는 함수
-      //if(MainActivity.AccessPermission){Toast.makeText(getReactApplicationContext(), "True: "+MainActivity.AccessApps , Toast.LENGTH_SHORT).show();}
-      //else{Toast.makeText(getReactApplicationContext(), "False : "+MainActivity.AccessApps, Toast.LENGTH_SHORT).show();}
-      boolean accessibilityPermission = MainActivity.AccessPermission;
-      booleanCallback.invoke(accessibilityPermission);
-    }
-*/
+
     @ReactMethod(isBlockingSynchronousMethod = true)
     public boolean checkPermissionState() {
       return MainActivity.AccessPermission;
     }
-
 
     @ReactMethod(isBlockingSynchronousMethod = true)
     public boolean checkBlockState() {
@@ -70,12 +61,38 @@ public class BlockModule extends ReactContextBaseJavaModule {
       return blockState;
     }
 
+    @ReactMethod(isBlockingSynchronousMethod = true)
+    public boolean getpauseLock() {
+      return MyAccessibilityService.pauseLock;
+    }
+
+    @ReactMethod
+    public void applyHoliday() {
+      MyAccessibilityService.holiday=true;
+    }
+
     @ReactMethod
      public void startService() {
      // Service를 시작하는 것이 아닌 앱 강제종료가 되게끔 하는 메소드
-      Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
+      if(MyAccessibilityService.dayOfWeek==1 || MyAccessibilityService.dayOfWeek==7){
+        if ((MyAccessibilityService.currentTime>=MyAccessibilityService.lockedtime || MyAccessibilityService.currentTime<MyAccessibilityService.weekendunlockedtime)){
+          Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+          Toast.makeText(getReactApplicationContext(), "반납시간이 아닙니다.", Toast.LENGTH_SHORT).show();
+        }
+      }
+      else{
+          if((MyAccessibilityService.currentTime>=MyAccessibilityService.lockedtime || MyAccessibilityService.currentTime<MyAccessibilityService.unlockedtime)){
+            Toast.makeText(getReactApplicationContext(), "휴대폰이 반납되었습니다.", Toast.LENGTH_SHORT).show();
+          }
+          else{
+            Toast.makeText(getReactApplicationContext(), "반납시간이 아닙니다.", Toast.LENGTH_SHORT).show();
+          }
+      }
       MyAccessibilityService.turnOn();
       MyAccessibilityService.pauseLockOff();
+      MyAccessibilityService.holiday = false;
      }
 
      @ReactMethod
@@ -101,4 +118,12 @@ public class BlockModule extends ReactContextBaseJavaModule {
       }).create().show();
     }
 
+    @ReactMethod
+    public void deleteLOCKA() {
+      // Service를 끄는 것이 아닌 앱 잠금해제가 되게끔 하는 메소드
+      Activity activity = getCurrentActivity();
+      Uri uri = Uri.fromParts("package", "com.workspace", null);
+      Intent delIntent = new Intent(Intent.ACTION_DELETE, uri);
+      activity.startActivity(delIntent);
+    }
   }

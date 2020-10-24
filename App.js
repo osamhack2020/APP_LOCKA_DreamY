@@ -27,30 +27,6 @@ var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
 var permissionCheck = NativeModules.Block.checkPermissionState();
 
-
-/*
-Block.checkPermissionOn(
-  (status) => {
-    if(status){
-      ToastExample.show('Permission Checked.', ToastExample.SHORT);
-      permissionCheck=status;
-    }
-    else{
-      ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
-    }
-  }
-);
-*/
-
-loadPermissionState = () => {
-  permissionCheck = NativeModules.Block.checkPermissionState();
-  var initPage = 'AppNavigator';
-  if (permissionCheck == false){
-    initPage = 'permissionAppNavigator';
-  }
-  return initPage;
-}
-
 renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
   lockedCondition = NativeModules.Block.checkBlockState();
@@ -93,16 +69,100 @@ else{
 }
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
-
-
   return result
 }
 
-// 개발용 화면
+renderDayofweek = (Dayofweek) => {
+  //Dayofweek : 요일
+  var renderingText;
+  if(Dayofweek == 0){
+    renderingText =           
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={{marginRight: 6, marginLeft: 6, color: '#e15858', fontSize: 20,  textDecorationLine: 'underline'}}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 1){
+    //월요일
+    renderingText =           
+    <View style={styles.daysGroup}>
+      <Text style={styles.todayText}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 2){
+    renderingText =     
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.todayText}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+  </View>
+  }
+  else if(Dayofweek == 3){
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.todayText}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 4){
+    renderingText = 
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.todayText}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else if(Dayofweek == 5){
+    renderingText = 
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.todayText}>금</Text>
+      <Text style={styles.satday}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  else{
+    renderingText = 
+    <View style={styles.daysGroup}>
+      <Text style={styles.weekdays}>월</Text>
+      <Text style={styles.weekdays}>화</Text>
+      <Text style={styles.weekdays}>수</Text>
+      <Text style={styles.weekdays}>목</Text>
+      <Text style={styles.weekdays}>금</Text>
+      <Text style={{marginRight: 6, marginLeft: 6, color: '#52a6f2', fontSize: 20, textDecorationLine: 'underline'}}>토</Text>
+      <Text style={styles.sunday}>일</Text>
+    </View>
+  }
+  return renderingText;
+}
+
 class HomeScreen extends React.Component {
-  /*
-  여기에 함수를 추가해서 버튼을 누르면 권한 허용에 대해서 permission을 받아와 다음 화면으로 넘어가도록 설정해야 함.
-  */
     render() {
       return (
         <View style={styles.container}>
@@ -136,13 +196,11 @@ class HomeScreen extends React.Component {
             />
           </View>
         </View>  
-
-
     );
   }
 }
 
-// 어플 처음 실행시 등장. 인증번호 입력 화면
+// 잠금 해제시 인증번호 입력 화면
 class LoginScreen extends React.Component{
 
   static navigationOptions = {
@@ -182,8 +240,7 @@ class LoginScreen extends React.Component{
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
@@ -214,12 +271,83 @@ class LoginScreen extends React.Component{
   }
 }
 
+//휴일, 전투휴무와 같이 일시적으로 해제할 때
+class holidayScreen extends React.Component{
+
+  static navigationOptions = {
+    header: null ,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      password: "12345678",
+    };
+    this.inputPassword = " ";
+  }
+
+  changePassword= (value) =>{
+    //Textbox에 입력하는 문자열을 가져와서 inputPassword에 저장한다.
+    this.inputPassword=value;
+  }
+
+  checkPassword = () =>{
+    //비밀번호가 맞는지 확인하는 함수
+    //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
+    if (this.inputPassword==this.state.password){
+      ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
+      NativeModules.Block.applyHoliday();
+      this.props.navigation.navigate('Lobby');
+    }
+    else{
+      ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
+    }
+  }
+
+  render(){
+    return(
+      <View style={styles.newContainer}>
+        <ImageBackground
+          style={{width: '100%', height: '100%'}}
+          source={require('./images/CommonB.png')}>
+          <View style={styles.delLoc}>
+            <TouchableOpacity style={styles.delBtn} 
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
+              <Text style={styles.delWord}>삭제</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
+            <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
+              일시해제코드(전투휴무/공휴일 등)를 입력해주세요
+            </Text>
+          </View>
+          <View style={styles.codeSec}>
+            <TextInput 
+              style={styles.chatInput}
+              onChangeText={this.changePassword}
+              //onSubmitEditing={this.submitEdit.bind(this)}
+            />
+          </View>
+          <View style={{flex: 0.4}}/>
+          <View style={styles.codeSec}>
+            <TouchableOpacity style={styles.accessBtn} 
+            // 추후 인증번호 확인하고 넘어가야함
+              onPress = {() => this.checkPassword()}>
+              <Text style={styles.accessWord}>인증하기</Text>
+            </TouchableOpacity>
+          </View> 
+          <View style={{flex: 0.6}}/>
+        </ImageBackground>
+      </View>
+    );
+  }
+}
+
 //권한 설명 및 요청 화면
 class PermissionScreen extends React.Component{
 
   constructor(props){
     super(props)
-    loadPermissionState();
   }
   
   // 상단의 toolbar 가리기
@@ -241,8 +369,7 @@ class PermissionScreen extends React.Component{
           source={require('./images/CommonB.png')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>     
@@ -301,7 +428,7 @@ class LobbyScreen extends React.Component {
 
   constructor(props){
     super(props)
-    loadPermissionState();
+    this.loadPermissionState();
     this.state = {
       d: new Date()
     }
@@ -324,32 +451,120 @@ class LobbyScreen extends React.Component {
         d : new Date(),
     })
   }
-  loadDayoftheweek() {
-    var Dayoftheweek = this.state.d.getDay();
-    var Day=" "
-    if (Dayoftheweek==0){Day = "Sunday";}
-    else if(Dayoftheweek==1){Day = "Monday";}
-    else if(Dayoftheweek==2){Day = "Tuesday";}
-    else if(Dayoftheweek==3){Day = "Wednesday";}
-    else if(Dayoftheweek==4){Day = "Thursday";}
-    else if(Dayoftheweek==5){Day = "Friday";}
-    else if(Dayoftheweek==6){Day = "Saturday";}
-    return Day;
-  }
   
-
-  checkAccessPermission() {
-    //접근성권한이 허용되어있는지 체크한다.
+  loadPermissionState = () => {
     permissionCheck = NativeModules.Block.checkPermissionState();
-    if(permissionCheck==true){
-      ToastExample.show('Permission Checked.', ToastExample.SHORT);
+    if (permissionCheck == false){
+      this.props.navigation.navigate('Permission');
     }
-    else if(permissionCheck==false){
-      ToastExample.show('Permission Not Checked.', ToastExample.SHORT);
+  }
+
+  clockrender = (dayofweek) => {
+    //{String(this.state.d.getHours()).padStart(2, "0")}:{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
+    var clockTexts = " ";
+    let lockedCondition = NativeModules.Block.checkBlockState();
+    let pauseLockState = NativeModules.Block.getpauseLock();
+    var result = "";
+    if(pauseLockState){
+      clockTexts = "완전해제 상태입니다."
+      result =
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockTexts}
+        </Text>
+     </View>
+
+    }
+    else if(( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) )  && lockedCondition==true){
+      if(12<this.state.d.getHours()<=24){
+        //저녁시간
+        var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate()+1,8, 30)
+        var betweenTime = end - this.state.d;
+        var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+        var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+      }
+      else{
+        //오전시간
+        var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(),8, 30)
+        var betweenTime = end - this.state.d;
+        var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+        var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+      }
+
+      result = 
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 해제까지 </Text>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockTexts}
+        </Text>
+     </View>
+
+    }
+    else if( !( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) ) && lockedCondition==true){
+      //평일 잠금해제까지 남은시간.
+      if(21<=this.state.d.getHours()<=24){
+        //저녁시간
+        var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate()+1, 18, 0)
+        var betweenTime = end - this.state.d;
+        var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+        var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+      }
+      else{
+        //오전시간
+        var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(),18, 0)
+        var betweenTime = end - this.state.d;
+        var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+        var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+      }
+
+      result = 
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 해제까지 </Text>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockTexts}
+        </Text>
+     </View>
+
+    }
+    else if(lockedCondition==false){
+      //clockTexts = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
+      var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(), 21, 0)
+      var betweenTime = end - this.state.d;
+      var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+      var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+      var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
+      clockTexts = Hours+":"+Minutes+":"+Seconds;
+
+      result = 
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 잠금까지 </Text>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockTexts}
+        </Text>
+     </View>
+
     }
     else{
-      ToastExample.show('Permission 정보 X', ToastExample.SHORT);
+      clockText = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
     }
+
+    return result;
   }
 
   render(){
@@ -357,68 +572,79 @@ class LobbyScreen extends React.Component {
       <View style={styles.newContainer}>
         <ImageBackground
           style={{width: '100%', height: '100%'}}
-          source={require('./images/MainB.png')}>
+          source={require('./images/simple_background.jpg')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
-            // 추후 삭제기능으로 연결해야함
-            onPress = {()=>this.props.navigation.navigate('Main')}>
+            onPress = {() => NativeModules.Block.deleteLOCKA()}>
               <Text style={styles.delWord}>삭제</Text>
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.7}}/>
-          <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text 
-              // 시계넣는공간
-              style={styles.clockText}>
-                {this.loadDayoftheweek()} {this.state.d.getHours()}:{this.state.d.getMinutes()}:{this.state.d.getSeconds()}
-            </Text>
-          </View>
-          <View style={{flex: 0.7}}/>
+          
+          {this.clockrender(this.state.d.getDay())}
+
+          <View style={{flex: 0.1}}/>
+            {renderDayofweek(this.state.d.getDay())}
+          <View style={{flex: 0.3}}/>
           <View style={styles.codeSec}>
             {renderBlockState()}
           </View>
           <View style={{flex: 1}}/>
           <View style={{flex: 1}}>
             <View style={styles.buttonGroup}>
-              <TouchableOpacity
-                onPress = {()=>this.props.navigation.navigate('Calc')}>
-                <Image 
-                // 1번 아이콘 >> 전역일/월급 계산기 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
-                source = {require('./images/calcbutton.png')} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                // 추후 버튼 별 기능 실행해야함
-                onPress={() => NativeModules.Block.startService()}>
-                <Image 
-                // 2번 아이콘 >> 핸드폰 잠금 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
-                source = {require('./images/lockbutton.png')} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                // 1017 - 잠금 해제시 UnlockScreen으로 접속하도록 함
-                onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
-                <Image 
-                // 3번 아이콘 >> 핸드폰 잠금 해체 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
-                source = {require('./images/unlockbutton.png')} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                // 1017 - 잠금 일시해제시 TmpUnlockScreen으로 접속하도록 함
-                onPress = {()=>this.checkAccessPermission()}>
-                <Image 
-                // 4번 아이콘 >> 잠금 일시해제 아이콘 임시배치중
-                resizeMode="contain"
-                style={styles.iconStyle}
-                // 1017 - 임시 아이콘 사용중
-                source = {require('./images/LOCKA ICON.png')} />
-              </TouchableOpacity>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  onPress = {()=>this.props.navigation.navigate('Calc')}>
+                  <Image 
+                  // 1번 아이콘 >> 전역일/월급 계산기
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/calcbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  계산기
+                </Text>
+              </View>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  // 추후 버튼 별 기능 실행해야함
+                  onPress={() => NativeModules.Block.startService()}>
+                  <Image 
+                  // 2번 아이콘 >> 핸드폰 잠금
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/lockbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  잠금
+                </Text>
+              </View>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  onPress = {()=>this.props.navigation.navigate('UnlockCheck')}>
+                  <Image 
+                  // 3번 아이콘 >> 핸드폰 잠금 해체
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/unlockbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  해제
+                </Text>
+              </View>
+              <View style={styles.buttonSet}>
+                <TouchableOpacity
+                  onPress = {()=>this.props.navigation.navigate('Holiday')}>
+                  <Image 
+                  // 4번 아이콘 >> 잠금 일시해제
+                  resizeMode="contain"
+                  style={styles.iconStyle}
+                  source = {require('./images/holidayunlockbutton.png')} />
+                </TouchableOpacity>
+                <Text style={styles.iconText}>
+                  일시해제
+                </Text>
+              </View>
             </View>
           </View>
         </ImageBackground>
@@ -449,10 +675,11 @@ class CalcScreen extends React.Component {
       clicked: true,
       saving: 0,
       selectArmy: 0,
-      date: "2020-10-16",
+      date: "2020-10-22",
       startDay: " ",
       endDay: " ",
     };
+
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
     /*
       inputText : 월 적금을 받아주는 변수
@@ -464,6 +691,10 @@ class CalcScreen extends React.Component {
     this.allDays=540;
     //this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
+
+  static navigationOptions = {
+    header: null ,
+  };
 
   submitEdit= function(){
     this.setState({saving: this.inputText});
@@ -514,18 +745,8 @@ class CalcScreen extends React.Component {
       //this.Ddaymessage=result
       return result
     }
-    else if(StartDate == " " && EndDate != " "){
-      var result = "입대일을 입력하세요"
-      //this.Ddaymessage=result
-      return result
-    }
-    else if(StartDate != " " && EndDate == " "){
-      var result = "전역일을 입력하세요"
-      //this.Ddaymessage=result
-      return result
-    }
     else{
-      var result = "입대일과 전역일을 입력하세요"
+      var result = " "
       //this.Ddaymessage=result
       return result
     }
@@ -535,137 +756,156 @@ class CalcScreen extends React.Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
-          <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'center' ,color: '#1e3269' }}>
-            <DatePicker
-              style={{width: 200}}
-              date={this.state.startDay}
-              mode="date"
-              placeholder="pick a day"
-              format="YYYY-MM-DD"
-              minDate="2018-01-01"
-              maxDate="2099-12-31"
-              confirmBtnText="Confirm"
-              cancelBtnText="Cancel"
-              customStyles={{
-                dateIcon: {
-                  position: 'absolute',
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0
-                },
-                dateInput: {
-                  marginLeft: 36
-                }
-              }}
-              onDateChange={(date) => {this.setState({startDay: date})}}
-            />
-            <DatePicker
-              style={{width: 200}}
-              date={this.state.endDay}
-              mode="date"
-              placeholder="pick a day"
-              format="YYYY-MM-DD"
-              minDate="2018-01-01"
-              maxDate="2099-12-31"
-              confirmBtnText="Confirm"
-              cancelBtnText="Cancel"
-              customStyles={{
-                dateIcon: {
-                  position: 'absolute',
-                  left: 0,
-                  top: 4,
-                  marginLeft: 0
-                },
-                dateInput: {
-                  marginLeft: 36
-                }
-              }}
-              onDateChange={
-                (date) => {this.setState({endDay: date})}
+          <ImageBackground
+            style={{width: '100%', height: '100%'}}
+            source={require('./images/simple_background.jpg')}>
+            <View style={styles.ddayCalc}>
+              <Text style={styles.contentsText}>전역일 계산기</Text>
+              <View 
+              // progressBar가 담기는 뷰
+              style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
+                <ProgressCircle
+                  radius={100}
+                  percent={this.calcPercentInt()}
+                  borderWidth={8}
+                  bgColor="#000038"
+                  color="#8b00ff"
+                  shadowColor="#b19cd9"
+                  style={{flexDirection: 'row', alignSelf: 'center'}}
+                >
+                  <Text style={{fontSize: 20, color: 'white'}}>
+                    {this.calcPercent()}
+                  </Text>
+                  <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                </ProgressCircle>
+              </View>
+              <View style={styles.calenderGroup}>
+                <View style={styles.calenderSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={styles.dayofarmy}>
+                      입대일
+                    </Text>
+                  </View>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                  <DatePicker
+                    style={{width: 200}}
+                    date={this.state.startDay}
+                    mode="date"
+                    placeholder="2020-04-06"
+                    format="YYYY-MM-DD"
+                    minDate="2019-01-01"
+                    maxDate="2099-12-31"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                      dateIcon: {
+                        position: 'absolute',
+                        left: 28,
+                        top: 4,
+                        marginLeft: 0
+                      },
+                      dateInput: {
+                        marginLeft: 0,
+                        borderWidth: 0
+                      },
+                      placeholderText: {
+                        color: 'white'
+                      },
+                      dateText: {
+                        color: "white",
+                      }
+                    }}
+                    onDateChange={(date) => {this.setState({startDay: date})}}
+                  />
+                  </View>
+                </View>
+                <View style={styles.calenderSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={styles.dayofarmy}>
+                      전역일
+                    </Text>
+                  </View>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                  <DatePicker
+                    style={{width: 200}}
+                    date={this.state.endDay}
+                    mode="date"
+                    placeholder="pick a day"
+                    format="YYYY-MM-DD"
+                    minDate="2020-01-01"
+                    maxDate="2099-12-31"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                      dateIcon: {
+                        position: 'absolute',
+                        left: 28,
+                        top: 4,
+                        marginLeft: 0
+                      },
+                      dateInput: {
+                        marginLeft: 0,
+                        borderWidth: 0
+                      },
+                      placeholderText: {
+                        color: 'white'
+                      },
+                      dateText: {
+                        color: "white",
+                      }
+                    }}
+                    onDateChange={
+                      (date) => {this.setState({endDay: date})}
+                    }
+                  />
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={styles.salaryCalc}>
+              <Text style={styles.contentsText}>월급 계산기</Text>
+              <View style={{justifyContent: 'center', alignItems: 'center',  flexDirection: 'row'/*flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'*/}}>
+                <RadioForm
+                  //checked된 radio의 값을 뽑아내야 함.
+                  radio_props={radio_props}
+                  initial={0}
+                  onPress={(value) => {this.setState({selectArmy:value})}}
+                  selectedButtonColor={'white'}
+                  selectedLabelColor={'white'}
+                  labelStyle={{fontSize:12}}
+                  formHorizontal={true}
+                  //이거 setState 잘 봐야 할 거 같음.
+                />
+              </View>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <Text style={styles.contentsText}>적금/월  </Text>
+                <TextInput style={styles.chatInput} 
+                  onChangeText={this.changeSaving}
+                  onSubmitEditing={this.submitEdit.bind(this)}
+                />
+              </View>
+              <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
+              {
+                this.state.clicked
+                ? <Button title = "확인" onPress = {this.clickBtn} />
+                : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
-            />
-            <Text style={styles.accessWord}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-            <ProgressCircle
-              radius={70}
-              percent={this.calcPercentInt()}
-              borderWidth={5}
-              color="#9e939e"
-              shadowColor="#b19cd9"
-              bgColor="#fff">
-              <Text style={styles.accessWord}>{this.calcPercent()}</Text>
-            </ProgressCircle>
-          </View>
-          <View style={{ flex: 0.6, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.accessWord}>월급 시뮬레이션</Text>
-            <View style={styles.codeSec}>
-              <RadioForm
-                //checked된 radio의 값을 뽑아내야 함.
-                radio_props={radio_props}
-                initial={0}
-                onPress={(value) => {this.setState({selectArmy:value})}}
-                selectedButtonColor={'navy'}
-                selectedLabelColor={'navy'}
-                labelStyle={{fontSize:12}}
-                formHorizontal={true}
-                //이거 setState 잘 봐야 할 거 같음.
-              />
+              </View>
             </View>
-            <View style={styles.codeSect}>
-              <TextInput style={styles.chatInput} 
-                onChangeText={this.changeSaving}
-                onSubmitEditing={this.submitEdit.bind(this)}
-              />
-            </View>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.contentsText}>숨만 쉬고 월급을 모으면?</Text>
-            {
-              this.state.clicked
-              ? <Button title = "확인" onPress = {this.clickBtn} />
-              : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
-            }
-          </View>
+          </ImageBackground>
         </View>
       );
   }
 }
 
-// TBD
-class LockedScreen extends React.Component {
-  render() {
-  return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={styles.appNameText}>
-            LOCKA
-          </Text>
-        <Button
-          title = 'Unlock'
-          onPress = {()=>this.props.navigation.navigate('Main')}
-        />
-      </View>
-    );
-  }
-}
-
-
-
-//첫 시작화면 설정
-if (permissionCheck == true){
-  initName = 'Lobby';
-}else{
-  initName = 'Permission';
-}
-
-
-
 const AppNavigator = createStackNavigator(
   {
     Main: { screen: HomeScreen },
-    Locked: { screen: LockedScreen },
     UnlockCheck: { screen: LoginScreen },
     Permission: { screen: PermissionScreen },
     Calc: { screen: CalcScreen },
-    Lobby: { screen: LobbyScreen }
+    Lobby: { screen: LobbyScreen },
+    Holiday: {screen: holidayScreen}
   },
   {
     initialRouteName: "Lobby"
@@ -697,7 +937,7 @@ markArea: {
 },
 contentsText: {
   fontSize: 20,
-  color: 'navy'
+  color: 'white'
 },
 appNameText: {
   fontSize: 45,
@@ -739,7 +979,7 @@ codeSec: {
   flexDirection: 'row',
 },
 codeSect: {
-  flex: 0.25,
+  flex: 0.4,
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
@@ -789,13 +1029,13 @@ access: {
 },
 chatInput: {
   backgroundColor: 'rgba(255,255,255,0.5)',
-  width: '70%',
-  borderWidth: 2,
+  width: '60%',
+  borderWidth: 1,
   borderColor: 'white',
   borderRadius: 5,
   alignItems: 'center',
   fontWeight: 'bold',
-  fontSize: 15,
+  fontSize: 13,
 },
 textArea:{
   flex: 1,
@@ -832,26 +1072,19 @@ clockText:{
   //시계 띄우는 텍스트
   color: 'white',
   fontSize: 65,
-  //fontWeight: 'bold',
+  fontWeight: 'bold',
   textAlign: 'center',
 },
 buttonGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
-  // borderColor: 'white', << 1017 -- 삭제하면 됨
-  // borderWidth: 1, << 1017 -- 삭제하면 됨
   width: '88%',
   height: '100%',
-},
+},  
 iconStyle:{
   width: 80, 
   height: 80,
-  // 1017 - 아이콘 배치 완료시 삭제될 예정 --------------------------------↧↧↧
-  // borderColor: 'white', << 삭제하면 됨
-  // borderWidth: 1, << 삭제하면 됨
-  // 1017 ---------------------------------------------------------------↥↥↥
-  margin: 5,
-},
+},  
 unlockStateText:{
   fontWeight: 'bold',
   fontSize: 45,
@@ -864,5 +1097,68 @@ lockStateText:{
   color: '#9b111e',
   textAlign: 'center',
 },
+buttonSet:{
+  flexDirection: 'column',
+  margin: 5,
+},  
+iconText:{
+  flexDirection: 'row',
+  alignSelf: 'center',
+  color: 'white',
+  fontWeight: 'bold',
+},  
+daysGroup:{
+  flex: 0.3,
+  flexDirection: 'row',
+  alignSelf: 'center',
+},   
+weekdays:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: 'white',
+  fontSize: 20,
+  //textDecorationLine: 'underline', // test
+},
+todayText:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: 'white',
+  fontSize: 20,
+  textDecorationLine: 'underline',
+},
+satday:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: '#52a6f2',
+  fontSize: 20,
+  //textDecorationLine: 'underline', // test
+},  
+sunday:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: '#e15858',
+  fontSize: 20,
+  //textDecorationLine: 'underline', // test
+}, 
+ddayCalc:{
+  flex: 1,
+},  
+salaryCalc:{
+  flex: 1,
+},  
+calenderGroup:{
+  flexDirection: 'row',
+  alignSelf: 'center',
+  margin: 5,
+},  
+calenderSet:{
+  flexDirection: 'column',
+  alignSelf: 'center',
+  margin: 3,
+},   
+dayofarmy:{
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 15,
+},  
 });
-

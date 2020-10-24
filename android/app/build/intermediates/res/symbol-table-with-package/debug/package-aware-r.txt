@@ -1340,22 +1340,16 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable images_calcbutton
 drawable images_commonb
-<<<<<<< HEAD
-drawable images_dday_salary
+drawable images_holidayunlockbutton
 drawable images_lockaicon
 drawable images_lockbutton
-=======
->>>>>>> b550941a7747036a6da1cd2b2aeebed0bf88d3fe
 drawable images_loginb
+drawable images_mainb
 drawable images_permissionb
 drawable images_rokamark
 drawable images_setting
-<<<<<<< HEAD
-drawable images_temp_unlock
-drawable images_tempimage
+drawable images_simple_background
 drawable images_unlockbutton
-=======
->>>>>>> b550941a7747036a6da1cd2b2aeebed0bf88d3fe
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
