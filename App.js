@@ -1116,4 +1116,7 @@ sunday:{
 ddayCalc:{
   flex: 1,
 },  
+salaryCalc:{
+  flex: 1,
+},  
 });
