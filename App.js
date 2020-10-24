@@ -522,7 +522,7 @@ class LobbyScreen extends React.Component {
     }
     else if(lockedCondition==false){
       var end = newDate(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(), 21, 0)
-      var betweenTime = end - this.state.d;
+      var betweenTime = 7000; //end - this.state.d;
       var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
       var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
       var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
