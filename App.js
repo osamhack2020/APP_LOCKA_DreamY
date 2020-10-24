@@ -551,7 +551,7 @@ class LobbyScreen extends React.Component {
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'center', marginLeft: '15%', fontWeight: 'bold'}} > 잠금까지 </Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 잠금까지 </Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
