@@ -451,18 +451,6 @@ class LobbyScreen extends React.Component {
         d : new Date(),
     })
   }
-  loadDayoftheweek() {
-    var Dayoftheweek = this.state.d.getDay();
-    var Day=" "
-    if (Dayoftheweek==0){Day = "Sunday";}
-    else if(Dayoftheweek==1){Day = "Monday";}
-    else if(Dayoftheweek==2){Day = "Tuesday";}
-    else if(Dayoftheweek==3){Day = "Wednesday";}
-    else if(Dayoftheweek==4){Day = "Thursday";}
-    else if(Dayoftheweek==5){Day = "Friday";}
-    else if(Dayoftheweek==6){Day = "Saturday";}
-    return Day;
-  }
   
   loadPermissionState = () => {
     permissionCheck = NativeModules.Block.checkPermissionState();
@@ -554,7 +542,7 @@ class LobbyScreen extends React.Component {
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%'}} > 잠금까지 </Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'center' /*marginLeft: '15%'*/}} > 잠금까지 </Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
@@ -842,7 +830,7 @@ class CalcScreen extends React.Component {
                     customStyles={{
                       dateIcon: {
                         position: 'absolute',
-                        left: 0,
+                        left: 50,
                         top: 4,
                         marginLeft: 0
                       },
