@@ -476,6 +476,7 @@ class LobbyScreen extends React.Component {
     var clockText = " ";
     let lockedCondition = NativeModules.Block.checkBlockState();
     let pauseLockState = NativeModules.Block.getpauseLock();
+    var result = "";
     if(pauseLockState){
       clockText = "완전해제 상태입니다."
     }
@@ -527,12 +528,34 @@ class LobbyScreen extends React.Component {
       var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
       var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
       var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-      clockText = "잠금까지 "+Hours+":"+Minutes+":"+Seconds;
+      clockText = Hours+":"+Minutes+":"+Seconds;
+
+      result = 
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style= {{color: 'white', fontSize: 20, alignSelf: 'flex-start', marginLeft: '15%'}} > 잠금까지 </Text>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockText}
+        </Text>
+     </View>
+
     }
     else{
       clockText = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
     }
-    return clockText;
+    /*
+    var result = 
+    <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text> </Text>
+      <Text 
+        // 시계넣는공간
+        style={styles.clockText}>
+          
+      </Text>
+   </View>
+    */
+    return result;
   }
 
   render(){
@@ -548,13 +571,9 @@ class LobbyScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.7}}/>
-          <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text 
-              // 시계넣는공간
-              style={styles.clockText}>
-                {this.clockrender(this.state.d.getDay())}
-            </Text>
-          </View>
+          
+          {this.clockrender(this.state.d.getDay())}
+          
           <View style={{flex: 0.1}}/>
             {renderDayofweek(this.state.d.getDay())}
           <View style={{flex: 0.3}}/>
@@ -810,10 +829,9 @@ class CalcScreen extends React.Component {
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
                   initial={0}
-                  style={{width: 500}}
                   onPress={(value) => {this.setState({selectArmy:value})}}
-                  selectedButtonColor={'#50bcdf'}
-                  selectedLabelColor={'white'}
+                  selectedButtonColor={'navy'}
+                  selectedLabelColor={'navy'}
                   labelStyle={{fontSize:12}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
