@@ -13,7 +13,7 @@ import {NavigationNativeContainer} from '@react-navigation/native';
 import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground, ActivityIndicator, AsyncStorage} from 'react-native';
+  ImageBackground, ActivityIndicator, AsyncStorage, StatusBar} from 'react-native';
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
@@ -764,11 +764,19 @@ const AppNavigator = createStackNavigator(
     Calc:CalcScreen,
     Holiday:holidayScreen,
     //initScreen: { screen: InitScreen }
+  },
+  {
+    initialRouteName: 'Lobby'
   }
 );
 
 const LoginAppNavigator = createStackNavigator(
-  { Permission: PermissionScreen }
+  {
+    Permission: PermissionScreen
+  },
+  {
+    initialRouteName: 'Permission'
+  }
 );
 
 export default createAppContainer(createSwitchNavigator(
