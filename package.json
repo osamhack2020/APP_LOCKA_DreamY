@@ -24,7 +24,7 @@
     "react-native-screens": "^2.11.0",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-vector-icons": "^7.1.0",
-    "react-navigation": "^4.4.1",
+    "react-navigation": "^4.4.2",
     "react-navigation-stack": "^2.8.3"
   },
   "devDependencies": {
@@ -34,6 +34,7 @@
     "babel-jest": "^26.3.0",
     "eslint": "^7.10.0",
     "jest": "^26.4.2",
+    "jetifier": "^1.6.6",
     "metro-react-native-babel-preset": "^0.63.0",
     "react-test-renderer": "16.13.1"
   },

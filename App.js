@@ -19,7 +19,6 @@ import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
 import { createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-
 //import Block from './Block';
 
 //initName : 첫 시작화면
@@ -32,11 +31,9 @@ var permissionCheck = NativeModules.Block.checkPermissionState();
 
 loadPermissionState = () => {
   permissionCheck = NativeModules.Block.checkPermissionState();
-  var initPage = 'AppNavigator';
-  if (permissionCheck == false){
-    initPage = 'permissionAppNavigator';
+  if (!permissionCheck){
+    this.props.navigation.navigate("Permission");
   }
-  return initPage;
 }
 
 
@@ -713,7 +710,7 @@ class CalcScreen extends React.Component {
       );
   }
 }
-
+/*
 class AuthLoadingScreen extends React.Component {
   constructor() {
     super();
@@ -746,7 +743,7 @@ class AuthLoadingScreen extends React.Component {
       </View>
     );
   }
-}
+}*/
 
 //첫 시작화면 설정
 if (permissionCheck == true){
@@ -769,7 +766,7 @@ const AppNavigator = createStackNavigator(
     initialRouteName: 'Lobby'
   }
 );
-
+/*
 const LoginAppNavigator = createStackNavigator(
   {
     Permission: PermissionScreen
@@ -778,7 +775,8 @@ const LoginAppNavigator = createStackNavigator(
     initialRouteName: 'Permission'
   }
 );
-
+*/
+/*
 export default createAppContainer(createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
@@ -789,9 +787,9 @@ export default createAppContainer(createSwitchNavigator(
     initialRouteName: 'AuthLoading',
   }
 ));
+*/
 
-
-//export default createAppContainer(AppNavigator);
+export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
 container: {
