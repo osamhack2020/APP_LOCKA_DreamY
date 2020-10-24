@@ -37,11 +37,11 @@ public class MainActivity extends ReactActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.AccessPermission = checkPermissionOn();
-
+        /*
         if(!AccessPermission) {
             setAccessibilityPermissions();
         }
-    
+        */
     }    
 
     // 접근성 권한이 있는지 없는지 확인하는 부분
