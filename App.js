@@ -478,13 +478,11 @@ class LobbyScreen extends React.Component {
     pauseLockState = NativeModules.Block.getpauseLock();
     if(pauseLockState){
       clockText = "완전해제 상태입니다."
-      String(this.state.d.getHours()).padStart(2, "0")
-    }/*
+    }
     else if(( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) )  && lockedCondition==true){
       if(12<this.state.d.getHours()<=24){
         //저녁시간
-        var end = newDate(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(),21, 0)
-        end.setSeconds(date.getSeconds() + 41400);
+        var end = newDate(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate()+1,8, 30)
         var betweenTime = end - this.state.d;
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
@@ -529,7 +527,7 @@ class LobbyScreen extends React.Component {
       var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
       var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
       clockText = "잠금까지 "+Hours+":"+Minutes+":"+Seconds;
-    }*/
+    }
     else{
       clockText = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
     }
