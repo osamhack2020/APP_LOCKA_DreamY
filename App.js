@@ -7,17 +7,15 @@
  */
 
 import React from 'react';
-//import { createAppContainer } from 'react-navigation';
-//import { createStackNavigator } from 'react-navigation-stack';
-import {NavigationNativeContainer} from '@react-navigation/native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground, ActivityIndicator, AsyncStorage, StatusBar} from 'react-native';
+  ImageBackground} from 'react-native';
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
-import { createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 
 //import Block from './Block';
 
@@ -29,6 +27,14 @@ var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
 var permissionCheck = NativeModules.Block.checkPermissionState();
 
+loadPermissionState = () => {
+  permissionCheck = NativeModules.Block.checkPermissionState();
+  var initPage = 'AppNavigator';
+  if (permissionCheck == false){
+    initPage = 'permissionAppNavigator';
+  }
+  return initPage;
+}
 
 renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
@@ -239,7 +245,7 @@ class holidayScreen extends React.Component{
           </View>
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
-              일시해제코드를 입력해주세요
+              일시해제코드(전투휴무/공휴일 등)를 입력해주세요
             </Text>
           </View>
           <View style={styles.codeSec}>
@@ -271,6 +277,7 @@ class PermissionScreen extends React.Component{
     super(props)
     loadPermissionState();
   }
+  
   // 상단의 toolbar 가리기
   static navigationOptions = {
     header: null ,
@@ -279,7 +286,7 @@ class PermissionScreen extends React.Component{
   setAccessibility = () =>{
     //권한을 요청하는 화면으로 이동시키는 함수.
     NativeModules.Block.setAccessibilityPermissions();
-    //this.props.navigation.navigate('Lobby');
+    this.props.navigation.navigate('Lobby');
   }
 
   render(){
@@ -328,8 +335,7 @@ class PermissionScreen extends React.Component{
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
             //권한 요청 후 LobbyScreen으로 넘어감.
-            onPress = {()=>this.setAccessibility()}
-            >
+            onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
           </View>
@@ -350,18 +356,11 @@ class LobbyScreen extends React.Component {
 
   constructor(props){
     super(props)
-    //loadPermissionState();
+    loadPermissionState();
     this.state = {
       d: new Date()
     }
     //요일
-  }
-
-  loadPermissionState = () => {
-    permissionCheck = NativeModules.Block.checkPermissionState();
-    if (!permissionCheck){
-      this.props.navigation.navigate("Permission");
-    }
   }
 
   componentDidMount() { // Clockcmp 컴포넌트가 불러올때마다 1초씩 this.Change()를 부른다 
@@ -425,7 +424,7 @@ class LobbyScreen extends React.Component {
             <Text 
               // 시계넣는공간
               style={styles.clockText}>
-              {String(this.state.d.getHours()).padStart(2, "0")}:{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
+                {this.loadDayoftheweek()} {String(this.state.d.getHours()).padStart(2, "0")} :{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
             </Text>
           </View>
           <View style={{flex: 0.7}}/>
@@ -710,40 +709,7 @@ class CalcScreen extends React.Component {
       );
   }
 }
-/*
-class AuthLoadingScreen extends React.Component {
-  constructor() {
-    super();
-    this._signInAsync();
-    this._bootstrapAsync();
-  }
 
-  _signInAsync = async () => {
-    permissionCheck = NativeModules.Block.checkPermissionState();
-    if(permissionCheck){
-      await AsyncStorage.setItem('userToken', 'abc');
-    }
-  };
-
-  // Fetch the token from storage then navigate to our appropriate place
-  _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
-
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-  };
-
-  // Render any loading content that you like here
-  render() {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-        <StatusBar barStyle="default" />
-      </View>
-    );
-  }
-}*/
 
 //첫 시작화면 설정
 if (permissionCheck == true){
@@ -754,47 +720,25 @@ if (permissionCheck == true){
 
 const AppNavigator = createStackNavigator(
   {
-    Lobby: LobbyScreen,
-    Main: HomeScreen ,
-    UnlockCheck: LoginScreen,
-    Permission: PermissionScreen,
-    Calc:CalcScreen,
-    Holiday:holidayScreen,
-    //initScreen: { screen: InitScreen }
+    Main: { screen: HomeScreen },
+    UnlockCheck: { screen: LoginScreen },
+    Permission: { screen: PermissionScreen },
+    Calc: { screen: CalcScreen },
+    Lobby: { screen: LobbyScreen },
+    Holiday: {screen: holidayScreen}
   },
   {
-    initialRouteName: 'Lobby'
+    initialRouteName: "Lobby"
   }
 );
-/*
-const LoginAppNavigator = createStackNavigator(
-  {
-    Permission: PermissionScreen
-  },
-  {
-    initialRouteName: 'Permission'
-  }
-);
-*/
-/*
-export default createAppContainer(createSwitchNavigator(
-  {
-    AuthLoading: AuthLoadingScreen,
-    App: AppNavigator,
-    Auth: LoginAppNavigator,
-  },
-  {
-    initialRouteName: 'AuthLoading',
-  }
-));
-*/
+
 
 export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
 container: {
   flex:1,
-  backgroundColor: 'black',
+  backgroundColor: 'white',
   justifyContent: 'center',
 },
 newContainer: {
@@ -984,4 +928,3 @@ iconText:{
   fontWeight: 'bold',
 },  
 });
-
