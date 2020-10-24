@@ -934,4 +934,9 @@ iconText:{
   color: 'white',
   fontWeight: 'bold',
 },  
+daysGroup:{
+  flex: 0.3,
+  flexDirection: 'row',
+  alignSelf: 'center',
+},   
 });
