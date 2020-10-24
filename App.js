@@ -27,15 +27,6 @@ var initName;
 var lockedCondition = NativeModules.Block.checkBlockState();
 var permissionCheck = NativeModules.Block.checkPermissionState();
 
-loadPermissionState = () => {
-  permissionCheck = NativeModules.Block.checkPermissionState();
-  var initPage = 'AppNavigator';
-  if (permissionCheck == false){
-    initPage = 'permissionAppNavigator';
-  }
-  return initPage;
-}
-
 renderBlockState = () => {
   //상시 실행. 근데 이걸 계속 받아올 수 있는지 잘 모르겠음.
   lockedCondition = NativeModules.Block.checkBlockState();
@@ -275,7 +266,6 @@ class PermissionScreen extends React.Component{
 
   constructor(props){
     super(props)
-    loadPermissionState();
   }
   
   // 상단의 toolbar 가리기
@@ -356,7 +346,7 @@ class LobbyScreen extends React.Component {
 
   constructor(props){
     super(props)
-    loadPermissionState();
+    this.loadPermissionState();
     this.state = {
       d: new Date()
     }
@@ -392,6 +382,13 @@ class LobbyScreen extends React.Component {
     return Day;
   }
   
+  loadPermissionState = () => {
+    permissionCheck = NativeModules.Block.checkPermissionState();
+    if (permissionCheck == false){
+      this.props.navigation.navigate('Permission');
+    }
+  }
+
 /*
   checkAccessPermission() {
     //접근성권한이 허용되어있는지 체크한다.
