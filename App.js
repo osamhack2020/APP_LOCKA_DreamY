@@ -939,4 +939,12 @@ daysGroup:{
   flexDirection: 'row',
   alignSelf: 'center',
 },   
+days:{
+  marginRight: 6,
+  marginLeft: 6,
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 20,
+  textDecorationLine: 'underline', // test
+},  
 });
