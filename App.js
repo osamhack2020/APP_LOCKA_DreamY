@@ -409,7 +409,7 @@ class LobbyScreen extends React.Component {
       <View style={styles.newContainer}>
         <ImageBackground
           style={{width: '100%', height: '100%'}}
-          source={require('./images/MainB.png')}>
+          source={require('./images/simple_background.jpg')}>
           <View style={styles.delLoc}>
             <TouchableOpacity style={styles.delBtn} 
             onPress = {() => NativeModules.Block.deleteLOCKA()}>
