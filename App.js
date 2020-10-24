@@ -1112,5 +1112,8 @@ sunday:{
   color: '#e15858',
   fontSize: 20,
   //textDecorationLine: 'underline', // test
+}, 
+ddayCalc:{
+  flex: 1,
 },  
 });
