@@ -473,12 +473,12 @@ class LobbyScreen extends React.Component {
 
   clockrender = (dayofweek) => {
     //{String(this.state.d.getHours()).padStart(2, "0")}:{String(this.state.d.getMinutes()).padStart(2, "0")}:{String(this.state.d.getSeconds()).padStart(2, "0")}
-    var clockText = " ";
+    var clockTexts = " ";
     let lockedCondition = NativeModules.Block.checkBlockState();
     let pauseLockState = NativeModules.Block.getpauseLock();
     var result = "";
     if(pauseLockState){
-      clockText = "완전해제 상태입니다."
+      clockTexts = "완전해제 상태입니다."
     }
     else if(( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) )  && lockedCondition==true){
       if(12<this.state.d.getHours()<=24){
@@ -488,7 +488,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockText = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -497,8 +497,19 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockText = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
+
+      result = 
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%'}} > 해제까지 </Text>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockTexts}
+        </Text>
+     </View>
+
     }
     else if( !( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) ) && lockedCondition==true){
       //평일 잠금해제까지 남은시간.
@@ -509,7 +520,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockText = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -518,25 +529,36 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockText = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
+
+      result = 
+      <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%'}} > 해제까지 </Text>
+        <Text 
+          // 시계넣는공간
+          style={styles.clockText}>
+          {clockTexts}
+        </Text>
+     </View>
+
     }
     else if(lockedCondition==false){
-      //clockText = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
+      //clockTexts = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
       var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(), 21, 0)
       var betweenTime = end - this.state.d;
       var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
       var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
       var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-      clockText = Hours+":"+Minutes+":"+Seconds;
+      clockTexts = Hours+":"+Minutes+":"+Seconds;
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 20, alignSelf: 'flex-start', marginLeft: '15%'}} > 잠금까지 </Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%'}} > 잠금까지 </Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
-          {clockText}
+          {clockTexts}
         </Text>
      </View>
 
@@ -544,17 +566,7 @@ class LobbyScreen extends React.Component {
     else{
       clockText = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
     }
-    /*
-    var result = 
-    <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text> </Text>
-      <Text 
-        // 시계넣는공간
-        style={styles.clockText}>
-          
-      </Text>
-   </View>
-    */
+
     return result;
   }
 
@@ -573,7 +585,7 @@ class LobbyScreen extends React.Component {
           <View style={{flex: 0.7}}/>
           
           {this.clockrender(this.state.d.getDay())}
-          
+
           <View style={{flex: 0.1}}/>
             {renderDayofweek(this.state.d.getDay())}
           <View style={{flex: 0.3}}/>
@@ -863,10 +875,6 @@ class CalcScreen extends React.Component {
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'navy'}
                   selectedLabelColor={'navy'}
-<<<<<<< HEAD
-=======
-                  labelStyle={{fontSize:15}}
->>>>>>> b1b57c9fc847ba7be028e9c4af589eb00050de32
                   labelStyle={{fontSize:12}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
@@ -1067,7 +1075,7 @@ clockText:{
   //시계 띄우는 텍스트
   color: 'white',
   fontSize: 65,
-  //fontWeight: 'bold',
+  fontWeight: 'bold',
   textAlign: 'center',
 },
 buttonGroup:{
