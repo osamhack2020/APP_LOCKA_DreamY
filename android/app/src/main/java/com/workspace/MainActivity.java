@@ -37,11 +37,6 @@ public class MainActivity extends ReactActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.AccessPermission = checkPermissionOn();
-        /*
-        if(!AccessPermission) {
-            setAccessibilityPermissions();
-        }
-        */
     }    
 
     // 접근성 권한이 있는지 없는지 확인하는 부분
@@ -76,21 +71,6 @@ public class MainActivity extends ReactActivity {
             }
         }
         this.AccessPermission=false;
-        return false;
-    }
-    
-    public boolean checkAccessibilityPermissions() {
-        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
-        AccessPermission = accessibilityManager.isEnabled();
-        // getEnabledAccessibilityServiceList는 현재 접근성 권한을 가진 리스트를 가져오게 된다
-        List<AccessibilityServiceInfo> list = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.DEFAULT);
-        for (int i = 0; i < list.size(); i++) {
-            AccessibilityServiceInfo info = list.get(i);
-            // 접근성 권한을 가진 앱의 패키지 네임과 패키지 네임이 같으면 현재앱이 접근성 권한을 가지고 있다고 판단함
-            if (info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())) {
-                return true;
-            }
-        }
         return false;
     }
 
