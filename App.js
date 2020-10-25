@@ -12,7 +12,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
   TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground} from 'react-native';
+  ImageBackground, ScrollView} from 'react-native';
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
@@ -321,7 +321,7 @@ class holidayScreen extends React.Component{
           </View>
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
-              일시해제코드(전투휴무/공휴일 등)를 입력해주세요
+              일시해제코드를 입력해주세요
             </Text>
           </View>
           <View style={styles.codeSec}>
@@ -790,7 +790,6 @@ class CalcScreen extends React.Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
-          <KeyboardAvoidingView style={styles.container} behavior="padding">
           <ImageBackground
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
@@ -917,10 +916,10 @@ class CalcScreen extends React.Component {
                     <Text style={styles.contentsText}> 원</Text> 
                   </View>
               </View>
-              <View style={{alignSelf: 'center'}}>
+              <ScrollView style={{alignSelf: 'center'}}>
                 <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
-              </View>
-              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+              </ScrollView>
+              <ScrollView style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
               {
                 this.state.clicked
                 ? 
@@ -929,10 +928,9 @@ class CalcScreen extends React.Component {
                 </TouchableOpacity>
                 : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
-              </View>
+              </ScrollView>
             </View>
           </ImageBackground>
-          </KeyboardAvoidingView>
         </View>
       );
   }
