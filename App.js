@@ -678,8 +678,9 @@ class CalcScreen extends React.Component {
       saving: 0,
       selectArmy: 0,
       date: "2020-10-22",
-      startDay: " ",
-      endDay: " ",
+      // datepicker의 placeholder를 사용하기 위해 수정. 
+      startDay: "",
+      endDay: "",
       corporalPromotion: "C",
       sgtPromotion: 0
     };
@@ -787,7 +788,7 @@ class CalcScreen extends React.Component {
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
             <View style={styles.ddayCalc}>
-              <Text style={styles.contentsText}>전역일 계산기</Text>
+              <Text style={styles.calcTitle}>전역일 계산기</Text>
               <View 
               // progressBar가 담기는 뷰
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
@@ -815,10 +816,10 @@ class CalcScreen extends React.Component {
                   </View>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <DatePicker
-                    style={{width: 200}}
+                    style={{width: 160}}
                     date={this.state.startDay}
                     mode="date"
-                    placeholder="2020-04-06"
+                    placeholder="입대일을 입력해주세요"
                     format="YYYY-MM-DD"
                     minDate="2019-01-01"
                     maxDate="2099-12-31"
@@ -826,10 +827,8 @@ class CalcScreen extends React.Component {
                     cancelBtnText="Cancel"
                     customStyles={{
                       dateIcon: {
-                        position: 'absolute',
-                        left: 28,
-                        top: 4,
-                        marginLeft: 0
+                       width: 0,
+                       height: 0,
                       },
                       dateInput: {
                         marginLeft: 0,
@@ -854,10 +853,10 @@ class CalcScreen extends React.Component {
                   </View>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <DatePicker
-                    style={{width: 200}}
+                    style={{width: 160}}
                     date={this.state.endDay}
                     mode="date"
-                    placeholder="pick a day"
+                    placeholder="전역일을 입력해주세요"
                     format="YYYY-MM-DD"
                     minDate="2020-01-01"
                     maxDate="2099-12-31"
@@ -865,10 +864,8 @@ class CalcScreen extends React.Component {
                     cancelBtnText="Cancel"
                     customStyles={{
                       dateIcon: {
-                        position: 'absolute',
-                        left: 28,
-                        top: 4,
-                        marginLeft: 0
+                       width: 0,
+                       height: 0,
                       },
                       dateInput: {
                         marginLeft: 0,
@@ -890,8 +887,8 @@ class CalcScreen extends React.Component {
               </View>
             </View>
             <View style={styles.salaryCalc}>
-              <Text style={styles.contentsText}>월급 계산기</Text>
-              <View style={{justifyContent: 'center', alignItems: 'center',  flexDirection: 'row'/*flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'*/}}>
+              <Text style={styles.calcTitle}>월급 계산기</Text>
+              <View style={{alignSelf: 'center',  flexDirection: 'row', margin: 5}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
@@ -899,26 +896,34 @@ class CalcScreen extends React.Component {
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'white'}
                   selectedLabelColor={'white'}
-                  labelStyle={{fontSize:12}}
+                  labelStyle={{fontSize:12, color: '#50bcdf'}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <Text style={styles.contentsText}>적금/월  </Text>
-                <TextInput style={styles.chatInput} 
-                  onChangeText={this.changeSaving}
-                  onSubmitEditing={this.submitEdit.bind(this)}
-                />
+              <View style={{flexDirection: 'column'}}>
+                <View style={{alignItems: 'center', margin: 5}}>
+                  <Text style={styles.contentsText}>매달 적금에 넣는 금액은?</Text>
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
+                  <TextInput style={styles.chatInput} 
+                    onChangeText={this.changeSaving}
+                    onSubmitEditing={this.submitEdit.bind(this)}
+                  />
+                  <Text style={styles.contentsText}> 원</Text> 
+                </View>
               </View>
               <View style={{alignSelf: 'center'}}>
                 <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
               </View>
-              <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
+              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
               {
                 this.state.clicked
-                ? <Button title = "확인" onPress = {this.clickBtn} />
-                : <Text style={styles.contentsText}> {String(this.corporalPromotion)},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                ? 
+                <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
+                  <Text style={styles.calWord}>확인</Text>
+                </TouchableOpacity>
+                : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
               </View>
             </View>
@@ -1184,11 +1189,16 @@ calenderGroup:{
 calenderSet:{
   flexDirection: 'column',
   alignSelf: 'center',
-  margin: 3,
+  margin: 5,
+  padding: 5,
+  borderWidth: 1,
+  borderColor: 'rgba(255,255,255,0)',
+  borderRadius: 5,
+  backgroundColor: 'rgba(80,188,223,0.3)',
 },   
 dayofarmy:{
   color: 'white',
   fontWeight: 'bold',
-  fontSize: 15,
+  fontSize: 17,
 },  
 });
