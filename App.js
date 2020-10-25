@@ -760,6 +760,13 @@ class CalcScreen extends React.Component {
   }
 
   showDialogAndroid = async () => {
+
+  const { action, text } = await DialogAndroid.prompt('Title - optional', 'Message - optional');
+  if (action === DialogAndroid.actionPositive) {
+    ToastExample.show(text, ToastExample.SHORT);
+    console.log(`You submitted: "${text}"`); 
+  }
+    /*
     const { selectedItem } = await DialogAndroid.showPicker('진급여부를 선택해주세요.', null, {
       // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
       negativeText: 'Cancel',
@@ -783,12 +790,13 @@ class CalcScreen extends React.Component {
       (selectedItem) => {this.setState({corporalPromotion:String(selectedItem[id])})}
       // when negative button is clicked, selectedItem is not present, so it doesn't get here
       //console.log('You picked:', selectedItem);
-    }
+    }*/
   }
 
 
   render() {
     return (
+      <KeyboardAvoidingView behavior="padding">
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
           <ImageBackground
             style={{width: '100%', height: '100%'}}
@@ -909,12 +917,10 @@ class CalcScreen extends React.Component {
                   <Text style={styles.contentsText}>매달 적금에 넣는 금액은?</Text>
                 </View>
                   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                    <KeyboardAvoidingView style={styles.container}behavior="padding">  
-                      <TextInput style={styles.chatInput} 
-                        onChangeText={this.changeSaving}
-                        onSubmitEditing={this.submitEdit.bind(this)}
-                      />
-                    </KeyboardAvoidingView>
+                    <TextInput style={styles.chatInput} 
+                      onChangeText={this.changeSaving}
+                      onSubmitEditing={this.submitEdit.bind(this)}
+                    />
                     <Text style={styles.contentsText}> 원</Text> 
                   </View>
               </View>
@@ -934,6 +940,7 @@ class CalcScreen extends React.Component {
             </View>
           </ImageBackground>
         </View>
+       </KeyboardAvoidingView>
       );
   }
 }
