@@ -773,12 +773,13 @@ class CalcScreen extends React.Component {
       ]
     });
     if (selectedItem) {
+      
       var resultText = " ";
       for(var key in Object.keys(selectedItem)){
-        resultText += typeof(key)
+        resultText += typeof(key);
     }
     
-      ToastExample.show(resultText, ToastExample.SHORT);
+      ToastExample.show(selectedId, ToastExample.SHORT);
       (selectedItem) => {this.setState({corporalPromotion:String(selectedItem[id])})}
       // when negative button is clicked, selectedItem is not present, so it doesn't get here
       //console.log('You picked:', selectedItem);
