@@ -773,7 +773,7 @@ class CalcScreen extends React.Component {
       ]
     });
     if (selectedItem) {
-      var resultText = "1 ";
+      var resultText = "Test";
       for(var key in Object.keys(selectedItem)){
         resultText += String(key) + String(selectedItem[key]);
       }

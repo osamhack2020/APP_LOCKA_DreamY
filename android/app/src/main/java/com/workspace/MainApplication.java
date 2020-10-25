@@ -34,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           packages.add(new CustomToastPackage()); // <-- Add this line with your package name.
           packages.add(new BlockPackage());
+          packages.add(new ReactNativeDialogsPackage());
           return packages;
         }
 
