@@ -683,7 +683,8 @@ class CalcScreen extends React.Component {
       startDay: "",
       endDay: "",
       corporalPromotion: "C",
-      sgtPromotion: 0
+      sgtPromotion: 0,
+      armyPercent: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -745,7 +746,8 @@ class CalcScreen extends React.Component {
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
-      
+      var per = this.calcPercent();
+      this.setState({armyPercent: per})
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
       //this.Ddaymessage=result
@@ -761,11 +763,9 @@ class CalcScreen extends React.Component {
 
   showDialogAndroid = async () => {
 
-  const { action, text } = await DialogAndroid.prompt('Title - optional', 'Message - optional');
+  const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
   if (action === DialogAndroid.actionPositive) {
     this.setState({saving: text})
-    ToastExample.show(text, ToastExample.SHORT);
-    console.log(`You submitted: "${text}"`); 
   }
     /*
     const { selectedItem } = await DialogAndroid.showPicker('진급여부를 선택해주세요.', null, {
@@ -808,7 +808,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.calcPercentInt()}
+                  percent={this.state.armyPercent}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
