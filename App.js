@@ -774,7 +774,7 @@ class CalcScreen extends React.Component {
     });
     if (selectedItem) {
       var resultText = " ";
-      for(var key in Object.keys(selectedItem)){
+      for(var key in Object.keys(selectedItem[0])){
         resultText += String(key) + ":" + String(selectedItem[key])
     }
     
