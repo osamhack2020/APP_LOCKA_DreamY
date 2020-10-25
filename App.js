@@ -683,8 +683,7 @@ class CalcScreen extends React.Component {
       startDay: "",
       endDay: "",
       corporalPromotion: "C",
-      sgtPromotion: 0,
-      armyPercent: 0
+      sgtPromotion: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -746,8 +745,6 @@ class CalcScreen extends React.Component {
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
-      var per = this.calcPercent();
-      this.setState({armyPercent: per})
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
       //this.Ddaymessage=result
@@ -808,7 +805,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.state.armyPercent}
+                  percent={this.calcPercentInt()}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
