@@ -915,7 +915,7 @@ class CalcScreen extends React.Component {
               {
                 this.state.clicked
                 ? <Button title = "확인" onPress = {this.clickBtn} />
-                : <Text style={styles.contentsText}> {this.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                : <Text style={styles.contentsText}> {String(this.corporalPromotion)},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
               </View>
             </View>
