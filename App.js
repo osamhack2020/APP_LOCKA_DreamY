@@ -772,7 +772,7 @@ class CalcScreen extends React.Component {
       ]
     });
     if (selectedItem) {
-      ToastExample.show(selectedItem[1], ToastExample.SHORT);
+      ToastExample.show(selectedItem[id], ToastExample.SHORT);
       (selectedId) => {this.setState({corporalPromotion:selectedId})}
       // when negative button is clicked, selectedItem is not present, so it doesn't get here
       //console.log('You picked:', selectedItem);
