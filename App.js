@@ -756,22 +756,23 @@ class CalcScreen extends React.Component {
   }
 
   showDialogAndroid = async () => {
-    const { action } = await DialogAndroid.alert('Title', 'Message');
-    switch (action) {
-        case DialogAndroid.actionPositive:
-            console.log('positive!')
-            break;
-        case DialogAndroid.actionNegative:
-            console.log('negative!')
-            break;
-        case DialogAndroid.actionNeutral:
-            console.log('neutral!')
-            break;
-        case DialogAndroid.actionDismiss:
-            console.log('dismissed!')
-            break;
+    const { selectedItem } = await DialogAndroid.showPicker('Pick a fruit', null, {
+      // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
+      negativeText: 'Cancel',
+      type: DialogAndroid.listRadio,
+      selectedId: 'apple',
+      items: [
+          { label:'Apple', id:'apple' },
+          { label:'Orange', id:'orange' },
+          { label:'Pear', id:'pear' }
+      ]
+    });
+    if (selectedItem) {
+        // when negative button is clicked, selectedItem is not present, so it doesn't get here
+        console.log('You picked:', selectedItem);
     }
   }
+
 
   render() {
     return (
