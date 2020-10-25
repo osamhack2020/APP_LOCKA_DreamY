@@ -18,6 +18,7 @@
     "react-native-datepicker-dialog": "0.0.9",
     "react-native-dialogs": "^1.1.1",
     "react-native-gesture-handler": "^1.8.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.3",
     "react-native-percentage-circle": "^1.0.7",
     "react-native-progress-circle": "^2.1.0",
     "react-native-reanimated": "^1.13.1",

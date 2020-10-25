@@ -789,6 +789,7 @@ class CalcScreen extends React.Component {
 
   render() {
     return (
+      <KeyboardAwareScrollView contentContainerStyle={styles.container} resetScrollToCoords={{ x: 0, y: 0 }} scrollEnabled={false} keyboardShouldPersistTaps="always">
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
           <ImageBackground
             style={{width: '100%', height: '100%'}}
@@ -916,7 +917,6 @@ class CalcScreen extends React.Component {
                     <Text style={styles.contentsText}> 원</Text> 
                   </View>
               </View>
-              <ScrollView>
                 <View style={{alignSelf: 'center'}}>
                   <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
                 </View>
@@ -930,10 +930,10 @@ class CalcScreen extends React.Component {
                   : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
                 }
                 </View>
-              </ScrollView>
             </View>
           </ImageBackground>
         </View>
+        </KeyboardAwareScrollView>
       );
   }
 }
