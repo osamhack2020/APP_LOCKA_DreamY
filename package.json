@@ -16,6 +16,7 @@
     "react-native": "0.63.2",
     "react-native-datepicker": "^1.7.2",
     "react-native-datepicker-dialog": "0.0.9",
+    "react-native-dialogs": "^1.1.1",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-percentage-circle": "^1.0.7",
     "react-native-progress-circle": "^2.1.0",

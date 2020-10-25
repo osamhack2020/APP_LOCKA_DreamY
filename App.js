@@ -16,6 +16,8 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
+import DialogAndroid from 'react-native-dialogs';
+
 
 //import Block from './Block';
 
@@ -753,6 +755,24 @@ class CalcScreen extends React.Component {
 
   }
 
+  showDialogAndroid = async () => {
+    const { action } = await DialogAndroid.alert('Title', 'Message');
+    switch (action) {
+        case DialogAndroid.actionPositive:
+            console.log('positive!')
+            break;
+        case DialogAndroid.actionNegative:
+            console.log('negative!')
+            break;
+        case DialogAndroid.actionNeutral:
+            console.log('neutral!')
+            break;
+        case DialogAndroid.actionDismiss:
+            console.log('dismissed!')
+            break;
+    }
+  }
+
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
@@ -883,6 +903,7 @@ class CalcScreen extends React.Component {
                   onChangeText={this.changeSaving}
                   onSubmitEditing={this.submitEdit.bind(this)}
                 />
+                <Button title="Show DialogAndroid" onPress={this.showDialogAndroid} />
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
               {

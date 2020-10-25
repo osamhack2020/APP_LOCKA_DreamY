@@ -9,13 +9,17 @@ MERGED from [com.facebook.flipper:flipper:0.37.0] /home/codespace/.gradle/caches
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/a65d6076e19ec393c728e4dca49568f4/flipper-network-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4c2d2364c35e2c493fd776ce36e653fa/flipper-fresco-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-community_masked-view] /home/codespace/workspace/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-dialogs] /home/codespace/workspace/node_modules/react-native-dialogs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-gesture-handler] /home/codespace/workspace/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] /home/codespace/workspace/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] /home/codespace/workspace/node_modules/react-native-safe-area-context/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /home/codespace/workspace/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-vector-icons] /home/codespace/workspace/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:2:1-13:12
+MERGED from [com.afollestad.material-dialogs:commons:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/23b5aa593711f0d1cfff7bd2ad8c1473/jetified-commons-0.9.6.0/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4aa61fdc8631563dd949d312a496fccb/jetified-core-0.9.6.0/AndroidManifest.xml:2:1-15:12
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/3090508c11bc1afecb8590a0e4f23a5f/jetified-library-1.4.2/AndroidManifest.xml:6:1-16:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/37b6f551bc5ae153b0b627de8f563815/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [org.webkit:android-jsc:r245459] /home/codespace/.gradle/caches/transforms-2/files-2.1/6dd6245206e34676e1ee3aa6ee0f68c9/android-jsc-r245459/AndroidManifest.xml:2:1-11:12
@@ -98,8 +102,12 @@ MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:8
 MERGED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml:8:5-47:19
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
+MERGED from [com.afollestad.material-dialogs:commons:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/23b5aa593711f0d1cfff7bd2ad8c1473/jetified-commons-0.9.6.0/AndroidManifest.xml:12:5-20
+MERGED from [com.afollestad.material-dialogs:commons:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/23b5aa593711f0d1cfff7bd2ad8c1473/jetified-commons-0.9.6.0/AndroidManifest.xml:12:5-20
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4aa61fdc8631563dd949d312a496fccb/jetified-core-0.9.6.0/AndroidManifest.xml:13:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4aa61fdc8631563dd949d312a496fccb/jetified-core-0.9.6.0/AndroidManifest.xml:13:5-20
 MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.8.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/fe63e2f04783b5c513186b2b6e7e30fe/soloader-0.8.2/AndroidManifest.xml:11:5-20
 MERGED from [androidx.core:core:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/639e914bfc1efa21e36199d3ff2c5eef/core-1.1.0/AndroidManifest.xml:24:5-89
@@ -186,6 +194,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /home/codespace/
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4c2d2364c35e2c493fd776ce36e653fa/flipper-fresco-plugin-0.37.0/AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-community_masked-view] /home/codespace/workspace/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_masked-view] /home/codespace/workspace/node_modules/@react-native-community/masked-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-dialogs] /home/codespace/workspace/node_modules/react-native-dialogs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
+MERGED from [:react-native-dialogs] /home/codespace/workspace/node_modules/react-native-dialogs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
 MERGED from [:react-native-gesture-handler] /home/codespace/workspace/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /home/codespace/workspace/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] /home/codespace/workspace/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
@@ -198,8 +208,14 @@ MERGED from [:react-native-vector-icons] /home/codespace/workspace/node_modules/
 MERGED from [:react-native-vector-icons] /home/codespace/workspace/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/d717ee50dbef5163542939da033b98a4/jetified-react-native-0.63.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.afollestad.material-dialogs:commons:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/23b5aa593711f0d1cfff7bd2ad8c1473/jetified-commons-0.9.6.0/AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:commons:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/23b5aa593711f0d1cfff7bd2ad8c1473/jetified-commons-0.9.6.0/AndroidManifest.xml:8:5-10:41
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/863e0c3c6716935cd3657ad638fd992d/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4aa61fdc8631563dd949d312a496fccb/jetified-core-0.9.6.0/AndroidManifest.xml:8:5-11:75
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4aa61fdc8631563dd949d312a496fccb/jetified-core-0.9.6.0/AndroidManifest.xml:8:5-11:75
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/3090508c11bc1afecb8590a0e4f23a5f/jetified-library-1.4.2/AndroidManifest.xml:12:5-14:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /home/codespace/.gradle/caches/transforms-2/files-2.1/3090508c11bc1afecb8590a0e4f23a5f/jetified-library-1.4.2/AndroidManifest.xml:12:5-14:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/1cb9b9ea592aa2ea85233be252327dcf/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/37b6f551bc5ae153b0b627de8f563815/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
@@ -294,6 +310,8 @@ MERGED from [com.facebook.fresco:ui-common:2.2.0] /home/codespace/.gradle/caches
 MERGED from [com.facebook.fresco:ui-common:2.2.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/c114d4501470930b3986c4f9bd2da0fd/ui-common-2.2.0/AndroidManifest.xml:5:5-7:41
 INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
 INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.afollestad.material-dialogs:core:0.9.6.0] /home/codespace/.gradle/caches/transforms-2/files-2.1/4aa61fdc8631563dd949d312a496fccb/jetified-core-0.9.6.0/AndroidManifest.xml:11:9-72
 	android:targetSdkVersion
 		INJECTED from /home/codespace/workspace/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/codespace/workspace/android/app/src/debug/AndroidManifest.xml
