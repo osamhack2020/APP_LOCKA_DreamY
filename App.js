@@ -790,6 +790,7 @@ class CalcScreen extends React.Component {
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
+          <KeyboardAvoidingView style={styles.container} behavior="padding">
           <ImageBackground
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
@@ -908,7 +909,6 @@ class CalcScreen extends React.Component {
                 <View style={{alignItems: 'center', margin: 5}}>
                   <Text style={styles.contentsText}>매달 적금에 넣는 금액은?</Text>
                 </View>
-                <KeyboardAvoidingView style={styles.container} behavior='padding'>
                   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
                     <TextInput style={styles.chatInput} 
                       onChangeText={this.changeSaving}
@@ -916,7 +916,6 @@ class CalcScreen extends React.Component {
                     />
                     <Text style={styles.contentsText}> 원</Text> 
                   </View>
-                </KeyboardAvoidingView>
               </View>
               <View style={{alignSelf: 'center'}}>
                 <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
@@ -933,6 +932,7 @@ class CalcScreen extends React.Component {
               </View>
             </View>
           </ImageBackground>
+          </KeyboardAvoidingView>
         </View>
       );
   }
