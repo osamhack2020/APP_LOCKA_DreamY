@@ -683,7 +683,8 @@ class CalcScreen extends React.Component {
       startDay: "",
       endDay: "",
       corporalPromotion: "C",
-      sgtPromotion: 0
+      sgtPromotion: 0,
+      armyPercent:0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -709,15 +710,17 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
+    this.setState({armyPercent: percent})
     return percent
   }
+  /*
   calcPercent=()=>{
     //군생활 퍼센트를 문자열로 리턴
     var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
     var result = percent.concat("%");
     return result
   }
-
+  */
   clickBtn=()=>{
     //월급 계산 버튼 눌렀을 때 실행되는 함수.
     this.setState({saving: this.inputText, clicked:false})
@@ -805,7 +808,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.calcPercentInt()}
+                  percent={this.state.armyPercent}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
@@ -813,7 +816,7 @@ class CalcScreen extends React.Component {
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
                   <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
+                  <Text style={styles.contentsText}>{this.calcPercentInt()}%</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
