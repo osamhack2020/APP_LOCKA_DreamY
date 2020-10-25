@@ -796,7 +796,6 @@ class CalcScreen extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior="padding">
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
           <ImageBackground
             style={{width: '100%', height: '100%'}}
@@ -940,7 +939,6 @@ class CalcScreen extends React.Component {
             </View>
           </ImageBackground>
         </View>
-       </KeyboardAvoidingView>
       );
   }
 }
