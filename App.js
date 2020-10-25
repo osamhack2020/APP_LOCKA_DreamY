@@ -788,7 +788,7 @@ class CalcScreen extends React.Component {
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
             <View style={styles.ddayCalc}>
-              <Text style={styles.contentsText}>전역일 계산기</Text>
+              <Text style={styles.calcTitle}>전역일 계산기</Text>
               <View 
               // progressBar가 담기는 뷰
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
@@ -887,7 +887,7 @@ class CalcScreen extends React.Component {
               </View>
             </View>
             <View style={styles.salaryCalc}>
-              <Text style={styles.contentsText}>월급 계산기</Text>
+              <Text style={styles.calcTitle}>월급 계산기</Text>
               <View style={{justifyContent: 'center', alignItems: 'center',  flexDirection: 'row'/*flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'*/}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
