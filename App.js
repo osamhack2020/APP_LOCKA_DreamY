@@ -816,10 +816,10 @@ class CalcScreen extends React.Component {
                   </View>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <DatePicker
-                    style={{width: 200}}
+                    style={{width: 160}}
                     date={this.state.startDay}
                     mode="date"
-                    placeholder="2020-04-06"
+                    placeholder="입대일을 입력해주세요"
                     format="YYYY-MM-DD"
                     minDate="2019-01-01"
                     maxDate="2099-12-31"
@@ -827,10 +827,8 @@ class CalcScreen extends React.Component {
                     cancelBtnText="Cancel"
                     customStyles={{
                       dateIcon: {
-                        position: 'absolute',
-                        left: 28,
-                        top: 4,
-                        marginLeft: 0
+                       width: 0,
+                       height: 0,
                       },
                       dateInput: {
                         marginLeft: 0,
@@ -855,10 +853,10 @@ class CalcScreen extends React.Component {
                   </View>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <DatePicker
-                    style={{width: 200}}
+                    style={{width: 160}}
                     date={this.state.endDay}
                     mode="date"
-                    placeholder="pick a day"
+                    placeholder="전역일을 입력해주세요"
                     format="YYYY-MM-DD"
                     minDate="2020-01-01"
                     maxDate="2099-12-31"
@@ -866,10 +864,8 @@ class CalcScreen extends React.Component {
                     cancelBtnText="Cancel"
                     customStyles={{
                       dateIcon: {
-                        position: 'absolute',
-                        left: 28,
-                        top: 4,
-                        marginLeft: 0
+                       width: 0,
+                       height: 0,
                       },
                       dateInput: {
                         marginLeft: 0,
