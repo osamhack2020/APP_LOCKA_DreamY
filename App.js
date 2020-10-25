@@ -732,7 +732,7 @@ class CalcScreen extends React.Component {
     //Dday계산하는 함수
     //StartDate : 입대일
     //EndDate : 전역일
-    if((StartDate != " ") && (EndDate != " ")){
+    if((StartDate != "") && (EndDate != "")){
       let today = new Date();
     
       var startdateArray = StartDate.split("-");
