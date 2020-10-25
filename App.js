@@ -1189,7 +1189,12 @@ calenderGroup:{
 calenderSet:{
   flexDirection: 'column',
   alignSelf: 'center',
-  margin: 3,
+  margin: 5,
+  padding: 5,
+  borderWidth: 1,
+  borderColor: 'rgba(255,255,255,0)',
+  borderRadius: 5,
+  backgroundColor: 'rgba(80,188,223,0.3)',
 },   
 dayofarmy:{
   color: 'white',
