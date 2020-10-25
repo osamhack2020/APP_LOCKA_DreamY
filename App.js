@@ -17,6 +17,7 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
 import DialogAndroid from 'react-native-dialogs';
+import {KeyboardAvoidingView} from 'react-native';
 
 
 //import Block from './Block';
@@ -907,13 +908,15 @@ class CalcScreen extends React.Component {
                 <View style={{alignItems: 'center', margin: 5}}>
                   <Text style={styles.contentsText}>매달 적금에 넣는 금액은?</Text>
                 </View>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                  <TextInput style={styles.chatInput} 
-                    onChangeText={this.changeSaving}
-                    onSubmitEditing={this.submitEdit.bind(this)}
-                  />
-                  <Text style={styles.contentsText}> 원</Text> 
-                </View>
+                <KeyboardAvoidingView style={styles.container} behavior='padding'>
+                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
+                    <TextInput style={styles.chatInput} 
+                      onChangeText={this.changeSaving}
+                      onSubmitEditing={this.submitEdit.bind(this)}
+                    />
+                    <Text style={styles.contentsText}> 원</Text> 
+                  </View>
+                </KeyboardAvoidingView>
               </View>
               <View style={{alignSelf: 'center'}}>
                 <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
@@ -955,7 +958,7 @@ export default createAppContainer(AppNavigator);
 const styles = StyleSheet.create({
 container: {
   flex:1,
-  backgroundColor: 'white',
+  backgroundColor: "#000038",
   justifyContent: 'center',
 },
 newContainer: {
