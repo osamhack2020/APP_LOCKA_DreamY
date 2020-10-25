@@ -680,7 +680,7 @@ class CalcScreen extends React.Component {
       date: "2020-10-22",
       startDay: " ",
       endDay: " ",
-      corporalPromotion: 0,
+      corporalPromotion: "C",
       sgtPromotion: 0
     };
 
@@ -772,7 +772,7 @@ class CalcScreen extends React.Component {
       ]
     });
     if (selectedItem) {
-      this.setState({corporalPromotion: selectedItem});
+      (selectedId) => {this.setState({corporalPromotion:selectedId})}
       // when negative button is clicked, selectedItem is not present, so it doesn't get here
       //console.log('You picked:', selectedItem);
     }
@@ -910,7 +910,7 @@ class CalcScreen extends React.Component {
                   onSubmitEditing={this.submitEdit.bind(this)}
                 />
               </View>
-              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+              <View style={{alignSelf: 'center'}}>
                 <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
