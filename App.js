@@ -762,17 +762,17 @@ class CalcScreen extends React.Component {
       // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
       negativeText: 'Cancel',
       type: DialogAndroid.listRadio,
-      selectedId: 2,
+      selectedId: "C",
       items: [
-          { label:'2달 진급누락', id:0 },
-          { label:'1달 진급누락', id:1 },
-          { label:'정상진급', id:2 },
-          { label:'1달 정상진급', id:3 },
-          { label:'2달 정상진급', id:4 },
+          { label:'2달 진급누락', id:"A" },
+          { label:'1달 진급누락', id:"B" },
+          { label:'정상진급', id:"C" },
+          { label:'1달 정상진급', id:"D" },
+          { label:'2달 정상진급', id:"E" },
       ]
     });
     if (selectedItem) {
-      this.setState({corporalPromotion: selectedId});
+      this.setState({corporalPromotion: selectedItem});
       // when negative button is clicked, selectedItem is not present, so it doesn't get here
       //console.log('You picked:', selectedItem);
     }
@@ -909,7 +909,9 @@ class CalcScreen extends React.Component {
                   onChangeText={this.changeSaving}
                   onSubmitEditing={this.submitEdit.bind(this)}
                 />
-                <Button title="Show DialogAndroid" onPress={this.showDialogAndroid} />
+              </View>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
               {
