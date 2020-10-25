@@ -888,7 +888,7 @@ class CalcScreen extends React.Component {
             </View>
             <View style={styles.salaryCalc}>
               <Text style={styles.calcTitle}>월급 계산기</Text>
-              <View style={{justifyContent: 'center', alignItems: 'center',  flexDirection: 'row'/*flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'*/}}>
+              <View style={{alignSelf: 'center',  flexDirection: 'row', margin: 5}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
@@ -896,7 +896,7 @@ class CalcScreen extends React.Component {
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'white'}
                   selectedLabelColor={'white'}
-                  labelStyle={{fontSize:12}}
+                  labelStyle={{fontSize:12, color: '#50bcdf'}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
                 />
