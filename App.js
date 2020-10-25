@@ -70,7 +70,7 @@ else{
     sumOfMoney+=savingMoney;
 }
   sumOfMoney=String(sumOfMoney);
-  var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
+  var result = text1.concat(" ", sumOfMoney,"원을 받습니다.");
   return result
 }
 
@@ -774,7 +774,7 @@ class CalcScreen extends React.Component {
     });
     if (selectedItem) {
       ToastExample.show(typeof selectedItem[id], ToastExample.SHORT);
-      //(selectedItem) => {this.setState({corporalPromotion:selectedItem['id']})}
+      (selectedItem) => {this.setState({corporalPromotion:selectedItem[id]})}
       // when negative button is clicked, selectedItem is not present, so it doesn't get here
       //console.log('You picked:', selectedItem);
     }
@@ -923,7 +923,7 @@ class CalcScreen extends React.Component {
                 <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
                   <Text style={styles.calWord}>확인</Text>
                 </TouchableOpacity>
-                : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
               </View>
             </View>
