@@ -684,7 +684,7 @@ class CalcScreen extends React.Component {
       endDay: "",
       corporalPromotion: "C",
       sgtPromotion: 0,
-      armyPercent:0
+      armyPercent: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -710,7 +710,7 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
-    this.setState({armyPercent: percent})
+    this.setState({armyPercent: percent});
     return percent
   }
   /*
@@ -808,7 +808,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.state.armyPercent}
+                  percent={this.calcPercentInt()}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
