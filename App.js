@@ -678,8 +678,9 @@ class CalcScreen extends React.Component {
       saving: 0,
       selectArmy: 0,
       date: "2020-10-22",
-      startDay: " ",
-      endDay: " ",
+      // datepicker의 placeholder를 사용하기 위해 수정. 
+      startDay: "",
+      endDay: "",
       corporalPromotion: "C",
       sgtPromotion: 0
     };
