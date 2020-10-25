@@ -763,6 +763,7 @@ class CalcScreen extends React.Component {
 
   const { action, text } = await DialogAndroid.prompt('Title - optional', 'Message - optional');
   if (action === DialogAndroid.actionPositive) {
+    this.setState({saving: text})
     ToastExample.show(text, ToastExample.SHORT);
     console.log(`You submitted: "${text}"`); 
   }
@@ -911,20 +912,11 @@ class CalcScreen extends React.Component {
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'column'}}>
-                <View style={{alignItems: 'center', margin: 5}}>
-                  <Text style={styles.contentsText}>매달 적금에 넣는 금액은?</Text>
-                </View>
-                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                    <TextInput style={styles.chatInput} 
-                      onChangeText={this.changeSaving}
-                      onSubmitEditing={this.submitEdit.bind(this)}
-                    />
-                    <Text style={styles.contentsText}> 원</Text> 
-                  </View>
+              <View style={{flexDirection: 'column', alignSelf: 'center'}}>
+                <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
                 <View style={{alignSelf: 'center'}}>
-                  <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
+                  
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 {
