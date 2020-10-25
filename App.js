@@ -815,7 +815,8 @@ class CalcScreen extends React.Component {
                   shadowColor="#b19cd9"
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
-                  <Text style={styles.contentsText}>{this.calcPercent()}, {this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                  <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
