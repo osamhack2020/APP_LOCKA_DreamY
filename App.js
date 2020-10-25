@@ -680,6 +680,8 @@ class CalcScreen extends React.Component {
       date: "2020-10-22",
       startDay: " ",
       endDay: " ",
+      corporalPromotion: 0,
+      sgtPromotion: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -756,20 +758,23 @@ class CalcScreen extends React.Component {
   }
 
   showDialogAndroid = async () => {
-    const { selectedItem } = await DialogAndroid.showPicker('Pick a fruit', null, {
+    const { selectedItem } = await DialogAndroid.showPicker('진급여부를 선택해주세요.', null, {
       // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
       negativeText: 'Cancel',
       type: DialogAndroid.listRadio,
-      selectedId: 'apple',
+      selectedId: 2,
       items: [
-          { label:'Apple', id:'apple' },
-          { label:'Orange', id:'orange' },
-          { label:'Pear', id:'pear' }
+          { label:'2달 진급누락', id:0 },
+          { label:'1달 진급누락', id:1 },
+          { label:'정상진급', id:2 },
+          { label:'1달 정상진급', id:3 },
+          { label:'2달 정상진급', id:4 },
       ]
     });
     if (selectedItem) {
-        // when negative button is clicked, selectedItem is not present, so it doesn't get here
-        console.log('You picked:', selectedItem);
+      this.setState({corporalPromotion: selectedItem});
+      // when negative button is clicked, selectedItem is not present, so it doesn't get here
+      //console.log('You picked:', selectedItem);
     }
   }
 
@@ -910,7 +915,7 @@ class CalcScreen extends React.Component {
               {
                 this.state.clicked
                 ? <Button title = "확인" onPress = {this.clickBtn} />
-                : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                : <Text style={styles.contentsText}> {this.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
               }
               </View>
             </View>
