@@ -763,7 +763,7 @@ class CalcScreen extends React.Component {
       // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
       negativeText: 'Cancel',
       type: DialogAndroid.listRadio,
-      selectedId: "C",
+      //selectedId: "C",
       items: [
           { label:'2달 진급누락', id:"A" },
           { label:'1달 진급누락', id:"B" },
@@ -774,8 +774,8 @@ class CalcScreen extends React.Component {
     });
     if (selectedItem) {
       var resultText = " ";
-      for(var key in Object.keys(selectedItem[0])){
-        resultText += String(key) + ":" + String(selectedItem[0][key])
+      for(var key in Object.keys(selectedItem)){
+        resultText += String(key) + ":" + String(selectedItem[key])
     }
     
       ToastExample.show(resultText, ToastExample.SHORT);
