@@ -789,7 +789,6 @@ class CalcScreen extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={styles.container} resetScrollToCoords={{ x: 0, y: 0 }} scrollEnabled={false} keyboardShouldPersistTaps="always">
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
           <ImageBackground
             style={{width: '100%', height: '100%'}}
@@ -910,10 +909,12 @@ class CalcScreen extends React.Component {
                   <Text style={styles.contentsText}>매달 적금에 넣는 금액은?</Text>
                 </View>
                   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: 5}}>
-                    <TextInput style={styles.chatInput} 
-                      onChangeText={this.changeSaving}
-                      onSubmitEditing={this.submitEdit.bind(this)}
-                    />
+                    <KeyboardAvoidingView style={styles.container}behavior="padding">  
+                      <TextInput style={styles.chatInput} 
+                        onChangeText={this.changeSaving}
+                        onSubmitEditing={this.submitEdit.bind(this)}
+                      />
+                    </KeyboardAvoidingView>
                     <Text style={styles.contentsText}> 원</Text> 
                   </View>
               </View>
@@ -933,7 +934,6 @@ class CalcScreen extends React.Component {
             </View>
           </ImageBackground>
         </View>
-        </KeyboardAwareScrollView>
       );
   }
 }
