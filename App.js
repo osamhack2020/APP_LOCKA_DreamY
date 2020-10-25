@@ -775,7 +775,7 @@ class CalcScreen extends React.Component {
     if (selectedItem) {
       var resultText = " ";
       for(var key in Object.keys(selectedItem[0])){
-        resultText += String(key) + ":" + String(selectedItem[key])
+        resultText += String(key) + ":" + String(selectedItem[0][key])
     }
     
       ToastExample.show(resultText, ToastExample.SHORT);
@@ -806,10 +806,7 @@ class CalcScreen extends React.Component {
                   shadowColor="#b19cd9"
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
-                  <Text style={{fontSize: 20, color: 'white'}}>
-                    {this.calcPercent()}
-                  </Text>
-                  <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                  <Text style={styles.contentsText}>{this.calcPercent()}, {this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
