@@ -775,7 +775,7 @@ class CalcScreen extends React.Component {
     if (selectedItem) {
       var resultText = " ";
       for(var key in Object.keys(selectedItem)){
-        resultText += String(key) + ":" + String(selectedItem[key])
+        resultText += typeof(key)
     }
     
       ToastExample.show(resultText, ToastExample.SHORT);
