@@ -916,18 +916,20 @@ class CalcScreen extends React.Component {
                     <Text style={styles.contentsText}> 원</Text> 
                   </View>
               </View>
-              <ScrollView style={{alignSelf: 'center'}}>
-                <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
-              </ScrollView>
-              <ScrollView style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-              {
-                this.state.clicked
-                ? 
-                <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
-                  <Text style={styles.calWord}>확인</Text>
-                </TouchableOpacity>
-                : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
-              }
+              <ScrollView>
+                <View style={{alignSelf: 'center'}}>
+                  <Button title="상병 진급여부" onPress={this.showDialogAndroid} />
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                {
+                  this.state.clicked
+                  ? 
+                  <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
+                    <Text style={styles.calWord}>확인</Text>
+                  </TouchableOpacity>
+                  : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                }
+                </View>
               </ScrollView>
             </View>
           </ImageBackground>
