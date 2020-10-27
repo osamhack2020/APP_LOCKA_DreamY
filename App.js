@@ -928,10 +928,11 @@ class CalcScreen extends React.Component {
               </View>
                 <View style={{alignSelf: 'center'}}>
                   <Picker
-                    selectedValue={this.state.sgtPromotion}
+                    
                     style={{ height: 50, width: 200, color: "white"}}
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({sgtPromotion: Number(itemValue)})} 
+                    selectedValue={String(this.state.sgtPromotion)}
                   >
                     <Picker.Item label="2달 진급누락" value = "-2"/>
                     <Picker.Item label="1달 진급누락" value="-1" />
@@ -940,12 +941,13 @@ class CalcScreen extends React.Component {
                     <Picker.Item label="2달 조기진급" value="2" />
                   </Picker>
                   <Picker
-                  selectedValue={this.state.corporalPromotion}
-                  style={{height: 50, width: 200, color: 'white'}}
+                  
+                  style={{height: 50, width: 200, color: 'white' ,backgroundColor:'#fff'}}
                   //textStyle={{ fontSize:16, color: 'white'}}
                   onValueChange={(itemValue, itemIndex) =>
-                    this.setState({corporalPromotion: Number(itemValue)})
-                  }>
+                    this.setState({corporalPromotion: Number(itemValue)})}
+                  selectedValue={String(this.state.corporalPromotion)}
+                  >
                     <Picker.Item label="Java" value="-3" />
                     <Picker.Item label="JavaScript" value="-2" />
                   </Picker>
