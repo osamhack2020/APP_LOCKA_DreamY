@@ -17,7 +17,8 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
 import DialogAndroid from 'react-native-dialogs';
-import {KeyboardAvoidingView} from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
+
 
 
 //import Block from './Block';
@@ -682,7 +683,43 @@ class CalcScreen extends React.Component {
       // datepicker의 placeholder를 사용하기 위해 수정. 
       startDay: "",
       endDay: "",
-      corporalPromotion: "C",
+      corporalPromotionitems: [
+        {
+            label: '2달 진급누락',
+            value: -2,
+        },
+        {
+            label: '1달 진급누락',
+            value: -1,
+        },
+        {
+            label: '정상진급',
+            value: 0,
+        },
+        {
+          label: '1달 조기진급',
+          value: 1,
+        },
+        {
+          label: '2달 조기진급',
+          value: 2,
+        },
+      ],
+      sgtPromotionitems : [
+        {
+            label: '1달 진급누락',
+            value: -1,
+        },
+        {
+            label: '정상진급',
+            value: 0,
+        },
+        {
+          label: '1달 조기진급',
+          value: 1,
+        },
+      ],
+      corporalPromotion: 0,
       sgtPromotion: 0
     };
 
@@ -759,36 +796,10 @@ class CalcScreen extends React.Component {
   }
 
   showDialogAndroid = async () => {
-
-  const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
-  if (action === DialogAndroid.actionPositive) {
-    this.setState({saving: text})
-  }
-    /*
-    const { selectedItem } = await DialogAndroid.showPicker('진급여부를 선택해주세요.', null, {
-      // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
-      negativeText: 'Cancel',
-      type: DialogAndroid.listRadio,
-      selectedId: "C",
-      items: [
-          { label:'2달 진급누락', id:"A" },
-          { label:'1달 진급누락', id:"B" },
-          { label:'정상진급', id:"C" },
-          { label:'1달 정상진급', id:"D" },
-          { label:'2달 정상진급', id:"E" },
-      ]
-    });
-    if (selectedItem) {
-      var resultText = "Test";
-      for(var key in Object.keys(selectedItem)){
-        resultText += String(key) + typeof(selectedItem[key]);
-      }
-      
-      ToastExample.show(resultText, ToastExample.SHORT);
-      (selectedItem) => {this.setState({corporalPromotion:String(selectedItem[id])})}
-      // when negative button is clicked, selectedItem is not present, so it doesn't get here
-      //console.log('You picked:', selectedItem);
-    }*/
+    const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
+    if (action === DialogAndroid.actionPositive) {
+      this.setState({saving: text})
+    }
   }
 
 
@@ -914,7 +925,31 @@ class CalcScreen extends React.Component {
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
                 <View style={{alignSelf: 'center'}}>
-                  
+                  <Text style={styles.contentsText}>상병 진급여부</Text>
+                  <RNPickerSelect
+                      items={this.state.corporalPromotionitems}
+                      onValueChange={(value) => {
+                          this.setState({
+                            corporalPromotion: value,
+                          });
+                      }}
+                      style={{ ...pickerSelectStyles }}
+                      value={this.state.corporalPromotion}
+                  />
+                  <Text style={styles.contentsText}>병장 진급여부</Text>
+                  <RNPickerSelect
+                      onOpen={() => { // 선택창이 열릴때
+                        Keyboard.dismiss(); //키보드 내림
+                      }}
+                      items={this.state.sgtPromotionitems}
+                      onValueChange={(value) => {
+                          this.setState({
+                            sgtPromotion: value,
+                          });
+                      }}
+                      style={{ ...pickerSelectStyles }}
+                      value={this.state.sgtPromotion}
+                  />
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 {
@@ -923,7 +958,7 @@ class CalcScreen extends React.Component {
                   <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
                     <Text style={styles.calWord}>확인</Text>
                   </TouchableOpacity>
-                  : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                  : <Text style={styles.contentsText}> {String(this.state.sgtPromotion)},{String(this.state.corporalPromotion)},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
                 }
                 </View>
             </View>
