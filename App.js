@@ -928,7 +928,7 @@ class CalcScreen extends React.Component {
                   <Picker
                     selectedValue={selectedValue}
                     style={{ height: 50, width: 150 }}
-                    onValueChange={(value) => {this.setState({sgtPromotion: value})}}
+                    //onValueChange={(value) => {this.setState({sgtPromotion: value})}}
                   >
                     <Picker.Item label="Java" value="java" />
                     <Picker.Item label="JavaScript" value="js" />
