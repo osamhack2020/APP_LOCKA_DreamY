@@ -477,7 +477,7 @@ class LobbyScreen extends React.Component {
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
         <Text 
           // 시계넣는공간
-          style={styles.clockText}>
+          style={{  color: 'white', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>
           {clockTexts}
         </Text>
      </View>
@@ -491,7 +491,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -500,7 +500,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
@@ -523,7 +523,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -532,7 +532,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
