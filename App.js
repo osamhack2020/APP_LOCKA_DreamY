@@ -934,22 +934,21 @@ class CalcScreen extends React.Component {
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({sgtPromotion: Number(itemValue)})} 
                   >
-                    <Picker.Item label="2달 진급누락" value = "-2" />
+                    <Picker.Item label="2달 진급누락" value = "-2"/>
                     <Picker.Item label="1달 진급누락" value="-1" />
                     <Picker.Item label="정상진급" value="0" />
                     <Picker.Item label="1달 조기진급" value="1" />
                     <Picker.Item label="2달 조기진급" value="2" />
                   </Picker>
-
                   <Picker
-                  selectedValue={this.state.language}
+                  selectedValue={this.state.corporalPromotion}
                   style={{height: 50, width: 200}}
                   textStyle={{ fontSize:16, color: 'white'}}
                   onValueChange={(itemValue, itemIndex) =>
-                    this.setState({language: itemValue})
+                    this.setState({corporalPromotion: Number(itemValue)})
                   }>
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
+                    <Picker.Item label="Java" value="-3" />
+                    <Picker.Item label="JavaScript" value="-2" />
                   </Picker>
                 </View>
 
