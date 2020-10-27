@@ -925,30 +925,17 @@ class CalcScreen extends React.Component {
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
                 <View style={{alignSelf: 'center'}}>
-                  <Text style={styles.contentsText}>상병 진급여부</Text>
                   <RNPickerSelect
-                      items={this.state.corporalPromotionitems}
-                      onValueChange={(value) => {
-                          this.setState({
-                            corporalPromotion: value,
-                          });
-                      }}
-                      style={{ ...pickerSelectStyles }}
-                      value={this.state.corporalPromotion}
-                  />
-                  <Text style={styles.contentsText}>병장 진급여부</Text>
-                  <RNPickerSelect
-                      onOpen={() => { // 선택창이 열릴때
-                        Keyboard.dismiss(); //키보드 내림
-                      }}
-                      items={this.state.sgtPromotionitems}
-                      onValueChange={(value) => {
-                          this.setState({
-                            sgtPromotion: value,
-                          });
-                      }}
-                      style={{ ...pickerSelectStyles }}
-                      value={this.state.sgtPromotion}
+                    onValueChange={(value) => {
+                      this.setState({
+                        sgtPromotion: value,
+                      });
+                    }}
+                    items={[
+                        { label: 'Football', value: 'football' },
+                        { label: 'Baseball', value: 'baseball' },
+                        { label: 'Hockey', value: 'hockey' },
+                    ]}
                   />
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
