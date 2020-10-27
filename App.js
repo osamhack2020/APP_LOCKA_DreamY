@@ -164,44 +164,6 @@ renderDayofweek = (Dayofweek) => {
   return renderingText;
 }
 
-class HomeScreen extends React.Component {
-    render() {
-      return (
-        <View style={styles.container}>
-          <View style={styles.markArea}>
-            <Image source={require('./images/ROKAmark.png')}/>
-          </View>
-          <View style={styles.appNameArea}>
-            <Text style={styles.appNameText}>
-              LOCKA
-            </Text>
-          </View>
-          <View style={styles.view}>
-            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
-              <Text>Start</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
-              <Text>Stop</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Lock Army</Text>
-            <Button
-              title = '전역/월급계산'
-              onPress = {()=>this.props.navigation.navigate('Calc')}
-              onPress = {()=>this.props.navigation.navigate('Calc')}
-            />
-            <Button
-              title = 'Permission'
-              onPress = {()=>this.props.navigation.navigate('Permission')}
-              onPress = {()=>this.props.navigation.navigate('Permission')}  
-            />
-          </View>
-        </View>  
-    );
-  }
-}
-
 // 잠금 해제시 인증번호 입력 화면
 class LoginScreen extends React.Component{
 
@@ -226,7 +188,7 @@ class LoginScreen extends React.Component{
     //비밀번호가 맞는지 확인하는 함수
     //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
-      this.props.navigation.navigate('Lobby');
+      this.props.navigation.navigate('Main');
       NativeModules.Block.stopService();
     }
     else{
@@ -255,7 +217,6 @@ class LoginScreen extends React.Component{
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
-              //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
           <View style={{flex: 0.4}}/>
@@ -299,7 +260,7 @@ class holidayScreen extends React.Component{
     if (this.inputPassword==this.state.password){
       ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
       NativeModules.Block.applyHoliday();
-      this.props.navigation.navigate('Lobby');
+      this.props.navigation.navigate('Main');
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -327,7 +288,6 @@ class holidayScreen extends React.Component{
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
-              //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
           <View style={{flex: 0.4}}/>
@@ -360,7 +320,7 @@ class PermissionScreen extends React.Component{
   setAccessibility = () =>{
     //권한을 요청하는 화면으로 이동시키는 함수.
     NativeModules.Block.setAccessibilityPermissions();
-    this.props.navigation.navigate('Lobby');
+    this.props.navigation.navigate('Main');
   }
 
   render(){
@@ -408,7 +368,7 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            //권한 요청 후 LobbyScreen으로 넘어감.
+            //권한 요청 후 MainScreen으로 넘어감.
             onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
@@ -421,7 +381,7 @@ class PermissionScreen extends React.Component{
 }
 
 // 권한 받은 후, 어플의 메인 화면
-class LobbyScreen extends React.Component {
+class MainScreen extends React.Component {
 
   // 상단의 toolbar 가리기
   static navigationOptions = {
@@ -736,11 +696,11 @@ class CalcScreen extends React.Component {
   static navigationOptions = {
     header: null ,
   };
-
+/*
   submitEdit= function(){
     this.setState({saving: this.inputText});
   }
-
+*/
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
@@ -782,50 +742,21 @@ class CalcScreen extends React.Component {
       this.allDays=allDay;
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
-      //this.Ddaymessage=result
       return result
     }
     else{
       var result = " "
-      //this.Ddaymessage=result
       return result
     }
 
   }
 
   showDialogAndroid = async () => {
-
-  const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
-  if (action === DialogAndroid.actionPositive) {
-    this.setState({saving: text})
+    const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
+    if (action === DialogAndroid.actionPositive) {
+      this.setState({saving: text})
+    }
   }
-    /*
-    const { selectedItem } = await DialogAndroid.showPicker('진급여부를 선택해주세요.', null, {
-      // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
-      negativeText: 'Cancel',
-      type: DialogAndroid.listRadio,
-      selectedId: "C",
-      items: [
-          { label:'2달 진급누락', id:"A" },
-          { label:'1달 진급누락', id:"B" },
-          { label:'정상진급', id:"C" },
-          { label:'1달 정상진급', id:"D" },
-          { label:'2달 정상진급', id:"E" },
-      ]
-    });
-    if (selectedItem) {
-      var resultText = "Test";
-      for(var key in Object.keys(selectedItem)){
-        resultText += String(key) + typeof(selectedItem[key]);
-      }
-      
-      ToastExample.show(resultText, ToastExample.SHORT);
-      (selectedItem) => {this.setState({corporalPromotion:String(selectedItem[id])})}
-      // when negative button is clicked, selectedItem is not present, so it doesn't get here
-      //console.log('You picked:', selectedItem);
-    }*/
-  }
-
 
   render() {
     return (
@@ -994,15 +925,14 @@ class CalcScreen extends React.Component {
 
 const AppNavigator = createStackNavigator(
   {
-    Main: { screen: HomeScreen },
     UnlockCheck: { screen: LoginScreen },
     Permission: { screen: PermissionScreen },
     Calc: { screen: CalcScreen },
-    Lobby: { screen: LobbyScreen },
+    Main: { screen: MainScreen },
     Holiday: {screen: holidayScreen}
   },
   {
-    initialRouteName: "Lobby"
+    initialRouteName: "Main"
   }
 );
 
