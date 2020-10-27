@@ -925,14 +925,6 @@ class CalcScreen extends React.Component {
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
                 <View style={{alignSelf: 'center'}}>
-                  <Picker
-                    selectedValue={selectedValue}
-                    style={{ height: 50, width: 150 }}
-                    //onValueChange={(value) => {this.setState({sgtPromotion: value})}}
-                  >
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                  </Picker>
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 {
