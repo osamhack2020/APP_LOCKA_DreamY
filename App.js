@@ -928,9 +928,10 @@ class CalcScreen extends React.Component {
               </View>
                 <View style={{alignSelf: 'center'}}>
                   <Picker
-                    selectedValue={selectedValue}
+                    selectedValue={this.state.sgtPromotion}
                     style={{ height: 50, width: 150 }}
-                    onValueChange={(value) => {this.setState({sgtPromotion: value})}}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({sgtPromotion: itemValue})}          
                   >
                     <Picker.Item label="Java" value="java" />
                     <Picker.Item label="JavaScript" value="js" />
