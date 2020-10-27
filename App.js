@@ -10,15 +10,14 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ProgressCircle from 'react-native-progress-circle';
-import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
-  TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
-  ImageBackground, ScrollView} from 'react-native';
-  import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { StyleSheet, NativeModules, Text, View, Image, 
+  TouchableOpacity, Button, TextInput, 
+  ImageBackground, } from 'react-native';
+  import RadioForm from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
 import DialogAndroid from 'react-native-dialogs';
-import {KeyboardAvoidingView} from 'react-native';
-
+import RNPickerSelect from 'react-native-picker-select';
 
 //import Block from './Block';
 
@@ -474,7 +473,7 @@ class LobbyScreen extends React.Component {
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
         <Text 
           // 시계넣는공간
-          style={styles.clockText}>
+          style={styles.contentsText}>
           {clockTexts}
         </Text>
      </View>
@@ -488,7 +487,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -497,12 +496,12 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 해제까지 </Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} >해제까지</Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
@@ -520,7 +519,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -529,12 +528,12 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 해제까지 </Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} >해제까지</Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
@@ -682,9 +681,44 @@ class CalcScreen extends React.Component {
       // datepicker의 placeholder를 사용하기 위해 수정. 
       startDay: "",
       endDay: "",
-      corporalPromotion: "C",
-      sgtPromotion: 0,
-      armyPercent: 0
+      corporalPromotionitems: [
+        {
+            label: '2달 진급누락',
+            value: -2,
+        },
+        {
+            label: '1달 진급누락',
+            value: -1,
+        },
+        {
+            label: '정상진급',
+            value: 0,
+        },
+        {
+          label: '1달 조기진급',
+          value: 1,
+        },
+        {
+          label: '2달 조기진급',
+          value: 2,
+        },
+      ],
+      sgtPromotionitems : [
+        {
+            label: '1달 진급누락',
+            value: -1,
+        },
+        {
+            label: '정상진급',
+            value: 0,
+        },
+        {
+          label: '1달 조기진급',
+          value: 1,
+        },
+      ],
+      corporalPromotion: 0,
+      sgtPromotion: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -710,17 +744,15 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
-    this.setState({armyPercent: percent});
     return percent
   }
-  /*
   calcPercent=()=>{
     //군생활 퍼센트를 문자열로 리턴
     var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
     var result = percent.concat("%");
     return result
   }
-  */
+
   clickBtn=()=>{
     //월급 계산 버튼 눌렀을 때 실행되는 함수.
     this.setState({saving: this.inputText, clicked:false})
@@ -735,7 +767,7 @@ class CalcScreen extends React.Component {
     //Dday계산하는 함수
     //StartDate : 입대일
     //EndDate : 전역일
-    if((StartDate != "") && (EndDate != "")){
+    if((StartDate != " ") && (EndDate != " ")){
       let today = new Date();
     
       var startdateArray = StartDate.split("-");
@@ -816,7 +848,7 @@ class CalcScreen extends React.Component {
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
                   <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-                  <Text style={styles.contentsText}>{this.calcPercentInt()}%</Text>
+                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
@@ -916,19 +948,43 @@ class CalcScreen extends React.Component {
               <View style={{flexDirection: 'column', alignSelf: 'center'}}>
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
-                <View style={{alignSelf: 'center'}}>
-                  
-                </View>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                {
-                  this.state.clicked
-                  ? 
-                  <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
-                    <Text style={styles.calWord}>확인</Text>
-                  </TouchableOpacity>
-                  : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
-                }
-                </View>
+              <View style={{alignSelf: 'center'}}>
+              <Text style={styles.contentsText}>상병 진급여부</Text>
+                <RNPickerSelect
+                    items={this.state.corporalPromotionitems}
+                    onValueChange={(value) => {
+                        this.setState({
+                          corporalPromotion: value,
+                        });
+                    }}
+                    style={{ ...pickerSelectStyles }}
+                    value={this.state.corporalPromotion}
+                />
+              <Text style={styles.contentsText}>병장 진급여부</Text>
+                <RNPickerSelect
+                    onOpen={() => { // 선택창이 열릴때
+                      Keyboard.dismiss(); //키보드 내림
+                    }}
+                    items={this.state.sgtPromotionitems}
+                    onValueChange={(value) => {
+                        this.setState({
+                          sgtPromotion: value,
+                        });
+                    }}
+                    style={{ ...pickerSelectStyles }}
+                    value={this.state.sgtPromotion}
+                />
+              </View>
+              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+              {
+                this.state.clicked
+                ? 
+                <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
+                  <Text style={styles.calWord}>확인</Text>
+                </TouchableOpacity>
+                : <Text style={styles.contentsText}> {this.state.sgtPromotion},{this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+              }
+              </View>
             </View>
           </ImageBackground>
         </View>
