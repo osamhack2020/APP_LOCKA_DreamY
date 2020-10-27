@@ -943,7 +943,7 @@ class CalcScreen extends React.Component {
                   <Picker
                   selectedValue={this.state.language}
                   style={{height: 50, width: 100}}
-                  itemStyle={{ fontSize:18, color: 'navy',backgroundColor: 'white'}}
+                  textStyle={{ fontSize:16, color: 'white'}}
                   onValueChange={(itemValue, itemIndex) =>
                     this.setState({language: itemValue})
                   }>
