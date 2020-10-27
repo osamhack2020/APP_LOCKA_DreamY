@@ -10,14 +10,15 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ProgressCircle from 'react-native-progress-circle';
-import { StyleSheet, NativeModules, Text, View, Image, 
-  TouchableOpacity, Button, TextInput, 
-  ImageBackground, } from 'react-native';
-  import RadioForm from 'react-native-simple-radio-button';
+import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image, 
+  TouchableOpacity, PermissionsAndroid, Platform, Button, TextInput, 
+  ImageBackground, ScrollView} from 'react-native';
+  import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
 import DialogAndroid from 'react-native-dialogs';
-import RNPickerSelect from 'react-native-picker-select';
+import {KeyboardAvoidingView} from 'react-native';
+
 
 //import Block from './Block';
 
@@ -164,6 +165,44 @@ renderDayofweek = (Dayofweek) => {
   return renderingText;
 }
 
+class HomeScreen extends React.Component {
+    render() {
+      return (
+        <View style={styles.container}>
+          <View style={styles.markArea}>
+            <Image source={require('./images/ROKAmark.png')}/>
+          </View>
+          <View style={styles.appNameArea}>
+            <Text style={styles.appNameText}>
+              LOCKA
+            </Text>
+          </View>
+          <View style={styles.view}>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
+              <Text>Start</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
+              <Text>Stop</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Lock Army</Text>
+            <Button
+              title = '전역/월급계산'
+              onPress = {()=>this.props.navigation.navigate('Calc')}
+              onPress = {()=>this.props.navigation.navigate('Calc')}
+            />
+            <Button
+              title = 'Permission'
+              onPress = {()=>this.props.navigation.navigate('Permission')}
+              onPress = {()=>this.props.navigation.navigate('Permission')}  
+            />
+          </View>
+        </View>  
+    );
+  }
+}
+
 // 잠금 해제시 인증번호 입력 화면
 class LoginScreen extends React.Component{
 
@@ -188,7 +227,7 @@ class LoginScreen extends React.Component{
     //비밀번호가 맞는지 확인하는 함수
     //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
-      this.props.navigation.navigate('Main');
+      this.props.navigation.navigate('Lobby');
       NativeModules.Block.stopService();
     }
     else{
@@ -217,6 +256,7 @@ class LoginScreen extends React.Component{
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
+              //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
           <View style={{flex: 0.4}}/>
@@ -260,7 +300,7 @@ class holidayScreen extends React.Component{
     if (this.inputPassword==this.state.password){
       ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
       NativeModules.Block.applyHoliday();
-      this.props.navigation.navigate('Main');
+      this.props.navigation.navigate('Lobby');
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -288,6 +328,7 @@ class holidayScreen extends React.Component{
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
+              //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
           <View style={{flex: 0.4}}/>
@@ -320,7 +361,7 @@ class PermissionScreen extends React.Component{
   setAccessibility = () =>{
     //권한을 요청하는 화면으로 이동시키는 함수.
     NativeModules.Block.setAccessibilityPermissions();
-    this.props.navigation.navigate('Main');
+    this.props.navigation.navigate('Lobby');
   }
 
   render(){
@@ -368,7 +409,7 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            //권한 요청 후 MainScreen으로 넘어감.
+            //권한 요청 후 LobbyScreen으로 넘어감.
             onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
@@ -381,7 +422,7 @@ class PermissionScreen extends React.Component{
 }
 
 // 권한 받은 후, 어플의 메인 화면
-class MainScreen extends React.Component {
+class LobbyScreen extends React.Component {
 
   // 상단의 toolbar 가리기
   static navigationOptions = {
@@ -433,7 +474,7 @@ class MainScreen extends React.Component {
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
         <Text 
           // 시계넣는공간
-          style={styles.contentsText}>
+          style={styles.clockText}>
           {clockTexts}
         </Text>
      </View>
@@ -447,7 +488,7 @@ class MainScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -456,12 +497,12 @@ class MainScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} >해제까지</Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 해제까지 </Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
@@ -479,7 +520,7 @@ class MainScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -488,12 +529,12 @@ class MainScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = Hours+":"+Minutes+":"+Seconds;
+        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} >해제까지</Text>
+        <Text style= {{color: 'white', fontSize: 23, alignSelf: 'flex-start', marginLeft: '15%', fontWeight: 'bold'}} > 해제까지 </Text>
         <Text 
           // 시계넣는공간
           style={styles.clockText}>
@@ -641,43 +682,7 @@ class CalcScreen extends React.Component {
       // datepicker의 placeholder를 사용하기 위해 수정. 
       startDay: "",
       endDay: "",
-      corporalPromotionitems: [
-        {
-            label: '2달 진급누락',
-            value: -2,
-        },
-        {
-            label: '1달 진급누락',
-            value: -1,
-        },
-        {
-            label: '정상진급',
-            value: 0,
-        },
-        {
-          label: '1달 조기진급',
-          value: 1,
-        },
-        {
-          label: '2달 조기진급',
-          value: 2,
-        },
-      ],
-      sgtPromotionitems : [
-        {
-            label: '1달 진급누락',
-            value: -1,
-        },
-        {
-            label: '정상진급',
-            value: 0,
-        },
-        {
-          label: '1달 조기진급',
-          value: 1,
-        },
-      ],
-      corporalPromotion: 0,
+      corporalPromotion: "C",
       sgtPromotion: 0
     };
 
@@ -696,11 +701,11 @@ class CalcScreen extends React.Component {
   static navigationOptions = {
     header: null ,
   };
-/*
+
   submitEdit= function(){
     this.setState({saving: this.inputText});
   }
-*/
+
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
@@ -742,21 +747,50 @@ class CalcScreen extends React.Component {
       this.allDays=allDay;
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
+      //this.Ddaymessage=result
       return result
     }
     else{
       var result = " "
+      //this.Ddaymessage=result
       return result
     }
 
   }
 
   showDialogAndroid = async () => {
-    const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
-    if (action === DialogAndroid.actionPositive) {
-      this.setState({saving: text})
-    }
+
+  const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
+  if (action === DialogAndroid.actionPositive) {
+    this.setState({saving: text})
   }
+    /*
+    const { selectedItem } = await DialogAndroid.showPicker('진급여부를 선택해주세요.', null, {
+      // positiveText: null, // if positiveText is null, then on select of item, it dismisses dialog
+      negativeText: 'Cancel',
+      type: DialogAndroid.listRadio,
+      selectedId: "C",
+      items: [
+          { label:'2달 진급누락', id:"A" },
+          { label:'1달 진급누락', id:"B" },
+          { label:'정상진급', id:"C" },
+          { label:'1달 정상진급', id:"D" },
+          { label:'2달 정상진급', id:"E" },
+      ]
+    });
+    if (selectedItem) {
+      var resultText = "Test";
+      for(var key in Object.keys(selectedItem)){
+        resultText += String(key) + typeof(selectedItem[key]);
+      }
+      
+      ToastExample.show(resultText, ToastExample.SHORT);
+      (selectedItem) => {this.setState({corporalPromotion:String(selectedItem[id])})}
+      // when negative button is clicked, selectedItem is not present, so it doesn't get here
+      //console.log('You picked:', selectedItem);
+    }*/
+  }
+
 
   render() {
     return (
@@ -879,43 +913,19 @@ class CalcScreen extends React.Component {
               <View style={{flexDirection: 'column', alignSelf: 'center'}}>
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
-              <View style={{alignSelf: 'center'}}>
-              <Text style={styles.contentsText}>상병 진급여부</Text>
-                <RNPickerSelect
-                    items={this.state.corporalPromotionitems}
-                    onValueChange={(value) => {
-                        this.setState({
-                          corporalPromotion: value,
-                        });
-                    }}
-                    style={{ ...pickerSelectStyles }}
-                    value={this.state.corporalPromotion}
-                />
-              <Text style={styles.contentsText}>병장 진급여부</Text>
-                <RNPickerSelect
-                    onOpen={() => { // 선택창이 열릴때
-                      Keyboard.dismiss(); //키보드 내림
-                    }}
-                    items={this.state.sgtPromotionitems}
-                    onValueChange={(value) => {
-                        this.setState({
-                          sgtPromotion: value,
-                        });
-                    }}
-                    style={{ ...pickerSelectStyles }}
-                    value={this.state.sgtPromotion}
-                />
-              </View>
-              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-              {
-                this.state.clicked
-                ? 
-                <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
-                  <Text style={styles.calWord}>확인</Text>
-                </TouchableOpacity>
-                : <Text style={styles.contentsText}> {this.state.sgtPromotion},{this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
-              }
-              </View>
+                <View style={{alignSelf: 'center'}}>
+                  
+                </View>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                {
+                  this.state.clicked
+                  ? 
+                  <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
+                    <Text style={styles.calWord}>확인</Text>
+                  </TouchableOpacity>
+                  : <Text style={styles.contentsText}> {this.state.corporalPromotion},{calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                }
+                </View>
             </View>
           </ImageBackground>
         </View>
@@ -925,14 +935,15 @@ class CalcScreen extends React.Component {
 
 const AppNavigator = createStackNavigator(
   {
+    Main: { screen: HomeScreen },
     UnlockCheck: { screen: LoginScreen },
     Permission: { screen: PermissionScreen },
     Calc: { screen: CalcScreen },
-    Main: { screen: MainScreen },
+    Lobby: { screen: LobbyScreen },
     Holiday: {screen: holidayScreen}
   },
   {
-    initialRouteName: "Main"
+    initialRouteName: "Lobby"
   }
 );
 
