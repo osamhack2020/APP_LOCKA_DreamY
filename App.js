@@ -929,7 +929,8 @@ class CalcScreen extends React.Component {
                 <View style={{alignSelf: 'center'}}>
                   <Picker
                     selectedValue={this.state.sgtPromotion}
-                    style={{ height: 50, width: 150 }}
+                    style={{ height: 50, width: 200 }}
+                    itemStyle={{ backgroundColor: "grey", color: "white", fontFamily:"Ebrima", fontSize:17 }}
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({sgtPromotion: Number(itemValue)})} 
                   >
@@ -942,7 +943,7 @@ class CalcScreen extends React.Component {
 
                   <Picker
                   selectedValue={this.state.language}
-                  style={{height: 50, width: 100}}
+                  style={{height: 50, width: 200}}
                   textStyle={{ fontSize:16, color: 'white'}}
                   onValueChange={(itemValue, itemIndex) =>
                     this.setState({language: itemValue})
