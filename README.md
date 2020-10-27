@@ -32,14 +32,7 @@
   -  UI framework
   -  react-native components
 
-### 💡 기능 설계 (Project design)
-
--   **앱 실행차단기능**
--   **앱 디자인**
--   **잠금해제코드나 NFC 인식기능**
--   **개인정비시간 설정**
--   **App 삭제방지기능**
--   **전역일, 월급 계산기능**
+### 💡 [기능 설계 (Project design)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
 
 
 ### 🗓Develop Schedule
@@ -48,7 +41,9 @@
 ![day](https://user-images.githubusercontent.com/67851701/95667787-b50d7700-0ba5-11eb-93ea-83a19fa00a8e.PNG)
 
 
+
 ## ⚙ [react-native environment setting and build files](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/how-to-setting-environment-and-build-files)
+
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
 
