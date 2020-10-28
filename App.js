@@ -775,6 +775,7 @@ class CalcScreen extends React.Component {
     //군생활 퍼센트를 문자열로 리턴
     var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
     var result = percent.concat("%");
+    this.setState({armyPercent: percent});
     return result
   }
 
