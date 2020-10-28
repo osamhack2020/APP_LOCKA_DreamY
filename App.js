@@ -939,10 +939,10 @@ class CalcScreen extends React.Component {
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
                 <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                  <View style={styles.calenderSet}>
-                    <Text style={styles.contentsText}>상병 진급 여부</Text>
+                  <View style={styles.pickerSet}>
+                    <Text style={{fontSize: 20, color: 'white', alignItems: 'center'}}>상병 진급 여부</Text>
                     <Picker
-                      style={{ height: 50, width: 190, color: "black", backgroundColor:'#A8DDA8'}}
+                      style={{ height: 50, width: 180, color: 'white'}}
                       onValueChange={(itemValue, itemIndex) =>
                         this.setState({sgtPromotion: Number(itemValue)})} 
                       selectedValue={String(this.state.sgtPromotion)}
@@ -954,10 +954,10 @@ class CalcScreen extends React.Component {
                       <Picker.Item label="2달 조기진급" value="2" />
                     </Picker>
                   </View>
-                  <View style={styles.calenderSet}>
-                    <Text style={styles.contentsText}>병장 진급 여부</Text>
+                  <View style={styles.pickerSet}>
+                    <Text style={{  fontSize: 20, color: 'white', alignItems: 'center'}}>병장 진급 여부</Text>
                     <Picker
-                      style={{height: 50, width: 190, color: 'black' ,backgroundColor:'#EFFAD3'}}
+                      style={{height: 50, width: 180, color: 'white'}}
                       //textStyle={{ fontSize:16, color: 'white'}}
                       onValueChange={(itemValue, itemIndex) =>
                         this.setState({corporalPromotion: Number(itemValue)})}
@@ -1248,7 +1248,17 @@ calenderSet:{
   borderColor: 'rgba(255,255,255,0)',
   borderRadius: 5,
   backgroundColor: 'rgba(80,188,223,0.3)',
-},   
+},
+pickerSet:{
+  flexDirection: 'column',
+  alignSelf: 'center',
+  margin: 5,
+  padding: 5,
+  borderWidth: 1,
+  borderColor: 'rgba(255,255,255,0)',
+  borderRadius: 5,
+  backgroundColor: 'rgba(192,96,161,0.3)',
+},
 dayofarmy:{
   color: 'white',
   fontWeight: 'bold',
