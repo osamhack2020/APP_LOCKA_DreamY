@@ -940,7 +940,9 @@ class CalcScreen extends React.Component {
               </View>
                 <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <View style={styles.pickerSet}>
-                    <Text style={{fontSize: 20, color: 'white', alignItems: 'center'}}>상병 진급 여부</Text>
+                    <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                      <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>상병 진급 여부</Text>
+                    </View>
                     <Picker
                       style={{ height: 50, width: 180, color: 'white'}}
                       onValueChange={(itemValue, itemIndex) =>
@@ -955,7 +957,9 @@ class CalcScreen extends React.Component {
                     </Picker>
                   </View>
                   <View style={styles.pickerSet}>
-                    <Text style={{  fontSize: 20, color: 'white', alignItems: 'center'}}>병장 진급 여부</Text>
+                    <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                      <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>병장 진급 여부</Text>
+                    </View>
                     <Picker
                       style={{height: 50, width: 180, color: 'white'}}
                       //textStyle={{ fontSize:16, color: 'white'}}
