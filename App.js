@@ -847,7 +847,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.state.armyPercent}
+                  percent={this.calcPercentInt}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
