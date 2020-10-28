@@ -742,10 +742,7 @@ class CalcScreen extends React.Component {
         },
       ],
       corporalPromotion: 0,
-      sgtPromotion: 0, 
-      armyPercent: 0,
-      renderedDday : "D-day",
-      renderedPercent : "0%"
+      sgtPromotion: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -757,6 +754,7 @@ class CalcScreen extends React.Component {
     this.inputText=0;
     this.dDays=540; //그냥 30*18
     this.allDays=540;
+    //this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
 
   static navigationOptions = {
@@ -806,20 +804,17 @@ class CalcScreen extends React.Component {
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
-
-      var percent = 100 - Math.round((betweenDay/allDay)*100)
-      this.setState({armyPercent: percent});
-
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
       //this.Ddaymessage=result
-      this.setState({renderedDday: result});
-      this.setState({renderedPercent: result});
+      return result
     }
     else{
       var result = " "
       //this.Ddaymessage=result
+      return result
     }
+
   }
 
   inputsavingAmount = async () => {
@@ -839,9 +834,7 @@ class CalcScreen extends React.Component {
 
   render() {
     return (
-        
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
-          {this.ddayCalculator(this.state.startDay, this.state.endDay)}
           <ImageBackground
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
@@ -852,15 +845,15 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.state.armyPercent}
+                  percent={this.calcPercentInt()}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
                   shadowColor="#b19cd9"
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
-                  <Text style={styles.contentsText}>{this.state.renderedDday}</Text>
-                  <Text style={styles.contentsText}>{this.state.renderedPercent}</Text>
+                  <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
@@ -957,11 +950,11 @@ class CalcScreen extends React.Component {
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 7}}>
+              <View style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
                   <Button title="적금액 입력" onPress={this.inputsavingAmount} />
                 </View>
-                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 7}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
                   <Button title="사용금액 입력" onPress={this.inputusedAmount} />
                 </View>
               </View>
