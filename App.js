@@ -768,7 +768,7 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
-    //this.setState({armyPercent: percent});
+    this.setState({armyPercent: percent});
     return percent
   }
   calcPercent=()=>{
@@ -847,7 +847,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.calcPercentInt()}
+                  percent={this.state.armyPercent}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
