@@ -94,7 +94,7 @@ else{
     sumOfMoney-=sumUsedMoney;
 }
   sumOfMoney=String(sumOfMoney);
-  var result = text1.concat(" ", sumOfMoney,"원을 받습니다.");
+  var result = text1.concat(" ", sumOfMoney,"원을 모을 수 있습니다.");
   return result
 }
 
@@ -951,8 +951,12 @@ class CalcScreen extends React.Component {
                 />
               </View>
               <View style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
-                <Button title="적금액 입력" onPress={this.inputsavingAmount} />
-                <Button title="사용금액 입력" onPress={this.inputusedAmount} />
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+                  <Button title="적금액 입력" onPress={this.inputsavingAmount} />
+                </View>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+                  <Button title="사용금액 입력" onPress={this.inputusedAmount} />
+                </View>
               </View>
               <View style={{flex: 0.15}}/>
               <View style={{flexDirection: 'row', alignSelf: 'center'}}>
