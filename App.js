@@ -768,7 +768,7 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
-    //this.setState({armyPercent: percent})
+    //this.setState({armyPercent: percent});
     return percent
   }
   calcPercent=()=>{
@@ -855,7 +855,7 @@ class CalcScreen extends React.Component {
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
                   <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-                  <Text style={styles.contentsText}>{String(this.calcPercentInt())}</Text>
+                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
