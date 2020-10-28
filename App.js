@@ -768,14 +768,12 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
-    this.setState({armyPercent: percent});
     return percent
   }
   calcPercent=()=>{
     //군생활 퍼센트를 문자열로 리턴
     var percent = String(100 - Math.round((this.dDays/this.allDays)*100));
     var result = percent.concat("%");
-    this.setState({armyPercent: percent});
     return result
   }
 
@@ -806,6 +804,9 @@ class CalcScreen extends React.Component {
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
+
+      var percent = 100 - Math.round((betweenDay/allDay)*100)
+      this.setState({armyPercent: percent});
 
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
