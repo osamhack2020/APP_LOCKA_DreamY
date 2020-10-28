@@ -29,6 +29,7 @@ anim catalyst_push_up_in
 anim catalyst_push_up_out
 anim catalyst_slide_down
 anim catalyst_slide_up
+anim decelerate_cubic
 anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
@@ -43,6 +44,8 @@ anim fragment_open_exit
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
+anim popup_enter
+anim popup_exit
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -475,9 +478,51 @@ attr maxActionInlineWidth
 attr maxButtonHeight
 attr maxCharacterCount
 attr maxImageSize
+attr md_background_color
+attr md_btn_negative_selector
+attr md_btn_neutral_selector
+attr md_btn_positive_selector
+attr md_btn_ripple_color
+attr md_btn_stacked_selector
+attr md_btnstacked_gravity
+attr md_buttons_gravity
+attr md_content_color
+attr md_content_gravity
+attr md_dark_theme
+attr md_divider
+attr md_divider_color
+attr md_icon
+attr md_icon_limit_icon_to_default_size
+attr md_icon_max_size
+attr md_item_color
+attr md_items_gravity
+attr md_link_color
+attr md_list_selector
+attr md_medium_font
+attr md_negative_color
+attr md_neutral_color
+attr md_positive_color
+attr md_reduce_padding_no_title_no_buttons
+attr md_regular_font
+attr md_title_color
+attr md_title_gravity
+attr md_widget_color
 attr measureWithLargestChild
 attr menu
 attr minTouchTargetSize
+attr mpb_determinateCircularProgressStyle
+attr mpb_indeterminateTint
+attr mpb_indeterminateTintMode
+attr mpb_progressBackgroundTint
+attr mpb_progressBackgroundTintMode
+attr mpb_progressStyle
+attr mpb_progressTint
+attr mpb_progressTintMode
+attr mpb_secondaryProgressTint
+attr mpb_secondaryProgressTintMode
+attr mpb_setBothDrawables
+attr mpb_showProgressBackground
+attr mpb_useIntrinsicPadding
 attr multiChoiceItemLayout
 attr navigationContentDescription
 attr navigationIcon
@@ -687,6 +732,7 @@ attr trackTintMode
 attr ttcIndex
 attr useCompatPadding
 attr useMaterialThemeColors
+attr useStockLayout
 attr viewAspectRatio
 attr viewInflaterClass
 attr voiceIcon
@@ -821,6 +867,13 @@ color material_on_primary_emphasis_medium
 color material_on_surface_disabled
 color material_on_surface_emphasis_high_type
 color material_on_surface_emphasis_medium
+color md_btn_selected
+color md_btn_selected_dark
+color md_divider_black
+color md_divider_white
+color md_edittext_error
+color md_material_blue_600
+color md_material_blue_800
 color mtrl_bottom_nav_colored_item_tint
 color mtrl_bottom_nav_colored_ripple_color
 color mtrl_bottom_nav_item_tint
@@ -982,6 +1035,7 @@ dimen appcompat_dialog_background_inset
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
+dimen circular_progress_border
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -1056,6 +1110,48 @@ dimen material_emphasis_high_type
 dimen material_emphasis_medium
 dimen material_text_view_test_line_height
 dimen material_text_view_test_line_height_override
+dimen md_action_corner_radius
+dimen md_bg_corner_radius
+dimen md_button_frame_vertical_padding
+dimen md_button_height
+dimen md_button_inset_horizontal
+dimen md_button_inset_vertical
+dimen md_button_min_width
+dimen md_button_padding_frame_side
+dimen md_button_padding_horizontal
+dimen md_button_padding_horizontal_internalexternal
+dimen md_button_padding_vertical
+dimen md_button_textpadding_horizontal
+dimen md_button_textsize
+dimen md_colorchooser_circlesize
+dimen md_content_padding_bottom
+dimen md_content_padding_top
+dimen md_content_textsize
+dimen md_dialog_frame_margin
+dimen md_dialog_horizontal_margin
+dimen md_dialog_max_width
+dimen md_dialog_vertical_margin
+dimen md_divider_height
+dimen md_icon_margin
+dimen md_icon_max_size
+dimen md_listitem_control_margin
+dimen md_listitem_height
+dimen md_listitem_margin_left
+dimen md_listitem_textsize
+dimen md_listitem_vertical_margin
+dimen md_listitem_vertical_margin_choice
+dimen md_neutral_button_margin
+dimen md_notitle_vertical_padding
+dimen md_notitle_vertical_padding_more
+dimen md_preference_content_inset
+dimen md_simpleitem_height
+dimen md_simplelist_icon
+dimen md_simplelist_icon_margin
+dimen md_simplelist_textsize
+dimen md_simplelistitem_padding_top
+dimen md_title_frame_margin_bottom
+dimen md_title_frame_margin_bottom_less
+dimen md_title_textsize
 dimen mtrl_alert_dialog_background_inset_bottom
 dimen mtrl_alert_dialog_background_inset_end
 dimen mtrl_alert_dialog_background_inset_start
@@ -1327,6 +1423,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable gray_circle
 drawable ic_calendar_black_24dp
 drawable ic_clear_black_24dp
 drawable ic_edit_black_24dp
@@ -1350,6 +1447,19 @@ drawable images_rokamark
 drawable images_setting
 drawable images_simple_background
 drawable images_unlockbutton
+drawable md_btn_selected
+drawable md_btn_selected_dark
+drawable md_btn_selector
+drawable md_btn_selector_dark
+drawable md_btn_selector_ripple
+drawable md_btn_selector_ripple_dark
+drawable md_btn_shape
+drawable md_item_selected
+drawable md_item_selected_dark
+drawable md_nav_back
+drawable md_selector
+drawable md_selector_dark
+drawable md_transparent
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1470,6 +1580,7 @@ id checked
 id chip
 id chip_group
 id chronometer
+id circular
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -1493,6 +1604,7 @@ id design_navigation_view
 id dialog_button
 id disableHome
 id dropdown_menu
+id dynamic
 id edit_query
 id end
 id enterAlways
@@ -1524,6 +1636,7 @@ id group_divider
 id hideable
 id home
 id homeAsUp
+id horizontal
 id icon
 id icon_group
 id ifRoom
@@ -1539,6 +1652,38 @@ id line3
 id listMode
 id list_item
 id masked
+id md_buttonDefaultNegative
+id md_buttonDefaultNeutral
+id md_buttonDefaultPositive
+id md_colorA
+id md_colorALabel
+id md_colorAValue
+id md_colorB
+id md_colorBLabel
+id md_colorBValue
+id md_colorChooserCustomFrame
+id md_colorG
+id md_colorGLabel
+id md_colorGValue
+id md_colorIndicator
+id md_colorR
+id md_colorRLabel
+id md_colorRValue
+id md_content
+id md_contentListViewFrame
+id md_contentRecyclerView
+id md_contentScrollView
+id md_control
+id md_customViewFrame
+id md_grid
+id md_hexInput
+id md_icon
+id md_label
+id md_minMax
+id md_promptCheckbox
+id md_root
+id md_title
+id md_titleFrame
 id message
 id middle
 id mini
@@ -1770,6 +1915,31 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dev_loading_view
 layout fps_view
+layout md_dialog_basic
+layout md_dialog_basic_check
+layout md_dialog_colorchooser
+layout md_dialog_custom
+layout md_dialog_input
+layout md_dialog_input_check
+layout md_dialog_list
+layout md_dialog_list_check
+layout md_dialog_progress
+layout md_dialog_progress_indeterminate
+layout md_dialog_progress_indeterminate_horizontal
+layout md_listitem
+layout md_listitem_multichoice
+layout md_listitem_singlechoice
+layout md_preference_custom
+layout md_simplelist_item
+layout md_stub_actionbuttons
+layout md_stub_colorchooser_custom
+layout md_stub_colorchooser_grid
+layout md_stub_inputpref
+layout md_stub_progress
+layout md_stub_progress_indeterminate
+layout md_stub_progress_indeterminate_horizontal
+layout md_stub_titleframe
+layout md_stub_titleframe_lesspadding
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -1903,6 +2073,14 @@ string icon_content_description
 string image_description
 string imagebutton_description
 string link_description
+string md_back_label
+string md_cancel_label
+string md_choose_label
+string md_custom_label
+string md_done_label
+string md_error_label
+string md_presets_label
+string md_storage_perm_error
 string menu_description
 string menubar_description
 string menuitem_description
@@ -1940,6 +2118,7 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
+string new_folder
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -2192,6 +2371,12 @@ style ClockTimePickerStyle
 style DialogAnimationFade
 style DialogAnimationSlide
 style EmptyTheme
+style MD_ActionButton
+style MD_ActionButton_Text
+style MD_ActionButtonStacked
+style MD_Dark
+style MD_Light
+style MD_WindowAnimation
 style MaterialAlertDialog_MaterialComponents
 style MaterialAlertDialog_MaterialComponents_Body_Text
 style MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar
@@ -2654,6 +2839,14 @@ style Widget_MaterialComponents_Toolbar
 style Widget_MaterialComponents_Toolbar_Primary
 style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
+style Widget_MaterialProgressBar_ProgressBar
+style Widget_MaterialProgressBar_ProgressBar_Horizontal
+style Widget_MaterialProgressBar_ProgressBar_Horizontal_NoPadding
+style Widget_MaterialProgressBar_ProgressBar_Large
+style Widget_MaterialProgressBar_ProgressBar_Large_NoPadding
+style Widget_MaterialProgressBar_ProgressBar_NoPadding
+style Widget_MaterialProgressBar_ProgressBar_Small
+style Widget_MaterialProgressBar_ProgressBar_Small_NoPadding
 style Widget_Support_CoordinatorLayout
 style redboxButton
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
@@ -2705,6 +2898,7 @@ styleable GradientColorItem android_color android_offset
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
+styleable MDRootLayout md_reduce_padding_no_title_no_buttons
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop
 styleable MaterialAlertDialogTheme materialAlertDialogBodyTextStyle materialAlertDialogTheme materialAlertDialogTitleIconStyle materialAlertDialogTitlePanelStyle materialAlertDialogTitleTextStyle
 styleable MaterialButton android_insetLeft android_insetRight android_insetTop android_insetBottom android_checkable backgroundTint backgroundTintMode cornerRadius elevation icon iconGravity iconPadding iconSize iconTint iconTintMode rippleColor shapeAppearance shapeAppearanceOverlay strokeColor strokeWidth
@@ -2713,6 +2907,7 @@ styleable MaterialCalendar android_windowFullscreen dayInvalidStyle daySelectedS
 styleable MaterialCalendarItem android_insetLeft android_insetRight android_insetTop android_insetBottom itemFillColor itemShapeAppearance itemShapeAppearanceOverlay itemStrokeColor itemStrokeWidth itemTextColor
 styleable MaterialCardView android_checkable cardForegroundColor checkedIcon checkedIconTint rippleColor shapeAppearance shapeAppearanceOverlay state_dragged strokeColor strokeWidth
 styleable MaterialCheckBox buttonTint useMaterialThemeColors
+styleable MaterialProgressBar mpb_determinateCircularProgressStyle mpb_indeterminateTint mpb_indeterminateTintMode mpb_progressBackgroundTint mpb_progressBackgroundTintMode mpb_progressStyle mpb_progressTint mpb_progressTintMode mpb_secondaryProgressTint mpb_secondaryProgressTintMode mpb_setBothDrawables mpb_showProgressBackground mpb_useIntrinsicPadding
 styleable MaterialRadioButton useMaterialThemeColors
 styleable MaterialShape shapeAppearance shapeAppearanceOverlay
 styleable MaterialTextAppearance android_lineHeight lineHeight
@@ -2723,6 +2918,7 @@ styleable MenuView android_windowAnimationStyle android_itemTextAppearance andro
 styleable NavigationView android_background android_fitsSystemWindows android_maxWidth elevation headerLayout itemBackground itemHorizontalPadding itemIconPadding itemIconSize itemIconTint itemMaxLines itemShapeAppearance itemShapeAppearanceOverlay itemShapeFillColor itemShapeInsetBottom itemShapeInsetEnd itemShapeInsetStart itemShapeInsetTop itemTextAppearance itemTextColor menu
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
+styleable Preference useStockLayout
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
 styleable RecyclerView android_orientation android_clipToPadding android_descendantFocusability fastScrollEnabled fastScrollHorizontalThumbDrawable fastScrollHorizontalTrackDrawable fastScrollVerticalThumbDrawable fastScrollVerticalTrackDrawable layoutManager reverseLayout spanCount stackFromEnd
 styleable ScrimInsetsFrameLayout insetForeground

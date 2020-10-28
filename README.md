@@ -3,50 +3,49 @@
 ### 🚀 What is LOCKA Project?
 [스마트폰 비대면 반납 + 군인 월급계산 프로젝트](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Overview)
 
+
+### 👨🏿‍🤝‍👨🏼팀 정보 (Team Information)
 ![teamIcon](https://user-images.githubusercontent.com/18081105/96840798-e6c7ed00-1485-11eb-8d42-62cf4a29b24a.jpg)
 
 > * [정강희](https://github.com/vesselofgod)
 > * [유영서](https://github.com/7dudtj)
 
 
-### ⚡️ How to install and test
+### ⚡️ 설치 안내 (Installation Process)
 1. download [apk file](https://github.com/osamhack2020/APP_LOCKA_DreamY/raw/master/android/app/build/outputs/apk/debug/app-debug.apk) in your phone
 2. install app using apk file
 3. run downloaded app
 
-### 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+### ✅ 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
  - Android 9(sdk level 28) 이상
 
-### 기술 스택 (Technique Used)
-### Server(back-end)
- - java
- - XML
- 
-![Untitled Diagram (1)](https://user-images.githubusercontent.com/18081105/96946704-14f80c00-151c-11eb-9d30-f5ddf3af9041.png)
- 
-### front-end
- -  react.js
- -  kavascript
- -  UI framework
- -  react-native components
+### ⚙ 기술 스택 (Technique Used)
+ ### Server(back-end)
+  - java
+  - XML
+
+ ![Untitled Diagram (1)](https://user-images.githubusercontent.com/18081105/96946704-14f80c00-151c-11eb-9d30-f5ddf3af9041.png)
+
+ ### front-end
+  -  react.js
+  -  Javascript
+  -  UI framework
+  -  react-native components
+
+### 💡 [기능 설계 (Project design)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
+
 
 ### 🗓Develop Schedule
-Due date : 10/31(Saturday)
 
 ![image](https://user-images.githubusercontent.com/18081105/94388617-8eecdd80-0188-11eb-9f93-b1c2469cd182.png)
 ![day](https://user-images.githubusercontent.com/67851701/95667787-b50d7700-0ba5-11eb-93ea-83a19fa00a8e.PNG)
-### 💡 Project design
 
--   **앱 실행차단기능**
--   **앱 디자인**
--   **잠금해제코드나 NFC 인식기능**
--   **개인정비시간 설정**
--   **App 삭제방지기능**
--   **전역일, 월급 계산기능**
+
 
 ## ⚙ [react-native environment setting and build files](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/how-to-setting-environment-and-build-files)
 
-## License
+
+## 저작권 및 사용권 정보 (Copyleft / End User License)
 
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 

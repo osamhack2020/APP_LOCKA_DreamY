@@ -16,6 +16,12 @@ import { StyleSheet, NativeModules, SafeAreaView, Text, View, Image,
   import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-datepicker';
 import ToastExample from './ToastExample';
+import DialogAndroid from 'react-native-dialogs';
+import RNPickerSelect from 'react-native-picker-select';
+import {Picker} from '@react-native-picker/picker';
+
+
+
 
 //import Block from './Block';
 
@@ -40,10 +46,18 @@ renderBlockState = () => {
   return renderingText;
 }
 
-calcSalary = (selectMilitary, Savings) => {
+calcSalary = (selectMilitary, Savings, corpProm ,sgtProm, usedMoney) => {
   //월급계산하는 함수
   //selectMilitary: 0:육군 1:해군 2:공군 3:해병대
   //Savings: 한달에 넣는 적금
+  var firstMonth = 6;
+  var corpMonth = 6;
+  var armysgtMonth = 4;
+  var airforcesgtMonth = 7;
+  var navysgtMonth=6;
+
+  firstMonth -= corpProm;
+  corpMonth -=sgtProm;
 
   let sumOfMoney = 0;
   let savingMoney = 0;
@@ -53,22 +67,34 @@ calcSalary = (selectMilitary, Savings) => {
   let sergeantSalary = 540900;
   let text1 = '총';
   if (selectMilitary==0 || selectMilitary==3){
-    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*4);
+    //육군, 해병대 월급 총액
+    var sumUsedMoney = usedMoney * 18;
+    armysgtMonth += (corpProm + sgtProm);
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*firstMonth) + (corporalSalary*corpMonth) + (sergeantSalary*armysgtMonth);
     savingMoney = (Savings*18) * ((0.05*19)/24);
     sumOfMoney+=savingMoney;
+    sumOfMoney-=sumUsedMoney;
   }
   else if(selectMilitary == 1){
-    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*6);
+    //해군 월급 총액
+    var sumUsedMoney = usedMoney * 20;
+    navysgtMonth += (corpProm + sgtProm);
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*firstMonth) + (corporalSalary*corpMonth) + (sergeantSalary*navysgtMonth);
     savingMoney = (Savings*20) * ((0.05*21)/24);
     sumOfMoney+=savingMoney;
+    sumOfMoney-=sumUsedMoney;
 }
 else{
-    sumOfMoney=(privateSalary*2) + (firstprivateSalary*6) + (corporalSalary*6) + (sergeantSalary*7);
+  //공군 월급 총액
+  var sumUsedMoney = usedMoney * 21;
+    airforcesgtMonth += (corpProm + sgtProm);
+    sumOfMoney=(privateSalary*2) + (firstprivateSalary*firstMonth) + (corporalSalary*corpMonth) + (sergeantSalary*airforcesgtMonth);
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
+    sumOfMoney-=sumUsedMoney;
 }
   sumOfMoney=String(sumOfMoney);
-  var result = text1.concat(" ", sumOfMoney," 을 받습니다.");
+  var result = text1.concat(" ", sumOfMoney,"원을 모을 수 있습니다.");
   return result
 }
 
@@ -110,18 +136,19 @@ renderDayofweek = (Dayofweek) => {
       <Text style={styles.weekdays}>금</Text>
       <Text style={styles.satday}>토</Text>
       <Text style={styles.sunday}>일</Text>
-  </View>
+    </View>
   }
   else if(Dayofweek == 3){
-    <View style={styles.daysGroup}>
-      <Text style={styles.weekdays}>월</Text>
-      <Text style={styles.weekdays}>화</Text>
-      <Text style={styles.todayText}>수</Text>
-      <Text style={styles.weekdays}>목</Text>
-      <Text style={styles.weekdays}>금</Text>
-      <Text style={styles.satday}>토</Text>
-      <Text style={styles.sunday}>일</Text>
-    </View>
+    renderingText = 
+      <View style={styles.daysGroup}>
+        <Text style={styles.weekdays}>월</Text>
+        <Text style={styles.weekdays}>화</Text>
+        <Text style={styles.todayText}>수</Text>
+        <Text style={styles.weekdays}>목</Text>
+        <Text style={styles.weekdays}>금</Text>
+        <Text style={styles.satday}>토</Text>
+        <Text style={styles.sunday}>일</Text>
+      </View>
   }
   else if(Dayofweek == 4){
     renderingText = 
@@ -318,7 +345,7 @@ class holidayScreen extends React.Component{
           </View>
           <View style={{flex: 2.4, alignItems: 'center',justifyContent: 'flex-end'}}>
             <Text style={{color: 'white', fontWeight: 'bold',fontSize: 20, marginBottom: 10}}>
-              일시해제코드(전투휴무/공휴일 등)를 입력해주세요
+              일시해제코드를 입력해주세요
             </Text>
           </View>
           <View style={styles.codeSec}>
@@ -471,7 +498,7 @@ class LobbyScreen extends React.Component {
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
         <Text 
           // 시계넣는공간
-          style={styles.clockText}>
+          style={{  color: 'white', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>
           {clockTexts}
         </Text>
      </View>
@@ -485,7 +512,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -494,7 +521,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
@@ -517,7 +544,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
       else{
         //오전시간
@@ -526,7 +553,7 @@ class LobbyScreen extends React.Component {
         var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
         var Minutes = String(Math.floor((betweenTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
         var Seconds = String(Math.floor((betweenTime % (1000 * 60)) / 1000)).padStart(2, "0");
-        clockTexts = "해제까지 "+Hours+":"+Minutes+":"+Seconds;
+        clockTexts = Hours+":"+Minutes+":"+Seconds;
       }
 
       result = 
@@ -580,9 +607,7 @@ class LobbyScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.7}}/>
-          
-          {this.clockrender(this.state.d.getDay())}
-
+            {this.clockrender(this.state.d.getDay())}
           <View style={{flex: 0.1}}/>
             {renderDayofweek(this.state.d.getDay())}
           <View style={{flex: 0.3}}/>
@@ -674,10 +699,50 @@ class CalcScreen extends React.Component {
     this.state = { 
       clicked: true,
       saving: 0,
+      usedAmount: 0,
       selectArmy: 0,
       date: "2020-10-22",
-      startDay: " ",
-      endDay: " ",
+      // datepicker의 placeholder를 사용하기 위해 수정. 
+      startDay: "",
+      endDay: "",
+      corporalPromotionitems: [
+        {
+            label: '2달 진급누락',
+            value: -2,
+        },
+        {
+            label: '1달 진급누락',
+            value: -1,
+        },
+        {
+            label: '정상진급',
+            value: 0,
+        },
+        {
+          label: '1달 조기진급',
+          value: 1,
+        },
+        {
+          label: '2달 조기진급',
+          value: 2,
+        },
+      ],
+      sgtPromotionitems : [
+        {
+            label: '1달 진급누락',
+            value: -1,
+        },
+        {
+            label: '정상진급',
+            value: 0,
+        },
+        {
+          label: '1달 조기진급',
+          value: 1,
+        },
+      ],
+      corporalPromotion: 0,
+      sgtPromotion: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -739,7 +804,6 @@ class CalcScreen extends React.Component {
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
-      
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
       //this.Ddaymessage=result
@@ -753,6 +817,21 @@ class CalcScreen extends React.Component {
 
   }
 
+  inputsavingAmount = async () => {
+    const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
+    if (action === DialogAndroid.actionPositive) {
+      this.setState({saving: text})
+    }
+  }
+
+  inputusedAmount = async () => {
+    const { action, text } = await DialogAndroid.prompt('1달에 사용하는 평균금액을 입력하세요', 'ex) 200000');
+    if (action === DialogAndroid.actionPositive) {
+      this.setState({usedAmount: text})
+    }
+  }
+
+
   render() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
@@ -760,7 +839,7 @@ class CalcScreen extends React.Component {
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
             <View style={styles.ddayCalc}>
-              <Text style={styles.contentsText}>전역일 계산기</Text>
+              <Text style={styles.calcTitle}>전역일 계산기</Text>
               <View 
               // progressBar가 담기는 뷰
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
@@ -773,10 +852,8 @@ class CalcScreen extends React.Component {
                   shadowColor="#b19cd9"
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
-                  <Text style={{fontSize: 20, color: 'white'}}>
-                    {this.calcPercent()}
-                  </Text>
                   <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
+                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
@@ -788,10 +865,10 @@ class CalcScreen extends React.Component {
                   </View>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <DatePicker
-                    style={{width: 200}}
+                    style={{width: 160}}
                     date={this.state.startDay}
                     mode="date"
-                    placeholder="2020-04-06"
+                    placeholder="입대일을 입력해주세요"
                     format="YYYY-MM-DD"
                     minDate="2019-01-01"
                     maxDate="2099-12-31"
@@ -799,10 +876,8 @@ class CalcScreen extends React.Component {
                     cancelBtnText="Cancel"
                     customStyles={{
                       dateIcon: {
-                        position: 'absolute',
-                        left: 28,
-                        top: 4,
-                        marginLeft: 0
+                       width: 0,
+                       height: 0,
                       },
                       dateInput: {
                         marginLeft: 0,
@@ -827,10 +902,10 @@ class CalcScreen extends React.Component {
                   </View>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                   <DatePicker
-                    style={{width: 200}}
+                    style={{width: 160}}
                     date={this.state.endDay}
                     mode="date"
-                    placeholder="pick a day"
+                    placeholder="전역일을 입력해주세요"
                     format="YYYY-MM-DD"
                     minDate="2020-01-01"
                     maxDate="2099-12-31"
@@ -838,10 +913,8 @@ class CalcScreen extends React.Component {
                     cancelBtnText="Cancel"
                     customStyles={{
                       dateIcon: {
-                        position: 'absolute',
-                        left: 28,
-                        top: 4,
-                        marginLeft: 0
+                       width: 0,
+                       height: 0,
                       },
                       dateInput: {
                         marginLeft: 0,
@@ -863,8 +936,8 @@ class CalcScreen extends React.Component {
               </View>
             </View>
             <View style={styles.salaryCalc}>
-              <Text style={styles.contentsText}>월급 계산기</Text>
-              <View style={{justifyContent: 'center', alignItems: 'center',  flexDirection: 'row'/*flexDirection: 'row', margin: 20, backgroundColor: 'rgba(0,0,255,0.1)'*/}}>
+              <Text style={styles.calcTitle}>월급 계산기</Text>
+              <View style={{alignSelf: 'center',  flexDirection: 'row', margin: 5}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
                   radio_props={radio_props}
@@ -872,23 +945,64 @@ class CalcScreen extends React.Component {
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'white'}
                   selectedLabelColor={'white'}
-                  labelStyle={{fontSize:12}}
+                  labelStyle={{fontSize:12, color: '#50bcdf'}}
                   formHorizontal={true}
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <Text style={styles.contentsText}>적금/월  </Text>
-                <TextInput style={styles.chatInput} 
-                  onChangeText={this.changeSaving}
-                  onSubmitEditing={this.submitEdit.bind(this)}
-                />
+              <View style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+                  <Button title="적금액 입력" onPress={this.inputsavingAmount} />
+                </View>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+                  <Button title="사용금액 입력" onPress={this.inputusedAmount} />
+                </View>
               </View>
-              <View style={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,255,0.1)' }}>
+              <View style={{flex: 0.15}}/>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <View style={styles.pickerSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>상병 진급 여부</Text>
+                  </View>
+                  <Picker
+                    style={{ height: 50, width: 180, color: 'white'}}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({sgtPromotion: Number(itemValue)})} 
+                    selectedValue={String(this.state.sgtPromotion)}
+                  >
+                    <Picker.Item label="2달 진급누락" value = "-2"/>
+                    <Picker.Item label="1달 진급누락" value="-1" />
+                    <Picker.Item label="정상진급" value="0" />
+                    <Picker.Item label="1달 조기진급" value="1" />
+                    <Picker.Item label="2달 조기진급" value="2" />
+                  </Picker>
+                </View>
+                <View style={styles.pickerSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>병장 진급 여부</Text>
+                  </View>
+                  <Picker
+                    style={{height: 50, width: 180, color: 'white'}}
+                    //textStyle={{ fontSize:16, color: 'white'}}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({corporalPromotion: Number(itemValue)})}
+                    selectedValue={String(this.state.corporalPromotion)}
+                  >
+                    <Picker.Item label="1달 진급누락" value="-1" />
+                    <Picker.Item label="정상진급" value="0" />
+                    <Picker.Item label="1달 조기진급" value="1" />
+                  </Picker>
+                </View>
+              </View>
+              <View style={{flex: 0.4}}/>
+              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
               {
                 this.state.clicked
-                ? <Button title = "확인" onPress = {this.clickBtn} />
-                : <Text style={styles.contentsText}> {calcSalary(this.state.selectArmy, Number(this.state.saving))} </Text>
+                ? 
+                <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
+                  <Text style={styles.calWord}>확인</Text>
+                </TouchableOpacity>
+                : <Text style={styles.contentsText}>{calcSalary(this.state.selectArmy, Number(this.state.saving),this.state.corporalPromotion,this.state.sgtPromotion, this.state.usedAmount)} </Text>
               }
               </View>
             </View>
@@ -918,7 +1032,7 @@ export default createAppContainer(AppNavigator);
 const styles = StyleSheet.create({
 container: {
   flex:1,
-  backgroundColor: 'white',
+  backgroundColor: "#000038",
   justifyContent: 'center',
 },
 newContainer: {
@@ -1154,11 +1268,51 @@ calenderGroup:{
 calenderSet:{
   flexDirection: 'column',
   alignSelf: 'center',
-  margin: 3,
-},   
+  margin: 5,
+  padding: 5,
+  borderWidth: 1,
+  borderColor: 'rgba(255,255,255,0)',
+  borderRadius: 5,
+  backgroundColor: 'rgba(80,188,223,0.3)',
+},
+pickerSet:{
+  flexDirection: 'column',
+  alignSelf: 'center',
+  margin: 5,
+  padding: 5,
+  borderWidth: 1,
+  borderColor: 'rgba(255,255,255,0)',
+  borderRadius: 5,
+  backgroundColor: 'rgba(192,96,161,0.3)',
+},
 dayofarmy:{
   color: 'white',
   fontWeight: 'bold',
-  fontSize: 15,
+  fontSize: 17,
+},  
+calcTitle: {
+  flexDirection: 'row',
+  alignSelf: 'center',
+  fontSize: 25,
+  color: 'white',
+  fontWeight: 'bold',
+  margin: 10,
+},
+calBtn:{
+  backgroundColor: 'white',
+  padding: 5,
+  margin: 5,
+  width: '30%',
+  height: 40,
+  borderRadius: 20,
+  alignItems: 'center', 
+  justifyContent: 'center',
+  flexDirection: 'row',
+  alignSelf: 'center',
+},
+calWord:{
+  color: 'black',
+  fontWeight: 'bold',
+  fontSize: 20,
 },  
 });
