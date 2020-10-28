@@ -939,21 +939,23 @@ class CalcScreen extends React.Component {
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
                 <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                  <View style={{alignSelf: 'center', flexDirection: 'row', margin: 5,  padding: 5}}>
+                  <View style={styles.calenderSet}>
+                    <Text style={styles.contentsText}>상병 진급 여부</Text>
                     <Picker
                       style={{ height: 50, width: 190, color: "black", backgroundColor:'#A8DDA8'}}
                       onValueChange={(itemValue, itemIndex) =>
                         this.setState({sgtPromotion: Number(itemValue)})} 
                       selectedValue={String(this.state.sgtPromotion)}
                     >
-                      <Picker.Item label="(상병)2달 진급누락" value = "-2"/>
-                      <Picker.Item label="(상병)1달 진급누락" value="-1" />
-                      <Picker.Item label="(상병)정상진급" value="0" />
-                      <Picker.Item label="(상병)1달 조기진급" value="1" />
-                      <Picker.Item label="(상병)2달 조기진급" value="2" />
+                      <Picker.Item label="2달 진급누락" value = "-2"/>
+                      <Picker.Item label="1달 진급누락" value="-1" />
+                      <Picker.Item label="정상진급" value="0" />
+                      <Picker.Item label="1달 조기진급" value="1" />
+                      <Picker.Item label="2달 조기진급" value="2" />
                     </Picker>
                   </View>
-                  <View style={{alignSelf: 'center', flexDirection: 'row', margin: 5,  padding: 5,}}>
+                  <View style={styles.calenderSet}>
+                    <Text style={styles.contentsText}>병장 진급 여부</Text>
                     <Picker
                       style={{height: 50, width: 190, color: 'black' ,backgroundColor:'#EFFAD3'}}
                       //textStyle={{ fontSize:16, color: 'white'}}
@@ -961,9 +963,9 @@ class CalcScreen extends React.Component {
                         this.setState({corporalPromotion: Number(itemValue)})}
                       selectedValue={String(this.state.corporalPromotion)}
                     >
-                      <Picker.Item label="(병장)1달 진급누락" value="-1" />
-                      <Picker.Item label="(병장)정상진급" value="0" />
-                      <Picker.Item label="(병장)1달 조기진급" value="1" />
+                      <Picker.Item label="1달 진급누락" value="-1" />
+                      <Picker.Item label="정상진급" value="0" />
+                      <Picker.Item label="1달 조기진급" value="1" />
                     </Picker>
                   </View>
                 </View>
