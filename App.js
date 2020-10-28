@@ -128,18 +128,19 @@ renderDayofweek = (Dayofweek) => {
       <Text style={styles.weekdays}>금</Text>
       <Text style={styles.satday}>토</Text>
       <Text style={styles.sunday}>일</Text>
-  </View>
+    </View>
   }
   else if(Dayofweek == 3){
-    <View style={styles.daysGroup}>
-      <Text style={styles.weekdays}>월</Text>
-      <Text style={styles.weekdays}>화</Text>
-      <Text style={styles.todayText}>수</Text>
-      <Text style={styles.weekdays}>목</Text>
-      <Text style={styles.weekdays}>금</Text>
-      <Text style={styles.satday}>토</Text>
-      <Text style={styles.sunday}>일</Text>
-    </View>
+    renderingText = 
+      <View style={styles.daysGroup}>
+        <Text style={styles.weekdays}>월</Text>
+        <Text style={styles.weekdays}>화</Text>
+        <Text style={styles.todayText}>수</Text>
+        <Text style={styles.weekdays}>목</Text>
+        <Text style={styles.weekdays}>금</Text>
+        <Text style={styles.satday}>토</Text>
+        <Text style={styles.sunday}>일</Text>
+      </View>
   }
   else if(Dayofweek == 4){
     renderingText = 
@@ -598,9 +599,7 @@ class LobbyScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 0.7}}/>
-          
-          {this.clockrender(this.state.d.getDay())}
-
+            {this.clockrender(this.state.d.getDay())}
           <View style={{flex: 0.1}}/>
             {renderDayofweek(this.state.d.getDay())}
           <View style={{flex: 0.3}}/>
@@ -938,51 +937,53 @@ class CalcScreen extends React.Component {
               <View style={{flexDirection: 'column', alignSelf: 'center'}}>
                 <Button title="적금입력" onPress={this.showDialogAndroid} />
               </View>
-                <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                  <View style={styles.pickerSet}>
-                    <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                      <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>상병 진급 여부</Text>
-                    </View>
-                    <Picker
-                      style={{ height: 50, width: 180, color: 'white'}}
-                      onValueChange={(itemValue, itemIndex) =>
-                        this.setState({sgtPromotion: Number(itemValue)})} 
-                      selectedValue={String(this.state.sgtPromotion)}
-                    >
-                      <Picker.Item label="2달 진급누락" value = "-2"/>
-                      <Picker.Item label="1달 진급누락" value="-1" />
-                      <Picker.Item label="정상진급" value="0" />
-                      <Picker.Item label="1달 조기진급" value="1" />
-                      <Picker.Item label="2달 조기진급" value="2" />
-                    </Picker>
+              <View style={{flex: 0.1}}/>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <View style={styles.pickerSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>상병 진급 여부</Text>
                   </View>
-                  <View style={styles.pickerSet}>
-                    <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                      <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>병장 진급 여부</Text>
-                    </View>
-                    <Picker
-                      style={{height: 50, width: 180, color: 'white'}}
-                      //textStyle={{ fontSize:16, color: 'white'}}
-                      onValueChange={(itemValue, itemIndex) =>
-                        this.setState({corporalPromotion: Number(itemValue)})}
-                      selectedValue={String(this.state.corporalPromotion)}
-                    >
-                      <Picker.Item label="1달 진급누락" value="-1" />
-                      <Picker.Item label="정상진급" value="0" />
-                      <Picker.Item label="1달 조기진급" value="1" />
-                    </Picker>
+                  <Picker
+                    style={{ height: 50, width: 180, color: 'white'}}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({sgtPromotion: Number(itemValue)})} 
+                    selectedValue={String(this.state.sgtPromotion)}
+                  >
+                    <Picker.Item label="2달 진급누락" value = "-2"/>
+                    <Picker.Item label="1달 진급누락" value="-1" />
+                    <Picker.Item label="정상진급" value="0" />
+                    <Picker.Item label="1달 조기진급" value="1" />
+                    <Picker.Item label="2달 조기진급" value="2" />
+                  </Picker>
+                </View>
+                <View style={styles.pickerSet}>
+                  <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <Text style={{fontSize: 17, color: 'white', alignItems: 'center',fontWeight: 'bold'}}>병장 진급 여부</Text>
                   </View>
+                  <Picker
+                    style={{height: 50, width: 180, color: 'white'}}
+                    //textStyle={{ fontSize:16, color: 'white'}}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({corporalPromotion: Number(itemValue)})}
+                    selectedValue={String(this.state.corporalPromotion)}
+                  >
+                    <Picker.Item label="1달 진급누락" value="-1" />
+                    <Picker.Item label="정상진급" value="0" />
+                    <Picker.Item label="1달 조기진급" value="1" />
+                  </Picker>
                 </View>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                {
-                  this.state.clicked
-                  ? 
-                  <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
-                    <Text style={styles.calWord}>확인</Text>
-                  </TouchableOpacity>
-                  : <Text style={styles.contentsText}>{calcSalary(this.state.selectArmy, Number(this.state.saving),this.state.corporalPromotion,this.state.sgtPromotion)} </Text>
-                }
-                </View>
+              </View>
+              <View style={{flex: 0.3}}/>
+              <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+              {
+                this.state.clicked
+                ? 
+                <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
+                  <Text style={styles.calWord}>확인</Text>
+                </TouchableOpacity>
+                : <Text style={styles.contentsText}>{calcSalary(this.state.selectArmy, Number(this.state.saving),this.state.corporalPromotion,this.state.sgtPromotion)} </Text>
+              }
+              </View>
             </View>
           </ImageBackground>
         </View>
