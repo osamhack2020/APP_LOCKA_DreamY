@@ -847,7 +847,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.calcPercentInt}
+                  percent={this.calcPercentInt()}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
@@ -855,7 +855,7 @@ class CalcScreen extends React.Component {
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
                   <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-                  <Text style={styles.contentsText}>{String(this.calcPercentInt())}%</Text>
+                  <Text style={styles.contentsText}>{String(this.calcPercentInt())}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
