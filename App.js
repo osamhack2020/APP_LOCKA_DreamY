@@ -742,7 +742,8 @@ class CalcScreen extends React.Component {
         },
       ],
       corporalPromotion: 0,
-      sgtPromotion: 0
+      sgtPromotion: 0, 
+      armyPercent: 0, 
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -754,7 +755,6 @@ class CalcScreen extends React.Component {
     this.inputText=0;
     this.dDays=540; //그냥 30*18
     this.allDays=540;
-    //this.Ddaymessage="입대일과 전역일을 입력해주세요";
   }
 
   static navigationOptions = {
@@ -768,6 +768,7 @@ class CalcScreen extends React.Component {
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
     var percent = 100 - Math.round((this.dDays/this.allDays)*100);
+    this.setState({armyPercent: percent})
     return percent
   }
   calcPercent=()=>{
@@ -804,6 +805,7 @@ class CalcScreen extends React.Component {
       var allDay = Math.abs((startDateObj.getTime() - endDateObj.getTime())/1000/60/60/24);
       this.dDays= betweenDay;
       this.allDays=allDay;
+
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
       //this.Ddaymessage=result
@@ -845,7 +847,7 @@ class CalcScreen extends React.Component {
               style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
                 <ProgressCircle
                   radius={100}
-                  percent={this.calcPercentInt()}
+                  percent={this.state.armyPercent}
                   borderWidth={8}
                   bgColor="#000038"
                   color="#8b00ff"
@@ -853,7 +855,7 @@ class CalcScreen extends React.Component {
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
                   <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
+                  <Text style={styles.contentsText}>{String(this.calcPercentInt())}%</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
@@ -950,11 +952,11 @@ class CalcScreen extends React.Component {
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
-                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 7}}>
                   <Button title="적금액 입력" onPress={this.inputsavingAmount} />
                 </View>
-                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 7}}>
                   <Button title="사용금액 입력" onPress={this.inputusedAmount} />
                 </View>
               </View>
