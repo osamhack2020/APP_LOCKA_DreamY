@@ -940,7 +940,8 @@ class CalcScreen extends React.Component {
               </View>
                 <View style={{alignSelf: 'center'}}>
                   <Picker
-                    style={{ height: 50, width: 180, color: "white", backgroundColor:'#fff'}}
+                    placeholder="상병 진급"
+                    style={{ height: 50, width: 150, color: "black", backgroundColor:'#fff'}}
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({sgtPromotion: Number(itemValue)})} 
                     selectedValue={String(this.state.sgtPromotion)}
@@ -952,7 +953,8 @@ class CalcScreen extends React.Component {
                     <Picker.Item label="2달 조기진급" value="2" />
                   </Picker>
                   <Picker
-                    style={{height: 50, width: 180, color: 'black' ,backgroundColor:'#fff'}}
+                    placeholder="병장 진급"
+                    style={{height: 50, width: 150, color: 'black' ,backgroundColor:'#fff'}}
                     //textStyle={{ fontSize:16, color: 'white'}}
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({corporalPromotion: Number(itemValue)})}
