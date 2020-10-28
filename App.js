@@ -743,7 +743,7 @@ class CalcScreen extends React.Component {
       ],
       corporalPromotion: 0,
       sgtPromotion: 0, 
-      armyPercent: 0, 
+      armyPercent: 0
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
