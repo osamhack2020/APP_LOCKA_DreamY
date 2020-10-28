@@ -743,7 +743,9 @@ class CalcScreen extends React.Component {
       ],
       corporalPromotion: 0,
       sgtPromotion: 0, 
-      armyPercent: 0
+      armyPercent: 0,
+      renderedDday : "D-day",
+      renderedPercent : "0%"
     };
 
     //일반 맴버변수(사용자 입력값을 저장하는 변수.) 설명
@@ -811,14 +813,13 @@ class CalcScreen extends React.Component {
       var text1 = 'D-';
       var result = text1.concat(betweenDay);
       //this.Ddaymessage=result
-      return result
+      this.setState({renderedDday: result});
+      this.setState({renderedPercent: result});
     }
     else{
       var result = " "
       //this.Ddaymessage=result
-      return result
     }
-
   }
 
   inputsavingAmount = async () => {
@@ -838,7 +839,9 @@ class CalcScreen extends React.Component {
 
   render() {
     return (
+        
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#1e3269' }}>
+          {this.ddayCalculator(this.state.startDay, this.state.endDay)}
           <ImageBackground
             style={{width: '100%', height: '100%'}}
             source={require('./images/simple_background.jpg')}>
@@ -856,8 +859,8 @@ class CalcScreen extends React.Component {
                   shadowColor="#b19cd9"
                   style={{flexDirection: 'row', alignSelf: 'center'}}
                 >
-                  <Text style={styles.contentsText}>{this.ddayCalculator(this.state.startDay, this.state.endDay)}</Text>
-                  <Text style={styles.contentsText}>{this.calcPercent()}</Text>
+                  <Text style={styles.contentsText}>{this.state.renderedDday}</Text>
+                  <Text style={styles.contentsText}>{this.state.renderedPercent}</Text>
                 </ProgressCircle>
               </View>
               <View style={styles.calenderGroup}>
