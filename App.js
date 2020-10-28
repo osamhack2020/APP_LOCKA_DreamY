@@ -46,11 +46,10 @@ renderBlockState = () => {
   return renderingText;
 }
 
-calcSalary = (selectMilitary, Savings, corpProm ,sgtProm) => {
+calcSalary = (selectMilitary, Savings, corpProm ,sgtProm, usedMoney) => {
   //월급계산하는 함수
   //selectMilitary: 0:육군 1:해군 2:공군 3:해병대
   //Savings: 한달에 넣는 적금
-
   var firstMonth = 6;
   var corpMonth = 6;
   var armysgtMonth = 4;
@@ -68,22 +67,31 @@ calcSalary = (selectMilitary, Savings, corpProm ,sgtProm) => {
   let sergeantSalary = 540900;
   let text1 = '총';
   if (selectMilitary==0 || selectMilitary==3){
+    //육군, 해병대 월급 총액
+    var sumUsedMoney = usedMoney * 18;
     armysgtMonth += (corpProm + sgtProm);
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*firstMonth) + (corporalSalary*corpMonth) + (sergeantSalary*armysgtMonth);
     savingMoney = (Savings*18) * ((0.05*19)/24);
     sumOfMoney+=savingMoney;
+    sumOfMoney-=sumUsedMoney;
   }
   else if(selectMilitary == 1){
+    //해군 월급 총액
+    var sumUsedMoney = usedMoney * 20;
     navysgtMonth += (corpProm + sgtProm);
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*firstMonth) + (corporalSalary*corpMonth) + (sergeantSalary*navysgtMonth);
     savingMoney = (Savings*20) * ((0.05*21)/24);
     sumOfMoney+=savingMoney;
+    sumOfMoney-=sumUsedMoney;
 }
 else{
+  //공군 월급 총액
+  var sumUsedMoney = usedMoney * 21;
     airforcesgtMonth += (corpProm + sgtProm);
     sumOfMoney=(privateSalary*2) + (firstprivateSalary*firstMonth) + (corporalSalary*corpMonth) + (sergeantSalary*airforcesgtMonth);
     savingMoney = (Savings*21) * ((0.05*22)/24);
     sumOfMoney+=savingMoney;
+    sumOfMoney-=sumUsedMoney;
 }
   sumOfMoney=String(sumOfMoney);
   var result = text1.concat(" ", sumOfMoney,"원을 받습니다.");
@@ -691,6 +699,7 @@ class CalcScreen extends React.Component {
     this.state = { 
       clicked: true,
       saving: 0,
+      usedAmount: 0,
       selectArmy: 0,
       date: "2020-10-22",
       // datepicker의 placeholder를 사용하기 위해 수정. 
@@ -808,10 +817,17 @@ class CalcScreen extends React.Component {
 
   }
 
-  showDialogAndroid = async () => {
+  inputsavingAmount = async () => {
     const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
     if (action === DialogAndroid.actionPositive) {
       this.setState({saving: text})
+    }
+  }
+
+  inputusedAmount = async () => {
+    const { action, text } = await DialogAndroid.prompt('1달에 사용하는 평균금액을 입력하세요', 'ex) 200000');
+    if (action === DialogAndroid.actionPositive) {
+      this.setState({usedAmount: text})
     }
   }
 
@@ -934,10 +950,11 @@ class CalcScreen extends React.Component {
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'column', alignSelf: 'center'}}>
-                <Button title="적금입력" onPress={this.showDialogAndroid} />
+              <View style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
+                <Button title="적금액 입력" onPress={this.inputsavingAmount} />
+                <Button title="사용금액 입력" onPress={this.inputusedAmount} />
               </View>
-              <View style={{flex: 0.1}}/>
+              <View style={{flex: 0.15}}/>
               <View style={{flexDirection: 'row', alignSelf: 'center'}}>
                 <View style={styles.pickerSet}>
                   <View style={{flexDirection: 'row', alignSelf: 'center'}}>
@@ -973,7 +990,7 @@ class CalcScreen extends React.Component {
                   </Picker>
                 </View>
               </View>
-              <View style={{flex: 0.3}}/>
+              <View style={{flex: 0.4}}/>
               <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
               {
                 this.state.clicked
@@ -981,7 +998,7 @@ class CalcScreen extends React.Component {
                 <TouchableOpacity style={styles.calBtn} onPress = {this.clickBtn}>
                   <Text style={styles.calWord}>확인</Text>
                 </TouchableOpacity>
-                : <Text style={styles.contentsText}>{calcSalary(this.state.selectArmy, Number(this.state.saving),this.state.corporalPromotion,this.state.sgtPromotion)} </Text>
+                : <Text style={styles.contentsText}>{calcSalary(this.state.selectArmy, Number(this.state.saving),this.state.corporalPromotion,this.state.sgtPromotion, this.state.usedAmount)} </Text>
               }
               </View>
             </View>
