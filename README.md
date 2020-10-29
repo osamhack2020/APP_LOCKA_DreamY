@@ -26,7 +26,7 @@
 
 
 ### 💡 [기능 설계 (Project design)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
-
+ - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
 
 ### 🗓Develop Schedule
 
