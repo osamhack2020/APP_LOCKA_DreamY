@@ -4,6 +4,8 @@
 [스마트폰 비대면 반납 + 군인 월급계산 프로젝트](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Overview)
 
 
+[![섬네일](https://user-images.githubusercontent.com/18081105/97538772-4da85180-1a04-11eb-8924-8a2ef345556c.png)](https://www.youtube.com/watch?v=MQsTNyxUAfY)
+
 ### 👨🏿‍🤝‍👨🏼팀 정보 (Team Information)
 ![teamIcon](https://user-images.githubusercontent.com/18081105/96840798-e6c7ed00-1485-11eb-8d42-62cf4a29b24a.jpg)
 
