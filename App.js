@@ -20,11 +20,6 @@ import DialogAndroid from 'react-native-dialogs';
 import RNPickerSelect from 'react-native-picker-select';
 import {Picker} from '@react-native-picker/picker';
 
-
-
-
-//import Block from './Block';
-
 //initName : 첫 시작화면
 //lockedCondition : 잠금상태 확인변수
 //permissionCheck : 권한 허용여부
@@ -189,44 +184,6 @@ renderDayofweek = (Dayofweek) => {
   return renderingText;
 }
 
-class HomeScreen extends React.Component {
-    render() {
-      return (
-        <View style={styles.container}>
-          <View style={styles.markArea}>
-            <Image source={require('./images/ROKAmark.png')}/>
-          </View>
-          <View style={styles.appNameArea}>
-            <Text style={styles.appNameText}>
-              LOCKA
-            </Text>
-          </View>
-          <View style={styles.view}>
-            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.startService()}>
-              <Text>Start</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => NativeModules.Block.stopService()}>
-              <Text>Stop</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Lock Army</Text>
-            <Button
-              title = '전역/월급계산'
-              onPress = {()=>this.props.navigation.navigate('Calc')}
-              onPress = {()=>this.props.navigation.navigate('Calc')}
-            />
-            <Button
-              title = 'Permission'
-              onPress = {()=>this.props.navigation.navigate('Permission')}
-              onPress = {()=>this.props.navigation.navigate('Permission')}  
-            />
-          </View>
-        </View>  
-    );
-  }
-}
-
 // 잠금 해제시 인증번호 입력 화면
 class LoginScreen extends React.Component{
 
@@ -251,7 +208,7 @@ class LoginScreen extends React.Component{
     //비밀번호가 맞는지 확인하는 함수
     //맞다면 다음화면으로, 틀렸다면 토스트메시지를 띄워준다.
     if (this.inputPassword==this.state.password){
-      this.props.navigation.navigate('Lobby');
+      this.props.navigation.navigate('Main');
       NativeModules.Block.stopService();
     }
     else{
@@ -325,7 +282,7 @@ class holidayScreen extends React.Component{
     if (this.inputPassword==this.state.password){
       ToastExample.show('당일 21:00까지 잠금이 해제됩니다.', ToastExample.SHORT);
       NativeModules.Block.applyHoliday();
-      this.props.navigation.navigate('Lobby');
+      this.props.navigation.navigate('Main');
     }
     else{
       ToastExample.show('비밀번호가 틀렸습니다.', ToastExample.SHORT);
@@ -387,7 +344,7 @@ class PermissionScreen extends React.Component{
   setAccessibility = () =>{
     //권한을 요청하는 화면으로 이동시키는 함수.
     NativeModules.Block.setAccessibilityPermissions();
-    this.props.navigation.navigate('Lobby');
+    this.props.navigation.navigate('Main');
   }
 
   render(){
@@ -435,7 +392,6 @@ class PermissionScreen extends React.Component{
           <View style={{flex: 0.5}}/>
           <View style={styles.codeSec}>
             <TouchableOpacity style={styles.accessBtn} 
-            //권한 요청 후 LobbyScreen으로 넘어감.
             onPress = {()=>this.setAccessibility()}>
               <Text style={styles.accessWord}>권한 요청하기</Text>
             </TouchableOpacity>
@@ -448,7 +404,7 @@ class PermissionScreen extends React.Component{
 }
 
 // 권한 받은 후, 어플의 메인 화면
-class LobbyScreen extends React.Component {
+class MainScreen extends React.Component {
 
   // 상단의 toolbar 가리기
   static navigationOptions = {
@@ -681,13 +637,6 @@ class LobbyScreen extends React.Component {
 }
 
 //계산용 화면
-var radio_props = [
-  {label: '육군', value: 0 },
-  {label: '해군', value: 1 },
-  {label: '공군', value: 2 },
-  {label: '해병대', value: 3 }
-];
-
 class CalcScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -756,7 +705,12 @@ class CalcScreen extends React.Component {
     this.inputText=0;
     this.dDays=540; //그냥 30*18
     this.allDays=540;
-    //this.Ddaymessage="입대일과 전역일을 입력해주세요";
+    this.radio_props = [
+      {label: '육군', value: 0 },
+      {label: '해군', value: 1 },
+      {label: '공군', value: 2 },
+      {label: '해병대', value: 3 }
+    ];
   }
 
   static navigationOptions = {
@@ -942,7 +896,7 @@ class CalcScreen extends React.Component {
               <View style={{alignSelf: 'center',  flexDirection: 'row', margin: 5}}>
                 <RadioForm
                   //checked된 radio의 값을 뽑아내야 함.
-                  radio_props={radio_props}
+                  radio_props={this.radio_props}
                   initial={0}
                   onPress={(value) => {this.setState({selectArmy:value})}}
                   selectedButtonColor={'white'}
@@ -1016,15 +970,15 @@ class CalcScreen extends React.Component {
 
 const AppNavigator = createStackNavigator(
   {
-    Main: { screen: HomeScreen },
+    //Main: { screen: HomeScreen },
     UnlockCheck: { screen: LoginScreen },
     Permission: { screen: PermissionScreen },
     Calc: { screen: CalcScreen },
-    Lobby: { screen: LobbyScreen },
+    Main: { screen: MainScreen },
     Holiday: {screen: holidayScreen}
   },
   {
-    initialRouteName: "Lobby"
+    initialRouteName: "Main"
   }
 );
 
