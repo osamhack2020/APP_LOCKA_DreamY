@@ -38,9 +38,8 @@ Java | XML
  - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
  - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)
 
-## 🗓Develop Schedule
+## [🗓 개발 일정(Develop Schedule)](https://trello.com/b/uT8mnK0C/agile-sprint-board)
 
-![image](https://user-images.githubusercontent.com/18081105/94388617-8eecdd80-0188-11eb-9f93-b1c2469cd182.png)
 ![day](https://user-images.githubusercontent.com/67851701/95667787-b50d7700-0ba5-11eb-93ea-83a19fa00a8e.PNG)
 
 
