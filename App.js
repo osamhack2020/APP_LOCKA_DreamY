@@ -280,6 +280,7 @@ class LoginScreen extends React.Component{
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
+              secureTextEntry={true}
               //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
@@ -352,6 +353,7 @@ class holidayScreen extends React.Component{
             <TextInput 
               style={styles.chatInput}
               onChangeText={this.changePassword}
+              secureTextEntry={true}
               //onSubmitEditing={this.submitEdit.bind(this)}
             />
           </View>
