@@ -21,18 +21,9 @@
 ### ✅ 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
  - Android 9(sdk level 28) 이상
 
-### ⚙ 기술 스택 (Technique Used)
- ### Server(back-end)
-  - java
-  - XML
+### [⚙ 기술 스택 (Technique Used)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-(Technique-Used))
 
- ![Untitled Diagram (1)](https://user-images.githubusercontent.com/18081105/96946704-14f80c00-151c-11eb-9d30-f5ddf3af9041.png)
 
- ### front-end
-  -  react.js
-  -  Javascript
-  -  UI framework
-  -  react-native components
 
 ### 💡 [기능 설계 (Project design)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
 
