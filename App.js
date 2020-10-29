@@ -950,11 +950,11 @@ class CalcScreen extends React.Component {
                   //이거 setState 잘 봐야 할 거 같음.
                 />
               </View>
-              <View style={{flexDirection: 'row', alignSelf: 'center', margin: 5}}>
-                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+              <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 7}}>
                   <Button title="적금액 입력" onPress={this.inputsavingAmount} />
                 </View>
-                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 10}}>
+                <View style={{flexDirection: 'row', alignSelf: 'center', margin: 7}}>
                   <Button title="사용금액 입력" onPress={this.inputusedAmount} />
                 </View>
               </View>
