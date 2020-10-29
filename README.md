@@ -21,12 +21,12 @@
 ### ✅ 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
  - Android 9(sdk level 28) 이상
 
-### [⚙ 기술 스택 (Technique Used)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-(Technique-Used))
+### ⚙ 기술 스택 (Technique Used)
 
-
-
-### 💡 [기능 설계 (Project design)](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
+### 💡 기능 설계 (Project design)
+ - [주요 기능들](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
  - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
+ - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)
 
 ### 🗓Develop Schedule
 
