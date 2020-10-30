@@ -12,14 +12,20 @@
 > * [정강희](https://github.com/vesselofgod)
 > * [유영서](https://github.com/7dudtj)
 
-
-## ⚡️ 설치 안내 (Installation Process)
-1. download [apk file](https://github.com/osamhack2020/APP_LOCKA_DreamY/raw/master/android/app/build/outputs/apk/debug/app-debug.apk) in your phone
-2. install app using apk file
-3. run downloaded app
-
+## 💡 기능 설계 (Project design)
+ - [주요 기능들](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
+ - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
+ - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)
+  
+ 
 ## ✅ 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
  - Android 9(sdk level 28) 이상
+  
+  
+## ⚡️ 설치 안내 (Installation Process)
+1. Build된 [apk file](https://github.com/osamhack2020/APP_LOCKA_DreamY/raw/master/android/app/build/outputs/apk/debug/app-debug.apk)을 Android 스마트폰에 다운로드받는다.
+2. 다운로드된 APK file을 실행시켜 앱을 설치한다.
+3. 앱을 실행한다.
 
 ## ⚙ 기술 스택 (Technique Used)
 
@@ -33,16 +39,14 @@ Java | XML
 :---: | :---: 
 ![java icon](https://user-images.githubusercontent.com/18081105/97552275-6837f600-1a17-11eb-8208-a4399c03c2b6.png) | ![xml icon](https://user-images.githubusercontent.com/18081105/97552268-65d59c00-1a17-11eb-9761-db7c8e3d9461.png)
  
-## 💡 기능 설계 (Project design)
- - [주요 기능들](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Project-Design)
- - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
- - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)
-
+  
+   
 ## [🗓 개발 일정(Develop Schedule)](https://trello.com/b/6z3kwNlv/locka)
 
 ![day](https://user-images.githubusercontent.com/67851701/95667787-b50d7700-0ba5-11eb-93ea-83a19fa00a8e.PNG)
-
-
+ 
+ 
+    
 ## ⚙ [react-native environment setting and build files](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/how-to-setting-environment-and-build-files)
 
 
