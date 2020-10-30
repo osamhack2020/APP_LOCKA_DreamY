@@ -450,7 +450,9 @@ class MainScreen extends React.Component {
     let lockedCondition = NativeModules.Block.checkBlockState();
     let pauseLockState = NativeModules.Block.getpauseLock();
     var result = "";
+
     if(pauseLockState){
+      //완전해제 상태일 시 체크해줌.
       clockTexts = "완전해제 상태입니다."
       result =
       <View style={{flex: 1.1, justifyContent: 'center', alignItems: 'center'}}>
@@ -462,7 +464,8 @@ class MainScreen extends React.Component {
      </View>
 
     }
-    else if(( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) )  && lockedCondition==true){
+    else if(( (dayofweek==5 && this.state.d.getHours()>=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) )  && lockedCondition==true){
+      //주말 해제시간의 경우
       if(12<this.state.d.getHours()<=24){
         //저녁시간
         var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate()+1,8, 30)
@@ -493,7 +496,7 @@ class MainScreen extends React.Component {
      </View>
 
     }
-    else if( !( (dayofweek==5 && this.state.d.getHours()<=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) ) && lockedCondition==true){
+    else if( !( (dayofweek==5 && this.state.d.getHours()>=21) || dayofweek==6 || (dayofweek==0 && this.state.d.getHours()<9) ) && lockedCondition==true){
       //평일 잠금해제까지 남은시간.
       if(21<=this.state.d.getHours()<=24){
         //저녁시간
@@ -526,7 +529,7 @@ class MainScreen extends React.Component {
 
     }
     else if(lockedCondition==false){
-      //clockTexts = String(this.state.d.getHours()).padStart(2, "0")+":"+String(this.state.d.getMinutes()).padStart(2, "0")+":"+String(this.state.d.getSeconds()).padStart(2, "0")
+      //이미 잠금이 풀려있는 경우.
       var end = new Date(this.state.d.getFullYear(),this.state.d.getMonth(),this.state.d.getDate(), 21, 0)
       var betweenTime = end - this.state.d;
       var Hours = String(Math.floor((betweenTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
@@ -716,10 +719,6 @@ class CalcScreen extends React.Component {
   static navigationOptions = {
     header: null ,
   };
-
-  submitEdit= function(){
-    this.setState({saving: this.inputText});
-  }
 
   calcPercentInt=()=>{
     //군생활 퍼센트를 숫자로 리턴
