@@ -73,7 +73,7 @@ Java | XML
 :---: | :---: 
 ![java icon](https://user-images.githubusercontent.com/18081105/97552275-6837f600-1a17-11eb-8208-a4399c03c2b6.png) | ![xml icon](https://user-images.githubusercontent.com/18081105/97552268-65d59c00-1a17-11eb-9761-db7c8e3d9461.png)
  
-## 🔧 프로젝트 관리 (Project design)
+## 🔧 프로젝트 관리 (Project Management)
  - [개발 일정(Develop Schedule)](https://trello.com/b/6z3kwNlv/locka)
  - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
  - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)  
