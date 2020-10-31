@@ -773,7 +773,7 @@ class CalcScreen extends React.Component {
   }
 
   inputsavingAmount = async () => {
-    const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (1달/원)', 'ex) 200000');
+    const { action, text } = await DialogAndroid.prompt('적금액수를 입력하세요 (원/1달)', 'ex) 200000');
     if (action === DialogAndroid.actionPositive) {
       this.setState({saving: text})
     }
