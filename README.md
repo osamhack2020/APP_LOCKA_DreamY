@@ -39,7 +39,7 @@
 </details>
 
 ## ▶ 프로젝트 소개영상
-[![init](https://user-images.githubusercontent.com/18081105/97539019-a841ad80-1a04-11eb-8b3b-00b7c6895ae1.png)](https://www.youtube.com/watch?v=MQsTNyxUAfY)
+[![init](https://user-images.githubusercontent.com/18081105/97539019-a841ad80-1a04-11eb-8b3b-00b7c6895ae1.png)](https://www.youtube.com/watch?v=Iu6bEPLg3aY&feature=youtu.be)
 
 ## 💡 핵심 기능
 
