@@ -79,7 +79,7 @@ Java | XML
  - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)  
  - [프로젝트 수정시 react-native 환경설정](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/how-to-setting-environment-and-build-files)
 
-## 👨🏿‍🤝‍👨🏼팀 정보 (Team Information)
+## 팀 정보 (Team Information)
 ![teamIcon](https://user-images.githubusercontent.com/18081105/96840798-e6c7ed00-1485-11eb-8d42-62cf4a29b24a.jpg)
 
 > * [정강희](https://github.com/vesselofgod)
